@@ -3,6 +3,9 @@ package alpha.allmotors.entity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -72,7 +75,6 @@ public class UserEntity {
     private String profile_picture;
 
     @NotNull
-    @NotBlank
     private int rating = 0;
 
     @NotNull
@@ -90,6 +92,9 @@ public class UserEntity {
     @Email
     @Size(min = 3, max = 100)
     private String email;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    private LocalDateTime member_since = LocalDateTime.now();
 
     @NotNull
     @NotBlank
@@ -113,7 +118,7 @@ public class UserEntity {
     public UserEntity(Long id, String name, String lastname, String username, String gender,
             LocalDateTime birthdate, String country, String province, String address,
             String postal_code, String description, String profile_picture, int rating,
-            String status, String phone, String email, String password, boolean role) {
+            String status, String phone, String email, LocalDateTime member_since, String password, boolean role) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -130,6 +135,7 @@ public class UserEntity {
         this.status = status;
         this.phone = phone;
         this.email = email;
+        this.member_since = LocalDateTime.now();
         this.password = password;
         this.role = role;
     }
@@ -137,7 +143,7 @@ public class UserEntity {
     public UserEntity(String name, String lastname, String username, String gender,
             LocalDateTime birthdate, String country, String province, String address,
             String postal_code, String description, String profile_picture, int rating,
-            String status, String phone, String email, String password, boolean role) {
+            String status, String phone, String email, LocalDateTime member_since, String password, boolean role) {
         this.name = name;
         this.lastname = lastname;
         this.username = username;
@@ -153,6 +159,7 @@ public class UserEntity {
         this.status = status;
         this.phone = phone;
         this.email = email;
+        this.member_since = member_since;
         this.password = password;
         this.role = role;
     }
@@ -288,6 +295,14 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public LocalDateTime getMemberSince() {
+         return this.member_since;
+    }
+
+    public void setMemberSince(LocalDateTime member_since) {
+        this.member_since = member_since;
     }
 
     public String getPassword() {

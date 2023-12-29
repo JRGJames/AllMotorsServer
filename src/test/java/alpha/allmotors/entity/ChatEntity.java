@@ -1,6 +1,10 @@
 package alpha.allmotors.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +23,7 @@ public class ChatEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime creation_date;
 
     @NotNull
@@ -34,11 +38,12 @@ public class ChatEntity {
     private List<MessageEntity> messages;
 
     public ChatEntity() {
+        messages = new ArrayList<>();
     }
 
     public ChatEntity(Long id, LocalDateTime creation_date, UserEntity user1, UserEntity user2) {
         this.id = id;
-        this.creation_date = creation_date;
+        this.creation_date = LocalDateTime.now();
         this.user1 = user1;
         this.user2 = user2;
     }
