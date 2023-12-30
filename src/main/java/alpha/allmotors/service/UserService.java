@@ -34,11 +34,11 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found by username"));
     }
 
-    public Long create(UserEntity oUserEntity) {
+    public Long create(UserEntity userEntity) {
         sessionService.onlyAdmins();
-        oUserEntity.setId(null);
-        oUserEntity.setPassword(ALLMOTORS);
-        return userRepository.save(oUserEntity).getId();
+        userEntity.setId(null);
+        userEntity.setPassword(ALLMOTORS);
+        return userRepository.save(userEntity).getId();
     }
 
     public UserEntity update(UserEntity userEntityToSet) {

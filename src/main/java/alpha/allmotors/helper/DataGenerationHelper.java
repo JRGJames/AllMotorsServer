@@ -220,10 +220,7 @@ public class DataGenerationHelper {
     }
 
     public static String getRandomPhoneNumber() {
-        // This is a basic example; you may need to adjust the format based on your requirements
-        return String.format("+1-%03d-%03d-%04d",
-                new Random().nextInt(1000),
-                new Random().nextInt(1000),
-                new Random().nextInt(1000));
+        // Genera un número de teléfono aleatorio de 9 cifras
+        return String.format("%09d", new Random().nextInt(1_000_000_000));
     }
 }

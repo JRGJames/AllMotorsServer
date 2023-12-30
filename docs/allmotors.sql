@@ -52,7 +52,8 @@ CREATE TABLE `car` (
   `plate` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `location` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `id_owner` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -63,7 +64,9 @@ CREATE TABLE `car` (
 
 CREATE TABLE `chat` (
   `id` bigint NOT NULL,
-  `creation_date` datetime NOT NULL
+  `creation_date` datetime NOT NULL,
+  `id_user_one` bigint NOT NULL,
+  `id_user_two` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -78,7 +81,9 @@ CREATE TABLE `message` (
   `sent_time` datetime NOT NULL,
   `is_liked` tinyint(1) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL,
-  `is_read` tinyint(1) NOT NULL
+  `is_read` tinyint(1) NOT NULL,
+  `id_user` bigint NOT NULL,
+  `id_chat` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -92,7 +97,7 @@ CREATE TABLE `user` (
   `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `username` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-  `gender` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `gender` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `birthdate` datetime NOT NULL,
   `country` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `province` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
@@ -115,8 +120,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`, `country`, `province`, `address`, `postal_code`, `description`, `profile_picture`, `rating`, `status`, `phone`, `email`, `password`, `role`, `member_since`, `last_connection`) VALUES
-(1, 'Fernando', 'Alonso', 'ElNano', 'Man', '1991-07-01 10:32:19', 'Spain', 'Asturias', 'Calle Nano 33', '53033', 'Test description', 'default_image.png', 0, 1, '633974333', 'nano@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 1, '2009-02-21 15:33:35', '1944-10-08 17:02:22'),
-(2, 'Carlos', 'Sainz', 'carlossainz', 'Man', '1938-12-02 21:42:46', 'Spain', 'Madrid', 'Calle Sainz 55', '53055', 'Test description', 'default_image.png', 0, 1, '655974455', 'sainz@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '1967-10-10 07:48:51', '1956-02-04 00:41:53');
+(1, 'Fernando', 'Alonso', 'ElNano', 'Man', '2022-02-24 04:25:00', 'Spain', 'Asturias', 'Calle Nano 33', '53033', 'Test description', 'default_image.png', 0, 1, '633974333', 'nano@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 1, '1996-07-15 15:35:07', '1936-02-15 00:37:41'),
+(2, 'Carlos', 'Sainz', 'carlossainz', 'Man', '1991-05-16 16:56:24', 'Spain', 'Madrid', 'Calle Sainz 55', '53055', 'Test description', 'default_image.png', 0, 1, '655974455', 'sainz@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21');
 
 --
 -- Índices para tablas volcadas

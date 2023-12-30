@@ -43,7 +43,7 @@ public class UserEntity {
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 10)
+    @Size(min = 3, max = 20)
     private String gender;
 
     private LocalDateTime birthdate;
