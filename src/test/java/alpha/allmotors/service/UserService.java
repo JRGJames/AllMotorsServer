@@ -99,7 +99,7 @@ public class UserService {
                 DataGenerationHelper.getRandomDate(), "Spain", "Asturias", "Calle Nano 33", "53033", "Test description", "default_image.png", 0, true, "633974333", "nano@gmail.com", DataGenerationHelper.getRandomDate(), DataGenerationHelper.getRandomDate(), ALLMOTORS, true);
         userRepository.save(userEntityOne);
         UserEntity userEntityTwo = new UserEntity("Carlos", "Sainz", "carlossainz", "Man",
-                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", "Calle Sainz 55", "53055", "Test description", "default_image.png", 0, true, "65597455", "sainz@gmail.com", DataGenerationHelper.getRandomDate(), DataGenerationHelper.getRandomDate(), ALLMOTORS, false);
+                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", "Calle Sainz 55", "53055", "Test description", "default_image.png", 0, true, "655974455", "sainz@gmail.com", DataGenerationHelper.getRandomDate(), DataGenerationHelper.getRandomDate(), ALLMOTORS, false);
         userRepository.save(userEntityTwo);
         return userRepository.count();
     }

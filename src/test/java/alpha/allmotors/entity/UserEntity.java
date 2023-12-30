@@ -80,7 +80,6 @@ public class UserEntity {
     private Boolean status;
 
     @NotNull
-    @NotBlank
     @Size(min = 9, max = 9)
     private String phone;
 
@@ -166,9 +165,8 @@ public class UserEntity {
         this.role = role;
     }
 
-    public UserEntity(String email, String username, String password) {
+    public UserEntity(String username, String password) {
         this.username = username;
-        this.email = email;
         this.password = password;
     }
 

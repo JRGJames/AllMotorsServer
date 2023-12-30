@@ -28,11 +28,11 @@ public class ChatEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_user_one")
-    private UserEntity user1;
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "id_user_two")
-    private UserEntity user2;
+    private UserEntity participant;
 
     @OneToMany(mappedBy = "chat", fetch = jakarta.persistence.FetchType.LAZY)
     private List<MessageEntity> messages;
@@ -41,17 +41,17 @@ public class ChatEntity {
         messages = new ArrayList<>();
     }
 
-    public ChatEntity(Long id, LocalDateTime creation_date, UserEntity user1, UserEntity user2) {
+    public ChatEntity(Long id, LocalDateTime creation_date, UserEntity user, UserEntity participant) {
         this.id = id;
         this.creation_date = LocalDateTime.now();
-        this.user1 = user1;
-        this.user2 = user2;
+        this.user = user;
+        this.participant = participant;
     }
 
-    public ChatEntity(LocalDateTime creation_date, UserEntity user1, UserEntity user2) {
+    public ChatEntity(LocalDateTime creation_date, UserEntity user, UserEntity participant) {
         this.creation_date = creation_date;
-        this.user1 = user1;
-        this.user2 = user2;
+        this.user = user;
+        this.participant = participant;
     }
 
     public Long getId() {
@@ -71,19 +71,19 @@ public class ChatEntity {
     }
 
     public UserEntity getUser1() {
-        return user1;
+        return user;
     }
 
-    public UserEntity setUser1(UserEntity user1) {
-        return this.user1 = user1;
+    public UserEntity setUser1(UserEntity user) {
+        return this.user = user;
     }
 
     public UserEntity getUser2() {
-        return user2;
+        return participant;
     }
 
-    public UserEntity setUser2(UserEntity user2) {
-        return this.user2 = user2;
+    public UserEntity setUser2(UserEntity participant) {
+        return this.participant = participant;
     }
 
     public int getMessages() {
