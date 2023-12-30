@@ -77,10 +77,7 @@ public class UserEntity {
     @NotNull
     private int rating = 0;
 
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 15)
-    private String status;
+    private Boolean status;
 
     @NotNull
     @NotBlank
@@ -95,6 +92,9 @@ public class UserEntity {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime member_since = LocalDateTime.now();
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    private LocalDateTime last_connection = LocalDateTime.now();
 
     @NotNull
     @NotBlank
@@ -118,7 +118,7 @@ public class UserEntity {
     public UserEntity(Long id, String name, String lastname, String username, String gender,
             LocalDateTime birthdate, String country, String province, String address,
             String postal_code, String description, String profile_picture, int rating,
-            String status, String phone, String email, LocalDateTime member_since, String password, boolean role) {
+            Boolean status, String phone, String email, LocalDateTime member_since, LocalDateTime last_connection,String password, boolean role) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -136,6 +136,7 @@ public class UserEntity {
         this.phone = phone;
         this.email = email;
         this.member_since = LocalDateTime.now();
+        this.last_connection = LocalDateTime.now();
         this.password = password;
         this.role = role;
     }
@@ -143,7 +144,7 @@ public class UserEntity {
     public UserEntity(String name, String lastname, String username, String gender,
             LocalDateTime birthdate, String country, String province, String address,
             String postal_code, String description, String profile_picture, int rating,
-            String status, String phone, String email, LocalDateTime member_since, String password, boolean role) {
+            Boolean status, String phone, String email, LocalDateTime member_since, LocalDateTime last_connection, String password, boolean role) {
         this.name = name;
         this.lastname = lastname;
         this.username = username;
@@ -160,11 +161,13 @@ public class UserEntity {
         this.phone = phone;
         this.email = email;
         this.member_since = member_since;
+        this.last_connection = last_connection;
         this.password = password;
         this.role = role;
     }
 
-    public UserEntity(String email, String password) {
+    public UserEntity(String email, String username, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }
@@ -273,11 +276,11 @@ public class UserEntity {
         this.rating = rating;
     }
 
-    public String getStatus() {
+    public Boolean isStatus() {
         return this.status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
@@ -303,6 +306,14 @@ public class UserEntity {
 
     public void setMemberSince(LocalDateTime member_since) {
         this.member_since = member_since;
+    }
+
+    public LocalDateTime getLastConnection() {
+         return this.last_connection;
+    }
+
+    public void setLastConnection(LocalDateTime last_connection) {
+        this.last_connection = last_connection;
     }
 
     public String getPassword() {

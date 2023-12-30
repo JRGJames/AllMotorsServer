@@ -1,5 +1,7 @@
 package alpha.allmotors.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -77,16 +79,27 @@ public class UserService {
     public Long populate(Integer amount) {
         sessionService.onlyAdmins();
         for (int i = 0; i < amount; i++) {
-            String name = DataGenerationHelper.getRadomName();
-            String surname = DataGenerationHelper.getRadomSurname();
-            String lastname = DataGenerationHelper.getRadomSurname();
-            String email = (name.substring(0, 3) + surname.substring(0, 3) + lastname.substring(0, 2) + i).toLowerCase()
-                    + "@ausiasmarch.net";
-            String username = DataGenerationHelper
-                    .doNormalizeString(
-                            name.substring(0, 3) + surname.substring(1, 3) + lastname.substring(1, 2) + i).toLowerCase();
-            userRepository.save(new UserEntity(name, surname, lastname, email, username,
-                    ALLMOTORS, true));
+            String name = DataGenerationHelper.getRandomName();
+            String lastname = DataGenerationHelper.getRandomSurname();
+            String username = DataGenerationHelper.doNormalizeString(name.substring(0, 3) + lastname.substring(1, 3) + i).toLowerCase();
+            String gender = DataGenerationHelper.getRandomGender();
+            LocalDateTime birthdate = DataGenerationHelper.getRandomDate();
+            String country = DataGenerationHelper.getRandomCountry();
+            String province = DataGenerationHelper.getRandomProvince();
+            String address = DataGenerationHelper.getRandomAddress();
+            String postal_code = DataGenerationHelper.getRandomPostalCode();
+            String description = DataGenerationHelper.generateComplexSentence();
+            String profile_picture = "default_image.png";
+            int rating = 0;
+            Boolean status = DataGenerationHelper.getRandomStatus();
+            String phone = DataGenerationHelper.getRandomPhoneNumber();
+            String email = (name.substring(0, 3) + lastname.substring(0, 3) + i).toLowerCase() + "@gmail.net";
+            String password = ALLMOTORS;
+            Boolean role = false;
+            LocalDateTime member_since = DataGenerationHelper.getRandomDate();
+            LocalDateTime last_connection = DataGenerationHelper.getRandomDate();
+            userRepository.save(new UserEntity(name, lastname, username, gender, birthdate, country, province, address,
+                    postal_code, description, profile_picture, rating, status, phone, email, member_since, last_connection, password, role));
         }
         return userRepository.count();
     }

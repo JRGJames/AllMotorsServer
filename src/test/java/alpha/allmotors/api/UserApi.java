@@ -15,60 +15,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import alpha.allmotors.entity.UserEntity;
+import alpha.allmotors.service.UserService;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/user")
 public class UserApi {
 
     @Autowired
-    UserService oUserService;
+    UserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<UserEntity> get(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(oUserService.get(id));
+        return ResponseEntity.ok(userService.get(id));
     }
 
     @GetMapping("/byUsername/{username}")
     public ResponseEntity<UserEntity> get(@PathVariable("username") String username) {
-        return ResponseEntity.ok(oUserService.getByUsername(username));
+        return ResponseEntity.ok(userService.getByUsername(username));
     }
 
-    @PostMapping("")
-    public ResponseEntity<Long> create(@RequestBody UserEntity oUserEntity) {
-        return ResponseEntity.ok(oUserService.create(oUserEntity));
+    @PostMapping("/create")
+    public ResponseEntity<Long> create(@RequestBody UserEntity userEntity) {
+        return ResponseEntity.ok(userService.create(userEntity));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<UserEntity> update(@RequestBody UserEntity oUserEntity) {
-        return ResponseEntity.ok(oUserService.update(oUserEntity));
+    public ResponseEntity<UserEntity> update(@RequestBody UserEntity userEntity) {
+        return ResponseEntity.ok(userService.update(userEntity));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Long> delete(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(oUserService.delete(id));
+        return ResponseEntity.ok(userService.delete(id));
     }
 
-    @GetMapping("")
+    @GetMapping("/getpage")
     public ResponseEntity<Page<UserEntity>> getPage(
-            Pageable oPageable,
+            Pageable pageable,
             @RequestParam(name = "filter", required = false) String strFilter) {
-        return ResponseEntity.ok(oUserService.getPage(oPageable, strFilter));
+        return ResponseEntity.ok(userService.getPage(pageable, strFilter));
     }
 
     @PostMapping("/populate/{amount}")
     public ResponseEntity<Long> populate(@PathVariable("amount") Integer amount) {
-        return ResponseEntity.ok(oUserService.populate(amount));
+        return ResponseEntity.ok(userService.populate(amount));
     }
 
     @DeleteMapping("/empty")
     public ResponseEntity<Long> empty() {
-        return ResponseEntity.ok(oUserService.empty());
+        return ResponseEntity.ok(userService.empty());
     }
-
-    @GetMapping("/byRepliesNumberDesc")
-    public ResponseEntity<Page<UserEntity>> getPageByRepliesNumberDesc(Pageable oPageable) {
-        return ResponseEntity.ok(oUserService.getPageByRepliesNumberDesc(oPageable));
-    }
-
 }
 
