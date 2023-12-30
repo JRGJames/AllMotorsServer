@@ -3,6 +3,11 @@ package alpha.allmotors.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import alpha.allmotors.bean.UserBean;
+import alpha.allmotors.entity.UserEntity;
+import alpha.allmotors.exception.ResourceNotFoundException;
+import alpha.allmotors.exception.UnauthorizedException;
+import alpha.allmotors.helper.JWTHelper;
 import alpha.allmotors.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -10,29 +15,21 @@ import jakarta.servlet.http.HttpServletRequest;
 public class SessionService {
 
     @Autowired
-    UserRepository oUserRepository;
+    UserRepository userRepository;
 
     @Autowired
-    HttpServletRequest oHttpServletRequest;
+    HttpServletRequest httpServletRequest;
 
-    @Autowired
-    CaptchaService oCaptchaService;
 
-    @Autowired
-    PendentRepository oPendentRepository;
-
-    @Autowired
-    CaptchaRepository oCaptchaRepository;
-
-    public String login(UserBean oUserBean) {
-        oUserRepository.findByUsernameAndPassword(oUserBean.getUsername(), oUserBean.getPassword())
-                .orElseThrow(() -> new ResourceNotFoundException("Wrong User or password"));
-        return JWTHelper.generateJWT(oUserBean.getUsername());
-    }
+    public String login(UserBean userBean) {
+        userRepository.findByEmailOrUsernameAndPassword(userBean.getEmail(), userBean.getUsername(), userBean.getPassword())
+                .orElseThrow(() -> new ResourceNotFoundException("Wrong email/username or password"));
+        return JWTHelper.generateJWT(userBean.getEmail());
+    }    
 
     public String getSessionUsername() {        
-        if (oHttpServletRequest.getAttribute("username") instanceof String) {
-            return oHttpServletRequest.getAttribute("username").toString();
+        if (httpServletRequest.getAttribute("username") instanceof String) {
+            return httpServletRequest.getAttribute("username").toString();
         } else {
             return null;
         }
@@ -40,7 +37,7 @@ public class SessionService {
 
     public UserEntity getSessionUser() {
         if (this.getSessionUsername() != null) {
-            return oUserRepository.findByUsername(this.getSessionUsername()).orElse(null);    
+            return userRepository.findByUsername(this.getSessionUsername()).orElse(null);    
         } else {
             return null;
         }
@@ -48,7 +45,7 @@ public class SessionService {
 
     public Boolean isSessionActive() {
         if (this.getSessionUsername() != null) {
-            return oUserRepository.findByUsername(this.getSessionUsername()).isPresent();
+            return userRepository.findByUsername(this.getSessionUsername()).isPresent();
         } else {
             return false;
         }
@@ -56,9 +53,9 @@ public class SessionService {
 
     public Boolean isAdmin() {
         if (this.getSessionUsername() != null) {
-            UserEntity oUserEntityInSession = oUserRepository.findByUsername(this.getSessionUsername())
+            UserEntity userEntityInSession = userRepository.findByUsername(this.getSessionUsername())
                     .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-            return Boolean.FALSE.equals(oUserEntityInSession.getRole());
+            return Boolean.FALSE.equals(userEntityInSession.isRole());
         } else {
             return false;
         }
@@ -66,9 +63,9 @@ public class SessionService {
 
     public Boolean isUser() {
         if (this.getSessionUsername() != null) {
-            UserEntity oUserEntityInSession = oUserRepository.findByUsername(this.getSessionUsername())
+            UserEntity userEntityInSession = userRepository.findByUsername(this.getSessionUsername())
                     .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-            return Boolean.TRUE.equals(oUserEntityInSession.getRole());
+            return Boolean.TRUE.equals(userEntityInSession.isRole());
         } else {
             return false;
         }
@@ -116,61 +113,5 @@ public class SessionService {
             throw new UnauthorizedException("Only admins or users can do this");
         }
     }
-
-    @Transactional
-    public CaptchaResponseBean prelogin() {
-    
-        CaptchaEntity oCaptchaEntity = oCaptchaService.getRandomCaptcha();
-    
-        PendentEntity oPendentEntity = new PendentEntity();
-        oPendentEntity.setCaptcha(oCaptchaEntity);
-        oPendentEntity.setTimecode(LocalDateTime.now());
-        PendentEntity oNewPendentEntity = oPendentRepository.save(oPendentEntity);
-
-        
-        oNewPendentEntity.setToken(DataGenerationHelper.getSHA256(
-            String.valueOf(oNewPendentEntity.getId()) 
-            + String.valueOf(oCaptchaEntity.getId())
-            + String.valueOf(DataGenerationHelper.getRandomInt(0, 9999))));
-       
-
-        oPendentRepository.save(oNewPendentEntity);
-
-        CaptchaResponseBean oCaptchaResponseBean = new CaptchaResponseBean();
-        oCaptchaResponseBean.setToken(oNewPendentEntity.getToken());
-        oCaptchaResponseBean.setCaptchaImage(oNewPendentEntity.getCaptcha().getImage());
-
-        return oCaptchaResponseBean;
-        
-    }
-
-    public String loginCaptcha(@RequestBody CaptchaBean oCaptchaBean) {
-        if (oCaptchaBean.getUsername() != null && oCaptchaBean.getPassword() != null) {
-            UserEntity oUserEntity = oUserRepository.findByUsernameAndPassword(oCaptchaBean.getUsername(), oCaptchaBean.getPassword()).orElseThrow(() -> new ResourceNotFoundException("Wrong User or password"));
-            if (oUserEntity!=null) {
-                PendentEntity oPendentEntity = oPendentRepository.findByToken(oCaptchaBean.getToken()).orElseThrow(() -> new ResourceNotFoundException("Pendent not found"));
-
-                LocalDateTime timecode = oPendentEntity.getTimecode();
-
-                if (LocalDateTime.now().isAfter(timecode.plusSeconds(120))) {
-                    throw new UnauthorizedException("Captcha expired");
-                }
-
-                if (oPendentEntity.getCaptcha().getText().trim().equals(oCaptchaBean.getAnswer().trim())) {
-                    oPendentRepository.delete(oPendentEntity);
-                    return JWTHelper.generateJWT(oCaptchaBean.getUsername());
-                } else {
-                    throw new UnauthorizedException("Wrong captcha");
-                }
-            } else {
-                throw new UnauthorizedException("Wrong User or password");
-            }        
-        } else {
-            throw new UnauthorizedException("User or password not found");
-        }
-    }
-
-
-
 }
 

@@ -1,15 +1,20 @@
 package alpha.allmotors.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
+import alpha.allmotors.entity.UserEntity;
+import alpha.allmotors.exception.ResourceNotFoundException;
+import alpha.allmotors.helper.DataGenerationHelper;
 import alpha.allmotors.repository.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
 
-    private final String foxforumPASSWORD = "e2cac5c5f7e52ab03441bb70e89726ddbd1f6e5b683dde05fb65e0720290179e";
+    private final String ALLMOTORS = "c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894";
 
     @Autowired
     UserRepository userRepository;
@@ -30,7 +35,7 @@ public class UserService {
     }
 
     public Page<UserEntity> getPage(Pageable pageable, String filter) {
-        oSessionService.onlyAdmins();
+        sessionService.onlyAdmins();
         
         Page<UserEntity> page;
 
@@ -43,44 +48,34 @@ public class UserService {
         return page;
     }
 
-    public Page<UserEntity> getPageByRepliesNumberDesc(Pageable oPageable) {
-        return userRepository.findUsersByRepliesNumberDescFilter(oPageable);
-    }
-
     public Long create(UserEntity oUserEntity) {
-        oSessionService.onlyAdmins();
+        sessionService.onlyAdmins();
         oUserEntity.setId(null);
-        oUserEntity.setPassword(foxforumPASSWORD);
+        oUserEntity.setPassword(ALLMOTORS);
         return userRepository.save(oUserEntity).getId();
     }
 
-    public UserEntity update(UserEntity oUserEntityToSet) {
-        UserEntity oUserEntityFromDatabase = this.get(oUserEntityToSet.getId());
-        oSessionService.onlyAdminsOrUsersWithIisOwnData(oUserEntityFromDatabase.getId());
-        if (oSessionService.isUser()) {            
-            oUserEntityToSet.setRole(oUserEntityFromDatabase.getRole());
-            oUserEntityToSet.setPassword(foxforumPASSWORD);
-            return userRepository.save(oUserEntityToSet);
+    public UserEntity update(UserEntity userEntityToSet) {
+        UserEntity userEntityFromDatabase = this.get(userEntityToSet.getId());
+        sessionService.onlyAdminsOrUsersWithIisOwnData(userEntityFromDatabase.getId());
+        if (sessionService.isUser()) {            
+            userEntityToSet.setRole(userEntityFromDatabase.isRole());
+            userEntityToSet.setPassword(ALLMOTORS);
+            return userRepository.save(userEntityToSet);
         } else {            
-            oUserEntityToSet.setPassword(foxforumPASSWORD);
-            return userRepository.save(oUserEntityToSet);
+            userEntityToSet.setPassword(ALLMOTORS);
+            return userRepository.save(userEntityToSet);
         }
     }
 
     public Long delete(Long id) {
-        oSessionService.onlyAdmins();
+        sessionService.onlyAdmins();
         userRepository.deleteById(id);
         return id;
     }
-   
-    public UserEntity getOneRandom() {
-        oSessionService.onlyAdmins();
-        Pageable oPageable = PageRequest.of((int) (Math.random() * userRepository.count()), 1);
-        return userRepository.findAll(oPageable).getContent().get(0);
-    }
 
     public Long populate(Integer amount) {
-        oSessionService.onlyAdmins();
+        sessionService.onlyAdmins();
         for (int i = 0; i < amount; i++) {
             String name = DataGenerationHelper.getRadomName();
             String surname = DataGenerationHelper.getRadomSurname();
@@ -91,7 +86,7 @@ public class UserService {
                     .doNormalizeString(
                             name.substring(0, 3) + surname.substring(1, 3) + lastname.substring(1, 2) + i).toLowerCase();
             userRepository.save(new UserEntity(name, surname, lastname, email, username,
-                    "e2cac5c5f7e52ab03441bb70e89726ddbd1f6e5b683dde05fb65e0720290179e", true));
+                    ALLMOTORS, true));
         }
         return userRepository.count();
     }
@@ -100,15 +95,15 @@ public class UserService {
 
     @Transactional
     public Long empty() {
-        oSessionService.onlyAdmins();
+        sessionService.onlyAdmins();
         userRepository.deleteAll();
         userRepository.resetAutoIncrement();
-        UserEntity oUserEntity1 = new UserEntity(1L, "Pedro", "Picapiedra", "Roca",
-                "pedropicapiedra@ausiasmarch.net", "pedropicapiedra", foxforumPASSWORD, false);
-        userRepository.save(oUserEntity1);
-        oUserEntity1 = new UserEntity(2L, "Pablo", "Mármol", "Granito", "pablomarmol@ausiasmarch.net",
-                "pablomarmol", foxforumPASSWORD, true);
-        userRepository.save(oUserEntity1);
+        UserEntity userEntity = new UserEntity(1L, "Pedro", "Picapiedra", "Roca",
+                "pedropicapiedra@ausiasmarch.net", "pedropicapiedra", ALLMOTORS, false);
+        userRepository.save(userEntity);
+        userEntity = new UserEntity(2L, "Pablo", "Mármol", "Granito", "pablomarmol@ausiasmarch.net",
+                "pablomarmol", ALLMOTORS, true);
+        userRepository.save(userEntity);
         return userRepository.count();
     }
 
