@@ -1,5 +1,7 @@
 package alpha.allmotors.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +24,14 @@ public class SessionService {
 
 
     public String login(UserBean userBean) {
-        userRepository.findByEmailOrUsernameAndPassword(userBean.getEmail(), userBean.getUsername(), userBean.getPassword())
-                .orElseThrow(() -> new ResourceNotFoundException("Wrong email/username or password"));
-        return JWTHelper.generateJWT(userBean.getEmail());
-    }    
+        Optional<UserEntity> userByUsername = userRepository.findByUsernameAndPassword(userBean.getUsername(), userBean.getPassword());
+        Optional<UserEntity> userByEmail = userRepository.findByEmailAndPassword(userBean.getEmail(), userBean.getPassword());
+    
+        UserEntity user = userByUsername.orElseGet(() -> userByEmail.orElseThrow(() -> new ResourceNotFoundException("Wrong username or password")));
+    
+        return JWTHelper.generateJWT(user.getUsername());
+    }
+     
 
     public String getSessionUsername() {        
         if (httpServletRequest.getAttribute("username") instanceof String) {
