@@ -101,13 +101,22 @@ CREATE TABLE `user` (
   `description` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `profile_picture` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `rating` int NOT NULL,
-  `status` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
   `phone` varchar(9) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `role` tinyint(1) NOT NULL DEFAULT '0',
-  `member_since` datetime NOT NULL
+  `member_since` datetime NOT NULL,
+  `last_connection` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`, `country`, `province`, `address`, `postal_code`, `description`, `profile_picture`, `rating`, `status`, `phone`, `email`, `password`, `role`, `member_since`, `last_connection`) VALUES
+(1, 'Fernando', 'Alonso', 'ElNano', 'Man', '1991-07-01 10:32:19', 'Spain', 'Asturias', 'Calle Nano 33', '53033', 'Test description', 'default_image.png', 0, 1, '633974333', 'nano@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 1, '2009-02-21 15:33:35', '1944-10-08 17:02:22'),
+(2, 'Carlos', 'Sainz', 'carlossainz', 'Man', '1938-12-02 21:42:46', 'Spain', 'Madrid', 'Calle Sainz 55', '53055', 'Test description', 'default_image.png', 0, 1, '655974455', 'sainz@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '1967-10-10 07:48:51', '1956-02-04 00:41:53');
 
 --
 -- Índices para tablas volcadas
@@ -163,7 +172,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
