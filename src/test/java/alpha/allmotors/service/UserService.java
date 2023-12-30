@@ -3,8 +3,6 @@ package alpha.allmotors.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.exception.ResourceNotFoundException;
@@ -34,20 +32,6 @@ public class UserService {
     public UserEntity getByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found by username"));
-    }
-
-    public Page<UserEntity> getPage(Pageable pageable, String filter) {
-        sessionService.onlyAdmins();
-        
-        Page<UserEntity> page;
-
-        if (filter == null || filter.isEmpty() || filter.trim().isEmpty()) {
-            page = userRepository.findAll(pageable);
-        } else {
-            page = userRepository.findByUserByNameOrSurnameOrLastnameContainingIgnoreCase(
-                    filter, filter, filter, filter, pageable);
-        }
-        return page;
     }
 
     public Long create(UserEntity oUserEntity) {
@@ -111,12 +95,12 @@ public class UserService {
         sessionService.onlyAdmins();
         userRepository.deleteAll();
         userRepository.resetAutoIncrement();
-        UserEntity userEntity = new UserEntity(1L, "Pedro", "Picapiedra", "Roca",
-                "pedropicapiedra@ausiasmarch.net", "pedropicapiedra", ALLMOTORS, false);
-        userRepository.save(userEntity);
-        userEntity = new UserEntity(2L, "Pablo", "Mármol", "Granito", "pablomarmol@ausiasmarch.net",
-                "pablomarmol", ALLMOTORS, true);
-        userRepository.save(userEntity);
+        UserEntity userEntityOne = new UserEntity("Fernando", "Alonso", "ElNano", "Man",
+                DataGenerationHelper.getRandomDate(), "Spain", "Asturias", "Calle Nano 33", "53033", "Test description", "default_image.png", 0, true, "633974333", "nano@gmail.com", DataGenerationHelper.getRandomDate(), DataGenerationHelper.getRandomDate(), ALLMOTORS, true);
+        userRepository.save(userEntityOne);
+        UserEntity userEntityTwo = new UserEntity("Carlos", "Sainz", "carlossainz", "Man",
+                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", "Calle Sainz 55", "53055", "Test description", "default_image.png", 0, true, "65597455", "sainz@gmail.com", DataGenerationHelper.getRandomDate(), DataGenerationHelper.getRandomDate(), ALLMOTORS, false);
+        userRepository.save(userEntityTwo);
         return userRepository.count();
     }
 

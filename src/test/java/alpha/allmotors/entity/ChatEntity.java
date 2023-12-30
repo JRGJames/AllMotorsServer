@@ -10,10 +10,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "chat")
@@ -26,12 +26,12 @@ public class ChatEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime creation_date;
 
-    @NotNull
     @ManyToOne
+    @JoinColumn(name = "id_user_one")
     private UserEntity user1;
 
-    @NotNull
     @ManyToOne
+    @JoinColumn(name = "id_user_two")
     private UserEntity user2;
 
     @OneToMany(mappedBy = "chat", fetch = jakarta.persistence.FetchType.LAZY)

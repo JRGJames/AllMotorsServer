@@ -1,8 +1,6 @@
 package alpha.allmotors.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import alpha.allmotors.entity.UserEntity;
@@ -49,13 +46,6 @@ public class UserApi {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Long> delete(@PathVariable("id") Long id) {
         return ResponseEntity.ok(userService.delete(id));
-    }
-
-    @GetMapping("/getpage")
-    public ResponseEntity<Page<UserEntity>> getPage(
-            Pageable pageable,
-            @RequestParam(name = "filter", required = false) String strFilter) {
-        return ResponseEntity.ok(userService.getPage(pageable, strFilter));
     }
 
     @PostMapping("/populate/{amount}")

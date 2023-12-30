@@ -1,15 +1,13 @@
 package alpha.allmotors.entity;
 
 import java.time.LocalDateTime;
-
-import org.hibernate.annotations.ManyToAny;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -112,13 +110,14 @@ public class CarEntity {
     @Size(max = 50)
     private String location;
 
-    @ManyToAny
-    private UserEntity owner;
+    @ManyToOne
+    @JoinColumn(name = "id_owner")
+    private UserEntity user;
 
     public CarEntity(Long id, String brand, String model, String color, int year, int seats,
                      int horsepower, String transmission, int distance, String engine, int price,
                      String plate, String type, String description, LocalDateTime date_uploaded,
-                     String images, String status, int views, int saves, String location, UserEntity owner) {
+                     String images, String status, int views, int saves, String location, UserEntity user) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -139,13 +138,13 @@ public class CarEntity {
         this.views = views;
         this.saves = saves;
         this.location = location;
-        this.owner = owner;
+        this.user = user;
     }
 
     public CarEntity(String brand, String model, String color, int year, int seats,
                      int horsepower, String transmission, int distance, String engine, int price,
                      String plate, String type, String description, String images, String status,
-                     int views, int saves, String location, UserEntity owner) {
+                     int views, int saves, String location, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -165,7 +164,7 @@ public class CarEntity {
         this.views = views;
         this.saves = saves;
         this.location = location;
-        this.owner = owner;
+        this.user = user;
     }
 
     public CarEntity(String brand, String model, String color, int year, int seats,
@@ -357,11 +356,11 @@ public class CarEntity {
     }
 
     public UserEntity getOwner() {
-        return owner;
+        return user;
     }
 
-    public UserEntity setOwner(UserEntity owner) {
-        return this.owner = owner;
+    public UserEntity setOwner(UserEntity user) {
+        return this.user = user;
     }
 
 }
