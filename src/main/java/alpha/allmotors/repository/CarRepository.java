@@ -52,6 +52,9 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
     @Query(value = "SELECT * FROM car WHERE location = :location ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByLocation(String location, Pageable pageable);
 
+    @Query(value = "SELECT * FROM car WHERE status = :status ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+    Page<CarEntity> findCarsByStatus(String status, Pageable pageable);
+
     // Between two values
 
     @Query(value = "SELECT * FROM car WHERE year BETWEEN :startYear AND :endYear ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
@@ -108,6 +111,9 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
 
     @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND location = :location ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByUserIdAndLocation(Long userId, String location, Pageable pageable);
+
+    @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND status = :status ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+    Page<CarEntity> findCarsByUserIdAndStatus(Long userId, String status, Pageable pageable);
 
     // By user id and between two values
 

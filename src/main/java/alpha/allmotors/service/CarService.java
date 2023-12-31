@@ -3,7 +3,6 @@ package alpha.allmotors.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -58,11 +57,153 @@ public class CarService {
         return page;
     }
 
-    public Page<CarEntity> getPageByRepliesNumberDesc(Pageable pageable, Long userId) {
+    //By order asc desc
+
+    public Page<CarEntity> getPageByPriceDesc(Pageable pageable, Long userId) {
         if (userId == 0) {
-            return carRepository.findThreadsByRepliesNumberDesc(pageable);
+            return carRepository.findCarsByOrderByPriceDesc(pageable);
         } else {
-            return carRepository.findThreadsByRepliesNumberDescFilterByUserId(userId, pageable);
+            return carRepository.findCarsByUserIdOrderByPriceDesc(userId, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByDistanceDesc(Pageable pageable, Long userId) {
+        if (userId == 0) {
+            return carRepository.findCarsByOrderByDistanceDesc(pageable);
+        } else {
+            return carRepository.findCarsByUserIdOrderByDistanceDesc(userId, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByYearDesc(Pageable pageable, Long userId) {
+        if (userId == 0) {
+            return carRepository.findCarsByOrderByYearDesc(pageable);
+        } else {
+            return carRepository.findCarsByUserIdOrderByYearDesc(userId, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByHorsepowerDesc(Pageable pageable, Long userId) {
+        if (userId == 0) {
+            return carRepository.findCarsByOrderByHorsepowerDesc(pageable);
+        } else {
+            return carRepository.findCarsByUserIdOrderByHorsepowerDesc(userId, pageable);
+        }
+    }
+
+    //By an specific field value
+
+    public Page<CarEntity> getPageByBrand(Pageable pageable, Long userId, String brand) {
+        if (userId == 0) {
+            return carRepository.findCarsByBrand(brand, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndBrand(userId, brand, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByModel(Pageable pageable, Long userId, String model) {
+        if (userId == 0) {
+            return carRepository.findCarsByModel(model, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndModel(userId, model, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByColor(Pageable pageable, Long userId, String color) {
+        if (userId == 0) {
+            return carRepository.findCarsByColor(color, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndColor(userId, color, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByTransmission(Pageable pageable, Long userId, String transmission) {
+        if (userId == 0) {
+            return carRepository.findCarsByTransmission(transmission, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndTransmission(userId, transmission, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByEngine(Pageable pageable, Long userId, String engine) {
+        if (userId == 0) {
+            return carRepository.findCarsByEngine(engine, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndEngine(userId, engine, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByCarType(Pageable pageable, Long userId, String type) {
+        if (userId == 0) {
+            return carRepository.findCarsByType(type, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndType(userId, type, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByLocation(Pageable pageable, Long userId, String location) {
+        if (userId == 0) {
+            return carRepository.findCarsByLocation(location, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndLocation(userId, location, pageable);
+        }
+    }
+
+    public Page<CarEntity> getPageByStatus(Pageable pageable, Long userId, String status) {
+        if (userId == 0) {
+            return carRepository.findCarsByStatus(status, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndStatus(userId, status, pageable);
+        }
+    }
+
+    //By ranges
+
+    public Page<CarEntity> findCarsByYearRange(Pageable pageable, Long userId, int startYear, int endYear) {
+        if (userId == 0) {
+            return carRepository.findCarsByYearRange(startYear, endYear, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndYearRange(userId, startYear, endYear, pageable);
+        }
+    }
+
+    public Page<CarEntity> findCarsByPriceRange(Pageable pageable, Long userId, int startPrice, int endPrice) {
+        if (userId == 0) {
+            return carRepository.findCarsByPriceRange(startPrice, endPrice, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndPriceRange(userId, startPrice, endPrice, pageable);
+        }
+    }
+
+    public Page<CarEntity> findCarsBySeatsRange(Pageable pageable, Long userId, int startSeats, int endSeats) {
+        if (userId == 0) {
+            return carRepository.findCarsBySeatsRange(startSeats, endSeats, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndSeatsRange(userId, startSeats, endSeats, pageable);
+        }
+    }
+
+    public Page<CarEntity> findCarsByDoorsRange(Pageable pageable, Long userId, int startDoors, int endDoors) {
+        if (userId == 0) {
+            return carRepository.findCarsByDoorsRange(startDoors, endDoors, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndDoorsRange(userId, startDoors, endDoors, pageable);
+        }
+    }
+
+    public Page<CarEntity> findCarsByHorsepowerRange(Pageable pageable, Long userId, int startHorsepower, int endHorsepower) {
+        if (userId == 0) {
+            return carRepository.findCarsByHorsepowerRange(startHorsepower, endHorsepower, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndHorsepowerRange(userId, startHorsepower, endHorsepower, pageable);
+        }
+    }
+
+    public Page<CarEntity> findCarsByDistanceRange(Pageable pageable, Long userId, int startDistance, int endDistance) {
+        if (userId == 0) {
+            return carRepository.findCarsByDistanceRange(startDistance, endDistance, pageable);
+        } else {
+            return carRepository.findCarsByUserIdAndDistanceRange(userId, startDistance, endDistance, pageable);
         }
     }
 
