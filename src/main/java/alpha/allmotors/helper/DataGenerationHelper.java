@@ -223,4 +223,147 @@ public class DataGenerationHelper {
         // Genera un número de teléfono aleatorio de 9 cifras
         return String.format("%09d", new Random().nextInt(1_000_000_000));
     }
+
+    private static final String[] carBrands = {
+            "Toyota", "Honda", "Ford", "Chevrolet", "Volkswagen",
+            "Nissan", "BMW", "Mercedes-Benz", "Audi", "Tesla",
+            "Hyundai", "Kia", "Mazda", "Volvo", "Subaru"
+            // Add more car brands as needed
+    };
+
+    public static String getRandomCarBrand() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(carBrands.length);
+        return carBrands[randomIndex];
+    }
+
+    private static final String[] carModels = {
+            "Camry", "Civic", "F-150", "Cruze", "Golf",
+            "Altima", "3 Series", "E-Class", "A4", "Model 3",
+            "Elantra", "Soul", "CX-5", "S60", "Outback"
+            // Add more car models as needed
+    };
+
+    public static String getRandomCarModel() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(carModels.length);
+        return carModels[randomIndex];
+    }
+
+    private static final String[] carColors = {
+            "Red", "Blue", "Green", "Black", "White",
+            "Silver", "Gray", "Yellow", "Orange", "Purple"
+            // Add more car colors as needed
+    };
+
+    public static String getRandomCarColor() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(carColors.length);
+        return carColors[randomIndex];
+    }
+
+    private static final int MIN_YEAR = 1920;
+    private static final int MAX_YEAR = 2023;
+
+    public static int getRandomCarYear() {
+        Random random = new Random();
+        return random.nextInt(MAX_YEAR - MIN_YEAR + 1) + MIN_YEAR;
+    }
+
+    private static final int MIN_SEATS = 2;
+    private static final int MAX_SEATS = 8;
+
+    public static int getRandomCarSeats() {
+        Random random = new Random();
+        return random.nextInt(MAX_SEATS - MIN_SEATS + 1) + MIN_SEATS;
+    }
+
+    private static final int MIN_DOORS = 2;
+    private static final int MAX_DOORS = 5;
+
+    public static int getRandomCarDoors() {
+        Random random = new Random();
+        return random.nextInt(MAX_DOORS - MIN_DOORS + 1) + MIN_DOORS;
+    }
+
+    private static final int MIN_HORSEPOWER = 60;
+    private static final int MAX_HORSEPOWER = 1500;
+
+    public static int getRandomCarHorsepower() {
+        Random random = new Random();
+        return random.nextInt(MAX_HORSEPOWER - MIN_HORSEPOWER + 1) + MIN_HORSEPOWER;
+    }
+
+    public static String getRandomCarTransmission() {
+        Random random = new Random();
+        // Array of possible transmission types
+        String[] transmissions = {"manual", "automatic"};
+        // Randomly select an index from the array
+        int randomIndex = random.nextInt(transmissions.length);
+        // Return the selected transmission type
+        return transmissions[randomIndex];
+    }
+
+    private static final int MIN_DISTANCE = 1000; // in kilometers
+    private static final int MAX_DISTANCE = 1500000; // in kilometers
+
+    public static int getRandomCarDistance() {
+        Random random = new Random();
+        return random.nextInt(MAX_DISTANCE - MIN_DISTANCE + 1) + MIN_DISTANCE;
+    }
+
+    public static String getRandomCarEngineType() {
+        Random random = new Random();
+        // Array of possible engine types
+        String[] engineTypes = {"gasoline", "diesel", "electric", "hybrid"};
+        // Randomly select an index from the array
+        int randomIndex = random.nextInt(engineTypes.length);
+        // Return the selected engine type
+        return engineTypes[randomIndex];
+    }
+
+    private static final int MIN_PRICE = 1;  // in currency units
+    private static final int MAX_PRICE = 5000000; // in currency units
+
+    public static int getRandomCarPrice() {
+        Random random = new Random();
+        return random.nextInt(MAX_PRICE - MIN_PRICE + 1) + MIN_PRICE;
+    }
+
+    public static String getRandomCarPlate() {
+        // Format: NNNN-LLL (4 numbers, 3 letters)
+        return generateRandomNumbers(4) + "-" + generateRandomLetters(3);
+    }
+
+    private static String generateRandomLetters(int count) {
+        StringBuilder letters = new StringBuilder();
+        Random random = new Random();
+
+        for (int i = 0; i < count; i++) {
+            char randomLetter = (char) ('A' + random.nextInt(26));
+            letters.append(randomLetter);
+        }
+
+        return letters.toString();
+    }
+
+    private static String generateRandomNumbers(int count) {
+        StringBuilder numbers = new StringBuilder();
+        Random random = new Random();
+
+        for (int i = 0; i < count; i++) {
+            numbers.append(random.nextInt(10));
+        }
+
+        return numbers.toString();
+    }
+
+    public static String getRandomCarType() {
+        String[] carTypes = {"Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Truck", "Van", "Wagon"};
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(carTypes.length);
+
+        return carTypes[randomIndex];
+    }
 }

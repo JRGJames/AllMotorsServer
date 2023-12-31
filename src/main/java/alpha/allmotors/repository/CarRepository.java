@@ -10,12 +10,12 @@ import alpha.allmotors.entity.CarEntity;
 
 public interface CarRepository extends JpaRepository<CarEntity, Long> {
 
-    //By user id
+    // By user id
 
     @Query(value = "SELECT * FROM car WHERE id_owner = :userId LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findByUserId(Long userId, Pageable pageable);
 
-    //By order desc or asc
+    // By order desc or asc
 
     @Query(value = "SELECT * FROM car ORDER BY price DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByOrderByPriceDesc(Pageable pageable);
@@ -29,7 +29,7 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
     @Query(value = "SELECT * FROM car ORDER BY horsepower DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByOrderByHorsepowerDesc(Pageable pageable);
 
-    //By an specific field
+    // By an specific field
 
     @Query(value = "SELECT * FROM car WHERE brand = :brand ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByBrand(String brand, Pageable pageable);
@@ -52,7 +52,7 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
     @Query(value = "SELECT * FROM car WHERE location = :location ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByLocation(String location, Pageable pageable);
 
-    //Between two values
+    // Between two values
 
     @Query(value = "SELECT * FROM car WHERE year BETWEEN :startYear AND :endYear ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByYearRange(int startYear, int endYear, Pageable pageable);
@@ -63,7 +63,16 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
     @Query(value = "SELECT * FROM car WHERE seats BETWEEN :startSeats AND :endSeats ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsBySeatsRange(int startSeats, int endSeats, Pageable pageable);
 
-    //By user id and order desc or asc
+    @Query(value = "SELECT * FROM car WHERE doors BETWEEN :startDoors AND :endDoors ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+    Page<CarEntity> findCarsByDoorsRange(int startDoors, int endDoors, Pageable pageable);
+
+    @Query(value = "SELECT * FROM car WHERE horsepower BETWEEN :startHorsepower AND :endHorsepower ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+    Page<CarEntity> findCarsByHorsepowerRange(int startHorsepower, int endHorsepower, Pageable pageable);
+
+    @Query(value = "SELECT * FROM car WHERE distance BETWEEN :startDistance AND :endDistance ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+    Page<CarEntity> findCarsByDistanceRange(int startDistance, int endDistance, Pageable pageable);
+
+    // By user id and order desc or asc
 
     @Query(value = "SELECT * FROM car WHERE id_owner = :userId ORDER BY price DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByUserIdOrderByPriceDesc(Long userId, Pageable pageable);
@@ -77,7 +86,7 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
     @Query(value = "SELECT * FROM car WHERE id_owner = :userId ORDER BY horsepower DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByUserIdOrderByHorsepowerDesc(Long userId, Pageable pageable);
 
-    //By user id and an specific field
+    // By user id and an specific field
 
     @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND brand = :brand ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByUserIdAndBrand(Long userId, String brand, Pageable pageable);
@@ -100,7 +109,7 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
     @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND location = :location ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByUserIdAndLocation(Long userId, String location, Pageable pageable);
 
-    //By user id and between two values
+    // By user id and between two values
 
     @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND year BETWEEN :startYear AND :endYear ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByUserIdAndYearRange(Long userId, int startYear, int endYear, Pageable pageable);
@@ -111,7 +120,16 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
     @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND seats BETWEEN :startSeats AND :endSeats ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findCarsByUserIdAndSeatsRange(Long userId, int startSeats, int endSeats, Pageable pageable);
 
-    //Seach by ttitle
+    @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND doors BETWEEN :startDoors AND :endDoors ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+    Page<CarEntity> findCarsByUserIdAndDoorsRange(Long userId, int startDoors, int endDoors, Pageable pageable);
+
+    @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND horsepower BETWEEN :startHorsepower AND :endHorsepower ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+    Page<CarEntity> findCarsByUserIdAndHorsepowerRange(Long userId, int startHorsepower, int endHorsepower, Pageable pageable);
+
+    @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND distance BETWEEN :startDistance AND :endDistance ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+    Page<CarEntity> findCarsByUserIdAndDistanceRange(Long userId, int startDistance, int endDistance, Pageable pageable);
+
+    // Seach by ttitle
 
     @Query(value = "SELECT * FROM car WHERE LENGTH(:searchText) >= 3 AND (brand LIKE CONCAT('%', :searchText, '%') OR model LIKE CONCAT('%', :searchText, '%') OR description LIKE CONCAT('%', :searchText, '%')) LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
     Page<CarEntity> findByTitleContainingIgnoreCase(String searchText, Pageable pageable);

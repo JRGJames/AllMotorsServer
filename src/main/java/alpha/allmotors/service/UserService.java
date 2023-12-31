@@ -3,6 +3,8 @@ package alpha.allmotors.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.exception.ResourceNotFoundException;
@@ -60,6 +62,12 @@ public class UserService {
         return id;
     }
 
+    public UserEntity getOneRandom() {
+        sessionService.onlyAdmins();
+        Pageable pageable = PageRequest.of((int) (Math.random() * userRepository.count()), 1);
+        return userRepository.findAll(pageable).getContent().get(0);
+    }
+
     public Long populate(Integer amount) {
         sessionService.onlyAdmins();
         for (int i = 0; i < amount; i++) {
@@ -87,8 +95,6 @@ public class UserService {
         }
         return userRepository.count();
     }
-
-
 
     @Transactional
     public Long empty() {

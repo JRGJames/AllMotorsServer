@@ -48,6 +48,11 @@ public class CarEntity {
     private int seats;
 
     @NotNull
+    @Min(value = 2)
+    @Max(value = 5)
+    private int doors;
+
+    @NotNull
     @Min(value = 1)
     @Max(value = 2000)
     private int horsepower;
@@ -85,7 +90,7 @@ public class CarEntity {
     @NotBlank
     @Size(max = 200)
     private String description;
-    
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime date_uploaded;
 
@@ -114,16 +119,17 @@ public class CarEntity {
     @JoinColumn(name = "id_owner")
     private UserEntity user;
 
-    public CarEntity(Long id, String brand, String model, String color, int year, int seats,
-                     int horsepower, String transmission, int distance, String engine, int price,
-                     String plate, String type, String description, LocalDateTime date_uploaded,
-                     String images, String status, int views, int saves, String location, UserEntity user) {
+    public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
+            int horsepower, String transmission, int distance, String engine, int price,
+            String images, String status, String plate, String type, String description, LocalDateTime date_uploaded,
+            int views, int saves, String location, UserEntity user) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.year = year;
         this.seats = seats;
+        this.doors = doors;
         this.horsepower = horsepower;
         this.transmission = transmission;
         this.distance = distance;
@@ -132,24 +138,25 @@ public class CarEntity {
         this.plate = plate;
         this.type = type;
         this.description = description;
-        this.date_uploaded = LocalDateTime.now();
         this.images = images;
         this.status = status;
+        this.date_uploaded = LocalDateTime.now();
         this.views = views;
         this.saves = saves;
         this.location = location;
         this.user = user;
     }
 
-    public CarEntity(String brand, String model, String color, int year, int seats,
-                     int horsepower, String transmission, int distance, String engine, int price,
-                     String plate, String type, String description, String images, String status,
-                     int views, int saves, String location, UserEntity user) {
+    public CarEntity(String brand, String model, String color, int year, int seats, int doors,
+            int horsepower, String transmission, int distance, String engine, int price,
+            String plate, String type, String description, String images, String status, LocalDateTime date_uploaded,
+            int views, int saves, String location, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.year = year;
         this.seats = seats;
+        this.doors = doors;
         this.horsepower = horsepower;
         this.transmission = transmission;
         this.distance = distance;
@@ -158,24 +165,25 @@ public class CarEntity {
         this.plate = plate;
         this.type = type;
         this.description = description;
-        this.date_uploaded = LocalDateTime.now();
         this.images = images;
         this.status = status;
+        this.date_uploaded = LocalDateTime.now();
         this.views = views;
         this.saves = saves;
         this.location = location;
         this.user = user;
     }
 
-    public CarEntity(String brand, String model, String color, int year, int seats,
-                     int horsepower, String transmission, int distance, String engine, int price,
-                     String plate, String type, String description, String images, String status,
-                     int views, int saves, String location) {
+    public CarEntity(String brand, String model, String color, int year, int seats, int doors,
+            int horsepower, String transmission, int distance, String engine, int price,
+            String plate, String type, String description, String images, String status, LocalDateTime date_uploaded,
+            int views, int saves, String location) {
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.year = year;
         this.seats = seats;
+        this.doors = doors;
         this.horsepower = horsepower;
         this.transmission = transmission;
         this.distance = distance;
@@ -184,9 +192,9 @@ public class CarEntity {
         this.plate = plate;
         this.type = type;
         this.description = description;
-        this.date_uploaded = LocalDateTime.now();
         this.images = images;
         this.status = status;
+        this.date_uploaded = LocalDateTime.now();
         this.views = views;
         this.saves = saves;
         this.location = location;
@@ -241,6 +249,14 @@ public class CarEntity {
 
     public int setSeats(int seats) {
         return this.seats = seats;
+    }
+
+    public int getDoors() {
+        return doors;
+    }
+
+    public int setDoors(int doors) {
+        return this.doors = doors;
     }
 
     public int getHorsepower() {
