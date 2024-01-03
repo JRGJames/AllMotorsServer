@@ -297,7 +297,7 @@ public class DataGenerationHelper {
     public static String getRandomCarTransmission() {
         Random random = new Random();
         // Array of possible transmission types
-        String[] transmissions = {"manual", "automatic"};
+        String[] transmissions = {"manual", "automatic", "semi-automatic"};
         // Randomly select an index from the array
         int randomIndex = random.nextInt(transmissions.length);
         // Return the selected transmission type
