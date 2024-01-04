@@ -13,46 +13,46 @@ import alpha.allmotors.entity.CarEntity;
 
 public interface CarRepository extends JpaRepository<CarEntity, Long> {
 
-    @Query("SELECT c FROM CarEntity c WHERE " +
-        "(:userId = 0 OR c.id_owner = :userId)" +
-        " AND (:brandList IS NULL OR c.brand IN :brandList)" +
-        " AND (:modelList IS NULL OR c.model IN :modelList)" +
-        " AND (:colorList IS NULL OR c.color IN :colorList)" +
-        " AND (:transmissionList IS NULL OR c.transmission IN :transmissionList)" +
-        " AND (:engineList IS NULL OR c.engine IN :engineList)" +
-        " AND (:typeList IS NULL OR c.type IN :typeList)" +
-        " AND (:yearStart IS NULL OR c.year >= :yearStart)" +
-        " AND (:yearEnd IS NULL OR c.year <= :yearEnd)" +
-        " AND (:seatsStart IS NULL OR c.seats >= :seatsStart)" +
-        " AND (:seatsEnd IS NULL OR c.seats <= :seatsEnd)" +
-        " AND (:doorsStart IS NULL OR c.doors >= :doorsStart)" +
-        " AND (:doorsEnd IS NULL OR c.doors <= :doorsEnd)" +
-        " AND (:priceStart IS NULL OR c.price >= :priceStart)" +
-        " AND (:priceEnd IS NULL OR c.price <= :priceEnd)" +
-        " AND (:horsepowerStart IS NULL OR c.horsepower >= :horsepowerStart)" +
-        " AND (:horsepowerEnd IS NULL OR c.horsepower <= :horsepowerEnd)" +
-        " AND (:distanceStart IS NULL OR c.distance >= :distanceStart)" +
-        " AND (:distanceEnd IS NULL OR c.distance <= :distanceEnd)")
-    Page<CarEntity> findCarsWithFilters(Pageable pageable,
-        @Param("id_owner") Long userId,
-        @Param("brandList") List<String> brandList,
-        @Param("modelList") List<String> modelList,
-        @Param("colorList") List<String> colorList,
-        @Param("transmissionList") List<String> transmissionList,
-        @Param("engineList") List<String> engineList,
-        @Param("typeList") List<String> typeList,
-        @Param("year") int yearStart,
-        @Param("year") int yearEnd,
-        @Param("seats") int seatsStart,
-        @Param("seats") int seatsEnd,
-        @Param("doors") int doorsStart,
-        @Param("doors") int doorsEnd,
-        @Param("price") int priceStart,
-        @Param("price") int priceEnd,
-        @Param("horsepower") int horsepowerStart,
-        @Param("horsepower") int horsepowerEnd,
-        @Param("distance") int distanceStart,
-        @Param("distance") int distanceEnd);
+    // @Query("SELECT c FROM CarEntity c WHERE " +
+    //     "(:userId = 0 OR c.id_owner = :id_owner)" +
+    //     " AND (:brandList IS NULL OR c.brand IN :brandList)" +
+    //     " AND (:modelList IS NULL OR c.model IN :modelList)" +
+    //     " AND (:colorList IS NULL OR c.color IN :colorList)" +
+    //     " AND (:transmissionList IS NULL OR c.transmission IN :transmissionList)" +
+    //     " AND (:engineList IS NULL OR c.engine IN :engineList)" +
+    //     " AND (:typeList IS NULL OR c.type IN :typeList)" +
+    //     " AND (:yearStart IS NULL OR c.year >= :yearStart)" +
+    //     " AND (:yearEnd IS NULL OR c.year <= :yearEnd)" +
+    //     " AND (:seatsStart IS NULL OR c.seats >= :seatsStart)" +
+    //     " AND (:seatsEnd IS NULL OR c.seats <= :seatsEnd)" +
+    //     " AND (:doorsStart IS NULL OR c.doors >= :doorsStart)" +
+    //     " AND (:doorsEnd IS NULL OR c.doors <= :doorsEnd)" +
+    //     " AND (:priceStart IS NULL OR c.price >= :priceStart)" +
+    //     " AND (:priceEnd IS NULL OR c.price <= :priceEnd)" +
+    //     " AND (:horsepowerStart IS NULL OR c.horsepower >= :horsepowerStart)" +
+    //     " AND (:horsepowerEnd IS NULL OR c.horsepower <= :horsepowerEnd)" +
+    //     " AND (:distanceStart IS NULL OR c.distance >= :distanceStart)" +
+    //     " AND (:distanceEnd IS NULL OR c.distance <= :distanceEnd)")
+    // Page<CarEntity> findCarsWithFilters(Pageable pageable,
+    //     @Param("id_owner") Long userId,
+    //     @Param("brandList") List<String> brandList,
+    //     @Param("modelList") List<String> modelList,
+    //     @Param("colorList") List<String> colorList,
+    //     @Param("transmissionList") List<String> transmissionList,
+    //     @Param("engineList") List<String> engineList,
+    //     @Param("typeList") List<String> typeList,
+    //     @Param("year") int yearStart,
+    //     @Param("year") int yearEnd,
+    //     @Param("seats") int seatsStart,
+    //     @Param("seats") int seatsEnd,
+    //     @Param("doors") int doorsStart,
+    //     @Param("doors") int doorsEnd,
+    //     @Param("price") int priceStart,
+    //     @Param("price") int priceEnd,
+    //     @Param("horsepower") int horsepowerStart,
+    //     @Param("horsepower") int horsepowerEnd,
+    //     @Param("distance") int distanceStart,
+    //     @Param("distance") int distanceEnd);
 
     // By user id
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -18,7 +19,9 @@ import alpha.allmotors.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 
+@Service
 public class CarService {
+
     @Autowired
     CarRepository carRepository;
 
@@ -35,33 +38,48 @@ public class CarService {
     SessionService sessionService;
 
     public CarEntity get(Long id) {
-        return carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Thread not found"));
+        return carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car not found"));
     }
 
-    public Page<CarEntity> getPage(Pageable pageable, String strFilter, Long userId, List<String> brandList, List<String> modelList, List<String> colorList, List<String> engineList, List<String> transmissionList, List<String> typeList, int yearStart, int yearEnd, int priceStart, int priceEnd, int seatsStart, int seatsEnd, int doorsStart, int doorsEnd, int horsepowerStart, int horsepowerEnd, int distanceStart, int distanceEnd) {
+    // public Page<CarEntity> getPage(Pageable pageable, String strFilter, Long userId, List<String> brandList, List<String> modelList, List<String> colorList, List<String> engineList, List<String> transmissionList, List<String> typeList, int yearStart, int yearEnd, int priceStart, int priceEnd, int seatsStart, int seatsEnd, int doorsStart, int doorsEnd, int horsepowerStart, int horsepowerEnd, int distanceStart, int distanceEnd) {
 
-        if (brandList == null) {
-            brandList = Arrays.asList("Toyota", "Honda", "Ford", "Chevrolet", "Volkswagen",
-                    "Nissan", "BMW", "Mercedes-Benz", "Audi", "Tesla",
-                    "Hyundai", "Kia", "Mazda", "Volvo", "Subaru");
-        }
-        if (modelList == null) {
-            modelList = Arrays.asList("Camry", "Civic", "F-150", "Cruze", "Golf", "Altima", "3 Series", "E-Class", "A4", "Model 3",
-                    "Elantra", "Soul", "CX-5", "S60", "Outback");
-        }
-        if (colorList == null) {
-            colorList = Arrays.asList("Red", "Blue", "Green", "Black", "White", "Silver", "Gray", "Yellow", "Orange", "Purple");
-        }
-        // Similar para otras listas...
+    //     if (brandList == null) {
+    //         brandList = Arrays.asList("Toyota", "Honda", "Ford", "Chevrolet", "Volkswagen",
+    //                 "Nissan", "BMW", "Mercedes-Benz", "Audi", "Tesla",
+    //                 "Hyundai", "Kia", "Mazda", "Volvo", "Subaru");
+    //     }
+    //     if (modelList == null) {
+    //         modelList = Arrays.asList("Camry", "Civic", "F-150", "Cruze", "Golf", "Altima", "3 Series", "E-Class", "A4", "Model 3",
+    //                 "Elantra", "Soul", "CX-5", "S60", "Outback");
+    //     }
+    //     if (colorList == null) {
+    //         colorList = Arrays.asList("Red", "Blue", "Green", "Black", "White", "Silver", "Gray", "Yellow", "Orange", "Purple");
+    //     }
+        
+    //     if (engineList == null) {
+    //         engineList = Arrays.asList("Gasoline", "Diesel", "Electric", "Hybrid");
+    //     }
 
-        if (strFilter != null && !strFilter.isEmpty()) {
-            // Puedes ajustar esta lógica según tus necesidades
-            // ...
-        }
+    //     if (transmissionList == null) {
+    //         transmissionList = Arrays.asList("Manual", "Automatic", "Semi-automatic");
+    //     }
 
-        // Lógica para obtener la página de coches según los filtros
-        return carRepository.findCarsWithFilters(pageable, userId, brandList, modelList, colorList, transmissionList, engineList, typeList, yearStart, yearEnd, seatsStart, seatsEnd, doorsStart, doorsEnd, priceStart, priceEnd, horsepowerStart, horsepowerEnd, distanceStart, distanceEnd);
-    }
+    //     if (typeList == null) {
+    //         typeList = Arrays.asList("Sedan", "Coupe", "Hatchback", "SUV", "Pickup", "Van", "Convertible", "Wagon", "Minivan");
+    //     }
+
+    //     if (strFilter != null && !strFilter.isEmpty()) {
+    //         brandList = Arrays.asList(strFilter);
+    //         modelList = Arrays.asList(strFilter);
+    //         colorList = Arrays.asList(strFilter);
+    //         engineList = Arrays.asList(strFilter);
+    //         transmissionList = Arrays.asList(strFilter);
+    //         typeList = Arrays.asList(strFilter);
+    //     }
+
+    //     // Lógica para obtener la página de coches según los filtros
+    //     return carRepository.findCarsWithFilters(pageable, userId, brandList, modelList, colorList, transmissionList, engineList, typeList, yearStart, yearEnd, seatsStart, seatsEnd, doorsStart, doorsEnd, priceStart, priceEnd, horsepowerStart, horsepowerEnd, distanceStart, distanceEnd);
+    // }
 
 
     //By order asc desc
