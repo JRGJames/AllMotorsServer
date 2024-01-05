@@ -68,13 +68,15 @@ public class UserEntity {
     @NotNull
     @NotBlank
     @Size(min = 3, max = 15)
-    private String postal_code;
+    @Column(name = "postal_code")
+    private String postalCode;
 
     @Size(max = 500)
     private String description;
 
     @Size(max = 255)
-    private String profile_picture;
+    @Column(name = "profile_picture")
+    private String profilePicture;
 
     @NotNull
     private int rating = 0;
@@ -92,10 +94,12 @@ public class UserEntity {
     private String email;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    private LocalDateTime member_since = LocalDateTime.now();
+    @Column(name = "member_since")
+    private LocalDateTime memberSince = LocalDateTime.now();
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    private LocalDateTime last_connection = LocalDateTime.now();
+    @Column(name = "last_connection")
+    private LocalDateTime lastConnection = LocalDateTime.now();
 
     @NotNull
     @NotBlank
@@ -118,8 +122,9 @@ public class UserEntity {
 
     public UserEntity(Long id, String name, String lastname, String username, String gender,
             LocalDateTime birthdate, String country, String province, String address,
-            String postal_code, String description, String profile_picture, int rating,
-            Boolean status, String phone, String email, LocalDateTime member_since, LocalDateTime last_connection,String password, boolean role) {
+            String postalCode, String description, String profilePicture, int rating,
+            Boolean status, String phone, String email, LocalDateTime memberSince, LocalDateTime lastConnection,
+            String password, boolean role) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -129,23 +134,24 @@ public class UserEntity {
         this.country = country;
         this.province = province;
         this.address = address;
-        this.postal_code = postal_code;
+        this.postalCode = postalCode;
         this.description = description;
-        this.profile_picture = profile_picture;
+        this.profilePicture = profilePicture;
         this.rating = rating;
         this.status = status;
         this.phone = phone;
         this.email = email;
-        this.member_since = LocalDateTime.now();
-        this.last_connection = LocalDateTime.now();
+        this.memberSince = LocalDateTime.now();
+        this.lastConnection = LocalDateTime.now();
         this.password = password;
         this.role = role;
     }
 
     public UserEntity(String name, String lastname, String username, String gender,
             LocalDateTime birthdate, String country, String province, String address,
-            String postal_code, String description, String profile_picture, int rating,
-            Boolean status, String phone, String email, LocalDateTime member_since, LocalDateTime last_connection, String password, boolean role) {
+            String postalCode, String description, String profilePicture, int rating,
+            Boolean status, String phone, String email, LocalDateTime memberSince, LocalDateTime lastConnection,
+            String password, boolean role) {
         this.name = name;
         this.lastname = lastname;
         this.username = username;
@@ -154,15 +160,15 @@ public class UserEntity {
         this.country = country;
         this.province = province;
         this.address = address;
-        this.postal_code = postal_code;
+        this.postalCode = postalCode;
         this.description = description;
-        this.profile_picture = profile_picture;
+        this.profilePicture = profilePicture;
         this.rating = rating;
         this.status = status;
         this.phone = phone;
         this.email = email;
-        this.member_since = member_since;
-        this.last_connection = last_connection;
+        this.memberSince = LocalDateTime.now();
+        this.lastConnection = LocalDateTime.now();
         this.password = password;
         this.role = role;
     }
@@ -245,11 +251,11 @@ public class UserEntity {
     }
 
     public String getPostalCode() {
-        return this.postal_code;
+        return this.postalCode;
     }
 
-    public void setPostalCode(String postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getDescription() {
@@ -261,11 +267,11 @@ public class UserEntity {
     }
 
     public String getProfilePicture() {
-        return this.profile_picture;
+        return this.profilePicture;
     }
 
-    public void setProfilePicture(String profile_picture) {
-        this.profile_picture = profile_picture;
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     public int getRating() {
@@ -301,19 +307,19 @@ public class UserEntity {
     }
 
     public LocalDateTime getMemberSince() {
-         return this.member_since;
+        return this.memberSince;
     }
 
-    public void setMemberSince(LocalDateTime member_since) {
-        this.member_since = member_since;
+    public void setMemberSince(LocalDateTime memberSince) {
+        this.memberSince = memberSince;
     }
 
     public LocalDateTime getLastConnection() {
-         return this.last_connection;
+        return this.lastConnection;
     }
 
-    public void setLastConnection(LocalDateTime last_connection) {
-        this.last_connection = last_connection;
+    public void setLastConnection(LocalDateTime lastConnection) {
+        this.lastConnection = lastConnection;
     }
 
     public String getPassword() {

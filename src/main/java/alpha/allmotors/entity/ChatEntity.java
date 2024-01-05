@@ -6,6 +6,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +26,10 @@ public class ChatEntity {
     private Long id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    private LocalDateTime creation_date;
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
+
+    private int notifications;
 
     @ManyToOne
     @JoinColumn(name = "id_user_one")
@@ -34,6 +39,14 @@ public class ChatEntity {
     @JoinColumn(name = "id_user_two")
     private UserEntity participant;
 
+    @ManyToOne
+    @JoinColumn(name = "deleted_by")
+    private UserEntity deletedBy;
+
+    @ManyToOne
+    @JoinColumn(name = "id_car")
+    private CarEntity car;
+
     @OneToMany(mappedBy = "chat", fetch = jakarta.persistence.FetchType.LAZY)
     private List<MessageEntity> messages;
 
@@ -41,15 +54,26 @@ public class ChatEntity {
         messages = new ArrayList<>();
     }
 
-    public ChatEntity(Long id, LocalDateTime creation_date, UserEntity user, UserEntity participant) {
+    public ChatEntity(Long id, LocalDateTime creationDate, int notifications ,UserEntity user, UserEntity participant, CarEntity car) {
         this.id = id;
-        this.creation_date = LocalDateTime.now();
+        this.creationDate = LocalDateTime.now();
+        this.notifications = notifications;
         this.user = user;
         this.participant = participant;
+        this.car = car;
     }
 
-    public ChatEntity(LocalDateTime creation_date, UserEntity user, UserEntity participant) {
-        this.creation_date = creation_date;
+    public ChatEntity(LocalDateTime creationDate, int notifications, UserEntity user, UserEntity participant, CarEntity car) {
+        this.creationDate = creationDate;
+        this.notifications = notifications;
+        this.user = user;
+        this.participant = participant;
+        this.car = car;
+    }
+
+    public ChatEntity(LocalDateTime creationDate, int notifications, UserEntity user, UserEntity participant) {
+        this.creationDate = creationDate;
+        this.notifications = notifications;
         this.user = user;
         this.participant = participant;
     }
@@ -58,38 +82,60 @@ public class ChatEntity {
         return id;
     }
 
-    public Long setId(Long id) {
-        return this.id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public LocalDateTime getCreation_date() {
-        return creation_date;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public LocalDateTime setCreation_date(LocalDateTime creation_date) {
-        return this.creation_date = creation_date;
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public int getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(int notifications) {
+        this.notifications = notifications;
     }
 
     public UserEntity getUser1() {
         return user;
     }
 
-    public UserEntity setUser1(UserEntity user) {
-        return this.user = user;
+    public void setUser1(UserEntity user) {
+        this.user = user;
     }
 
     public UserEntity getUser2() {
         return participant;
     }
 
-    public UserEntity setUser2(UserEntity participant) {
-        return this.participant = participant;
+    public void setUser2(UserEntity participant) {
+        this.participant = participant;
+    }
+
+    public UserEntity getDeletedBy() {
+        return deletedBy;
+    }
+
+    public void setDeletedBy(UserEntity deletedBy) {
+        this.deletedBy = deletedBy;
+    }
+
+    public CarEntity getCar() {
+        return car;
+    }
+
+    public void setCar(CarEntity car) {
+        this.car= car;
     }
 
     public int getMessages() {
         return messages.size();
     }
-
-
 }
 

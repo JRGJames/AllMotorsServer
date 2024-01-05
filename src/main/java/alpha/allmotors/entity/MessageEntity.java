@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,47 +25,54 @@ public class MessageEntity {
     private Long id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    private LocalDateTime sent_time;
+    @Column(name = "sent_time")
+    private LocalDateTime sentTime;
 
-    private boolean is_read;
+    @Column(name = "is_read")
+    private boolean isRead;
 
-    private boolean is_deleted;
+    @Column(name = "is_liked")
+    private boolean isLiked;
 
-    private boolean is_liked;
+    @ManyToOne
+    @JoinColumn(name = "id_sender")
+    private UserEntity sender;
+
+    @ManyToOne
+    @JoinColumn(name = "id_recipient")
+    private UserEntity recipient;
 
     @ManyToOne
     @JoinColumn(name = "id_chat")
     private ChatEntity chat;
-
-    @ManyToOne
-    @JoinColumn(name = "id_user")
-    private UserEntity sender;
 
     @NotNull
     @NotBlank
     @Size(min = 1, max = 2048)
     private String content;
 
-    public MessageEntity(Long id, LocalDateTime sent_time, boolean is_read, boolean is_deleted, boolean is_liked,
-            ChatEntity chat, UserEntity sender, String content) {
+    public MessageEntity() {
+    }
+
+
+    public MessageEntity(Long id, LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender, UserEntity recipient, ChatEntity chat, String content) {
         this.id = id;
-        this.sent_time = LocalDateTime.now();
-        this.is_read = is_read;
-        this.is_deleted = is_deleted;
-        this.is_liked = is_liked;
-        this.chat = chat;
+        this.sentTime = LocalDateTime.now();
+        this.isRead = isRead;
+        this.isLiked = isLiked;
         this.sender = sender;
+        this.recipient = recipient;
+        this.chat = chat;
         this.content = content;
     }
 
-    public MessageEntity(LocalDateTime sent_time, boolean is_read, boolean is_deleted, boolean is_liked,
-            ChatEntity chat, UserEntity sender, String content) {
-        this.sent_time = sent_time;
-        this.is_read = is_read;
-        this.is_deleted = is_deleted;
-        this.is_liked = is_liked;
-        this.chat = chat;
+    public MessageEntity(LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender, UserEntity recipient, ChatEntity chat, String content) {
+        this.sentTime = LocalDateTime.now();
+        this.isRead = isRead;
+        this.isLiked = isLiked;
         this.sender = sender;
+        this.recipient = recipient;
+        this.chat = chat;
         this.content = content;
     }
 
@@ -72,65 +80,63 @@ public class MessageEntity {
         return id;
     }
 
-    public Long setId(Long id) {
-        return this.id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public LocalDateTime getSentTime() {
-        return sent_time;
+        return sentTime;
     }
 
-    public LocalDateTime setSentTime(LocalDateTime sent_time) {
-        return this.sent_time = sent_time;
+    public void setSentTime(LocalDateTime sentTime) {
+        this.sentTime = sentTime;
     }
 
     public boolean isRead() {
-        return is_read;
+        return isRead;
     }
 
-    public boolean setIsRead(boolean is_read) {
-        return this.is_read = is_read;
-    }
-
-    public boolean isDeleted() {
-        return is_deleted;
-    }
-
-    public boolean setIsDeleted(boolean is_deleted) {
-        return this.is_deleted = is_deleted;
+    public void setIsRead(boolean isRead) {
+        this.isRead = isRead;
     }
 
     public boolean isLiked() {
-        return is_liked;
+        return isLiked;
     }
 
-    public boolean setIsLiked(boolean is_liked) {
-        return this.is_liked = is_liked;
-    }
-
-    public ChatEntity getChat() {
-        return chat;
-    }
-
-    public ChatEntity setChat(ChatEntity chat) {
-        return this.chat = chat;
+    public void setIsLiked(boolean isLiked) {
+        this.isLiked = isLiked;
     }
 
     public UserEntity getSender() {
         return sender;
     }
 
-    public UserEntity setSender(UserEntity sender) {
-        return this.sender = sender;
+    public void setSender(UserEntity sender) {
+        this.sender = sender;
+    }
+
+    public UserEntity getRecipient() {
+        return recipient;
+    }
+
+    public ChatEntity getChat() {
+        return chat;
+    }
+
+    public void setChat(ChatEntity chat) {
+        this.chat = chat;
+    }
+
+    public void setRecipient(UserEntity recipient) {
+        this.recipient = recipient;
     }
 
     public String getContent() {
         return content;
     }
 
-    public String setContent(String content) {
-        return this.content = content;
+    public void setContent(String content) {
+        this.content = content;
     }
-
-
 }

@@ -2,6 +2,8 @@ package alpha.allmotors.entity;
 
 import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -92,7 +94,8 @@ public class CarEntity {
     private String description;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    private LocalDateTime date_uploaded;
+    @Column(name = "date_uploaded")
+    private LocalDateTime dateUploaded;
 
     @NotNull
     @NotBlank
@@ -121,7 +124,7 @@ public class CarEntity {
 
     public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String transmission, int distance, String engine, int price,
-            String images, String status, String plate, String type, String description, LocalDateTime date_uploaded,
+            String images, String status, String plate, String type, String description, LocalDateTime dateUploaded,
             int views, int saves, String location, UserEntity user) {
         this.id = id;
         this.brand = brand;
@@ -140,7 +143,7 @@ public class CarEntity {
         this.description = description;
         this.images = images;
         this.status = status;
-        this.date_uploaded = LocalDateTime.now();
+        this.dateUploaded = LocalDateTime.now();
         this.views = views;
         this.saves = saves;
         this.location = location;
@@ -149,7 +152,7 @@ public class CarEntity {
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String transmission, int distance, String engine, int price,
-            String plate, String type, String description, String images, String status, LocalDateTime date_uploaded,
+            String plate, String type, String description, String images, String status, LocalDateTime dateUploaded,
             int views, int saves, String location, UserEntity user) {
         this.brand = brand;
         this.model = model;
@@ -167,7 +170,7 @@ public class CarEntity {
         this.description = description;
         this.images = images;
         this.status = status;
-        this.date_uploaded = LocalDateTime.now();
+        this.dateUploaded = LocalDateTime.now();
         this.views = views;
         this.saves = saves;
         this.location = location;
@@ -176,7 +179,7 @@ public class CarEntity {
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String transmission, int distance, String engine, int price,
-            String plate, String type, String description, String images, String status, LocalDateTime date_uploaded,
+            String plate, String type, String description, String images, String status, LocalDateTime dateUploaded,
             int views, int saves, String location) {
         this.brand = brand;
         this.model = model;
@@ -194,189 +197,186 @@ public class CarEntity {
         this.description = description;
         this.images = images;
         this.status = status;
-        this.date_uploaded = LocalDateTime.now();
+        this.dateUploaded = LocalDateTime.now();
         this.views = views;
         this.saves = saves;
         this.location = location;
-    }
-
-    public CarEntity() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public Long setId(Long id) {
-        return this.id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getBrand() {
         return brand;
     }
 
-    public String setBrand(String brand) {
-        return this.brand = brand;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModel() {
         return model;
     }
 
-    public String setModel(String model) {
-        return this.model = model;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getColor() {
         return color;
     }
 
-    public String setColor(String color) {
-        return this.color = color;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public int getYear() {
         return year;
     }
 
-    public int setYear(int year) {
-        return this.year = year;
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public int getSeats() {
         return seats;
     }
 
-    public int setSeats(int seats) {
-        return this.seats = seats;
+    public void setSeats(int seats) {
+        this.seats = seats;
     }
 
     public int getDoors() {
         return doors;
     }
 
-    public int setDoors(int doors) {
-        return this.doors = doors;
+    public void setDoors(int doors) {
+        this.doors = doors;
     }
 
     public int getHorsepower() {
         return horsepower;
     }
 
-    public int setHorsepower(int horsepower) {
-        return this.horsepower = horsepower;
+    public void setHorsepower(int horsepower) {
+        this.horsepower = horsepower;
     }
 
     public String getTransmission() {
         return transmission;
     }
 
-    public String setTransmission(String transmission) {
-        return this.transmission = transmission;
+    public void setTransmission(String transmission) {
+        this.transmission = transmission;
     }
 
     public int getDistance() {
         return distance;
     }
 
-    public int setDistance(int distance) {
-        return this.distance = distance;
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 
     public String getEngine() {
         return engine;
     }
 
-    public String setEngine(String engine) {
-        return this.engine = engine;
+    public void setEngine(String engine) {
+        this.engine = engine;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public int setPrice(int price) {
-        return this.price = price;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getPlate() {
         return plate;
     }
 
-    public String setPlate(String plate) {
-        return this.plate = plate;
+    public void setPlate(String plate) {
+        this.plate = plate;
     }
 
     public String getType() {
         return type;
     }
 
-    public String setType(String type) {
-        return this.type = type;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String setDescription(String description) {
-        return this.description = description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getDateUploaded() {
-        return date_uploaded;
+        return dateUploaded;
     }
 
-    public LocalDateTime setDateUploaded(LocalDateTime date_uploaded) {
-        return this.date_uploaded = date_uploaded;
+    public void setDateUploaded(LocalDateTime dateUploaded) {
+        this.dateUploaded = dateUploaded;
     }
 
     public String getImages() {
         return images;
     }
 
-    public String setImages(String images) {
-        return this.images = images;
+    public void setImages(String images) {
+        this.images = images;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public String setStatus(String status) {
-        return this.status = status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getViews() {
         return views;
     }
 
-    public int setViews(int views) {
-        return this.views = views;
+    public void setViews(int views) {
+        this.views = views;
     }
 
     public int getSaves() {
         return saves;
     }
 
-    public int setSaves(int saves) {
-        return this.saves = saves;
+    public void setSaves(int saves) {
+        this.saves = saves;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public String setLocation(String location) {
-        return this.location = location;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public UserEntity getOwner() {
         return user;
     }
 
-    public UserEntity setOwner(UserEntity user) {
-        return this.user = user;
+    public void setOwner(UserEntity user) {
+        this.user = user;
     }
 
 }
