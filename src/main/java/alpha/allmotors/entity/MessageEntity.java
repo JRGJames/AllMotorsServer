@@ -54,7 +54,6 @@ public class MessageEntity {
     public MessageEntity() {
     }
 
-
     public MessageEntity(Long id, LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender, UserEntity recipient, ChatEntity chat, String content) {
         this.id = id;
         this.sentTime = LocalDateTime.now();
@@ -120,16 +119,16 @@ public class MessageEntity {
         return recipient;
     }
 
+    public void setRecipient(UserEntity recipient) {
+        this.recipient = recipient;
+    }
+
     public ChatEntity getChat() {
         return chat;
     }
 
     public void setChat(ChatEntity chat) {
         this.chat = chat;
-    }
-
-    public void setRecipient(UserEntity recipient) {
-        this.recipient = recipient;
     }
 
     public String getContent() {

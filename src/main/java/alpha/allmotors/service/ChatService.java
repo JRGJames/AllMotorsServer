@@ -1,5 +1,6 @@
 package alpha.allmotors.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,10 @@ public class ChatService {
 
     public Page<ChatEntity> getChatsWithNotifications(Pageable pageable) {
         return chatRepository.findByNotificationsGreaterThan(0, pageable);
+    }
+
+    public List<ChatEntity> getChatByUsersAndCar(Long user, Long participant, Long car) {
+        return chatRepository.findByUsersAndCar(user, participant, car);
     }
 
     @Transactional

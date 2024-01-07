@@ -122,6 +122,9 @@ public class CarEntity {
     @JoinColumn(name = "id_owner")
     private UserEntity user;
 
+    public CarEntity() {
+    }
+
     public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String transmission, int distance, String engine, int price,
             String images, String status, String plate, String type, String description, LocalDateTime dateUploaded,
