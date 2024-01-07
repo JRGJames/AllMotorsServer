@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.ChatEntity;
 import alpha.allmotors.entity.UserEntity;
 
@@ -31,7 +33,7 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
                         "((c.user = :user AND c.participant = :participant) OR " +
                         "(c.user = :participant AND c.participant = :user)) " +
                         "AND c.car = :car")
-        List<ChatEntity> findByUsersAndCar(@Param("user") Long user,
-                        @Param("participant") Long participant,
-                        @Param("car") Long car);
+        List<ChatEntity> findByUsersAndCar(@Param("user") UserEntity user,
+                        @Param("participant") UserEntity participant,
+                        @Param("car") CarEntity car);
 }

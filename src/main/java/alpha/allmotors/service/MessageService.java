@@ -12,7 +12,6 @@ import alpha.allmotors.entity.MessageEntity;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.repository.ChatRepository;
 import alpha.allmotors.repository.MessageRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -25,13 +24,7 @@ public class MessageService {
     private ChatService chatService;
 
     @Autowired
-    private HttpServletRequest httpServletRequest;
-
-    @Autowired
     private UserService userService;
-
-    @Autowired
-    private CarService carService;
 
     @Autowired
     private ChatRepository chatRepository;
@@ -39,67 +32,53 @@ public class MessageService {
     @Transactional
     public MessageEntity sendMessage(MessageEntity message) {
 
-        Long user1 = userService.getByUsername("ElNano").getId();
-        Long user2 = message.getRecipient().getId();
+        UserEntity user1 = userService.getByUsername("ElNano");
+        UserEntity user2 = message.getRecipient();
         String content = message.getContent();
 
         if (user1 != null) {
             if (message.getChat() != null) {
                 if (message.getChat().getCar().getId() == null) {
-
                     if (chatService.getChatByUsersAndCar(user1, user2, null) == null) {
-                        UserEntity userEntity1 = userService.get(user1);
-                        UserEntity userEntity2 = userService.get(user2);
 
-                        ChatEntity chat = new ChatEntity(LocalDateTime.now(), 0, userEntity1, userEntity2, null);
+                        ChatEntity chat = new ChatEntity(LocalDateTime.now(), 0, user1, user2, null);
                         chatRepository.save(chat);
 
                         return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
-                                userEntity1, userEntity2, chat, content));
+                                user1, user2, chat, content));
                     } else {
                         ChatEntity chat = chatService.getChatByUsersAndCar(user1, user2, null).get(0);
-                        UserEntity userEntity1 = userService.get(user1);
-                        UserEntity userEntity2 = userService.get(user2);
                         return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
-                                userEntity1, userEntity2, chat, content));
+                                user1, user2, chat, content));
                     }
                 } else {
-                    Long car = message.getChat().getCar().getId();
+                    CarEntity car = message.getChat().getCar();
 
                     if (chatService.getChatByUsersAndCar(user1, user2, car) == null) {
-                        UserEntity userEntity1 = userService.get(user1);
-                        UserEntity userEntity2 = userService.get(user2);
-                        CarEntity carEntity = carService.get(car);
-
-                        ChatEntity chat = new ChatEntity(LocalDateTime.now(), 0, userEntity1, userEntity2, carEntity);
+                        ChatEntity chat = new ChatEntity(LocalDateTime.now(), 0, user1, user2, car);
                         chatRepository.save(chat);
 
                         return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
-                                userEntity1, userEntity2, chat, content));
+                                user1, user2, chat, content));
                     } else {
                         ChatEntity chat = chatService.getChatByUsersAndCar(user1, user2, car).get(0);
-                        UserEntity userEntity1 = userService.get(user1);
-                        UserEntity userEntity2 = userService.get(user2);
                         return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
-                                userEntity1, userEntity2, chat, content));
+                                user1, user2, chat, content));
                     }
                 }
             } else {
                 if (chatService.getChatByUsersAndCar(user1, user2, null) == null) {
-                    UserEntity userEntity1 = userService.get(user1);
-                    UserEntity userEntity2 = userService.get(user2);
 
-                    ChatEntity chat = new ChatEntity(LocalDateTime.now(), 0, userEntity1, userEntity2, null);
+                    ChatEntity chat = new ChatEntity(LocalDateTime.now(), 0, user1, user2, null);
                     chatRepository.save(chat);
 
                     return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
-                            userEntity1, userEntity2, chat, content));
+                            user1, user2, chat, content));
                 } else {
+                    System.out.println();
                     ChatEntity chat = chatService.getChatByUsersAndCar(user1, user2, null).get(0);
-                    UserEntity userEntity1 = userService.get(user1);
-                    UserEntity userEntity2 = userService.get(user2);
                     return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
-                            userEntity1, userEntity2, chat, content));
+                            user1, user2, chat, content));
                 }
             }
         } else {

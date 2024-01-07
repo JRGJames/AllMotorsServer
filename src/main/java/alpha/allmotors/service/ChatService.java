@@ -36,7 +36,7 @@ public class ChatService {
         return chatRepository.findByNotificationsGreaterThan(0, pageable);
     }
 
-    public List<ChatEntity> getChatByUsersAndCar(Long user, Long participant, Long car) {
+    public List<ChatEntity> getChatByUsersAndCar(UserEntity user, UserEntity participant, CarEntity car) {
         return chatRepository.findByUsersAndCar(user, participant, car);
     }
 
