@@ -67,19 +67,12 @@ public class MessageService {
                     }
                 }
             } else {
-                if (chatService.getChatByUsersAndCar(user1, user2, null) == null) {
 
-                    ChatEntity chat = new ChatEntity(LocalDateTime.now(), 0, user1, user2, null);
-                    chatRepository.save(chat);
+                ChatEntity chat = new ChatEntity(LocalDateTime.now(), 0, user1, user2);
+                chatRepository.save(chat);
 
-                    return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
-                            user1, user2, chat, content));
-                } else {
-                    System.out.println();
-                    ChatEntity chat = chatService.getChatByUsersAndCar(user1, user2, null).get(0);
-                    return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
-                            user1, user2, chat, content));
-                }
+                return messageRepository.save(new MessageEntity(LocalDateTime.now(), false, false,
+                        user1, user2, chat, content));
             }
         } else {
 

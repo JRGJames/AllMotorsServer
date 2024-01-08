@@ -8,32 +8,32 @@ USE `allmotors`;
 
 -- Table structure for table `car`
 CREATE TABLE `car` (
-  `id` bigint(20) NOT NULL,
-  `brand` varchar(20) NOT NULL,
-  `model` varchar(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `brand` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `model` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `date_uploaded` datetime NOT NULL,
-  `images` varchar(255) NOT NULL,
-  `status` varchar(15) NOT NULL,
-  `views` bigint(20) NOT NULL,
-  `saves` bigint(20) NOT NULL,
-  `color` varchar(30) NOT NULL,
-  `year` varchar(4) NOT NULL,
-  `seats` int(11) NOT NULL,
-  `doors` int(11) NOT NULL,
-  `horsepower` int(11) NOT NULL,
-  `transmission` varchar(20) NOT NULL,
-  `distance` int(11) NOT NULL,
-  `engine` varchar(20) NOT NULL,
-  `price` int(11) NOT NULL,
-  `plate` varchar(12) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `location` varchar(50) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  `id_owner` bigint(20) NOT NULL
+  `images` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `views` bigint NOT NULL,
+  `saves` bigint NOT NULL,
+  `color` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `year` varchar(4) COLLATE utf8mb4_general_ci NOT NULL,
+  `seats` int NOT NULL,
+  `doors` int NOT NULL,
+  `horsepower` int NOT NULL,
+  `transmission` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `distance` int NOT NULL,
+  `engine` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `price` int NOT NULL,
+  `plate` varchar(12) COLLATE utf8mb4_general_ci NOT NULL,
+  `type` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `location` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `id_owner` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `car`
+-- Volcado de datos para la tabla `car`
 --
 
 INSERT INTO `car` (`id`, `brand`, `model`, `date_uploaded`, `images`, `status`, `views`, `saves`, `color`, `year`, `seats`, `doors`, `horsepower`, `transmission`, `distance`, `engine`, `price`, `plate`, `type`, `location`, `description`, `id_owner`) VALUES
@@ -141,67 +141,67 @@ INSERT INTO `car` (`id`, `brand`, `model`, `date_uploaded`, `images`, `status`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
+-- Estructura de tabla para la tabla `chat`
 --
 
 CREATE TABLE `chat` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
   `creation_date` datetime NOT NULL,
-  `notifications` int(11) NOT NULL,
-  `id_user_one` bigint(20) NOT NULL,
-  `id_user_two` bigint(20) NOT NULL,
-  `deleted_by` bigint(20) NOT NULL,
-  `id_car` bigint(20) NOT NULL
+  `notifications` int NOT NULL,
+  `id_user_one` bigint NOT NULL,
+  `id_user_two` bigint NOT NULL,
+  `deleted_by` bigint DEFAULT NULL,
+  `id_car` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Estructura de tabla para la tabla `message`
 --
 
 CREATE TABLE `message` (
-  `id` bigint(20) NOT NULL,
-  `content` varchar(2048) NOT NULL,
+  `id` bigint NOT NULL,
+  `content` varchar(2048) COLLATE utf8mb4_general_ci NOT NULL,
   `sent_time` datetime NOT NULL,
   `is_liked` tinyint(1) NOT NULL,
   `is_read` tinyint(1) NOT NULL,
-  `id_sender` bigint(20) NOT NULL,
-  `id_recipient` bigint(20) NOT NULL,
-  `id_chat` bigint(20) NOT NULL
+  `id_sender` bigint NOT NULL,
+  `id_recipient` bigint NOT NULL,
+  `id_chat` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Estructura de tabla para la tabla `user`
 --
 
 CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `username` varchar(15) NOT NULL,
-  `gender` varchar(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `gender` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `birthdate` datetime NOT NULL,
-  `country` varchar(50) NOT NULL,
-  `province` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `postal_code` varchar(15) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `profile_picture` varchar(255) DEFAULT NULL,
-  `rating` int(11) NOT NULL,
+  `country` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `province` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `address` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `postal_code` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `profile_picture` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `rating` int NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `phone` varchar(9) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` tinyint(1) NOT NULL DEFAULT 0,
+  `phone` varchar(9) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` tinyint(1) NOT NULL DEFAULT '0',
   `member_since` datetime NOT NULL,
   `last_connection` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Volcado de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`, `country`, `province`, `address`, `postal_code`, `description`, `profile_picture`, `rating`, `status`, `phone`, `email`, `password`, `role`, `member_since`, `last_connection`) VALUES
@@ -209,64 +209,54 @@ INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`,
 (2, 'Carlos', 'Sainz', 'carlossainz', 'Man', '1991-05-16 16:56:24', 'Spain', 'Madrid', 'Calle Sainz 55', '53055', 'Test description', 'default_image.png', 0, 1, '655974455', 'sainz@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `car`
+-- Indices de la tabla `car`
 --
 ALTER TABLE `car`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `chat`
+-- Indices de la tabla `chat`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `message`
+-- Indices de la tabla `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`id_chat`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indices de la tabla `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `car`
+-- AUTO_INCREMENT de la tabla `car`
 --
 ALTER TABLE `car`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- AUTO_INCREMENT for table `message`
+-- AUTO_INCREMENT de la tabla `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_chat` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `message`
---
-ALTER TABLE `message`
-  ADD CONSTRAINT `fk_message_chat` FOREIGN KEY (`id_chat`) REFERENCES `chat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
