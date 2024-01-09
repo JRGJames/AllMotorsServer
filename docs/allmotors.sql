@@ -6,29 +6,28 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `allmotors` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `allmotors`;
 
--- Table structure for table `car`
 CREATE TABLE `car` (
   `id` bigint NOT NULL,
-  `brand` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `model` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `brand` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `model` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `date_uploaded` datetime NOT NULL,
-  `images` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `status` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `images` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `status` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `views` bigint NOT NULL,
   `saves` bigint NOT NULL,
-  `color` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
-  `year` varchar(4) COLLATE utf8mb4_general_ci NOT NULL,
+  `color` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `year` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `seats` int NOT NULL,
   `doors` int NOT NULL,
   `horsepower` int NOT NULL,
-  `transmission` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `transmission` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `distance` int NOT NULL,
-  `engine` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `engine` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `price` int NOT NULL,
-  `plate` varchar(12) COLLATE utf8mb4_general_ci NOT NULL,
-  `type` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `location` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `plate` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `location` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_owner` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -154,6 +153,14 @@ CREATE TABLE `chat` (
   `id_car` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `chat`
+--
+
+INSERT INTO `chat` (`id`, `creation_date`, `notifications`, `id_user_one`, `id_user_two`, `deleted_by`, `id_car`) VALUES
+(1, '2024-01-09 17:53:32', 0, 1, 2, NULL, NULL),
+(13, '2024-01-09 19:02:25', 0, 2, 1, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -162,7 +169,7 @@ CREATE TABLE `chat` (
 
 CREATE TABLE `message` (
   `id` bigint NOT NULL,
-  `content` varchar(2048) COLLATE utf8mb4_general_ci NOT NULL,
+  `content` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `sent_time` datetime NOT NULL,
   `is_liked` tinyint(1) NOT NULL,
   `is_read` tinyint(1) NOT NULL,
@@ -170,6 +177,16 @@ CREATE TABLE `message` (
   `id_recipient` bigint NOT NULL,
   `id_chat` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `message`
+--
+
+INSERT INTO `message` (`id`, `content`, `sent_time`, `is_liked`, `is_read`, `id_sender`, `id_recipient`, `id_chat`) VALUES
+(1, 'Hola, ¿cómo dasdas?', '2024-01-09 17:53:32', 0, 0, 1, 2, 1),
+(11, 'estás*', '2024-01-09 18:55:54', 0, 0, 1, 2, 1),
+(15, 'Bien y tu?*', '2024-01-09 19:00:10', 0, 0, 1, 2, 1),
+(16, 'Bien y tu?*', '2024-01-09 19:02:25', 0, 0, 2, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -179,22 +196,22 @@ CREATE TABLE `message` (
 
 CREATE TABLE `user` (
   `id` bigint NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `username` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-  `gender` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `gender` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `birthdate` datetime NOT NULL,
-  `country` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `province` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `address` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `postal_code` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `profile_picture` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `country` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `province` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `postal_code` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `profile_picture` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `rating` int NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `phone` varchar(9) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `role` tinyint(1) NOT NULL DEFAULT '0',
   `member_since` datetime NOT NULL,
   `last_connection` datetime NOT NULL
@@ -247,10 +264,16 @@ ALTER TABLE `car`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
+-- AUTO_INCREMENT de la tabla `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `user`

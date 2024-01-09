@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.xml.bind.DatatypeConverter;
-
 import alpha.allmotors.exception.CannotPerformOperationException;
 
 public class DataGenerationHelper {

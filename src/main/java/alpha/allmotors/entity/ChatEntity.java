@@ -1,12 +1,7 @@
 package alpha.allmotors.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,7 +23,7 @@ public class ChatEntity {
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
 
-    private int notifications;
+    private int notifications = 0;
 
     @ManyToOne
     @JoinColumn(name = "id_user_one")
@@ -47,33 +41,26 @@ public class ChatEntity {
     @JoinColumn(name = "id_car")
     private CarEntity car;
 
-    @OneToMany(mappedBy = "chat", fetch = jakarta.persistence.FetchType.LAZY)
-    private List<MessageEntity> messages;
-
     public ChatEntity() {
-        messages = new ArrayList<>();
     }
 
-    public ChatEntity(Long id, LocalDateTime creationDate, int notifications ,UserEntity user, UserEntity participant, CarEntity car) {
+    public ChatEntity(Long id, LocalDateTime creationDate, UserEntity user, UserEntity participant, CarEntity car) {
         this.id = id;
         this.creationDate = LocalDateTime.now();
-        this.notifications = notifications;
         this.user = user;
         this.participant = participant;
         this.car = car;
     }
 
-    public ChatEntity(LocalDateTime creationDate, int notifications, UserEntity user, UserEntity participant, CarEntity car) {
+    public ChatEntity(LocalDateTime creationDate, UserEntity user, UserEntity participant, CarEntity car) {
         this.creationDate = creationDate;
-        this.notifications = notifications;
         this.user = user;
         this.participant = participant;
         this.car = car;
     }
 
-    public ChatEntity(LocalDateTime creationDate, int notifications, UserEntity user, UserEntity participant) {
+    public ChatEntity(LocalDateTime creationDate, UserEntity user, UserEntity participant) {
         this.creationDate = creationDate;
-        this.notifications = notifications;
         this.user = user;
         this.participant = participant;
     }
@@ -132,10 +119,6 @@ public class ChatEntity {
 
     public void setCar(CarEntity car) {
         this.car= car;
-    }
-
-    public int getMessages() {
-        return messages.size();
     }
 }
 

@@ -1,13 +1,10 @@
 package alpha.allmotors.service;
 
-import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.ChatEntity;
 import alpha.allmotors.entity.UserEntity;
@@ -24,7 +21,11 @@ public class ChatService {
         return chatRepository.findById(chatId);
     }
 
-    public Page<ChatEntity> getChatsByUsers(UserEntity user, UserEntity participant, Pageable pageable) {
+    public ChatEntity getChatByUsers(UserEntity user, UserEntity participant) {
+        return chatRepository.findByUserAndParticipant(user, participant);
+    }
+
+    public Page<ChatEntity> getChatsByUsersPaged(UserEntity user, UserEntity participant, Pageable pageable) {
         return chatRepository.findByUserAndParticipant(user, participant, pageable);
     }
 
@@ -36,7 +37,7 @@ public class ChatService {
         return chatRepository.findByNotificationsGreaterThan(0, pageable);
     }
 
-    public List<ChatEntity> getChatByUsersAndCar(UserEntity user, UserEntity participant, CarEntity car) {
+    public ChatEntity getChatByUsersAndCar(UserEntity user, UserEntity participant, CarEntity car) {
         return chatRepository.findByUsersAndCar(user, participant, car);
     }
 

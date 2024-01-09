@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import alpha.allmotors.entity.MessageEntity;
 import alpha.allmotors.service.MessageService;
 
-
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/message")

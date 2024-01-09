@@ -1,10 +1,8 @@
 package alpha.allmotors.service;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import alpha.allmotors.bean.UserBean;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.exception.ResourceNotFoundException;
