@@ -52,23 +52,19 @@ public class MessageEntity {
     public MessageEntity() {
     }
 
-    public MessageEntity(Long id, LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender,
+    public MessageEntity(Long id, UserEntity sender,
             UserEntity receiver, ChatEntity chat, String content) {
         this.id = id;
         this.sentTime = LocalDateTime.now();
-        this.isRead = isRead;
-        this.isLiked = isLiked;
         this.sender = sender;
         this.receiver = receiver;
         this.chat = chat;
         this.content = content;
     }
 
-    public MessageEntity(LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender,
+    public MessageEntity(UserEntity sender,
             UserEntity receiver, ChatEntity chat, String content) {
         this.sentTime = LocalDateTime.now();
-        this.isRead = isRead;
-        this.isLiked = isLiked;
         this.sender = sender;
         this.receiver = receiver;
         this.chat = chat;
