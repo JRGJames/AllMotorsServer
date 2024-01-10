@@ -169,9 +169,9 @@ INSERT INTO `chat` (`id`, `creation_date`, `notifications`, `id_user_one`, `id_u
 CREATE TABLE `message` (
   `id` bigint NOT NULL,
   `content` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `sent_time` datetime NOT NULL,
-  `is_liked` tinyint(1) NOT NULL,
-  `is_read` tinyint(1) NOT NULL,
+  `sent_time` datetime DEFAULT NULL,
+  `is_liked` tinyint(1) DEFAULT '0',
+  `is_read` tinyint(1) DEFAULT '0',
   `id_sender` bigint NOT NULL,
   `id_receiver` bigint NOT NULL,
   `id_chat` bigint NOT NULL
@@ -187,7 +187,10 @@ INSERT INTO `message` (`id`, `content`, `sent_time`, `is_liked`, `is_read`, `id_
 (15, 'Bien y tu?*', '2024-01-09 19:00:10', 0, 0, 1, 2, 1),
 (18, 'No me tocaría eso a mi? jajjaja', '2024-01-10 17:18:13', 0, 0, 2, 1, 1),
 (19, 'Es verdad jajajaja', '2024-01-10 17:18:46', 0, 0, 1, 2, 1),
-(20, 'Que cuentas?', '2024-01-10 17:30:30', 0, 0, 1, 2, 1);
+(20, 'Que cuentas?', '2024-01-10 17:30:30', 0, 0, 1, 2, 1),
+(22, 'Nada nuevo', '2024-01-10 17:35:13', 0, 0, 2, 1, 1),
+(23, 'Y tu?', '2024-01-10 18:12:42', 0, 0, 2, 1, 1),
+(24, 'Aprendiendo a programar', '2024-01-10 18:13:38', 0, 0, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -274,7 +277,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
