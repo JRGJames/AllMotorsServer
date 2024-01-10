@@ -145,10 +145,10 @@ INSERT INTO `car` (`id`, `brand`, `model`, `date_uploaded`, `images`, `status`, 
 
 CREATE TABLE `chat` (
   `id` bigint NOT NULL,
-  `creation_date` datetime NOT NULL,
-  `notifications` int NOT NULL,
-  `id_user_one` bigint NOT NULL,
-  `id_user_two` bigint NOT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `notifications` int DEFAULT '0',
+  `id_member_one` bigint NOT NULL,
+  `id_member_two` bigint NOT NULL,
   `deleted_by` bigint DEFAULT NULL,
   `id_car` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -157,7 +157,7 @@ CREATE TABLE `chat` (
 -- Volcado de datos para la tabla `chat`
 --
 
-INSERT INTO `chat` (`id`, `creation_date`, `notifications`, `id_user_one`, `id_user_two`, `deleted_by`, `id_car`) VALUES
+INSERT INTO `chat` (`id`, `creation_date`, `notifications`, `id_member_one`, `id_member_two`, `deleted_by`, `id_car`) VALUES
 (1, '2024-01-09 17:53:32', 0, 1, 2, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -190,7 +190,12 @@ INSERT INTO `message` (`id`, `content`, `sent_time`, `is_liked`, `is_read`, `id_
 (20, 'Que cuentas?', '2024-01-10 17:30:30', 0, 0, 1, 2, 1),
 (22, 'Nada nuevo', '2024-01-10 17:35:13', 0, 0, 2, 1, 1),
 (23, 'Y tu?', '2024-01-10 18:12:42', 0, 0, 2, 1, 1),
-(24, 'Aprendiendo a programar', '2024-01-10 18:13:38', 0, 0, 1, 2, 1);
+(24, 'Aprendiendo a programar', '2024-01-10 18:13:38', 0, 0, 1, 2, 1),
+(25, 'Aprendiendo a programar', '2024-01-10 20:44:14', 0, 0, 1, 2, 1),
+(26, 'Aprendiendo a programar', '2024-01-10 20:44:40', 0, 0, 2, 1, 1),
+(27, 'Creo que funciona', '2024-01-10 20:52:23', 0, 0, 2, 1, 1),
+(28, 'A ver', '2024-01-10 20:52:46', 0, 0, 1, 2, 1),
+(29, 'Si, funciona', '2024-01-10 20:52:59', 0, 0, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -277,7 +282,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
@@ -285,3 +290,7 @@ ALTER TABLE `message`
 ALTER TABLE `user`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
