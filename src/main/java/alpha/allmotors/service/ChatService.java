@@ -65,7 +65,7 @@ public class ChatService {
         return null;
     }
 
-    public UserEntity getRecipientOfChat(Long chatId) {
+    public UserEntity getReceiverOfChat(Long chatId) {
         ChatEntity chat = chatRepository.findById(chatId).orElse(null);
 
         if (chat != null) {

@@ -28,7 +28,7 @@ public class MessageService {
     public MessageEntity sendMessage(MessageEntity message) {
 
         UserEntity user1 = message.getSender();
-        UserEntity user2 = message.getRecipient();
+        UserEntity user2 = message.getReceiver();
         String content = message.getContent();
         ChatEntity chat = chatRepository.findById(message.getChat().getId()).orElse(null);
 

@@ -37,8 +37,8 @@ public class MessageEntity {
     private UserEntity sender;
 
     @ManyToOne
-    @JoinColumn(name = "id_recipient")
-    private UserEntity recipient;
+    @JoinColumn(name = "id_receiver")
+    private UserEntity receiver;
 
     @ManyToOne
     @JoinColumn(name = "id_chat")
@@ -52,23 +52,25 @@ public class MessageEntity {
     public MessageEntity() {
     }
 
-    public MessageEntity(Long id, LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender, UserEntity recipient, ChatEntity chat, String content) {
+    public MessageEntity(Long id, LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender,
+            UserEntity receiver, ChatEntity chat, String content) {
         this.id = id;
         this.sentTime = LocalDateTime.now();
         this.isRead = isRead;
         this.isLiked = isLiked;
         this.sender = sender;
-        this.recipient = recipient;
+        this.receiver = receiver;
         this.chat = chat;
         this.content = content;
     }
 
-    public MessageEntity(LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender, UserEntity recipient, ChatEntity chat, String content) {
+    public MessageEntity(LocalDateTime sentTime, boolean isRead, boolean isLiked, UserEntity sender,
+            UserEntity receiver, ChatEntity chat, String content) {
         this.sentTime = LocalDateTime.now();
         this.isRead = isRead;
         this.isLiked = isLiked;
         this.sender = sender;
-        this.recipient = recipient;
+        this.receiver = receiver;
         this.chat = chat;
         this.content = content;
     }
@@ -113,12 +115,12 @@ public class MessageEntity {
         this.sender = sender;
     }
 
-    public UserEntity getRecipient() {
-        return recipient;
+    public UserEntity getReceiver() {
+        return receiver;
     }
 
-    public void setRecipient(UserEntity recipient) {
-        this.recipient = recipient;
+    public void setReceiver(UserEntity receiver) {
+        this.receiver = receiver;
     }
 
     public ChatEntity getChat() {
