@@ -26,12 +26,12 @@ public class ChatEntity {
     private int notifications = 0;
 
     @ManyToOne
-    @JoinColumn(name = "id_user_one")
-    private UserEntity user;
+    @JoinColumn(name = "id_member_one")
+    private UserEntity memberOne;
 
     @ManyToOne
-    @JoinColumn(name = "id_user_two")
-    private UserEntity participant;
+    @JoinColumn(name = "id_member_two")
+    private UserEntity memberTwo;
 
     @ManyToOne
     @JoinColumn(name = "deleted_by")
@@ -44,25 +44,25 @@ public class ChatEntity {
     public ChatEntity() {
     }
 
-    public ChatEntity(Long id, LocalDateTime creationDate, UserEntity user, UserEntity participant, CarEntity car) {
+    public ChatEntity(Long id, UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
         this.id = id;
         this.creationDate = LocalDateTime.now();
-        this.user = user;
-        this.participant = participant;
+        this.memberOne = memberOne;
+        this.memberTwo = memberTwo;
         this.car = car;
     }
 
-    public ChatEntity(LocalDateTime creationDate, UserEntity user, UserEntity participant, CarEntity car) {
-        this.creationDate = creationDate;
-        this.user = user;
-        this.participant = participant;
+    public ChatEntity(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
+        this.creationDate = LocalDateTime.now();
+        this.memberOne = memberOne;
+        this.memberTwo = memberTwo;
         this.car = car;
     }
 
-    public ChatEntity(LocalDateTime creationDate, UserEntity user, UserEntity participant) {
-        this.creationDate = creationDate;
-        this.user = user;
-        this.participant = participant;
+    public ChatEntity(UserEntity memberOne, UserEntity memberTwo) {
+        this.creationDate = LocalDateTime.now();
+        this.memberOne = memberOne;
+        this.memberTwo = memberTwo;
     }
 
     public Long getId() {
@@ -89,20 +89,20 @@ public class ChatEntity {
         this.notifications = notifications;
     }
 
-    public UserEntity getUser1() {
-        return user;
+    public UserEntity getMemberOne() {
+        return memberOne;
     }
 
-    public void setUser1(UserEntity user) {
-        this.user = user;
+    public void setmMmberOne(UserEntity memberOne) {
+        this.memberOne = memberOne;
     }
 
-    public UserEntity getUser2() {
-        return participant;
+    public UserEntity getMemberTwo() {
+        return memberTwo;
     }
 
-    public void setUser2(UserEntity participant) {
-        this.participant = participant;
+    public void setMemberTwo(UserEntity memberTwo) {
+        this.memberTwo = memberTwo;
     }
 
     public UserEntity getDeletedBy() {

@@ -110,7 +110,7 @@ public class UserEntity {
     @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY)
     private List<CarEntity> cars;
 
-    @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY)
+    @OneToMany(mappedBy = ("memberOne"), fetch = jakarta.persistence.FetchType.LAZY)
     private List<ChatEntity> chats;
 
     public UserEntity() {

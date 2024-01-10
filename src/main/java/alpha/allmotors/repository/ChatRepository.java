@@ -14,11 +14,13 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
 
         Optional<ChatEntity> findById(Long chatId);
 
-        // Método para obtener chats por usuario y participante
-        ChatEntity findByUserAndParticipant(UserEntity user, UserEntity participant);
+        // Método para obtener chats por memberOne y memberTwo
+        @Query("SELECT c FROM ChatEntity c WHERE (c.memberOne = :memberOne AND c.memberTwo = :memberTwo) OR (c.memberOne = :memberTwo AND c.memberTwo = :memberOne)")
+        ChatEntity findByMemberOneAndMemberTwo(UserEntity memberOne, UserEntity memberTwo);
 
-        // Método para obtener chats por usuario y participante paginados
-        Page<ChatEntity> findByUserAndParticipant(UserEntity user, UserEntity participant, Pageable pageable);
+        // Método para obtener chats por memberOne y memberTwo paginados
+        @Query("SELECT c FROM ChatEntity c WHERE (c.memberOne = :memberOne AND c.memberTwo = :memberTwo) OR (c.memberOne = :memberTwo AND c.memberTwo = :memberOne)")
+        Page<ChatEntity> findByMemberOneAndMemberTwo(UserEntity memberOne, UserEntity memberTwo, Pageable pageable);
 
         // Método para obtener chats ordenados por fecha de creación descendente
         Page<ChatEntity> findAllByOrderByCreationDateDesc(Pageable pageable);
@@ -32,10 +34,10 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
 
         // Método para encontrar chats por usuarios y coche
         @Query("SELECT c FROM ChatEntity c WHERE " +
-                        "((c.user = :user AND c.participant = :participant) OR " +
-                        "(c.user = :participant AND c.participant = :user)) " +
+                        "((c.memberOne = :memberOne AND c.memberTwo = :memberTwo) OR " +
+                        "(c.memberOne = :memberTwo AND c.memberTwo = :memberOne)) " +
                         "AND c.car = :car")
-        ChatEntity findByUsersAndCar(@Param("user") UserEntity user,
-                        @Param("participant") UserEntity participant,
+        ChatEntity findByUsersAndCar(@Param("memberOne") UserEntity memberOne,
+                        @Param("memberTwo") UserEntity memberTwo,
                         @Param("car") CarEntity car);
 }

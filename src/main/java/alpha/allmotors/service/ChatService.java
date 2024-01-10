@@ -21,12 +21,12 @@ public class ChatService {
         return chatRepository.findById(chatId);
     }
 
-    public ChatEntity getChatByUsers(UserEntity user, UserEntity participant) {
-        return chatRepository.findByUserAndParticipant(user, participant);
+    public ChatEntity getChatByUsers(UserEntity memberOne, UserEntity memberTwo) {
+        return chatRepository.findByMemberOneAndMemberTwo(memberOne, memberTwo);
     }
 
-    public Page<ChatEntity> getChatsByUsersPaged(UserEntity user, UserEntity participant, Pageable pageable) {
-        return chatRepository.findByUserAndParticipant(user, participant, pageable);
+    public Page<ChatEntity> getChatsByUsersPaged(UserEntity memberOne, UserEntity memberTwo, Pageable pageable) {
+        return chatRepository.findByMemberOneAndMemberTwo(memberOne, memberTwo, pageable);
     }
 
     public Page<ChatEntity> getAllChatsSortedByCreationDateDesc(Pageable pageable) {
@@ -37,8 +37,8 @@ public class ChatService {
         return chatRepository.findByNotificationsGreaterThan(0, pageable);
     }
 
-    public ChatEntity getChatByUsersAndCar(UserEntity user, UserEntity participant, CarEntity car) {
-        return chatRepository.findByUsersAndCar(user, participant, car);
+    public ChatEntity getChatByUsersAndCar(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
+        return chatRepository.findByUsersAndCar(memberOne, memberTwo, car);
     }
 
     @Transactional
@@ -47,7 +47,7 @@ public class ChatService {
         ChatEntity chat = chatRepository.findById(chatId).orElse(null);
 
         // Verifica si el chat existe y si el usuario es parte del chat
-        if (chat != null && (user.equals(chat.getUser1()) || user.equals(chat.getUser2()))) {
+        if (chat != null && (user.equals(chat.getMemberOne()) || user.equals(chat.getMemberTwo()))) {
             // Modifica el estado del chat para indicar que ha sido eliminado por este usuario
             chat.setDeletedBy(user);
             // Guarda los cambios en la base de datos
@@ -59,7 +59,7 @@ public class ChatService {
         ChatEntity chat = chatRepository.findById(chatId).orElse(null);
 
         if (chat != null) {
-            return chat.getUser1();
+            return chat.getMemberOne();
         }
 
         return null;
@@ -69,7 +69,7 @@ public class ChatService {
         ChatEntity chat = chatRepository.findById(chatId).orElse(null);
 
         if (chat != null) {
-            return chat.getUser2();
+            return chat.getMemberTwo();
         }
 
         return null;
