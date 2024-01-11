@@ -46,7 +46,6 @@ public class MessageEntity {
 
     @NotNull
     @NotBlank
-    @Size(min = 1, max = 2048)
     private String content;
 
     public MessageEntity() {
