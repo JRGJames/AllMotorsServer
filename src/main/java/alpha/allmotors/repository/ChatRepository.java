@@ -1,5 +1,6 @@
 package alpha.allmotors.repository;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,9 +24,15 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
         Page<ChatEntity> findByMemberOneAndMemberTwo(UserEntity memberOne, UserEntity memberTwo, Pageable pageable);
 
         // Método para obtener chats ordenados por fecha de creación descendente
+        List<ChatEntity> findAllByOrderByCreationDateDesc();
+
+        // Método para obtener chats ordenados por fecha de creación descendente paginados
         Page<ChatEntity> findAllByOrderByCreationDateDesc(Pageable pageable);
 
         // Método para encontrar chats con notificaciones
+        List<ChatEntity> findByNotificationsGreaterThan(int notifications);
+
+        // Método para encontrar chats con notificaciones paginados
         Page<ChatEntity> findByNotificationsGreaterThan(int notifications, Pageable pageable);
 
         // Método para encontrar un chat por su identificador y el usuario que lo
@@ -40,4 +47,12 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
         ChatEntity findByUsersAndCar(@Param("memberOne") UserEntity memberOne,
                         @Param("memberTwo") UserEntity memberTwo,
                         @Param("car") CarEntity car);
+
+        // Método para encontrar chats por usuario paginados
+        @Query("SELECT c FROM ChatEntity c WHERE c.memberOne = :user OR c.memberTwo = :user")
+        Page<ChatEntity> findAllChatsByUser(@Param("user") UserEntity user, Pageable pageable);
+
+        // Método para encontrar chats por usuario
+        @Query("SELECT c FROM ChatEntity c WHERE c.memberOne = :user OR c.memberTwo = :user")
+        List<ChatEntity> findAllChatsByUser(@Param("user") UserEntity user);
 }

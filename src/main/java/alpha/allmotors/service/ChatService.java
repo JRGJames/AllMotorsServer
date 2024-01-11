@@ -1,5 +1,6 @@
 package alpha.allmotors.service;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,17 @@ public class ChatService {
     public Page<ChatEntity> getChatsByUsersPaged(UserEntity memberOne, UserEntity memberTwo, Pageable pageable) {
         return chatRepository.findByMemberOneAndMemberTwo(memberOne, memberTwo, pageable);
     }
+    public ChatEntity getChatByUsersAndCar(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
+        return chatRepository.findByUsersAndCar(memberOne, memberTwo, car);
+    }
+
+    public List<ChatEntity> getChatsByUser(UserEntity memberOne) {
+        return chatRepository.findAllChatsByUser(memberOne);
+    }
+
+    public Page<ChatEntity> getChatsByUserPaged(UserEntity memberOne, Pageable pageable) {
+        return chatRepository.findAllChatsByUser(memberOne, pageable);
+    }
 
     public Page<ChatEntity> getAllChatsSortedByCreationDateDesc(Pageable pageable) {
         return chatRepository.findAllByOrderByCreationDateDesc(pageable);
@@ -37,9 +49,6 @@ public class ChatService {
         return chatRepository.findByNotificationsGreaterThan(0, pageable);
     }
 
-    public ChatEntity getChatByUsersAndCar(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
-        return chatRepository.findByUsersAndCar(memberOne, memberTwo, car);
-    }
 
     @Transactional
     public void deleteChatForUser(Long chatId, UserEntity user) {

@@ -4,7 +4,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import alpha.allmotors.repository.ChatRepository;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -111,12 +115,8 @@ public class UserEntity {
     @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY)
     private List<CarEntity> cars;
 
-    @OneToMany(mappedBy = "memberOne", fetch = jakarta.persistence.FetchType.LAZY)
-    private List<ChatEntity> chats;
-
     public UserEntity() {
         cars = new ArrayList<>();
-        chats = new ArrayList<>();
     }
 
     public UserEntity(Long id, String name, String lastname, String username, String gender,
@@ -339,9 +339,5 @@ public class UserEntity {
 
     public int getCars() {
         return cars.size();
-    }
-
-    public int getChats() {
-        return chats.size();
     }
 }
