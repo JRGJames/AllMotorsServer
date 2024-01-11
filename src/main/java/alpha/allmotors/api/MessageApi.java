@@ -4,6 +4,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.MessageEntity;
 import alpha.allmotors.service.MessageService;
 
@@ -22,8 +24,8 @@ public class MessageApi {
     }
 
     @PostMapping("/send")
-    public ResponseEntity<MessageEntity> sendMessage(@RequestBody MessageEntity message) {
-        return ResponseEntity.ok(messageService.sendMessage(message));
+    public ResponseEntity<MessageEntity> sendMessage(@RequestBody MessageEntity message, @RequestParam(required = false) CarEntity car) {
+        return ResponseEntity.ok(messageService.sendMessage(message, car));
     }
 
     @PostMapping("/like/{id}")

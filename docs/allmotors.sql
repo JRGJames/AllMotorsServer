@@ -1,45 +1,62 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: database:3306
+-- Generation Time: Jan 11, 2024 at 12:45 AM
+-- Server version: 10.9.8-MariaDB-1:10.9.8+maria~ubu2204
+-- PHP Version: 8.2.12
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
 -- Database: `allmotors`
+--
+
 CREATE DATABASE IF NOT EXISTS `allmotors` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `allmotors`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `car`
+-- Table structure for table `car`
 --
 
-
 CREATE TABLE `car` (
-  `id` bigint NOT NULL,
-  `brand` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `model` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint(20) NOT NULL,
+  `brand` varchar(20) NOT NULL,
+  `model` varchar(20) NOT NULL,
   `date_uploaded` datetime NOT NULL,
-  `images` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `status` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `views` bigint NOT NULL,
-  `saves` bigint NOT NULL,
-  `color` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `year` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `seats` int NOT NULL,
-  `doors` int NOT NULL,
-  `horsepower` int NOT NULL,
-  `transmission` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `distance` int NOT NULL,
-  `engine` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `price` int NOT NULL,
-  `plate` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `location` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `id_owner` bigint NOT NULL
+  `images` varchar(255) NOT NULL,
+  `status` varchar(15) NOT NULL,
+  `views` bigint(20) NOT NULL,
+  `saves` bigint(20) NOT NULL,
+  `color` varchar(30) NOT NULL,
+  `year` varchar(4) NOT NULL,
+  `seats` int(11) NOT NULL,
+  `doors` int(11) NOT NULL,
+  `horsepower` int(11) NOT NULL,
+  `transmission` varchar(20) NOT NULL,
+  `distance` int(11) NOT NULL,
+  `engine` varchar(20) NOT NULL,
+  `price` int(11) NOT NULL,
+  `plate` varchar(12) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `location` varchar(50) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `id_owner` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `car`
+-- Dumping data for table `car`
 --
 
 INSERT INTO `car` (`id`, `brand`, `model`, `date_uploaded`, `images`, `status`, `views`, `saves`, `color`, `year`, `seats`, `doors`, `horsepower`, `transmission`, `distance`, `engine`, `price`, `plate`, `type`, `location`, `description`, `id_owner`) VALUES
@@ -147,45 +164,46 @@ INSERT INTO `car` (`id`, `brand`, `model`, `date_uploaded`, `images`, `status`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `chat`
+-- Table structure for table `chat`
 --
 
 CREATE TABLE `chat` (
-  `id` bigint NOT NULL,
+  `id` bigint(20) NOT NULL,
   `creation_date` datetime DEFAULT NULL,
-  `notifications` int DEFAULT '0',
-  `id_member_one` bigint NOT NULL,
-  `id_member_two` bigint NOT NULL,
-  `deleted_by` bigint DEFAULT NULL,
-  `id_car` bigint DEFAULT NULL
+  `notifications` int(11) DEFAULT 0,
+  `id_member_one` bigint(20) NOT NULL,
+  `id_member_two` bigint(20) NOT NULL,
+  `deleted_by` bigint(20) DEFAULT NULL,
+  `id_car` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `chat`
+-- Dumping data for table `chat`
 --
 
 INSERT INTO `chat` (`id`, `creation_date`, `notifications`, `id_member_one`, `id_member_two`, `deleted_by`, `id_car`) VALUES
-(1, '2024-01-09 17:53:32', 0, 1, 2, NULL, NULL);
+(1, '2024-01-09 17:53:32', 0, 1, 2, NULL, NULL),
+(16, '2024-01-10 23:54:02', 0, 3, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `message`
+-- Table structure for table `message`
 --
 
 CREATE TABLE `message` (
-  `id` bigint NOT NULL,
-  `content` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint(20) NOT NULL,
+  `content` varchar(2048) NOT NULL,
   `sent_time` datetime DEFAULT NULL,
-  `is_liked` tinyint(1) DEFAULT '0',
-  `is_read` tinyint(1) DEFAULT '0',
-  `id_sender` bigint NULL,
-  `id_receiver` bigint NOT NULL,
-  `id_chat` bigint NOT NULL
+  `is_liked` tinyint(1) DEFAULT 0,
+  `is_read` tinyint(1) DEFAULT 0,
+  `id_sender` bigint(20) DEFAULT NULL,
+  `id_receiver` bigint(20) NOT NULL,
+  `id_chat` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `message`
+-- Dumping data for table `message`
 --
 
 INSERT INTO `message` (`id`, `content`, `sent_time`, `is_liked`, `is_read`, `id_sender`, `id_receiver`, `id_chat`) VALUES
@@ -202,100 +220,114 @@ INSERT INTO `message` (`id`, `content`, `sent_time`, `is_liked`, `is_read`, `id_
 (26, 'Aprendiendo a programar', '2024-01-10 20:44:40', 0, 0, 2, 1, 1),
 (27, 'Creo que funciona', '2024-01-10 20:52:23', 0, 0, 2, 1, 1),
 (28, 'A ver', '2024-01-10 20:52:46', 0, 0, 1, 2, 1),
-(29, 'Si, funciona', '2024-01-10 20:52:59', 0, 0, 1, 2, 1);
+(29, 'Si, funciona', '2024-01-10 20:52:59', 0, 0, 1, 2, 1),
+(56, 'Hola, ¿cómo dasdas?', '2024-01-10 23:54:02', 0, 0, 3, 4, 16),
+(59, 'Bien', '2024-01-11 00:03:22', 0, 0, 3, 4, 16),
+(60, 'A ver', '2024-01-11 00:03:40', 0, 0, 3, 4, 16),
+(66, 'sI?', '2024-01-11 00:40:14', 0, 0, 4, 3, 16);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `id` bigint NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `username` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `gender` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `username` varchar(15) NOT NULL,
+  `gender` varchar(20) NOT NULL,
   `birthdate` datetime NOT NULL,
-  `country` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `province` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `postal_code` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `profile_picture` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `rating` int NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `province` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `postal_code` varchar(15) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `profile_picture` varchar(255) DEFAULT NULL,
+  `rating` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `phone` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `role` tinyint(1) NOT NULL DEFAULT '0',
+  `phone` varchar(9) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` tinyint(1) NOT NULL DEFAULT 0,
   `member_since` datetime NOT NULL,
   `last_connection` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`, `country`, `province`, `address`, `postal_code`, `description`, `profile_picture`, `rating`, `status`, `phone`, `email`, `password`, `role`, `member_since`, `last_connection`) VALUES
 (1, 'Fernando', 'Alonso', 'ElNano', 'Man', '2022-02-24 04:25:00', 'Spain', 'Asturias', 'Calle Nano 33', '53033', 'Test description', 'default_image.png', 0, 1, '633974333', 'nano@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 1, '1996-07-15 15:35:07', '1936-02-15 00:37:41'),
-(2, 'Carlos', 'Sainz', 'carlossainz', 'Man', '1991-05-16 16:56:24', 'Spain', 'Madrid', 'Calle Sainz 55', '53055', 'Test description', 'default_image.png', 0, 1, '655974455', 'sainz@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21');
+(2, 'Carlos', 'Sainz', 'carlossainz', 'Man', '1991-05-16 16:56:24', 'Spain', 'Madrid', 'Calle Sainz 55', '53055', 'Test description', 'default_image.png', 0, 1, '655974455', 'sainz@gmail.com', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21'),
+(3, 'Jaime', 'Lara', 'jaiar0', 'prefer not to say', '1990-02-07 18:16:08', 'Italy', 'Yukon', '38 Sunset Drive', '17115', 'in order to a house shines one car fly and a sun run quickly', 'default_image.png', 0, 0, '561089478', 'jailar0@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(4, 'Pablo', 'Latorre', 'pabat1', 'prefer not to say', '1953-06-10 10:11:19', 'Sweden', 'Catalonia', '8 Skyline Drive', '98721', 'whether a dog is softly a dog fly or a dog barks', 'default_image.png', 0, 0, '548068379', 'pablat1@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(5, 'Elena', 'Suárez', 'eleua2', 'woman', '1942-02-04 08:55:58', 'United Kingdom', 'Newfoundland and Labrador', '22 Lake Shore', 'V1H 3R9', 'where one house fly the car fly', 'default_image.png', 0, 1, '108545207', 'elesuá2@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(6, 'Eloy', 'Muñoz', 'eloun3', 'man', '1992-09-17 06:59:05', 'Italy', 'Northwest Territories', '36 Pine Street', '31621-301', 'since the friend run one book shines or one dog reads', 'default_image.png', 0, 1, '392001377', 'elomuñ3@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(7, 'Paula', 'Gómez', 'pauom4', 'man', '1961-06-24 13:26:16', 'Brazil', 'Nova Scotia', '3 Greenway', 'WC2N 5DU', 'provided that the sun is loudly one sandwich reads loudly but a book fly softly', 'default_image.png', 0, 0, '233793920', 'paugóm4@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(8, 'José Antonio', 'McLure', 'joscl5', 'prefer not to say', '1965-03-18 07:58:10', 'Australia', 'Prince Edward Island', '33 Hilltop Road', 'H7H 3H7', 'even though one sun barks quickly a book fly quickly or the book ate', 'default_image.png', 0, 0, '044321042', 'josmcl5@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(9, 'Eloy', 'Muñoz', 'eloun6', 'woman', '2005-03-05 10:48:15', 'South Africa', 'New Brunswick', '12 Cedar Road', '189441', 'while the cat run brightly one dog barks slowly', 'default_image.png', 0, 0, '729110795', 'elomuñ6@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(10, 'Rafael', 'Farell', 'rafar7', 'prefer not to say', '2002-08-25 06:30:48', 'China', 'Manitoba', '4 Golden Gate', '71641-196', 'even though the house ate a sandwich ate softly', 'default_image.png', 0, 1, '256350455', 'raffar7@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(11, 'Pablo', 'García', 'pabar8', 'man', '2021-09-21 09:57:26', 'Germany', 'Northwest Territories', '19 Meadow Lane', '405991', 'when the book sleeps brightly one sun is quickly', 'default_image.png', 0, 1, '355513262', 'pabgar8@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08'),
+(12, 'Rafael', 'Puig', 'rafui9', 'prefer not to say', '1930-09-27 14:10:27', 'Norway', 'Valencia', '12 Pine Street', '21540-099', 'than a house run a friend fly quickly', 'default_image.png', 0, 1, '646053919', 'rafpui9@gmail.net', 'c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `car`
+-- Indexes for table `car`
 --
 ALTER TABLE `car`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `chat`
+-- Indexes for table `chat`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `message`
+-- Indexes for table `message`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `car`
+-- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- AUTO_INCREMENT de la tabla `chat`
+-- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT de la tabla `message`
+-- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
--- AUTO_INCREMENT de la tabla `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

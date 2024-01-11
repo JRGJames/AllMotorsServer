@@ -23,51 +23,76 @@ public class MessageService {
     @Autowired
     private ChatRepository chatRepository;
 
-    @Autowired
-    private SessionService session;
+    // @Autowired
+    // private SessionService session;
+
+    // @Autowired
+    // private UserService userService;
 
     @Transactional
-    public MessageEntity sendMessage(MessageEntity message) {
+    public MessageEntity sendMessage(MessageEntity message, CarEntity car) {
 
-        message.setSender(session.getSessionUser());
+        // message.setSender(userService.getByUsername(session.getSessionUsername()));
+        // message.setReceiver(userService.getByUsername("carlossainz"));
+
         UserEntity memberOne = message.getSender();
         UserEntity memberTwo = message.getReceiver();
-        String content = message.getContent();
-        ChatEntity chat = chatRepository.findById(message.getChat().getId()).orElse(null);
 
+        String content = message.getContent();
+        ChatEntity chat = message.getChat();
+        
         if (message.getSender() != null) {
             if (chat != null) {
-                if (message.getChat().getCar() == null) {
+                if (car == null) {
                     if (chatService.getChatByUsers(memberOne, memberTwo) == null
                             && chatService.getChatByUsers(memberTwo, memberOne) == null) {
 
                         ChatEntity newChat = new ChatEntity(memberOne, memberTwo);
                         chatRepository.save(newChat);
 
-                        return messageRepository.save(new MessageEntity(memberTwo, newChat, content));
+                        return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
                     } else {
-                        return messageRepository.save(new MessageEntity(memberTwo, chat, content));
+                        return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
                     }
                 } else {
-                    CarEntity car = message.getChat().getCar();
+                    if (chatService.getChatByUsersAndCar(memberOne, memberTwo, car) == null
+                            && chatService.getChatByUsersAndCar(memberTwo, memberOne, car) == null) {
 
-                    if (chatService.getChatByUsersAndCar(memberOne, memberTwo, car) != null) {
-                        ChatEntity activeChat = chatService.getChatByUsersAndCar(memberOne, memberTwo, car);
+                        ChatEntity newChat = new ChatEntity(memberOne, memberTwo, car);
+                        chatRepository.save(newChat);
 
-                        return messageRepository.save(new MessageEntity(memberTwo, activeChat, content));
+                        return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
                     } else {
-                        ChatEntity activeChat = chatService.getChatByUsersAndCar(memberTwo, memberOne, car);
-
-                        return messageRepository.save(new MessageEntity(memberTwo, activeChat, content));
+                        return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
                     }
                 }
             } else {
-                ChatEntity newChat = new ChatEntity(memberOne, memberTwo);
-                chatRepository.save(newChat);
+                if (car == null) {
+                    if (chatService.getChatByUsers(memberOne, memberTwo) == null
+                            && chatService.getChatByUsers(memberTwo, memberOne) == null) {
 
-                return messageRepository.save(new MessageEntity(memberTwo, newChat, content));
+                        ChatEntity newChat = new ChatEntity(memberOne, memberTwo);
+                        chatRepository.save(newChat);
+
+                        return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
+                    } else {
+                        chat = chatService.getChatByUsers(memberOne, memberTwo);
+                    }
+                } else {
+                    if (chatService.getChatByUsersAndCar(memberOne, memberTwo, car) == null
+                            && chatService.getChatByUsersAndCar(memberTwo, memberOne, car) == null) {
+
+                        ChatEntity newChat = new ChatEntity(memberOne, memberTwo, car);
+                        chatRepository.save(newChat);
+
+                        return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
+                    } else {
+                        chat = chatService.getChatByUsersAndCar(memberOne, memberTwo, car);
+                    }
+                }
+                return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
             }
-        }else {
+        } else {
             System.out.println("No se ha podido enviar el mensaje, no se ha iniciado sesión");
             return null;
         }
