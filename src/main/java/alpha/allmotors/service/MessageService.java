@@ -23,25 +23,27 @@ public class MessageService {
     @Autowired
     private ChatRepository chatRepository;
 
-    // @Autowired
-    // private SessionService session;
+    @Autowired
+    private SessionService session;
 
-    // @Autowired
-    // private UserService userService;
+    @Autowired
+    private UserService userService;
 
     @Transactional
     public MessageEntity sendMessage(MessageEntity message, CarEntity car) {
 
-        // message.setSender(userService.getByUsername(session.getSessionUsername()));
-        // message.setReceiver(userService.getByUsername("carlossainz"));
-
+        message.setSender(userService.getByUsername(session.getSessionUsername()));
+        message.setReceiver(userService.get(message.getReceiver().getId()));
+        
         UserEntity memberOne = message.getSender();
         UserEntity memberTwo = message.getReceiver();
-
+        
         String content = message.getContent();
         ChatEntity chat = message.getChat();
         
-        if (message.getSender() != null) {
+        
+        
+        if (memberOne != null) {
             if (chat != null) {
                 if (car == null) {
                     if (chatService.getChatByUsers(memberOne, memberTwo) == null

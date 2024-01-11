@@ -3,6 +3,7 @@ package alpha.allmotors.entity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -110,7 +111,7 @@ public class UserEntity {
     @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY)
     private List<CarEntity> cars;
 
-    @OneToMany(mappedBy = ("memberOne"), fetch = jakarta.persistence.FetchType.LAZY)
+    @OneToMany(mappedBy = "memberOne", fetch = jakarta.persistence.FetchType.LAZY)
     private List<ChatEntity> chats;
 
     public UserEntity() {
