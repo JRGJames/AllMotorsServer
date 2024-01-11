@@ -34,15 +34,13 @@ public class MessageService {
 
         message.setSender(userService.getByUsername(session.getSessionUsername()));
         message.setReceiver(userService.get(message.getReceiver().getId()));
-        
+
         UserEntity memberOne = message.getSender();
         UserEntity memberTwo = message.getReceiver();
-        
+
         String content = message.getContent();
         ChatEntity chat = message.getChat();
-        
-        
-        
+
         if (memberOne != null) {
             if (chat != null) {
                 if (car == null) {
