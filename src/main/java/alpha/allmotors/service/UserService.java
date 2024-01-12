@@ -78,19 +78,14 @@ public class UserService {
             String country = DataGenerationHelper.getRandomCountry();
             String province = DataGenerationHelper.getRandomProvince();
             String address = DataGenerationHelper.getRandomAddress();
-            String postal_code = DataGenerationHelper.getRandomPostalCode();
-            String description = DataGenerationHelper.generateComplexSentence();
-            String profile_picture = "default_image.png";
-            int rating = 0;
+            String postalCode = DataGenerationHelper.getRandomPostalCode();
             Boolean status = DataGenerationHelper.getRandomStatus();
             String phone = DataGenerationHelper.getRandomPhoneNumber();
             String email = (name.substring(0, 3) + lastname.substring(0, 3) + i).toLowerCase() + "@gmail.net";
             String password = ALLMOTORS;
             Boolean role = false;
-            LocalDateTime member_since = DataGenerationHelper.getRandomDate();
-            LocalDateTime last_connection = DataGenerationHelper.getRandomDate();
             userRepository.save(new UserEntity(name, lastname, username, gender, birthdate, country, province, address,
-                    postal_code, description, profile_picture, rating, status, phone, email, member_since, last_connection, password, role));
+                    postalCode, status, phone, email, password, role));
         }
         return userRepository.count();
     }
@@ -101,10 +96,10 @@ public class UserService {
         userRepository.deleteAll();
         userRepository.resetAutoIncrement();
         UserEntity userEntityOne = new UserEntity("Fernando", "Alonso", "ElNano", "Man",
-                DataGenerationHelper.getRandomDate(), "Spain", "Asturias", "Calle Nano 33", "53033", "Test description", "default_image.png", 0, true, "633974333", "nano@gmail.com", DataGenerationHelper.getRandomDate(), DataGenerationHelper.getRandomDate(), ALLMOTORS, true);
+                DataGenerationHelper.getRandomDate(), "Spain", "Asturias", "Calle Nano 33", "53033", true, "633974333", "nano@gmail.com", ALLMOTORS, true);
         userRepository.save(userEntityOne);
         UserEntity userEntityTwo = new UserEntity("Carlos", "Sainz", "carlossainz", "Man",
-                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", "Calle Sainz 55", "53055", "Test description", "default_image.png", 0, true, "655974455", "sainz@gmail.com", DataGenerationHelper.getRandomDate(), DataGenerationHelper.getRandomDate(), ALLMOTORS, false);
+                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", "Calle Sainz 55", "53055", true, "655974455", "sainz@gmail.com", ALLMOTORS, false);
         userRepository.save(userEntityTwo);
         return userRepository.count();
     }

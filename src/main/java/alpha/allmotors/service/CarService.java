@@ -284,18 +284,12 @@ public class CarService {
             int price = DataGenerationHelper.getRandomCarPrice();
             String plate = DataGenerationHelper.getRandomCarPlate();
             String type = DataGenerationHelper.getRandomCarType();
-            String description = DataGenerationHelper.generateComplexSentence();
-            LocalDateTime date_uploaded = LocalDateTime.now();
             String images = "default_image.png";
-            String status = "on sale";
-            int views = 0;
-            int saves = 0;
             String location = DataGenerationHelper.getRandomProvince();
             UserEntity user = userService.getOneRandom();
             carRepository
                     .save(new CarEntity(brand, model, color, year, seats, doors, horsepower, transmission, distance,
-                            engine, price, plate, type, description, images, status, date_uploaded, views, saves,
-                            location, user));
+                            engine, price, plate, type, images, location, user));
         }
         return carRepository.count();
     }

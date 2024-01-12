@@ -89,6 +89,7 @@ public class UserEntity {
     @NotBlank
     @Email
     @Size(min = 3, max = 100)
+    @Column(unique = true)
     private String email;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
@@ -107,6 +108,10 @@ public class UserEntity {
 
     private boolean role = false;
 
+    private boolean actived = true;
+    
+    private boolean banned = false;
+
     @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY)
     private List<CarEntity> cars;
 
@@ -116,9 +121,7 @@ public class UserEntity {
 
     public UserEntity(Long id, String name, String lastname, String username, String gender,
             LocalDateTime birthdate, String country, String province, String address,
-            String postalCode, String description, String profilePicture, int rating,
-            Boolean status, String phone, String email, LocalDateTime memberSince, LocalDateTime lastConnection,
-            String password, boolean role) {
+            String postalCode, Boolean status, String phone, String email, String password, boolean role) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -129,9 +132,6 @@ public class UserEntity {
         this.province = province;
         this.address = address;
         this.postalCode = postalCode;
-        this.description = description;
-        this.profilePicture = profilePicture;
-        this.rating = rating;
         this.status = status;
         this.phone = phone;
         this.email = email;
@@ -143,9 +143,7 @@ public class UserEntity {
 
     public UserEntity(String name, String lastname, String username, String gender,
             LocalDateTime birthdate, String country, String province, String address,
-            String postalCode, String description, String profilePicture, int rating,
-            Boolean status, String phone, String email, LocalDateTime memberSince, LocalDateTime lastConnection,
-            String password, boolean role) {
+            String postalCode, Boolean status, String phone, String email, String password, boolean role) {
         this.name = name;
         this.lastname = lastname;
         this.username = username;
@@ -155,9 +153,6 @@ public class UserEntity {
         this.province = province;
         this.address = address;
         this.postalCode = postalCode;
-        this.description = description;
-        this.profilePicture = profilePicture;
-        this.rating = rating;
         this.status = status;
         this.phone = phone;
         this.email = email;
@@ -330,6 +325,22 @@ public class UserEntity {
 
     public void setRole(boolean role) {
         this.role = role;
+    }
+
+    public boolean isActived() {
+        return this.actived;
+    }
+
+    public void setActived(boolean actived) {
+        this.actived = actived;
+    }
+
+    public boolean isBanned() {
+        return this.banned;
+    }
+
+    public void setBanned(boolean banned) {
+        this.banned = banned;
     }
 
     public int getCars() {

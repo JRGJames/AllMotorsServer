@@ -101,21 +101,27 @@ public class CarEntity {
     @Size(max = 255)
     private String images;
 
-    @NotNull
-    @NotBlank
-    @Size(max = 15)
+    @Size(max = 20)
     private String status;
 
-    @NotNull
     private int views;
 
-    @NotNull
     private int saves;
 
     @NotNull
     @NotBlank
     @Size(max = 50)
     private String location;
+
+    private Double emissions;
+
+    private Double consumption;
+
+    private String dgtSticker;
+
+    private LocalDateTime lastUpdate;
+
+    private LocalDateTime lastITV;
 
     @ManyToOne
     @JoinColumn(name = "id_owner")
@@ -126,8 +132,7 @@ public class CarEntity {
 
     public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String transmission, int distance, String engine, int price,
-            String images, String status, String plate, String type, String description, LocalDateTime dateUploaded,
-            int views, int saves, String location, UserEntity user) {
+            String images, String plate, String type, String location, UserEntity user) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -142,20 +147,14 @@ public class CarEntity {
         this.price = price;
         this.plate = plate;
         this.type = type;
-        this.description = description;
-        this.images = images;
-        this.status = status;
         this.dateUploaded = LocalDateTime.now();
-        this.views = views;
-        this.saves = saves;
         this.location = location;
         this.user = user;
     }
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String transmission, int distance, String engine, int price,
-            String plate, String type, String description, String images, String status, LocalDateTime dateUploaded,
-            int views, int saves, String location, UserEntity user) {
+            String plate, String type, String images, String location, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -169,20 +168,15 @@ public class CarEntity {
         this.price = price;
         this.plate = plate;
         this.type = type;
-        this.description = description;
         this.images = images;
-        this.status = status;
         this.dateUploaded = LocalDateTime.now();
-        this.views = views;
-        this.saves = saves;
         this.location = location;
         this.user = user;
     }
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String transmission, int distance, String engine, int price,
-            String plate, String type, String description, String images, String status, LocalDateTime dateUploaded,
-            int views, int saves, String location) {
+            String plate, String type, String images, String location) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -196,12 +190,8 @@ public class CarEntity {
         this.price = price;
         this.plate = plate;
         this.type = type;
-        this.description = description;
         this.images = images;
-        this.status = status;
         this.dateUploaded = LocalDateTime.now();
-        this.views = views;
-        this.saves = saves;
         this.location = location;
     }
 
@@ -371,6 +361,46 @@ public class CarEntity {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Double getEmissions() {
+        return emissions;
+    }
+
+    public void setEmissions(Double emissions) {
+        this.emissions = emissions;
+    }
+
+    public Double getConsumption() {
+        return consumption;
+    }
+
+    public void setConsumption(Double consumption) {
+        this.consumption = consumption;
+    }
+
+    public String getDgtSticker() {
+        return dgtSticker;
+    }
+
+    public void setDgtSticker(String dgtSticker) {
+        this.dgtSticker = dgtSticker;
+    }
+
+    public LocalDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = LocalDateTime.now();
+    }
+
+    public LocalDateTime getLastITV() {
+        return lastITV;
+    }
+
+    public void setLastITV(LocalDateTime lastITV) {
+        this.lastITV = lastITV;
     }
 
     public UserEntity getOwner() {
