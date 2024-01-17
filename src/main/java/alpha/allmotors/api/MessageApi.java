@@ -24,18 +24,8 @@ public class MessageApi {
     }
 
     @PostMapping("/send")
-    public ResponseEntity<MessageEntity> sendMessage(@RequestBody MessageEntity message, @RequestParam(required = false) CarEntity car) {
-        return ResponseEntity.ok(messageService.sendMessage(message, car));
-    }
-
-    @PostMapping("/like/{id}")
-    public ResponseEntity<MessageEntity> likeMessage(@PathVariable("id") Long messageId) {
-        MessageEntity likedMessage = messageService.likeMessage(messageId);
-        if (likedMessage != null) {
-            return ResponseEntity.ok(likedMessage);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<MessageEntity> sendMessage(@RequestBody MessageEntity message, @PathVariable("id_car") Long carId) {
+        return ResponseEntity.ok(messageService.sendMessage(message, carId));
     }
 
     @GetMapping("/count/{chatId}")

@@ -6,9 +6,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.service.ChatService;
 
@@ -19,6 +22,15 @@ public class ChatApi {
 
     @Autowired
     private ChatService chatService;
+
+    @PostMapping("/create")
+    public ResponseEntity<?> createChat(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
+        if (chatService.isThereCar(car)) {
+            return ResponseEntity.ok(chatService.findChatUsersCar(memberOne, memberTwo, car));
+        } else {
+            return ResponseEntity.ok(chatService.findChatUsers(memberOne, memberTwo));
+        }
+    }
 
     @GetMapping("/get/{id}")
     public ResponseEntity<?> getAllChats(@PathVariable("id") Long chatId) {

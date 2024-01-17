@@ -18,6 +18,78 @@ public class ChatService {
     @Autowired
     private ChatRepository chatRepository;
 
+    public Boolean isThereCar(CarEntity car) {
+        if (car != null && car.getId() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public ChatEntity findChatUsers(UserEntity memberOne, UserEntity memberTwo) {
+
+        if (!existsChatByUsers(memberOne, memberTwo)) {
+
+            return createChatUsers(memberOne, memberTwo);
+        } else {
+            if (getChatByUsers(memberOne, memberTwo) != null) {
+                return getChatByUsers(memberOne, memberTwo);
+            } else {
+                return getChatByUsers(memberTwo, memberOne);
+            }
+        }
+    }
+
+    public ChatEntity findChatUsersCar(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
+
+        if (!existsChatByUsersCar(memberOne, memberTwo, car)) {
+
+            return createChatUsersCar(memberOne, memberTwo, car);
+        } else {
+            if (getChatByUsersAndCar(memberOne, memberTwo, car) != null) {
+                ChatEntity chat = getChatByUsersAndCar(memberOne, memberTwo, car);
+                chat.setCar(car);
+                return chat;
+            } else {
+                ChatEntity chat = getChatByUsersAndCar(memberTwo, memberOne, car);
+                chat.setCar(car);
+                return chat;
+            }
+        }
+    }
+
+    public ChatEntity createChatUsers(UserEntity memberOne, UserEntity memberTwo) {
+
+        ChatEntity chat = new ChatEntity(memberOne, memberTwo);
+        return chatRepository.save(chat);
+    }
+
+    public ChatEntity createChatUsersCar(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
+
+        ChatEntity chat = new ChatEntity(memberOne, memberTwo, car);
+        chat.setCar(car);
+        return chatRepository.save(chat);
+    }
+
+    public Boolean existsChatByUsers(UserEntity memberOne, UserEntity memberTwo) {
+        if (getChatByUsers(memberOne, memberTwo) == null
+                && getChatByUsers(memberTwo, memberOne) == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    public Boolean existsChatByUsersCar(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
+        if (getChatByUsersAndCar(memberOne, memberTwo, car) == null
+                && getChatByUsersAndCar(memberTwo, memberOne, car) == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public Optional<ChatEntity> getChatById(Long chatId) {
         return chatRepository.findById(chatId);
     }
@@ -29,6 +101,7 @@ public class ChatService {
     public Page<ChatEntity> getChatsByUsersPaged(UserEntity memberOne, UserEntity memberTwo, Pageable pageable) {
         return chatRepository.findByMemberOneAndMemberTwo(memberOne, memberTwo, pageable);
     }
+
     public ChatEntity getChatByUsersAndCar(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
         return chatRepository.findByUsersAndCar(memberOne, memberTwo, car);
     }
@@ -49,7 +122,6 @@ public class ChatService {
         return chatRepository.findByNotificationsGreaterThan(0, pageable);
     }
 
-
     @Transactional
     public void deleteChatForUser(Long chatId, UserEntity user) {
         // Busca el chat por su identificador
@@ -57,7 +129,8 @@ public class ChatService {
 
         // Verifica si el chat existe y si el usuario es parte del chat
         if (chat != null && (user.equals(chat.getMemberOne()) || user.equals(chat.getMemberTwo()))) {
-            // Modifica el estado del chat para indicar que ha sido eliminado por este usuario
+            // Modifica el estado del chat para indicar que ha sido eliminado por este
+            // usuario
             chat.setDeletedBy(user);
             // Guarda los cambios en la base de datos
             chatRepository.save(chat);
