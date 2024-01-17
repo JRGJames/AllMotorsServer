@@ -117,10 +117,15 @@ public class CarEntity {
 
     private Double consumption;
 
+    @JoinColumn(name = "dgt_sticker")
     private String dgtSticker;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    @Column(name = "last_update")
     private LocalDateTime lastUpdate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    @Column(name = "last_itv")
     private LocalDateTime lastITV;
 
     @ManyToOne
@@ -129,6 +134,9 @@ public class CarEntity {
 
     public CarEntity() {
     }
+
+    public CarEntity(Long id) {
+        this.id = id;} 
 
     public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String transmission, int distance, String engine, int price,
