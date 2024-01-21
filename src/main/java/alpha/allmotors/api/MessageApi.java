@@ -28,6 +28,12 @@ public class MessageApi {
         return ResponseEntity.ok(messageService.sendMessage(message, carId));
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteMessage(@PathVariable("id") Long messageId) {
+        messageService.deleteMessage(messageId);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/count/{chatId}")
     public ResponseEntity<Long> countMessagesInChat(@PathVariable("chatId") Long chatId) {
         long totalMessageCount = messageService.countMessagesInChat(chatId);
