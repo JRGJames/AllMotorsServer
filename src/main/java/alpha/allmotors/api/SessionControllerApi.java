@@ -19,8 +19,8 @@ public class SessionControllerApi {
     SessionService sessionService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserBean oUserBean) {
-        return ResponseEntity.ok("\"" + sessionService.login(oUserBean) + "\"");
+    public ResponseEntity<String> login(@RequestBody UserBean userBean) {
+        return ResponseEntity.ok("\"" + sessionService.login(userBean) + "\"");
     }
 
 }
