@@ -37,6 +37,11 @@ public class ChatApi {
         return ResponseEntity.ok(chatService.getChatById(chatId));
     }
 
+    @GetMapping("/get")
+    public ResponseEntity<?> getAllChats(@RequestParam("userId") UserEntity userId) {
+        return ResponseEntity.ok(chatService.getChatsByUser(userId));
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteChat(@PathVariable("id") Long chatId, @RequestParam("userId") UserEntity userId) {
         // Lógica para eliminar un chat
