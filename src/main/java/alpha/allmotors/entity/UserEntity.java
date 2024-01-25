@@ -25,13 +25,9 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @NotBlank
     @Size(min = 3, max = 50)
     private String name;
 
-    @NotNull
-    @NotBlank
     @Size(min = 3, max = 50)
     private String lastname;
 
@@ -41,30 +37,20 @@ public class UserEntity {
     @Column(unique = true)
     private String username;
 
-    @NotNull
-    @NotBlank
     @Size(min = 3, max = 20)
     private String gender;
 
     private LocalDateTime birthdate;
 
-    @NotNull
-    @NotBlank
     @Size(min = 3, max = 25)
     private String country;
 
-    @NotNull
-    @NotBlank
     @Size(min = 3, max = 30)
     private String province;
 
-    @NotNull
-    @NotBlank
     @Size(min = 3, max = 30)
     private String address;
 
-    @NotNull
-    @NotBlank
     @Size(min = 3, max = 15)
     @Column(name = "postal_code")
     private String postalCode;
@@ -76,12 +62,10 @@ public class UserEntity {
     @Column(name = "profile_picture")
     private String profilePicture;
 
-    @NotNull
     private int rating = 0;
 
     private Boolean status;
 
-    @NotNull
     @Size(min = 9, max = 9)
     private String phone;
 
@@ -162,8 +146,9 @@ public class UserEntity {
         this.role = role;
     }
 
-    public UserEntity(String username, String password) {
+    public UserEntity(String username, String email, String password) {
         this.username = username;
+        this.email = email;
         this.password = password;
     }
 

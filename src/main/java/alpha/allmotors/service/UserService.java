@@ -38,7 +38,7 @@ public class UserService {
     public Long create(UserEntity userEntity) {
         sessionService.onlyAdmins();
         userEntity.setId(null);
-        userEntity.setPassword(ALLMOTORS);
+        userEntity.setPassword(userEntity.getPassword());
         return userRepository.save(userEntity).getId();
     }
 
