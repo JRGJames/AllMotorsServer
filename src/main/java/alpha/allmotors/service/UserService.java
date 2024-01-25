@@ -15,7 +15,7 @@ import jakarta.transaction.Transactional;
 @Service
 public class UserService {
 
-    private final String ALLMOTORS = "c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894";
+    private final String ALLMOTORS = "afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18";
 
     @Autowired
     UserRepository userRepository;
