@@ -282,25 +282,25 @@ INSERT INTO `message` (`id`, `content`, `sent_time`, `is_liked`, `is_read`, `id_
 
 CREATE TABLE `user` (
   `id` bigint NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `username` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `gender` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `birthdate` datetime NOT NULL,
-  `country` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `province` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `postal_code` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `gender` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `birthdate` datetime DEFAULT NULL,
+  `country` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `province` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `postal_code` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `profile_picture` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `rating` int DEFAULT '0',
-  `status` tinyint(1) NOT NULL,
-  `phone` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `phone` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `role` tinyint(1) NOT NULL DEFAULT '0',
-  `member_since` datetime NOT NULL,
-  `last_connection` datetime NOT NULL,
+  `role` tinyint(1) DEFAULT '0',
+  `member_since` datetime DEFAULT NULL,
+  `last_connection` datetime DEFAULT NULL,
   `banned` tinyint(1) DEFAULT '0',
   `actived` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -321,7 +321,13 @@ INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`,
 (9, 'Eloy', 'Muñoz', 'eloun6', 'woman', '2005-03-05 10:48:15', 'South Africa', 'New Brunswick', '12 Cedar Road', '189441', 'while the cat run brightly one dog barks slowly', 'default_image.png', 0, 0, '729110795', 'elomuñ6@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08', 1, 1),
 (10, 'Rafael', 'Farell', 'rafar7', 'prefer not to say', '2002-08-25 06:30:48', 'China', 'Manitoba', '4 Golden Gate', '71641-196', 'even though the house ate a sandwich ate softly', 'default_image.png', 0, 1, '256350455', 'raffar7@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08', 1, 1),
 (11, 'Pablo', 'García', 'pabar8', 'man', '2021-09-21 09:57:26', 'Germany', 'Northwest Territories', '19 Meadow Lane', '405991', 'when the book sleeps brightly one sun is quickly', 'default_image.png', 0, 1, '355513262', 'pabgar8@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08', 1, 1),
-(12, 'Rafael', 'Puig', 'rafui9', 'prefer not to say', '1930-09-27 14:10:27', 'Norway', 'Valencia', '12 Pine Street', '21540-099', 'than a house run a friend fly quickly', 'default_image.png', 0, 1, '646053919', 'rafpui9@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08', 1, 1);
+(12, 'Rafael', 'Puig', 'rafui9', 'prefer not to say', '1930-09-27 14:10:27', 'Norway', 'Valencia', '12 Pine Street', '21540-099', 'than a house run a friend fly quickly', 'default_image.png', 0, 1, '646053919', 'rafpui9@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-01-10 23:51:08', '2024-01-10 23:51:08', 1, 1),
+(13, NULL, NULL, 'a026330562r', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'jarogos14@gmail.com', 'ae2a56aa2553b961eed09b46a07f23ee55d7427ba2372bb7183dee40007f8405', 0, '2024-01-26 11:35:32', '2024-01-26 11:35:32', 0, 1),
+(14, NULL, NULL, 'pepepee', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'jarogos14@gmail.com', 'ae2a56aa2553b961eed09b46a07f23ee55d7427ba2372bb7183dee40007f8405', 0, '2024-01-26 11:36:07', '2024-01-26 11:36:07', 0, 1),
+(15, NULL, NULL, 'a026330562r', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'jarogos14@gmail.com', 'ae2a56aa2553b961eed09b46a07f23ee55d7427ba2372bb7183dee40007f8405', 0, '2024-01-26 11:51:32', '2024-01-26 11:51:32', 0, 1),
+(16, NULL, NULL, 'a026330562r', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'jarogos14@gmail.com', 'pepepepe', 0, '2024-01-26 11:52:34', '2024-01-26 11:52:34', 0, 1),
+(17, NULL, NULL, 'a026330562r', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'jarogos14@gmail.com', 'pepepepe', 0, '2024-01-26 11:56:43', '2024-01-26 11:56:43', 0, 1),
+(18, NULL, NULL, 'a026330562r', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'jarogos14@gmail.com', 'pepepepepe', 0, '2024-01-26 11:58:02', '2024-01-26 11:58:02', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -377,7 +383,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
