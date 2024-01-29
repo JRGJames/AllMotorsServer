@@ -77,8 +77,6 @@ public class CarEntity {
     @Min(value = 1)
     private int price;
 
-    @NotNull
-    @NotBlank
     @Size(max = 12)
     private String plate;
 
@@ -87,8 +85,6 @@ public class CarEntity {
     @Size(max = 20)
     private String type;
 
-    @NotNull
-    @NotBlank
     @Size(max = 200)
     private String description;
 
@@ -96,8 +92,6 @@ public class CarEntity {
     @Column(name = "date_uploaded")
     private LocalDateTime dateUploaded;
 
-    @NotNull
-    @NotBlank
     @Size(max = 255)
     private String images;
 
