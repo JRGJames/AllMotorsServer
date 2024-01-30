@@ -54,8 +54,8 @@ public class CarApi {
     //         @RequestParam(name = "brandList", required = false) List<String> brandList,
     //         @RequestParam(name = "modelList", required = false) List<String> modelList,
     //         @RequestParam(name = "colorList", required = false) List<String> colorList,
-    //         @RequestParam(name = "engineList", required = false) List<String> engineList,
-    //         @RequestParam(name = "transmissionList", required = false) List<String> transmissionList,
+    //         @RequestParam(name = "fuelList", required = false) List<String> fuelList,
+    //         @RequestParam(name = "gearboxList", required = false) List<String> gearboxList,
     //         @RequestParam(name = "typeList", required = false) List<String> typeList,
     //         @RequestParam(name = "yearStart", required = false) Integer yearStart,
     //         @RequestParam(name = "yearEnd", required = false) Integer yearEnd,
@@ -70,7 +70,7 @@ public class CarApi {
     //         @RequestParam(name = "distanceStart", required = false) Integer distanceStart,
     //         @RequestParam(name = "distanceEnd", required = false) Integer distanceEnd) {
     //     return ResponseEntity.ok(carService.getPage(pageable, strFilter, userId, brandList, modelList, colorList,
-    //             engineList, transmissionList, typeList, yearStart, yearEnd, priceStart, priceEnd, seatsStart, seatsEnd,
+    //             fuelList, gearboxList, typeList, yearStart, yearEnd, priceStart, priceEnd, seatsStart, seatsEnd,
     //             doorsStart, doorsEnd, horsepowerStart, horsepowerEnd, distanceStart, distanceEnd));
     // }
 

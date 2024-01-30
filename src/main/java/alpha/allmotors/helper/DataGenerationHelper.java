@@ -293,14 +293,14 @@ public class DataGenerationHelper {
         return random.nextInt(MAX_HORSEPOWER - MIN_HORSEPOWER + 1) + MIN_HORSEPOWER;
     }
 
-    public static String getRandomCarTransmission() {
+    public static String getRandomCarGearbox() {
         Random random = new Random();
-        // Array of possible transmission types
-        String[] transmissions = {"manual", "automatic", "semi-automatic"};
+        // Array of possible gearbox types
+        String[] gearboxes = {"manual", "automatic", "semi-automatic"};
         // Randomly select an index from the array
-        int randomIndex = random.nextInt(transmissions.length);
-        // Return the selected transmission type
-        return transmissions[randomIndex];
+        int randomIndex = random.nextInt(gearboxes.length);
+        // Return the selected gearbox type
+        return gearboxes[randomIndex];
     }
 
     private static final int MIN_DISTANCE = 1000; // in kilometers
@@ -311,14 +311,14 @@ public class DataGenerationHelper {
         return random.nextInt(MAX_DISTANCE - MIN_DISTANCE + 1) + MIN_DISTANCE;
     }
 
-    public static String getRandomCarEngineType() {
+    public static String getRandomCarFuelType() {
         Random random = new Random();
-        // Array of possible engine types
-        String[] engineTypes = {"gasoline", "diesel", "electric", "hybrid"};
+        // Array of possible fuel types
+        String[] fuelTypes = {"gasoline", "diesel", "electric", "hybrid"};
         // Randomly select an index from the array
-        int randomIndex = random.nextInt(engineTypes.length);
-        // Return the selected engine type
-        return engineTypes[randomIndex];
+        int randomIndex = random.nextInt(fuelTypes.length);
+        // Return the selected fuel type
+        return fuelTypes[randomIndex];
     }
 
     private static final int MIN_PRICE = 1;  // in currency units

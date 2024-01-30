@@ -43,9 +43,9 @@ CREATE TABLE `car` (
   `seats` int NOT NULL,
   `doors` int NOT NULL,
   `horsepower` int NOT NULL,
-  `transmission` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `gearbox` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `distance` int NOT NULL,
-  `engine` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `fuel` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `price` int NOT NULL,
   `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `location` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `car` (
 -- Dumping data for table `car`
 --
 
-INSERT INTO `car` (`id`, `brand`, `model`, `date_uploaded`, `images`, `status`, `views`, `saves`, `color`, `year`, `seats`, `doors`, `horsepower`, `transmission`, `distance`, `engine`, `price`, `type`, `location`, `emissions`, `consumption`, `plate`, `dgt_sticker`, `last_itv`, `last_update`, `description`, `id_owner`) VALUES
+INSERT INTO `car` (`id`, `brand`, `model`, `date_uploaded`, `images`, `status`, `views`, `saves`, `color`, `year`, `seats`, `doors`, `horsepower`, `gearbox`, `distance`, `fuel`, `price`, `type`, `location`, `emissions`, `consumption`, `plate`, `dgt_sticker`, `last_itv`, `last_update`, `description`, `id_owner`) VALUES
 (1, 'Ford', 'Elantra', '2024-01-07 16:27:25', 'default_image.png', 'on sale', 0, 0, 'Gray', '1956', 7, 5, 543, 'automatic', 560468, 'electric', 2326419, 'Sedan', 'Manitoba', 0, NULL, '5652-WKG', '', NULL, NULL, 'before a friend is slowly a house is and one dog sleeps loudly', 2),
 (2, 'Mazda', '3 Series', '2024-01-07 16:27:25', 'default_image.png', 'on sale', 0, 0, 'Blue', '1977', 6, 4, 805, 'automatic', 162894, 'diesel', 3692694, 'Van', 'Newfoundland and Labrador', 0, NULL, '5180-NUI', '', NULL, NULL, 'since a car barks the house ate but a birds run softly', 1),
 (3, 'Honda', 'A4', '2024-01-07 16:27:25', 'default_image.png', 'on sale', 0, 0, 'Black', '1936', 6, 5, 918, 'automatic', 1344893, 'electric', 3757363, 'Hatchback', 'Nunavut', 0, NULL, '9292-MCA', '', NULL, NULL, 'because the dog ate brightly the book shines and the cat fly', 1),

@@ -39,7 +39,7 @@ public class CarService {
         return carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car not found"));
     }
 
-    // public Page<CarEntity> getPage(Pageable pageable, String strFilter, Long userId, List<String> brandList, List<String> modelList, List<String> colorList, List<String> engineList, List<String> transmissionList, List<String> typeList, int yearStart, int yearEnd, int priceStart, int priceEnd, int seatsStart, int seatsEnd, int doorsStart, int doorsEnd, int horsepowerStart, int horsepowerEnd, int distanceStart, int distanceEnd) {
+    // public Page<CarEntity> getPage(Pageable pageable, String strFilter, Long userId, List<String> brandList, List<String> modelList, List<String> colorList, List<String> fuelList, List<String> gearboxList, List<String> typeList, int yearStart, int yearEnd, int priceStart, int priceEnd, int seatsStart, int seatsEnd, int doorsStart, int doorsEnd, int horsepowerStart, int horsepowerEnd, int distanceStart, int distanceEnd) {
 
     //     if (brandList == null) {
     //         brandList = Arrays.asList("Toyota", "Honda", "Ford", "Chevrolet", "Volkswagen",
@@ -54,12 +54,12 @@ public class CarService {
     //         colorList = Arrays.asList("Red", "Blue", "Green", "Black", "White", "Silver", "Gray", "Yellow", "Orange", "Purple");
     //     }
         
-    //     if (engineList == null) {
-    //         engineList = Arrays.asList("Gasoline", "Diesel", "Electric", "Hybrid");
+    //     if (fuelList == null) {
+    //         fuelList = Arrays.asList("Gasoline", "Diesel", "Electric", "Hybrid");
     //     }
 
-    //     if (transmissionList == null) {
-    //         transmissionList = Arrays.asList("Manual", "Automatic", "Semi-automatic");
+    //     if (gearboxList == null) {
+    //         gearboxList = Arrays.asList("Manual", "Automatic", "Semi-automatic");
     //     }
 
     //     if (typeList == null) {
@@ -70,13 +70,13 @@ public class CarService {
     //         brandList = Arrays.asList(strFilter);
     //         modelList = Arrays.asList(strFilter);
     //         colorList = Arrays.asList(strFilter);
-    //         engineList = Arrays.asList(strFilter);
-    //         transmissionList = Arrays.asList(strFilter);
+    //         fuelList = Arrays.asList(strFilter);
+    //         gearboxList = Arrays.asList(strFilter);
     //         typeList = Arrays.asList(strFilter);
     //     }
 
     //     // Lógica para obtener la página de coches según los filtros
-    //     return carRepository.findCarsWithFilters(pageable, userId, brandList, modelList, colorList, transmissionList, engineList, typeList, yearStart, yearEnd, seatsStart, seatsEnd, doorsStart, doorsEnd, priceStart, priceEnd, horsepowerStart, horsepowerEnd, distanceStart, distanceEnd);
+    //     return carRepository.findCarsWithFilters(pageable, userId, brandList, modelList, colorList, gearboxList, fuelList, typeList, yearStart, yearEnd, seatsStart, seatsEnd, doorsStart, doorsEnd, priceStart, priceEnd, horsepowerStart, horsepowerEnd, distanceStart, distanceEnd);
     // }
 
 
@@ -140,19 +140,19 @@ public class CarService {
         }
     }
 
-    public Page<CarEntity> getPageByTransmission(Pageable pageable, Long userId, String transmission) {
+    public Page<CarEntity> getPageByGearbox(Pageable pageable, Long userId, String gearbox) {
         if (userId == 0) {
-            return carRepository.findCarsByTransmission(transmission, pageable);
+            return carRepository.findCarsByGearbox(gearbox, pageable);
         } else {
-            return carRepository.findCarsByUserIdAndTransmission(userId, transmission, pageable);
+            return carRepository.findCarsByUserIdAndGearbox(userId, gearbox, pageable);
         }
     }
 
-    public Page<CarEntity> getPageByEngine(Pageable pageable, Long userId, String engine) {
+    public Page<CarEntity> getPageByFuel(Pageable pageable, Long userId, String fuel) {
         if (userId == 0) {
-            return carRepository.findCarsByEngine(engine, pageable);
+            return carRepository.findCarsByFuel(fuel, pageable);
         } else {
-            return carRepository.findCarsByUserIdAndEngine(userId, engine, pageable);
+            return carRepository.findCarsByUserIdAndFuel(userId, fuel, pageable);
         }
     }
 
@@ -278,9 +278,9 @@ public class CarService {
             int seats = DataGenerationHelper.getRandomCarSeats();
             int doors = DataGenerationHelper.getRandomCarDoors();
             int horsepower = DataGenerationHelper.getRandomCarHorsepower();
-            String transmission = DataGenerationHelper.getRandomCarTransmission();
+            String gearbox = DataGenerationHelper.getRandomCarGearbox();
             int distance = DataGenerationHelper.getRandomCarDistance();
-            String engine = DataGenerationHelper.getRandomCarEngineType();
+            String fuel = DataGenerationHelper.getRandomCarFuelType();
             int price = DataGenerationHelper.getRandomCarPrice();
             String plate = DataGenerationHelper.getRandomCarPlate();
             String type = DataGenerationHelper.getRandomCarType();
@@ -288,8 +288,8 @@ public class CarService {
             String location = DataGenerationHelper.getRandomProvince();
             UserEntity user = userService.getOneRandom();
             carRepository
-                    .save(new CarEntity(brand, model, color, year, seats, doors, horsepower, transmission, distance,
-                            engine, price, plate, type, images, location, user));
+                    .save(new CarEntity(brand, model, color, year, seats, doors, horsepower, gearbox, distance,
+                    fuel, price, plate, type, images, location, user));
         }
         return carRepository.count();
     }

@@ -61,7 +61,7 @@ public class CarEntity {
     @NotNull
     @NotBlank
     @Size(max = 20)
-    private String transmission;
+    private String gearbox;
 
     @NotNull
     @Min(value = 1)
@@ -71,7 +71,7 @@ public class CarEntity {
     @NotNull
     @NotBlank
     @Size(max = 20)
-    private String engine;
+    private String fuel;
 
     @NotNull
     @Min(value = 1)
@@ -133,7 +133,7 @@ public class CarEntity {
         this.id = id;} 
 
     public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
-            int horsepower, String transmission, int distance, String engine, int price,
+            int horsepower, String gearbox, int distance, String fuel, int price,
             String images, String plate, String type, String location, UserEntity user) {
         this.id = id;
         this.brand = brand;
@@ -143,9 +143,9 @@ public class CarEntity {
         this.seats = seats;
         this.doors = doors;
         this.horsepower = horsepower;
-        this.transmission = transmission;
+        this.gearbox = gearbox;
         this.distance = distance;
-        this.engine = engine;
+        this.fuel = fuel;
         this.price = price;
         this.plate = plate;
         this.type = type;
@@ -155,7 +155,7 @@ public class CarEntity {
     }
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
-            int horsepower, String transmission, int distance, String engine, int price,
+            int horsepower, String gearbox, int distance, String fuel, int price,
             String plate, String type, String images, String location, UserEntity user) {
         this.brand = brand;
         this.model = model;
@@ -164,9 +164,9 @@ public class CarEntity {
         this.seats = seats;
         this.doors = doors;
         this.horsepower = horsepower;
-        this.transmission = transmission;
+        this.gearbox = gearbox;
         this.distance = distance;
-        this.engine = engine;
+        this.fuel = fuel;
         this.price = price;
         this.plate = plate;
         this.type = type;
@@ -177,7 +177,7 @@ public class CarEntity {
     }
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
-            int horsepower, String transmission, int distance, String engine, int price,
+            int horsepower, String gearbox, int distance, String fuel, int price,
             String plate, String type, String images, String location) {
         this.brand = brand;
         this.model = model;
@@ -186,9 +186,9 @@ public class CarEntity {
         this.seats = seats;
         this.doors = doors;
         this.horsepower = horsepower;
-        this.transmission = transmission;
+        this.gearbox = gearbox;
         this.distance = distance;
-        this.engine = engine;
+        this.fuel = fuel;
         this.price = price;
         this.plate = plate;
         this.type = type;
@@ -261,12 +261,12 @@ public class CarEntity {
         this.horsepower = horsepower;
     }
 
-    public String getTransmission() {
-        return transmission;
+    public String getGearbox() {
+        return gearbox;
     }
 
-    public void setTransmission(String transmission) {
-        this.transmission = transmission;
+    public void setGearbox(String gearbox) {
+        this.gearbox = gearbox;
     }
 
     public int getDistance() {
@@ -277,12 +277,12 @@ public class CarEntity {
         this.distance = distance;
     }
 
-    public String getEngine() {
-        return engine;
+    public String getFuel() {
+        return fuel;
     }
 
-    public void setEngine(String engine) {
-        this.engine = engine;
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
     }
 
     public int getPrice() {

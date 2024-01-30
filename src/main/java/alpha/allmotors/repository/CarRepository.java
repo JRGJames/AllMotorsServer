@@ -17,8 +17,8 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
         // " AND (:brandList IS NULL OR c.brand IN :brandList)" +
         // " AND (:modelList IS NULL OR c.model IN :modelList)" +
         // " AND (:colorList IS NULL OR c.color IN :colorList)" +
-        // " AND (:transmissionList IS NULL OR c.transmission IN :transmissionList)" +
-        // " AND (:engineList IS NULL OR c.engine IN :engineList)" +
+        // " AND (:gearboxList IS NULL OR c.gearbox IN :gearboxList)" +
+        // " AND (:fuelList IS NULL OR c.fuel IN :fuelList)" +
         // " AND (:typeList IS NULL OR c.type IN :typeList)" +
         // " AND (:yearStart IS NULL OR c.year >= :yearStart)" +
         // " AND (:yearEnd IS NULL OR c.year <= :yearEnd)" +
@@ -37,8 +37,8 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
         // @Param("brandList") List<String> brandList,
         // @Param("modelList") List<String> modelList,
         // @Param("colorList") List<String> colorList,
-        // @Param("transmissionList") List<String> transmissionList,
-        // @Param("engineList") List<String> engineList,
+        // @Param("gearboxList") List<String> gearboxList,
+        // @Param("fuelList") List<String> fuelList,
         // @Param("typeList") List<String> typeList,
         // @Param("year") int yearStart,
         // @Param("year") int yearEnd,
@@ -83,11 +83,11 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
         @Query(value = "SELECT * FROM car WHERE color = :color ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
         Page<CarEntity> findCarsByColor(String color, Pageable pageable);
 
-        @Query(value = "SELECT * FROM car WHERE transmission = :transmission ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
-        Page<CarEntity> findCarsByTransmission(String transmission, Pageable pageable);
+        @Query(value = "SELECT * FROM car WHERE gearbox = :gearbox ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+        Page<CarEntity> findCarsByGearbox(String gearbox, Pageable pageable);
 
-        @Query(value = "SELECT * FROM car WHERE engine = :engine ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
-        Page<CarEntity> findCarsByEngine(String engine, Pageable pageable);
+        @Query(value = "SELECT * FROM car WHERE fuel = :fuel ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+        Page<CarEntity> findCarsByFuel(String fuel, Pageable pageable);
 
         @Query(value = "SELECT * FROM car WHERE type = :type ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
         Page<CarEntity> findCarsByType(String type, Pageable pageable);
@@ -143,11 +143,11 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
         @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND color = :color ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
         Page<CarEntity> findCarsByUserIdAndColor(Long userId, String color, Pageable pageable);
 
-        @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND transmission = :transmission ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
-        Page<CarEntity> findCarsByUserIdAndTransmission(Long userId, String transmission, Pageable pageable);
+        @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND gearbox = :gearbox ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+        Page<CarEntity> findCarsByUserIdAndGearbox(Long userId, String gearbox, Pageable pageable);
 
-        @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND engine = :engine ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
-        Page<CarEntity> findCarsByUserIdAndEngine(Long userId, String engine, Pageable pageable);
+        @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND fuel = :fuel ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+        Page<CarEntity> findCarsByUserIdAndFuel(Long userId, String fuel, Pageable pageable);
 
         @Query(value = "SELECT * FROM car WHERE id_owner = :userId AND type = :type ORDER BY id DESC LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
         Page<CarEntity> findCarsByUserIdAndType(Long userId, String type, Pageable pageable);
