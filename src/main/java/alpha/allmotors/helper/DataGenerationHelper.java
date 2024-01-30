@@ -143,7 +143,7 @@ public class DataGenerationHelper {
         }
     }
 
-    private static final String[] genders = { "woman", "man", "prefer not to say" };
+    private static final String[] genders = { "Woman", "Man", "Prefer not to say" };
 
     public static String getRandomGender() {
         return genders[new Random().nextInt(genders.length)];
@@ -296,7 +296,7 @@ public class DataGenerationHelper {
     public static String getRandomCarGearbox() {
         Random random = new Random();
         // Array of possible gearbox types
-        String[] gearboxes = {"manual", "automatic", "semi-automatic"};
+        String[] gearboxes = {"Manual", "Automatic"};
         // Randomly select an index from the array
         int randomIndex = random.nextInt(gearboxes.length);
         // Return the selected gearbox type
@@ -314,7 +314,7 @@ public class DataGenerationHelper {
     public static String getRandomCarFuelType() {
         Random random = new Random();
         // Array of possible fuel types
-        String[] fuelTypes = {"gasoline", "diesel", "electric", "hybrid"};
+        String[] fuelTypes = {"Gasoline", "Diesel", "Electric", "Hybrid"};
         // Randomly select an index from the array
         int randomIndex = random.nextInt(fuelTypes.length);
         // Return the selected fuel type
@@ -364,5 +364,24 @@ public class DataGenerationHelper {
         int randomIndex = random.nextInt(carTypes.length);
 
         return carTypes[randomIndex];
+    }
+
+    public static String getRandomDGTSticker() {
+        String[] dgtStickers = {"B", "C", "0", "ECO"};
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(dgtStickers.length);
+
+        return dgtStickers[randomIndex];
+    }
+
+    public static Double getRandomEmissions() {
+        Random random = new Random();
+        return random.nextDouble() * 1000;
+    }
+
+    public static Double getRandomConsumption() {
+        Random random = new Random();
+        return random.nextDouble() * 10;
     }
 }

@@ -134,7 +134,7 @@ public class CarEntity {
 
     public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price,
-            String images, String plate, String type, String location, UserEntity user) {
+            String images, String type, String location, UserEntity user) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -147,8 +147,30 @@ public class CarEntity {
         this.distance = distance;
         this.fuel = fuel;
         this.price = price;
-        this.plate = plate;
         this.type = type;
+        this.images = images;
+        this.lastUpdate = LocalDateTime.now();
+        this.dateUploaded = LocalDateTime.now();
+        this.location = location;
+        this.user = user;
+    }
+
+    public CarEntity(String brand, String model, String color, int year, int seats, int doors,
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, String images, String location, UserEntity user) {
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+        this.year = year;
+        this.seats = seats;
+        this.doors = doors;
+        this.horsepower = horsepower;
+        this.gearbox = gearbox;
+        this.distance = distance;
+        this.fuel = fuel;
+        this.price = price;
+        this.type = type;
+        this.images = images;
+        this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
         this.location = location;
         this.user = user;
@@ -156,7 +178,7 @@ public class CarEntity {
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price,
-            String plate, String type, String images, String location, UserEntity user) {
+            String plate, String type, String images, String location, String description, Double emissions, Double consumption, String dgtSticker, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -170,31 +192,14 @@ public class CarEntity {
         this.price = price;
         this.plate = plate;
         this.type = type;
+        this.description = description;
         this.images = images;
-        this.dateUploaded = LocalDateTime.now();
         this.location = location;
+        this.emissions = emissions;
+        this.consumption = consumption;
+        this.dgtSticker = dgtSticker;
+        this.dateUploaded = LocalDateTime.now();
         this.user = user;
-    }
-
-    public CarEntity(String brand, String model, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price,
-            String plate, String type, String images, String location) {
-        this.brand = brand;
-        this.model = model;
-        this.color = color;
-        this.year = year;
-        this.seats = seats;
-        this.doors = doors;
-        this.horsepower = horsepower;
-        this.gearbox = gearbox;
-        this.distance = distance;
-        this.fuel = fuel;
-        this.price = price;
-        this.plate = plate;
-        this.type = type;
-        this.images = images;
-        this.dateUploaded = LocalDateTime.now();
-        this.location = location;
     }
 
     public Long getId() {
