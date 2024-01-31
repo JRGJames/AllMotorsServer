@@ -9,6 +9,7 @@ import alpha.allmotors.exception.ResourceNotFoundException;
 import alpha.allmotors.exception.UnauthorizedException;
 import alpha.allmotors.helper.JWTHelper;
 import alpha.allmotors.repository.UserRepository;
+import org.springframework.util.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Service
@@ -22,13 +23,21 @@ public class SessionService {
 
 
     public String login(UserBean userBean) {
-        Optional<UserEntity> userByUsername = userRepository.findByUsernameAndPassword(userBean.getUsername(), userBean.getPassword());
-        Optional<UserEntity> userByEmail = userRepository.findByEmailAndPassword(userBean.getEmail(), userBean.getPassword());
+        Optional<UserEntity> userEntity;
     
-        UserEntity user = userByUsername.orElseGet(() -> userByEmail.orElseThrow(() -> new ResourceNotFoundException("Wrong username or password")));
+        if (StringUtils.hasText(userBean.getUsername())) {
+            userEntity = userRepository.findByUsernameAndPassword(userBean.getUsername(), userBean.getPassword());
+        } else if (StringUtils.hasText(userBean.getEmail())) {
+            userEntity = userRepository.findByEmailAndPassword(userBean.getEmail(), userBean.getPassword());
+        } else {
+            throw new UnauthorizedException("Debe proporcionar nombre de usuario o correo electrónico");
+        }
+    
+        UserEntity user = userEntity.orElseThrow(() -> new ResourceNotFoundException("Wrong username or password"));
     
         return JWTHelper.generateJWT(user.getUsername());
     }
+    
      
 
     public String getSessionUsername() {        
