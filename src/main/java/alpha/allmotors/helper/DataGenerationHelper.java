@@ -384,4 +384,47 @@ public class DataGenerationHelper {
         Random random = new Random();
         return random.nextDouble() * 10;
     }
+
+    public static LocalDateTime getRandomLastITV() {
+        long minDay = LocalDate.of(2010, 1, 1).toEpochDay();
+        long maxDay = LocalDate.of(2023, 10, 31).toEpochDay();
+        long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
+        return LocalDate.ofEpochDay(randomDay).atTime(getRandomInt(0, 23), getRandomInt(0, 59), getRandomInt(0, 59));
+    }
+
+    public static Double getRandomAcceleration() {
+        Random random = new Random();
+        return random.nextDouble() * 100;
+    }
+
+    public static String getRandomCurrency() {
+        // Define arrays de códigos de moneda y sus símbolos correspondientes
+        String[] currencies = {"USD", "EUR", "GBP", "JPY", "AUD", "CAD"};
+        String[] symbols = {"$", "€", "£", "¥", "A$", "C$"};
+
+        // Utiliza la clase Random para obtener un índice aleatorio
+        Random random = new Random();
+        int randomIndex = random.nextInt(currencies.length);
+
+        // Retorna el símbolo de la moneda seleccionada aleatoriamente
+        return symbols[randomIndex];
+    }
+
+    public static String getRandomDrive() {
+        String[] drives = {"FWD", "RWD", "AWD"};
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(drives.length);
+
+        return drives[randomIndex];
+    }
+
+    public static String getRandomEngine() {
+        String[] engines = {"V6", "V8", "V10", "V12", "W12", "W16", "I3", "I4", "I5", "I6"};
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(engines.length);
+
+        return engines[randomIndex];
+    }
 }

@@ -122,6 +122,22 @@ public class CarEntity {
     @Column(name = "last_itv")
     private LocalDateTime lastITV;
 
+    @NotNull
+    @NotBlank
+    private String currency;
+
+    @NotBlank
+    @NotNull
+    @Size(max = 30)
+    @Column(name = "bought_country")
+    private String boughtCountry;
+
+    private Double acceleration;
+
+    private String engine;
+
+    private String drive;
+
     @ManyToOne
     @JoinColumn(name = "id_owner")
     private UserEntity user;
@@ -130,11 +146,12 @@ public class CarEntity {
     }
 
     public CarEntity(Long id) {
-        this.id = id;} 
+        this.id = id;
+    }
 
     public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price,
-            String images, String type, String location, UserEntity user) {
+            String images, String type, String location, String currency, String boughtCountry, UserEntity user) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -152,11 +169,14 @@ public class CarEntity {
         this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
         this.location = location;
+        this.currency = currency;
+        this.boughtCountry = boughtCountry;
         this.user = user;
     }
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price, String type, String images, String location, UserEntity user) {
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, String images,
+            String location, String currency, String boughtCountry, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -178,7 +198,9 @@ public class CarEntity {
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price,
-            String plate, String type, String images, String location, String description, Double emissions, Double consumption, String dgtSticker, UserEntity user) {
+            String plate, String type, String images, String location, String description, Double emissions,
+            Double consumption, String dgtSticker, LocalDateTime lastItv, String currency, String boughtCountry,
+            Double acceleration, String engine, String drive, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -198,7 +220,14 @@ public class CarEntity {
         this.emissions = emissions;
         this.consumption = consumption;
         this.dgtSticker = dgtSticker;
+        this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
+        this.lastITV = lastItv;
+        this.currency = currency;
+        this.boughtCountry = boughtCountry;
+        this.acceleration = acceleration;
+        this.engine = engine;
+        this.drive = drive;
         this.user = user;
     }
 
@@ -384,6 +413,46 @@ public class CarEntity {
 
     public void setConsumption(Double consumption) {
         this.consumption = consumption;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getBoughtCountry() {
+        return boughtCountry;
+    }
+
+    public void setBoughtCountry(String boughtCountry) {
+        this.boughtCountry = boughtCountry;
+    }
+
+    public Double getAcceleration() {
+        return acceleration;
+    }
+
+    public void setAcceleration(Double acceleration) {
+        this.acceleration = acceleration;
+    }
+
+    public String getEngine() {
+        return engine;
+    }
+
+    public void setEngine(String engine) {
+        this.engine = engine;
+    }
+
+    public String getDrive() {
+         return drive;
+    }
+
+    public void setDrive(String drive) {
+        this.drive = drive;
     }
 
     public String getDgtSticker() {
