@@ -293,13 +293,13 @@ public class CarService {
             LocalDateTime lastItv = DataGenerationHelper.getRandomLastITV();
             String currency = DataGenerationHelper.getRandomCurrency();
             Double acceleration = DataGenerationHelper.getRandomAcceleration();
-            String boughtCountry = DataGenerationHelper.getRandomCountry();   
+            String boughtIn = DataGenerationHelper.getRandomCountry();   
             String engine = DataGenerationHelper.getRandomEngine();
             String drive = DataGenerationHelper.getRandomDrive();        
             UserEntity user = userService.getOneRandom();
             carRepository
                     .save(new CarEntity(brand, model, color, year, seats, doors, horsepower, gearbox, distance,
-                    fuel, price, plate, type, images, location, description, emissions, consumption, dgtSticker, lastItv, currency, boughtCountry, acceleration, engine, drive, user));
+                    fuel, price, plate, type, images, location, description, emissions, consumption, dgtSticker, lastItv, currency, boughtIn, acceleration, engine, drive, user));
         }
         return carRepository.count();
     }
