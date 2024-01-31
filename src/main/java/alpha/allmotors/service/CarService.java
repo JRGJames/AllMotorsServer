@@ -348,8 +348,8 @@ public Long populate(Integer amount) {
         return carRepository.count();
     }
 
-    public List<CarEntity> getCarsByViews(int resultCount) {
-        return carRepository.findCarsByOrderByViewsDesc(resultCount);
-    }
+        public List<CarEntity> getCarsByViews(Integer resultCount) {
+            return carRepository.findCarsByOrderByViewsDesc(resultCount);
+        }
 
 }

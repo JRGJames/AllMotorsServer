@@ -84,8 +84,8 @@ public class CarApi {
         return ResponseEntity.ok(carService.empty());
     }
 
-    @GetMapping("/get/byViews")
-    public ResponseEntity<List<CarEntity>> get(Integer amount) {
+    @GetMapping("/get/byViews/{amount}")
+    public ResponseEntity<List<CarEntity>> get(@PathVariable("amount") Integer amount) {
         return ResponseEntity.ok(carService.getCarsByViews(amount));
     }
 }

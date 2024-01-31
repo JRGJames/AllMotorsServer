@@ -54,7 +54,7 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
         // @Param("distance") int distanceEnd);
 
         @Query(value = "SELECT * FROM car ORDER BY views DESC LIMIT :resultCount", nativeQuery = true)
-        List<CarEntity> findCarsByOrderByViewsDesc(int resultCount);
+        List<CarEntity> findCarsByOrderByViewsDesc(Integer resultCount);
 
         // By user id
 

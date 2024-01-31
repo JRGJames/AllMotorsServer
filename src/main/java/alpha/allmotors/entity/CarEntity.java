@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -24,6 +27,9 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "car")
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id")
 public class CarEntity {
 
     @Id
@@ -100,6 +106,7 @@ public class CarEntity {
 
     @NotNull
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ImageEntity> images;
 
     @Size(max = 20)
