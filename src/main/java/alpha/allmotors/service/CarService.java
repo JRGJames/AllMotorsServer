@@ -312,4 +312,9 @@ public class CarService {
         carRepository.flush();
         return carRepository.count();
     }
+
+    public List<CarEntity> getCarsByViews(int resultCount) {
+        return carRepository.findCarsByOrderByViewsDesc(resultCount);
+    }
+
 }

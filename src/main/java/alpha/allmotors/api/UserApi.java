@@ -1,5 +1,8 @@
 package alpha.allmotors.api;
 
+import java.util.Collections;
+
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.service.UserService;
@@ -55,6 +59,18 @@ public class UserApi {
     @DeleteMapping("/empty")
     public ResponseEntity<Long> empty() {
         return ResponseEntity.ok(userService.empty());
+    }
+
+    @GetMapping("/username-check")
+    public ResponseEntity<Map<String, Boolean>> checkUsernameAvailability(@RequestParam String username) {
+        boolean isAvailable = userService.isUsernameAvailable(username);
+        return ResponseEntity.ok(Collections.singletonMap("isUsernameAvailable", isAvailable));
+    }
+
+    @GetMapping("/email-check")
+    public ResponseEntity<Map<String, Boolean>> checkEmailAvailability(@RequestParam String email) {
+        boolean isAvailable = userService.isEmailAvailable(email);
+        return ResponseEntity.ok(Collections.singletonMap("isEmailAvailable", isAvailable));
     }
 }
 

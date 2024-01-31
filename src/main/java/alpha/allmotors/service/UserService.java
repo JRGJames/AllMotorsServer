@@ -26,6 +26,14 @@ public class UserService {
     @Autowired
     SessionService sessionService;
 
+    public boolean isUsernameAvailable(String username) {
+        return !userRepository.findByUsername(username).isPresent();
+    }
+
+    public boolean isEmailAvailable(String email) {
+        return !userRepository.findByEmail(email).isPresent();
+    }
+
     public UserEntity get(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }

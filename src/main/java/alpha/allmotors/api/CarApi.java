@@ -83,4 +83,9 @@ public class CarApi {
     public ResponseEntity<Long> empty() {
         return ResponseEntity.ok(carService.empty());
     }
+
+    @GetMapping("/get/byViews")
+    public ResponseEntity<List<CarEntity>> get(Integer amount) {
+        return ResponseEntity.ok(carService.getCarsByViews(amount));
+    }
 }
