@@ -201,7 +201,7 @@ public class CarEntity {
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price,
             String plate, String type, String images, String location, String description, Double emissions,
-            Double consumption, String dgtSticker, LocalDateTime lastItv, String currency, String boughtIn,
+            Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
             Double acceleration, String engine, String drive, UserEntity user) {
         this.brand = brand;
         this.model = model;
@@ -224,7 +224,7 @@ public class CarEntity {
         this.dgtSticker = dgtSticker;
         this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
-        this.lastITV = lastItv;
+        this.lastITV = lastITV;
         this.currency = currency;
         this.boughtIn = boughtIn;
         this.acceleration = acceleration;
