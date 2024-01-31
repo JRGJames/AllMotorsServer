@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.xml.bind.DatatypeConverter;
@@ -397,7 +399,11 @@ public class DataGenerationHelper {
         long minDay = LocalDate.of(2010, 1, 1).toEpochDay();
         long maxDay = LocalDate.of(2023, 10, 31).toEpochDay();
         long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
-        return LocalDate.ofEpochDay(randomDay).atTime(getRandomInt(0, 23), getRandomInt(0, 59), getRandomInt(0, 59));
+
+        LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
+        LocalTime randomTime = LocalTime.of(getRandomInt(0, 23), getRandomInt(0, 59), getRandomInt(0, 59));
+
+        return LocalDateTime.of(randomDate, randomTime).atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
     public static Double getRandomAcceleration() {
