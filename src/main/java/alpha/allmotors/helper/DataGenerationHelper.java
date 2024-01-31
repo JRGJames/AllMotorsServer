@@ -377,12 +377,20 @@ public class DataGenerationHelper {
 
     public static Double getRandomEmissions() {
         Random random = new Random();
-        return random.nextDouble() * 1000;
+
+        // Genera un número con dos cifras por encima del decimal y dos por debajo
+        double emissions = random.nextDouble() * 100.0 + 10.0; // Números entre 10.00 y 110.00
+
+        return Math.round(emissions * 100.0) / 100.0; // Redondea a dos cifras decimales
     }
 
     public static Double getRandomConsumption() {
         Random random = new Random();
-        return random.nextDouble() * 10;
+
+        // Genera un número con dos cifras por encima del decimal y dos por debajo
+        double consumption = random.nextDouble() * 5.0 + 5.0; // Números entre 5.00 y 10.00
+
+        return Math.round(consumption * 100.0) / 100.0; // Redondea a dos cifras decimales
     }
 
     public static LocalDateTime getRandomLastITV() {
@@ -394,19 +402,19 @@ public class DataGenerationHelper {
 
     public static Double getRandomAcceleration() {
         Random random = new Random();
-        return random.nextDouble() * 100;
+
+        double acceleration = random.nextDouble() * 7.9 + 2.1;
+
+        return Math.round(acceleration * 10.0) / 10.0; // Redondea a un decimal
     }
 
     public static String getRandomCurrency() {
-        // Define arrays de códigos de moneda y sus símbolos correspondientes
-        String[] currencies = {"USD", "EUR", "GBP", "JPY", "AUD", "CAD"};
-        String[] symbols = {"$", "€", "£", "¥", "A$", "C$"};
+        String[] currencies = {"USD", "EUR", "GBP", "JPY"};
+        String[] symbols = {"$", "€", "£", "¥"};
 
-        // Utiliza la clase Random para obtener un índice aleatorio
         Random random = new Random();
         int randomIndex = random.nextInt(currencies.length);
 
-        // Retorna el símbolo de la moneda seleccionada aleatoriamente
         return symbols[randomIndex];
     }
 
