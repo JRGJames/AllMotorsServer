@@ -1,18 +1,23 @@
 package alpha.allmotors.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import alpha.allmotors.entity.CarEntity;
+import alpha.allmotors.entity.ImageEntity;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.exception.ResourceNotFoundException;
 import alpha.allmotors.helper.DataGenerationHelper;
 import alpha.allmotors.repository.CarRepository;
+import alpha.allmotors.repository.ImageRepository;
 import alpha.allmotors.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
@@ -35,52 +40,66 @@ public class CarService {
     @Autowired
     SessionService sessionService;
 
+    @Autowired
+    ImageRepository imageRepository;
+
     public CarEntity get(Long id) {
         return carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car not found"));
     }
 
-    // public Page<CarEntity> getPage(Pageable pageable, String strFilter, Long userId, List<String> brandList, List<String> modelList, List<String> colorList, List<String> fuelList, List<String> gearboxList, List<String> typeList, int yearStart, int yearEnd, int priceStart, int priceEnd, int seatsStart, int seatsEnd, int doorsStart, int doorsEnd, int horsepowerStart, int horsepowerEnd, int distanceStart, int distanceEnd) {
+    // public Page<CarEntity> getPage(Pageable pageable, String strFilter, Long
+    // userId, List<String> brandList, List<String> modelList, List<String>
+    // colorList, List<String> fuelList, List<String> gearboxList, List<String>
+    // typeList, int yearStart, int yearEnd, int priceStart, int priceEnd, int
+    // seatsStart, int seatsEnd, int doorsStart, int doorsEnd, int horsepowerStart,
+    // int horsepowerEnd, int distanceStart, int distanceEnd) {
 
-    //     if (brandList == null) {
-    //         brandList = Arrays.asList("Toyota", "Honda", "Ford", "Chevrolet", "Volkswagen",
-    //                 "Nissan", "BMW", "Mercedes-Benz", "Audi", "Tesla",
-    //                 "Hyundai", "Kia", "Mazda", "Volvo", "Subaru");
-    //     }
-    //     if (modelList == null) {
-    //         modelList = Arrays.asList("Camry", "Civic", "F-150", "Cruze", "Golf", "Altima", "3 Series", "E-Class", "A4", "Model 3",
-    //                 "Elantra", "Soul", "CX-5", "S60", "Outback");
-    //     }
-    //     if (colorList == null) {
-    //         colorList = Arrays.asList("Red", "Blue", "Green", "Black", "White", "Silver", "Gray", "Yellow", "Orange", "Purple");
-    //     }
-        
-    //     if (fuelList == null) {
-    //         fuelList = Arrays.asList("Gasoline", "Diesel", "Electric", "Hybrid");
-    //     }
-
-    //     if (gearboxList == null) {
-    //         gearboxList = Arrays.asList("Manual", "Automatic", "Semi-automatic");
-    //     }
-
-    //     if (typeList == null) {
-    //         typeList = Arrays.asList("Sedan", "Coupe", "Hatchback", "SUV", "Pickup", "Van", "Convertible", "Wagon", "Minivan");
-    //     }
-
-    //     if (strFilter != null && !strFilter.isEmpty()) {
-    //         brandList = Arrays.asList(strFilter);
-    //         modelList = Arrays.asList(strFilter);
-    //         colorList = Arrays.asList(strFilter);
-    //         fuelList = Arrays.asList(strFilter);
-    //         gearboxList = Arrays.asList(strFilter);
-    //         typeList = Arrays.asList(strFilter);
-    //     }
-
-    //     // Lógica para obtener la página de coches según los filtros
-    //     return carRepository.findCarsWithFilters(pageable, userId, brandList, modelList, colorList, gearboxList, fuelList, typeList, yearStart, yearEnd, seatsStart, seatsEnd, doorsStart, doorsEnd, priceStart, priceEnd, horsepowerStart, horsepowerEnd, distanceStart, distanceEnd);
+    // if (brandList == null) {
+    // brandList = Arrays.asList("Toyota", "Honda", "Ford", "Chevrolet",
+    // "Volkswagen",
+    // "Nissan", "BMW", "Mercedes-Benz", "Audi", "Tesla",
+    // "Hyundai", "Kia", "Mazda", "Volvo", "Subaru");
+    // }
+    // if (modelList == null) {
+    // modelList = Arrays.asList("Camry", "Civic", "F-150", "Cruze", "Golf",
+    // "Altima", "3 Series", "E-Class", "A4", "Model 3",
+    // "Elantra", "Soul", "CX-5", "S60", "Outback");
+    // }
+    // if (colorList == null) {
+    // colorList = Arrays.asList("Red", "Blue", "Green", "Black", "White", "Silver",
+    // "Gray", "Yellow", "Orange", "Purple");
     // }
 
+    // if (fuelList == null) {
+    // fuelList = Arrays.asList("Gasoline", "Diesel", "Electric", "Hybrid");
+    // }
 
-    //By order asc desc
+    // if (gearboxList == null) {
+    // gearboxList = Arrays.asList("Manual", "Automatic", "Semi-automatic");
+    // }
+
+    // if (typeList == null) {
+    // typeList = Arrays.asList("Sedan", "Coupe", "Hatchback", "SUV", "Pickup",
+    // "Van", "Convertible", "Wagon", "Minivan");
+    // }
+
+    // if (strFilter != null && !strFilter.isEmpty()) {
+    // brandList = Arrays.asList(strFilter);
+    // modelList = Arrays.asList(strFilter);
+    // colorList = Arrays.asList(strFilter);
+    // fuelList = Arrays.asList(strFilter);
+    // gearboxList = Arrays.asList(strFilter);
+    // typeList = Arrays.asList(strFilter);
+    // }
+
+    // // Lógica para obtener la página de coches según los filtros
+    // return carRepository.findCarsWithFilters(pageable, userId, brandList,
+    // modelList, colorList, gearboxList, fuelList, typeList, yearStart, yearEnd,
+    // seatsStart, seatsEnd, doorsStart, doorsEnd, priceStart, priceEnd,
+    // horsepowerStart, horsepowerEnd, distanceStart, distanceEnd);
+    // }
+
+    // By order asc desc
 
     public Page<CarEntity> getPageByPriceDesc(Pageable pageable, Long userId) {
         if (userId == 0) {
@@ -114,7 +133,7 @@ public class CarService {
         }
     }
 
-    //By an specific field value
+    // By an specific field value
 
     public Page<CarEntity> getPageByBrand(Pageable pageable, Long userId, String brand) {
         if (userId == 0) {
@@ -180,7 +199,7 @@ public class CarService {
         }
     }
 
-    //By ranges
+    // By ranges
 
     public Page<CarEntity> findCarsByYearRange(Pageable pageable, Long userId, int startYear, int endYear) {
         if (userId == 0) {
@@ -214,7 +233,8 @@ public class CarService {
         }
     }
 
-    public Page<CarEntity> findCarsByHorsepowerRange(Pageable pageable, Long userId, int startHorsepower, int endHorsepower) {
+    public Page<CarEntity> findCarsByHorsepowerRange(Pageable pageable, Long userId, int startHorsepower,
+            int endHorsepower) {
         if (userId == 0) {
             return carRepository.findCarsByHorsepowerRange(startHorsepower, endHorsepower, pageable);
         } else {
@@ -268,41 +288,56 @@ public class CarService {
         return carRepository.findAll(pageable).getContent().get(0);
     }
 
-    public Long populate(Integer amount) {
-        sessionService.onlyAdmins();
-        for (int i = 0; i < amount; i++) {
-            String brand = DataGenerationHelper.getRandomCarBrand();
-            String model = DataGenerationHelper.getRandomCarModel();
-            String color = DataGenerationHelper.getRandomCarColor();
-            int year = DataGenerationHelper.getRandomCarYear();
-            int seats = DataGenerationHelper.getRandomCarSeats();
-            int doors = DataGenerationHelper.getRandomCarDoors();
-            int horsepower = DataGenerationHelper.getRandomCarHorsepower();
-            String gearbox = DataGenerationHelper.getRandomCarGearbox();
-            int distance = DataGenerationHelper.getRandomCarDistance();
-            String fuel = DataGenerationHelper.getRandomCarFuelType();
-            int price = DataGenerationHelper.getRandomCarPrice();
-            String plate = DataGenerationHelper.getRandomCarPlate();
-            String type = DataGenerationHelper.getRandomCarType();
-            String description = DataGenerationHelper.generateComplexSentence();
-            String images = "default_image.png";
-            String location = DataGenerationHelper.getRandomProvince();
-            Double emissions = DataGenerationHelper.getRandomEmissions();
-            Double consumption = DataGenerationHelper.getRandomConsumption();
-            String dgtSticker = DataGenerationHelper.getRandomDGTSticker();
-            LocalDateTime lastITV = DataGenerationHelper.getRandomLastITV();
-            String currency = DataGenerationHelper.getRandomCurrency();
-            Double acceleration = DataGenerationHelper.getRandomAcceleration();
-            String boughtIn = DataGenerationHelper.getRandomCountry();   
-            String engine = DataGenerationHelper.getRandomEngine();
-            String drive = DataGenerationHelper.getRandomDrive();        
-            UserEntity user = userService.getOneRandom();
-            carRepository
-                    .save(new CarEntity(brand, model, color, year, seats, doors, horsepower, gearbox, distance,
-                    fuel, price, plate, type, images, location, description, emissions, consumption, dgtSticker, lastITV, currency, boughtIn, acceleration, engine, drive, user));
-        }
-        return carRepository.count();
+    @Transactional
+public Long populate(Integer amount) {
+    sessionService.onlyAdmins();
+    List<String> predefinedImagePaths = Arrays.asList("/media/cars.jpg", "/media/cars2.jpg"); // Añade tus rutas de imagen aquí
+    for (int i = 0; i < amount; i++) {
+        String brand = DataGenerationHelper.getRandomCarBrand();
+        String model = DataGenerationHelper.getRandomCarModel();
+        String color = DataGenerationHelper.getRandomCarColor();
+        int year = DataGenerationHelper.getRandomCarYear();
+        int seats = DataGenerationHelper.getRandomCarSeats();
+        int doors = DataGenerationHelper.getRandomCarDoors();
+        int horsepower = DataGenerationHelper.getRandomCarHorsepower();
+        String gearbox = DataGenerationHelper.getRandomCarGearbox();
+        int distance = DataGenerationHelper.getRandomCarDistance();
+        String fuel = DataGenerationHelper.getRandomCarFuelType();
+        int price = DataGenerationHelper.getRandomCarPrice();
+        String plate = DataGenerationHelper.getRandomCarPlate();
+        String type = DataGenerationHelper.getRandomCarType();
+        String description = DataGenerationHelper.generateComplexSentence();
+        String location = DataGenerationHelper.getRandomProvince();
+        Double emissions = DataGenerationHelper.getRandomEmissions();
+        Double consumption = DataGenerationHelper.getRandomConsumption();
+        String dgtSticker = DataGenerationHelper.getRandomDGTSticker();
+        LocalDateTime lastITV = DataGenerationHelper.getRandomLastITV();
+        String currency = DataGenerationHelper.getRandomCurrency();
+        Double acceleration = DataGenerationHelper.getRandomAcceleration();
+        String boughtIn = DataGenerationHelper.getRandomCountry();
+        String engine = DataGenerationHelper.getRandomEngine();
+        String drive = DataGenerationHelper.getRandomDrive();
+        UserEntity user = userService.getOneRandom();
+
+        // Crear y guardar el CarEntity SIN imágenes
+        CarEntity car = new CarEntity(brand, model, color, year, seats, doors, horsepower, gearbox, distance,
+                fuel, price, plate, type, location, description, emissions, consumption, dgtSticker, lastITV,
+                currency, boughtIn, acceleration, engine, drive, user, new ArrayList<>());
+        final CarEntity savedCar = carRepository.save(car);
+
+        // Crear y guardar las ImageEntity para cada ruta de imagen predefinida
+        predefinedImagePaths.forEach(path -> {
+            ImageEntity image = new ImageEntity(path, savedCar); // asumiendo que ImageEntity tiene tal constructor
+            imageRepository.save(image); // guardar cada ImageEntity
+            savedCar.getImages().add(image); // Añadir la imagen a la lista de imágenes del coche
+        });
+
+        // Opcional: actualizar el coche con la lista de imágenes si es necesario
+        carRepository.save(savedCar);
     }
+    return carRepository.count();
+}
+
 
     @Transactional
     public Long empty() {

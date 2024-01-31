@@ -1,7 +1,12 @@
 package alpha.allmotors.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -92,8 +98,9 @@ public class CarEntity {
     @Column(name = "date_uploaded")
     private LocalDateTime dateUploaded;
 
-    @Size(max = 255)
-    private String images;
+    @NotNull
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ImageEntity> images;
 
     @Size(max = 20)
     private String status;
@@ -150,8 +157,7 @@ public class CarEntity {
     }
 
     public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price,
-            String images, String type, String location, String currency, String boughtIn, UserEntity user) {
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location, String currency, String boughtIn, UserEntity user, List<ImageEntity> images) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -175,8 +181,8 @@ public class CarEntity {
     }
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price, String type, String images,
-            String location, String currency, String boughtIn, UserEntity user) {
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, 
+            String location, String currency, String boughtIn, UserEntity user, List<ImageEntity> images) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -200,7 +206,7 @@ public class CarEntity {
 
     public CarEntity(String brand, String model, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price,
-            String plate, String type, String images, String location, String description, Double emissions,
+            String plate, String type, String location, String description, Double emissions,
             Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
             Double acceleration, String engine, String drive, UserEntity user) {
         this.brand = brand;
@@ -217,7 +223,6 @@ public class CarEntity {
         this.plate = plate;
         this.type = type;
         this.description = description;
-        this.images = images;
         this.location = location;
         this.emissions = emissions;
         this.consumption = consumption;
@@ -231,6 +236,41 @@ public class CarEntity {
         this.engine = engine;
         this.drive = drive;
         this.user = user;
+    }
+
+    public CarEntity(String brand, String model, String color, int year, int seats, int doors,
+            int horsepower, String gearbox, int distance, String fuel, int price,
+            String plate, String type, String location, String description, Double emissions,
+            Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
+            Double acceleration, String engine, String drive, UserEntity user, List<ImageEntity> images) {
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+        this.year = year;
+        this.seats = seats;
+        this.doors = doors;
+        this.horsepower = horsepower;
+        this.gearbox = gearbox;
+        this.distance = distance;
+        this.fuel = fuel;
+        this.price = price;
+        this.plate = plate;
+        this.type = type;
+        this.description = description;
+        this.location = location;
+        this.emissions = emissions;
+        this.consumption = consumption;
+        this.dgtSticker = dgtSticker;
+        this.lastUpdate = LocalDateTime.now();
+        this.dateUploaded = LocalDateTime.now();
+        this.lastITV = lastITV;
+        this.currency = currency;
+        this.boughtIn = boughtIn;
+        this.acceleration = acceleration;
+        this.engine = engine;
+        this.drive = drive;
+        this.user = user;
+        this.images = images;
     }
 
     public Long getId() {
@@ -361,11 +401,11 @@ public class CarEntity {
         this.dateUploaded = dateUploaded;
     }
 
-    public String getImages() {
+    public List<ImageEntity> getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(List<ImageEntity> images) {
         this.images = images;
     }
 
