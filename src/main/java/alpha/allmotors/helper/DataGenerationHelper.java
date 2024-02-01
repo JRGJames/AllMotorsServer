@@ -449,4 +449,22 @@ public class DataGenerationHelper {
         return engines[randomIndex];
     }
 
+    private static final String[] imagePaths = {
+        "/media/image1.jpg",
+        "/media/image2.jpg",
+        "/media/image3.jpg",
+        "/media/image4.jpg",
+        "/media/image5.jpg",
+        "/media/image6.jpg",
+        "/media/image7.jpg",
+        "/media/image8.jpeg",
+        "/media/image9.jpg",
+        "/media/image10.jpg",
+    };
+    
+    public static String getRandomImagePath() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(imagePaths.length);
+        return imagePaths[randomIndex];
+    }
 }

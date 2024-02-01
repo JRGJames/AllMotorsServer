@@ -291,54 +291,51 @@ public class CarService {
     @Transactional
 public Long populate(Integer amount) {
     sessionService.onlyAdmins();
-    List<String> predefinedImagePaths = Arrays.asList("/media/cars.jpg", "/media/cars2.jpg"); // Añade tus rutas de imagen aquí
+    
     for (int i = 0; i < amount; i++) {
-        String brand = DataGenerationHelper.getRandomCarBrand();
-        String model = DataGenerationHelper.getRandomCarModel();
-        String color = DataGenerationHelper.getRandomCarColor();
-        int year = DataGenerationHelper.getRandomCarYear();
-        int seats = DataGenerationHelper.getRandomCarSeats();
-        int doors = DataGenerationHelper.getRandomCarDoors();
-        int horsepower = DataGenerationHelper.getRandomCarHorsepower();
-        String gearbox = DataGenerationHelper.getRandomCarGearbox();
-        int distance = DataGenerationHelper.getRandomCarDistance();
-        String fuel = DataGenerationHelper.getRandomCarFuelType();
-        int price = DataGenerationHelper.getRandomCarPrice();
-        String plate = DataGenerationHelper.getRandomCarPlate();
-        String type = DataGenerationHelper.getRandomCarType();
-        String description = DataGenerationHelper.generateComplexSentence();
-        String location = DataGenerationHelper.getRandomProvince();
-        Double emissions = DataGenerationHelper.getRandomEmissions();
-        Double consumption = DataGenerationHelper.getRandomConsumption();
-        String dgtSticker = DataGenerationHelper.getRandomDGTSticker();
-        LocalDateTime lastITV = DataGenerationHelper.getRandomLastITV();
-        String currency = DataGenerationHelper.getRandomCurrency();
-        Double acceleration = DataGenerationHelper.getRandomAcceleration();
-        String boughtIn = DataGenerationHelper.getRandomCountry();
-        String engine = DataGenerationHelper.getRandomEngine();
-        String drive = DataGenerationHelper.getRandomDrive();
-        UserEntity user = userService.getOneRandom();
+            String brand = DataGenerationHelper.getRandomCarBrand();
+            String model = DataGenerationHelper.getRandomCarModel();
+            String color = DataGenerationHelper.getRandomCarColor();
+            int year = DataGenerationHelper.getRandomCarYear();
+            int seats = DataGenerationHelper.getRandomCarSeats();
+            int doors = DataGenerationHelper.getRandomCarDoors();
+            int horsepower = DataGenerationHelper.getRandomCarHorsepower();
+            String gearbox = DataGenerationHelper.getRandomCarGearbox();
+            int distance = DataGenerationHelper.getRandomCarDistance();
+            String fuel = DataGenerationHelper.getRandomCarFuelType();
+            int price = DataGenerationHelper.getRandomCarPrice();
+            String plate = DataGenerationHelper.getRandomCarPlate();
+            String type = DataGenerationHelper.getRandomCarType();
+            String description = DataGenerationHelper.generateComplexSentence();
+            String location = DataGenerationHelper.getRandomProvince();
+            Double emissions = DataGenerationHelper.getRandomEmissions();
+            Double consumption = DataGenerationHelper.getRandomConsumption();
+            String dgtSticker = DataGenerationHelper.getRandomDGTSticker();
+            LocalDateTime lastITV = DataGenerationHelper.getRandomLastITV();
+            String currency = DataGenerationHelper.getRandomCurrency();
+            Double acceleration = DataGenerationHelper.getRandomAcceleration();
+            String boughtIn = DataGenerationHelper.getRandomCountry();
+            String engine = DataGenerationHelper.getRandomEngine();
+            String drive = DataGenerationHelper.getRandomDrive();
+            UserEntity user = userService.getOneRandom();
 
-        // Crear y guardar el CarEntity SIN imágenes
-        CarEntity car = new CarEntity(brand, model, color, year, seats, doors, horsepower, gearbox, distance,
+            // Crear y guardar el CarEntity SIN imágenes
+            CarEntity car = new CarEntity(brand, model, color, year, seats, doors, horsepower, gearbox, distance,
                 fuel, price, plate, type, location, description, emissions, consumption, dgtSticker, lastITV,
                 currency, boughtIn, acceleration, engine, drive, user, new ArrayList<>());
         final CarEntity savedCar = carRepository.save(car);
 
-        // Crear y guardar las ImageEntity para cada ruta de imagen predefinida
-        predefinedImagePaths.forEach(path -> {
-            ImageEntity image = new ImageEntity(path, savedCar); // asumiendo que ImageEntity tiene tal constructor
-            imageRepository.save(image); // guardar cada ImageEntity
-            savedCar.getImages().add(image); // Añadir la imagen a la lista de imágenes del coche
-        });
+        // Generar una nueva ruta de imagen aleatoria para este coche
+        String randomImagePath = DataGenerationHelper.getRandomImagePath();
+        ImageEntity image = new ImageEntity(randomImagePath, savedCar); // asumiendo que ImageEntity tiene tal constructor
+        imageRepository.save(image); // guardar la ImageEntity
+        savedCar.getImages().add(image); // Añadir la imagen a la lista de imágenes del coche
 
         // Opcional: actualizar el coche con la lista de imágenes si es necesario
         carRepository.save(savedCar);
     }
     return carRepository.count();
 }
-
-
     @Transactional
     public Long empty() {
         sessionService.onlyAdmins();
@@ -348,8 +345,8 @@ public Long populate(Integer amount) {
         return carRepository.count();
     }
 
-        public List<CarEntity> getCarsByViews(Integer resultCount) {
-            return carRepository.findCarsByOrderByViewsDesc(resultCount);
-        }
+    public List<CarEntity> getCarsByViews(Integer resultCount) {
+        return carRepository.findCarsByOrderByViewsDesc(resultCount);
+    }
 
 }
