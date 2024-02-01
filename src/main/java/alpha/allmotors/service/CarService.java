@@ -289,10 +289,10 @@ public class CarService {
     }
 
     @Transactional
-public Long populate(Integer amount) {
-    sessionService.onlyAdmins();
-    
-    for (int i = 0; i < amount; i++) {
+    public Long populate(Integer amount) {
+        sessionService.onlyAdmins();
+
+        for (int i = 0; i < amount; i++) {
             String brand = DataGenerationHelper.getRandomCarBrand();
             String model = DataGenerationHelper.getRandomCarModel();
             String color = DataGenerationHelper.getRandomCarColor();
@@ -321,21 +321,24 @@ public Long populate(Integer amount) {
 
             // Crear y guardar el CarEntity SIN imágenes
             CarEntity car = new CarEntity(brand, model, color, year, seats, doors, horsepower, gearbox, distance,
-                fuel, price, plate, type, location, description, emissions, consumption, dgtSticker, lastITV,
-                currency, boughtIn, acceleration, engine, drive, user, new ArrayList<>());
-        final CarEntity savedCar = carRepository.save(car);
+                    fuel, price, plate, type, location, description, emissions, consumption, dgtSticker, lastITV,
+                    currency, boughtIn, acceleration, engine, drive, user, new ArrayList<>());
+            final CarEntity savedCar = carRepository.save(car);
 
-        // Generar una nueva ruta de imagen aleatoria para este coche
-        String randomImagePath = DataGenerationHelper.getRandomImagePath();
-        ImageEntity image = new ImageEntity(randomImagePath, savedCar); // asumiendo que ImageEntity tiene tal constructor
-        imageRepository.save(image); // guardar la ImageEntity
-        savedCar.getImages().add(image); // Añadir la imagen a la lista de imágenes del coche
+            int numberOfImages = DataGenerationHelper.getRandomInt(1, 8); // Ejemplo: entre 1 y 5 imágenes
+            for (int j = 0; j < numberOfImages; j++) {
+                String imagePath = DataGenerationHelper.getRandomImagePath();
+                ImageEntity image = new ImageEntity(imagePath, savedCar);
+                imageRepository.save(image);
+                savedCar.getImages().add(image); // Añadir la imagen a la lista de imágenes del coche
+            }
 
-        // Opcional: actualizar el coche con la lista de imágenes si es necesario
-        carRepository.save(savedCar);
+            // Opcional: actualizar el coche con la lista de imágenes si es necesario
+            carRepository.save(savedCar);
+        }
+        return carRepository.count();
     }
-    return carRepository.count();
-}
+
     @Transactional
     public Long empty() {
         sessionService.onlyAdmins();
