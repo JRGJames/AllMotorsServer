@@ -47,6 +47,27 @@ public class CarService {
         return carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car not found"));
     }
 
+    public Page<CarEntity> getPage(Pageable pageable, String filter, Long userId) {
+        // sessionService.onlyAdmins();
+
+        Page<CarEntity> page;
+
+        if (userId != null && userId != 0) {
+            if (filter == null || filter.isEmpty() || filter.trim().isEmpty()) {
+                page = carRepository.findByUserId(userId, pageable);
+            } else {
+                page = carRepository.findByTitleContainingIgnoreCase(filter, pageable);
+            }
+        } else {
+            if (filter == null || filter.isEmpty() || filter.trim().isEmpty()) {
+                page = carRepository.findAll(pageable);
+            } else {
+                page = carRepository.findByTitleContainingIgnoreCase(filter, pageable);
+            }
+        }
+        return page;
+    }
+
     // public Page<CarEntity> getPage(Pageable pageable, String strFilter, Long
     // userId, List<String> brandList, List<String> modelList, List<String>
     // colorList, List<String> fuelList, List<String> gearboxList, List<String>
