@@ -31,6 +31,14 @@ public class CarApi {
         return ResponseEntity.ok(carService.get(id));
     }
 
+    @GetMapping("/getPage/")
+    public ResponseEntity<Page<CarEntity>> getPage(
+            Pageable pagebale,
+            @RequestParam(value = "user", defaultValue = "0", required = false) Long userId,
+            @RequestParam(name = "filter", required = false) String strFilter) {
+        return ResponseEntity.ok(carService.getPage(pagebale, strFilter, userId));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Long> create(@RequestBody CarEntity carEntity) {
         return ResponseEntity.ok(carService.create(carEntity));
@@ -48,30 +56,38 @@ public class CarApi {
 
     // @GetMapping("/getPage")
     // public ResponseEntity<Page<CarEntity>> getPage(
-    //         Pageable pageable,
-    //         @RequestParam(value = "id_owner", defaultValue = "0", required = false) Long userId,
-    //         @RequestParam(name = "filter", required = false) String strFilter,
-    //         @RequestParam(name = "brandList", required = false) List<String> brandList,
-    //         @RequestParam(name = "modelList", required = false) List<String> modelList,
-    //         @RequestParam(name = "colorList", required = false) List<String> colorList,
-    //         @RequestParam(name = "fuelList", required = false) List<String> fuelList,
-    //         @RequestParam(name = "gearboxList", required = false) List<String> gearboxList,
-    //         @RequestParam(name = "typeList", required = false) List<String> typeList,
-    //         @RequestParam(name = "yearStart", required = false) Integer yearStart,
-    //         @RequestParam(name = "yearEnd", required = false) Integer yearEnd,
-    //         @RequestParam(name = "priceStart", required = false) Integer priceStart,
-    //         @RequestParam(name = "priceEnd", required = false) Integer priceEnd,
-    //         @RequestParam(name = "seatsStart", required = false) Integer seatsStart,
-    //         @RequestParam(name = "seatsEnd", required = false) Integer seatsEnd,
-    //         @RequestParam(name = "doorsStart", required = false) Integer doorsStart,
-    //         @RequestParam(name = "doorsEnd", required = false) Integer doorsEnd,
-    //         @RequestParam(name = "horsepowerStart", required = false) Integer horsepowerStart,
-    //         @RequestParam(name = "horsepowerEnd", required = false) Integer horsepowerEnd,
-    //         @RequestParam(name = "distanceStart", required = false) Integer distanceStart,
-    //         @RequestParam(name = "distanceEnd", required = false) Integer distanceEnd) {
-    //     return ResponseEntity.ok(carService.getPage(pageable, strFilter, userId, brandList, modelList, colorList,
-    //             fuelList, gearboxList, typeList, yearStart, yearEnd, priceStart, priceEnd, seatsStart, seatsEnd,
-    //             doorsStart, doorsEnd, horsepowerStart, horsepowerEnd, distanceStart, distanceEnd));
+    // Pageable pageable,
+    // @RequestParam(value = "id_owner", defaultValue = "0", required = false) Long
+    // userId,
+    // @RequestParam(name = "filter", required = false) String strFilter,
+    // @RequestParam(name = "brandList", required = false) List<String> brandList,
+    // @RequestParam(name = "modelList", required = false) List<String> modelList,
+    // @RequestParam(name = "colorList", required = false) List<String> colorList,
+    // @RequestParam(name = "fuelList", required = false) List<String> fuelList,
+    // @RequestParam(name = "gearboxList", required = false) List<String>
+    // gearboxList,
+    // @RequestParam(name = "typeList", required = false) List<String> typeList,
+    // @RequestParam(name = "yearStart", required = false) Integer yearStart,
+    // @RequestParam(name = "yearEnd", required = false) Integer yearEnd,
+    // @RequestParam(name = "priceStart", required = false) Integer priceStart,
+    // @RequestParam(name = "priceEnd", required = false) Integer priceEnd,
+    // @RequestParam(name = "seatsStart", required = false) Integer seatsStart,
+    // @RequestParam(name = "seatsEnd", required = false) Integer seatsEnd,
+    // @RequestParam(name = "doorsStart", required = false) Integer doorsStart,
+    // @RequestParam(name = "doorsEnd", required = false) Integer doorsEnd,
+    // @RequestParam(name = "horsepowerStart", required = false) Integer
+    // horsepowerStart,
+    // @RequestParam(name = "horsepowerEnd", required = false) Integer
+    // horsepowerEnd,
+    // @RequestParam(name = "distanceStart", required = false) Integer
+    // distanceStart,
+    // @RequestParam(name = "distanceEnd", required = false) Integer distanceEnd) {
+    // return ResponseEntity.ok(carService.getPage(pageable, strFilter, userId,
+    // brandList, modelList, colorList,
+    // fuelList, gearboxList, typeList, yearStart, yearEnd, priceStart, priceEnd,
+    // seatsStart, seatsEnd,
+    // doorsStart, doorsEnd, horsepowerStart, horsepowerEnd, distanceStart,
+    // distanceEnd));
     // }
 
     @PostMapping("/populate/{amount}")
