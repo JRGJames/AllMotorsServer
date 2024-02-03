@@ -62,8 +62,6 @@ public class UserEntity {
     @Column(name = "profile_picture")
     private String profilePicture;
 
-    private int rating = 0;
-
     private Boolean status;
 
     @Size(min = 9, max = 9)
@@ -246,14 +244,6 @@ public class UserEntity {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
-    }
-
-    public int getRating() {
-        return this.rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public Boolean isStatus() {
