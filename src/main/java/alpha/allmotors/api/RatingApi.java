@@ -33,7 +33,8 @@ public class RatingApi {
     }
 
     @GetMapping("/user/{userId}/count")
-    public Long getRatingCount(@PathVariable Long userId) {
-        return ratingService.getRatingCountForUser(userId);
+    public ResponseEntity<Long> getRatingCount(@PathVariable Long userId) {
+        long count = ratingService.getRatingCountForUser(userId);
+        return new  ResponseEntity<>(count, HttpStatus.OK);
     }
 }
