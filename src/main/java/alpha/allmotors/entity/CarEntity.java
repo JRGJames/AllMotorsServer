@@ -48,6 +48,11 @@ public class CarEntity {
 
     @NotNull
     @NotBlank
+    @Size(min = 5, max = 30)
+    private String title;
+
+    @NotNull
+    @NotBlank
     @Size(min = 2, max = 30)
     private String color;
 
@@ -163,11 +168,12 @@ public class CarEntity {
         this.id = id;
     }
 
-    public CarEntity(Long id, String brand, String model, String color, int year, int seats, int doors,
+    public CarEntity(Long id, String brand, String model, String title, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price, String type, String location, String currency, String boughtIn, UserEntity user, List<ImageEntity> images) {
         this.id = id;
         this.brand = brand;
         this.model = model;
+        this.title = title;
         this.color = color;
         this.year = year;
         this.seats = seats;
@@ -187,11 +193,12 @@ public class CarEntity {
         this.user = user;
     }
 
-    public CarEntity(String brand, String model, String color, int year, int seats, int doors,
+    public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price, String type, 
             String location, String currency, String boughtIn, UserEntity user, List<ImageEntity> images) {
         this.brand = brand;
         this.model = model;
+        this.title = title;
         this.color = color;
         this.year = year;
         this.seats = seats;
@@ -211,13 +218,14 @@ public class CarEntity {
         this.user = user;
     }
 
-    public CarEntity(String brand, String model, String color, int year, int seats, int doors,
+    public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price,
             String plate, String type, String location, String description, Double emissions,
             Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
             Double acceleration, String engine, String drive, UserEntity user) {
         this.brand = brand;
         this.model = model;
+        this.title = title;
         this.color = color;
         this.year = year;
         this.seats = seats;
@@ -245,13 +253,14 @@ public class CarEntity {
         this.user = user;
     }
 
-    public CarEntity(String brand, String model, String color, int year, int seats, int doors,
+    public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price,
             String plate, String type, String location, String description, Double emissions,
             Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
             Double acceleration, String engine, String drive, UserEntity user, List<ImageEntity> images) {
         this.brand = brand;
         this.model = model;
+        this.title = title;
         this.color = color;
         this.year = year;
         this.seats = seats;
@@ -302,6 +311,14 @@ public class CarEntity {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getColor() {
