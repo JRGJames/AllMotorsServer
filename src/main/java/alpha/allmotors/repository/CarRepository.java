@@ -184,8 +184,6 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
                         Pageable pageable);
 
         // Seach by title
-
-        @Query(value = "SELECT * FROM car WHERE LENGTH(:searchText) >= 3 AND (brand LIKE CONCAT('%', :searchText, '%') OR model LIKE CONCAT('%', :searchText, '%') OR description LIKE CONCAT('%', :searchText, '%')) LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
         Page<CarEntity> findByTitleContainingIgnoreCase(String searchText, Pageable pageable);
 
         @Modifying
