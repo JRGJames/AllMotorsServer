@@ -48,23 +48,25 @@ public class CarService {
     }
 
     public Page<CarEntity> getPage(Pageable pageable, String filter, Long userId) {
-
-        Page<CarEntity> page;
-
         if (userId != null && userId != 0) {
-            if (filter == null || filter.isEmpty() || filter.trim().isEmpty()) {
-                page = carRepository.findByUserId(userId, pageable);
+            if (filter == null || filter.isEmpty()) {
+                // Suponiendo que tienes un método para encontrar por userId
+                return carRepository.findByUserId(userId, pageable);
             } else {
-                page = carRepository.findByTitleContainingIgnoreCase(filter, pageable);
+                return carRepository.findByUserIdAndTitleContainingIgnoreCase(userId, filter, pageable);
             }
         } else {
-            if (filter == null || filter.isEmpty() || filter.trim().isEmpty()) {
-                page = carRepository.findAll(pageable);
+            if (filter == null || filter.isEmpty()) {
+                return carRepository.findAll(pageable);
             } else {
-                page = carRepository.findByTitleContainingIgnoreCase(filter, pageable);
+                return carRepository.findByTitleContainingIgnoreCase(filter, pageable);
             }
         }
-        return page;
+    }
+
+    // Método auxiliar para verificar si el filtro de búsqueda está vacío
+    private boolean isSearchFilterEmpty(String filter) {
+        return filter == null || filter.trim().isEmpty();
     }
 
     public Long create(CarEntity carEntity) {
