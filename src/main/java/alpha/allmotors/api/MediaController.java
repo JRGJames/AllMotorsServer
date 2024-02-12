@@ -34,7 +34,7 @@ public class MediaController {
     private final HttpServletRequest request;
 
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadMultipleFiles(@RequestParam("file") MultipartFile[] files) {
+    public ResponseEntity<?> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         try {
             List<String> paths = storageService.storeMultiple(files);
             String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
