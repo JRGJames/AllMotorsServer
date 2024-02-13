@@ -64,11 +64,6 @@ public class CarService {
         }
     }
 
-    // Método auxiliar para verificar si el filtro de búsqueda está vacío
-    private boolean isSearchFilterEmpty(String filter) {
-        return filter == null || filter.trim().isEmpty();
-    }
-
     public Long create(CarEntity carEntity) {
         carEntity.setId(null);
         sessionService.onlyAdminsOrUsers();

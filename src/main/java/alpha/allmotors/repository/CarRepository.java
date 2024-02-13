@@ -186,7 +186,6 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
         // Seach by title
         Page<CarEntity> findByUserIdAndTitleContainingIgnoreCase(Long userId, String title, Pageable pageable);
 
-
         Page<CarEntity> findByTitleContainingIgnoreCase(String searchText, Pageable pageable);
 
         @Modifying
