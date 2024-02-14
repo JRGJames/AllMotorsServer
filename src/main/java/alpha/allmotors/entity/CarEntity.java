@@ -109,7 +109,7 @@ public class CarEntity {
     @Column(name = "date_uploaded")
     private LocalDateTime dateUploaded;
 
-    // @NotNull
+    @NotNull
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<ImageEntity> images;
@@ -195,7 +195,7 @@ public class CarEntity {
 
     public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price, String type, 
-            String location, String currency, String boughtIn, UserEntity user) {
+            String location, String currency, String boughtIn, UserEntity user, List<ImageEntity> images) {
         this.brand = brand;
         this.model = model;
         this.title = title;
@@ -209,6 +209,7 @@ public class CarEntity {
         this.fuel = fuel;
         this.price = price;
         this.type = type;
+        this.images = images;
         this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
         this.location = location;
