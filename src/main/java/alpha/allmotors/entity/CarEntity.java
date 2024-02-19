@@ -1,12 +1,10 @@
 package alpha.allmotors.entity;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
@@ -110,8 +108,7 @@ public class CarEntity {
     private LocalDateTime dateUploaded;
 
     @NotNull
-    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "car", fetch = jakarta.persistence.FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ImageEntity> images;
 
     @Size(max = 20)
@@ -195,7 +192,7 @@ public class CarEntity {
 
     public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
             int horsepower, String gearbox, int distance, String fuel, int price, String type, 
-            String location, String currency, String boughtIn, UserEntity user, List<ImageEntity> images) {
+            String location, String currency, String boughtIn, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.title = title;
@@ -209,7 +206,6 @@ public class CarEntity {
         this.fuel = fuel;
         this.price = price;
         this.type = type;
-        this.images = images;
         this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
         this.location = location;

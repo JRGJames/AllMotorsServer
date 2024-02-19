@@ -11,6 +11,8 @@ public interface StorageService {
     void init() throws IOException;
 
     List<String> storeMultiple(MultipartFile[] files);
+    
+    String store(MultipartFile file);
 
     Resource loadAsResource(String filename);
 

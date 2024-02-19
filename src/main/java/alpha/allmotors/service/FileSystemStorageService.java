@@ -40,7 +40,7 @@ public class FileSystemStorageService implements StorageService {
         if (files.length > MAX_FILES) {
             throw new RuntimeException("Exceeded the maximum number of files. Max allowed is " + MAX_FILES);
         }
-        
+
         List<String> filenames = new ArrayList<>();
         try {
             for (MultipartFile file : files) {
@@ -59,6 +59,24 @@ public class FileSystemStorageService implements StorageService {
             return filenames;
         } catch (Exception e) {
             throw new RuntimeException("Could not initialize storage", e);
+        }
+    }
+
+    @Override
+    public String store(MultipartFile file) {
+        try {
+            if (file.isEmpty()) {
+                throw new RuntimeException("Failed to store empty file");
+            }
+            String filename = generateUniqueFilename(file);
+            Path destinationFile = rootLocation.resolve(Paths.get(filename)).normalize().toAbsolutePath();
+
+            try (InputStream inputStream = file.getInputStream()) {
+                Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
+            }
+            return filename;
+        } catch (Exception e) {
+            throw new RuntimeException("Could not store file", e);
         }
     }
 

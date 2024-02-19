@@ -1,7 +1,5 @@
 package alpha.allmotors.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,12 +18,11 @@ public class ImageEntity {
     private Long id;
     
     @Size(max = 255)
-    @Column(name = "image_url", nullable = false) // Especifica el nombre de la columna si es diferente del nombre del atributo
+    @Column(name = "image_url") // Especifica el nombre de la columna si es diferente del nombre del atributo
     private String imageUrl;
 
     @ManyToOne
-    @JoinColumn(name = "id_car", nullable = false) // Asegúrate de que la imagen siempre esté asociada a un coche
-    @JsonBackReference
+    @JoinColumn(name = "id_car") // Asegúrate de que la imagen siempre esté asociada a un coche
     private CarEntity car;
     
     public ImageEntity() {
