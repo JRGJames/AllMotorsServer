@@ -68,7 +68,6 @@ public class CarEntity {
     @Max(value = 5)
     private int doors;
 
-    @NotNull
     @Min(value = 1)
     @Max(value = 2000)
     private int horsepower;
@@ -95,8 +94,6 @@ public class CarEntity {
     @Size(max = 12)
     private String plate;
 
-    @NotNull
-    @NotBlank
     @Size(max = 20)
     private String type;
 
@@ -107,7 +104,6 @@ public class CarEntity {
     @Column(name = "date_uploaded")
     private LocalDateTime dateUploaded;
 
-    @NotNull
     @OneToMany(mappedBy = "car", fetch = jakarta.persistence.FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ImageEntity> images;
 
@@ -142,8 +138,6 @@ public class CarEntity {
     @NotBlank
     private String currency;
 
-    @NotBlank
-    @NotNull
     @Size(max = 30)
     @Column(name = "bought_in")
     private String boughtIn;
