@@ -259,8 +259,8 @@ public class DataGenerationHelper {
     }
 
     private static final String[] carColors = {
-            "Red", "Blue", "Green", "Black", "White",
-            "Silver", "Gray", "Yellow", "Orange", "Purple"
+            "red", "blue", "green", "black", "white",
+            "gray", "yellow", "orange", "purple"
             // Add more car colors as needed
     };
 
@@ -305,7 +305,7 @@ public class DataGenerationHelper {
     public static String getRandomCarGearbox() {
         Random random = new Random();
         // Array of possible gearbox types
-        String[] gearboxes = {"Manual", "Automatic"};
+        String[] gearboxes = {"manual", "automatic"};
         // Randomly select an index from the array
         int randomIndex = random.nextInt(gearboxes.length);
         // Return the selected gearbox type
@@ -323,7 +323,7 @@ public class DataGenerationHelper {
     public static String getRandomCarFuelType() {
         Random random = new Random();
         // Array of possible fuel types
-        String[] fuelTypes = {"Gasoline", "Diesel", "Electric", "Hybrid"};
+        String[] fuelTypes = {"gasoline", "petrol", "electric", "hybrid"};
         // Randomly select an index from the array
         int randomIndex = random.nextInt(fuelTypes.length);
         // Return the selected fuel type
