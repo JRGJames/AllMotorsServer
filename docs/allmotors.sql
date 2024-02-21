@@ -31,8 +31,8 @@ USE `allmotors`;
 
 CREATE TABLE `car` (
   `id` bigint NOT NULL,
-  `brand` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `model` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `brand` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `model` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `title` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `date_uploaded` datetime DEFAULT NULL,
   `status` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'On sale',
@@ -60,7 +60,7 @@ CREATE TABLE `car` (
   `dgt_sticker` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `last_itv` datetime DEFAULT NULL,
   `last_update` datetime DEFAULT NULL,
-  `description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_owner` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -98,7 +98,25 @@ INSERT INTO `car` (`id`, `brand`, `model`, `title`, `date_uploaded`, `status`, `
 (27, 'Volvo', 'E-Class', 'Volvo E-Class', '2024-02-20 20:12:25', NULL, 0, 0, 'black', '1989', 5, 2, 371, 'automatic', 969468, 'hybrid', '$', 3.6, 'V12', 'RWD', 'Russia', 1990132, 'Coupe', 'Nunavut', 72.53, 5.7, '1978-GWQ', '0', '2023-10-20 21:43:25', '2024-02-20 20:12:25', 'if the cat is one friend shines and one dog fly', 2),
 (28, 'Tesla', 'Outback', 'Tesla Outback', '2024-02-20 20:12:25', NULL, 0, 0, 'white', '1924', 8, 3, 551, 'manual', 93298, 'gasoline', '£', 5.5, 'I4', 'FWD', 'Italy', 3538658, 'Coupe', 'Manitoba', 90.56, 6.44, '9858-JON', 'B', '2015-01-09 11:56:01', '2024-02-20 20:12:25', 'where a dog is the house is or the friend ate quickly', 1),
 (29, 'Chevrolet', 'Elantra', 'Chevrolet Elantra', '2024-02-20 20:12:25', NULL, 0, 0, 'blue', '1972', 7, 3, 344, 'automatic', 78757, 'gasoline', '¥', 2.9, 'W12', 'AWD', 'South Africa', 1736769, 'Wagon', 'Ontario', 38.16, 6.34, '9990-EVC', 'ECO', '2016-12-21 03:36:13', '2024-02-20 20:12:25', 'that the cat is the birds reads slowly but one cat run', 2),
-(30, 'Nissan', 'Elantra', 'Nissan Elantra', '2024-02-20 20:12:25', NULL, 0, 0, 'black', '1950', 4, 5, 1320, 'manual', 14178, 'petrol', '¥', 9.8, 'W16', 'RWD', 'United States', 4237733, 'Sedan', 'Andalusia', 31.09, 5.48, '0050-IHE', '0', '2022-10-11 09:11:15', '2024-02-20 20:12:25', 'since the dog run one house is and one car shines', 2);
+(30, 'Nissan', 'Elantra', 'Nissan Elantra', '2024-02-20 20:12:25', NULL, 0, 0, 'black', '1950', 4, 5, 1320, 'manual', 14178, 'petrol', '¥', 9.8, 'W16', 'RWD', 'United States', 4237733, 'Sedan', 'Andalusia', 31.09, 5.48, '0050-IHE', '0', '2022-10-11 09:11:15', '2024-02-20 20:12:25', 'since the dog run one house is and one car shines', 2),
+(31, 'Genesis', 'GV60', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:18:00', NULL, 'Detailed description of the car.', 1),
+(32, 'Audi', 'e-tron', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:18:20', NULL, 'Detailed description of the car.', 1),
+(33, 'Audi', 'e-tron', 'BMW e39', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:20:26', NULL, 'Detailed description of the car.', 1),
+(34, 'Audi', 'e-tron', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:29:41', NULL, 'Detailed description of the car.', 1),
+(35, 'BMW', 'Integra', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:32:29', NULL, 'Detailed description of the car.', 1),
+(36, 'BMW', 'A5', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:45:09', NULL, 'Detailed description of the car.', 1),
+(37, 'BMW', 'e39', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:45:18', NULL, 'Detailed description of the car.', 1),
+(38, 'Acura', 'Integra', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:46:03', NULL, 'Detailed description of the car.', 1),
+(39, 'Audi', 'A5', 'Audi A5', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:52:48', NULL, 'Detailed description of the car.', 1),
+(40, 'Acura', 'ILX', 'Acura ILX', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:57:38', NULL, 'Detailed description of the car.', 1),
+(41, 'Acura', 'Integra', 'Acura Integra hola', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:57:49', NULL, 'Detailed description of the car.', 1),
+(42, 'Audi', 'A5', 'Audi A5', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 12:58:58', NULL, 'Detailed description of the car.', 1),
+(43, 'Audi', 'e-tron S', 'hola', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 13:03:07', NULL, 'Detailed description of the car.', 1),
+(44, 'Audi', 'e-tron', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 14:47:00', NULL, 'Detailed description of the car.', 1),
+(45, 'Acura', 'Integra', 'Excellent Condition', NULL, NULL, 0, 0, 'red', '1930', 5, 4, 200, 'manual', 50000, 'petrol', '€', 7.2, '3.0L V6', 'rwd', 'Germany', 30000, 'sedan', 'City', 120, 5.5, 'ABC123', 'C', '2024-02-21 14:49:07', NULL, 'Detailed description of the car.', 1),
+(46, 'Acura', 'MDX', 'Acura MDX', NULL, NULL, 0, 0, 'red', '2023', 2, 2, 0, 'automatic', 2, 'electric', '€', NULL, NULL, NULL, NULL, 2, NULL, 'Prince Edward Island', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(47, 'Acura', 'MDX', 'Acura MDX', NULL, NULL, 0, 0, 'red', '2024', 2, 2, 0, 'automatic', 3333, 'electric', '€', NULL, NULL, NULL, NULL, 33, NULL, 'Valencia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(48, 'BMW', '4 Series', 'BMW 4 Series', NULL, NULL, 0, 0, 'blue', '2001', 5, 2, 185, 'manual', 100000, 'gasoline', '€', 7.2, '3.0L V6', 'rwd', 'Spain', 33000, 'sedan', 'Valencia', 120, 5.5, 'ABC123', 'C', '2024-02-21 15:34:09', NULL, 'El BMW Serie 3 E46 no es solo un coche, es una pieza de la historia automovilística que combina a la perfección rendimiento, lujo y fiabilidad. Diseñado para aquellos que aprecian la conducción pura, este modelo se ha convertido en un favorito tanto para entusiastas como para aquellos que buscan un vehículo premium versátil.', 1);
 
 -- --------------------------------------------------------
 
@@ -408,7 +426,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `chat`

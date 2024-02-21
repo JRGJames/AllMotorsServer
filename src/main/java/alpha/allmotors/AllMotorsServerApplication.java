@@ -10,3 +10,4 @@ public class AllMotorsServerApplication {
 		SpringApplication.run(AllMotorsServerApplication.class, args);
 	}
 }
+	

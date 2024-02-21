@@ -2,6 +2,7 @@ package alpha.allmotors.service;
 
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,16 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
+    public Page<UserEntity> getPage(Pageable pageable, String filter) {
+        sessionService.onlyAdmins();
+
+        Page<UserEntity> page;
+
+        page = userRepository.findAll(pageable);
+
+        return page;
+    }
+
     public UserEntity getByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found by username"));
@@ -53,11 +64,11 @@ public class UserService {
     public UserEntity update(UserEntity userEntityToSet) {
         UserEntity userEntityFromDatabase = this.get(userEntityToSet.getId());
         sessionService.onlyAdminsOrUsersWithIisOwnData(userEntityFromDatabase.getId());
-        if (sessionService.isUser()) {            
+        if (sessionService.isUser()) {
             userEntityToSet.setRole(userEntityFromDatabase.isRole());
             userEntityToSet.setPassword(ALLMOTORS);
             return userRepository.save(userEntityToSet);
-        } else {            
+        } else {
             userEntityToSet.setPassword(ALLMOTORS);
             return userRepository.save(userEntityToSet);
         }
@@ -80,7 +91,8 @@ public class UserService {
         for (int i = 0; i < amount; i++) {
             String name = DataGenerationHelper.getRandomName();
             String lastname = DataGenerationHelper.getRandomSurname();
-            String username = DataGenerationHelper.doNormalizeString(name.substring(0, 3) + lastname.substring(1, 3) + i).toLowerCase();
+            String username = DataGenerationHelper
+                    .doNormalizeString(name.substring(0, 3) + lastname.substring(1, 3) + i).toLowerCase();
             String gender = DataGenerationHelper.getRandomGender();
             LocalDateTime birthdate = DataGenerationHelper.getRandomDate();
             String country = DataGenerationHelper.getRandomCountry();
@@ -104,10 +116,12 @@ public class UserService {
         userRepository.deleteAll();
         userRepository.resetAutoIncrement();
         UserEntity userEntityOne = new UserEntity("Fernando", "Alonso", "ElNano", "Man",
-                DataGenerationHelper.getRandomDate(), "Spain", "Asturias", "Calle Nano 33", "53033", true, "633974333", "nano@gmail.com", ALLMOTORS, true);
+                DataGenerationHelper.getRandomDate(), "Spain", "Asturias", "Calle Nano 33", "53033", true, "633974333",
+                "nano@gmail.com", ALLMOTORS, true);
         userRepository.save(userEntityOne);
         UserEntity userEntityTwo = new UserEntity("Carlos", "Sainz", "carlossainz", "Man",
-                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", "Calle Sainz 55", "53055", true, "655974455", "sainz@gmail.com", ALLMOTORS, false);
+                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", "Calle Sainz 55", "53055", true, "655974455",
+                "sainz@gmail.com", ALLMOTORS, false);
         userRepository.save(userEntityTwo);
         return userRepository.count();
     }

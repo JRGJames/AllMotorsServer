@@ -4,6 +4,8 @@ import java.util.Collections;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +31,13 @@ public class UserApi {
     @GetMapping("/get/{id}")
     public ResponseEntity<UserEntity> get(@PathVariable("id") Long id) {
         return ResponseEntity.ok(userService.get(id));
+    }
+
+    @GetMapping("/getPage")
+    public ResponseEntity<Page<UserEntity>> getPage(
+            Pageable pageable,
+            @RequestParam(name = "filter", required = false) String strFilter) {
+        return ResponseEntity.ok(userService.getPage(pageable, strFilter));
     }
 
     @GetMapping("/byUsername/{username}")

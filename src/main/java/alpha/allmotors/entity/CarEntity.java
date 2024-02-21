@@ -36,17 +36,15 @@ public class CarEntity {
 
     @NotNull
     @NotBlank
-    @Size(min = 2, max = 30)
     private String brand;
 
     @NotNull
     @NotBlank
-    @Size(min = 2, max = 30)
     private String model;
 
     @NotNull
     @NotBlank
-    @Size(min = 5, max = 30)
+    @Size(min = 2, max = 30)
     private String title;
 
     @NotNull
@@ -64,12 +62,10 @@ public class CarEntity {
     private int seats;
 
     @NotNull
-    @Min(value = 2)
+    @Min(value = 1)
     @Max(value = 5)
     private int doors;
 
-    @Min(value = 1)
-    @Max(value = 2000)
     private int horsepower;
 
     @NotNull
@@ -97,7 +93,6 @@ public class CarEntity {
     @Size(max = 20)
     private String type;
 
-    @Size(max = 200)
     private String description;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
