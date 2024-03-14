@@ -104,7 +104,7 @@ public class CarService {
 
     @Transactional
     public Long populate(Integer amount) {
-        sessionService.onlyAdmins();    
+        sessionService.onlyAdmins();
 
         for (int i = 0; i < amount; i++) {
             String brand = DataGenerationHelper.getRandomCarBrand();
@@ -167,4 +167,9 @@ public class CarService {
         return carRepository.findCarsByOrderByViewsDesc(resultCount);
     }
 
+    public void increaseViews(Long id) {
+        // Directamente incrementamos las vistas sin necesidad de guardar la entidad de
+        // nuevo
+        carRepository.incrementViewsById(id);
+    }
 }

@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.domain.Pageable;
 
 import alpha.allmotors.entity.CarEntity;
+import jakarta.transaction.Transactional;
 
 public interface CarRepository extends JpaRepository<CarEntity, Long> {
 
@@ -183,11 +184,18 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
         Page<CarEntity> findCarsByUserIdAndDistanceRange(Long userId, int startDistance, int endDistance,
                         Pageable pageable);
 
-        // Seach by title
+        // Search by title
         Page<CarEntity> findByUserIdAndTitleContainingIgnoreCase(Long userId, String title, Pageable pageable);
 
         Page<CarEntity> findByTitleContainingIgnoreCase(String searchText, Pageable pageable);
 
+        // Increment views
+        @Modifying
+        @Transactional
+        @Query("UPDATE CarEntity c SET c.views = c.views + 1 WHERE c.id = :carId")
+        void incrementViewsById(@Param("carId") Long carId);
+
+        // Reset auto increment
         @Modifying
         @Query(value = "ALTER TABLE car AUTO_INCREMENT = 1", nativeQuery = true)
         void resetAutoIncrement();

@@ -1,0 +1,45 @@
+package alpha.allmotors.api;
+
+import alpha.allmotors.entity.CarEntity;
+import alpha.allmotors.entity.FavoriteEntity;
+import alpha.allmotors.service.FavoriteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/favorites")
+public class FavoriteApi {
+
+    @Autowired
+    private FavoriteService favoriteService;
+
+    @PostMapping("/add")
+    public ResponseEntity<FavoriteEntity> addFavorite(@RequestParam Long userId, @RequestParam Long carId) {
+        return ResponseEntity.ok(favoriteService.addFavorite(userId, carId));
+    }
+
+    @DeleteMapping("/remove")
+    public ResponseEntity<Void> removeFavorite(@RequestParam Long userId, @RequestParam Long carId) {
+        favoriteService.removeFavorite(userId, carId);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/isFavorite")
+    public ResponseEntity<Boolean> isFavorite(@RequestParam Long userId, @RequestParam Long carId) {
+        return ResponseEntity.ok(favoriteService.existsByUserIdAndCarId(userId, carId));
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<CarEntity>> getFavoritesByUserId(@PathVariable Long userId) {
+        try {
+            List<CarEntity> favorites = favoriteService.getFavoritesByUserId(userId);
+            return ResponseEntity.ok(favorites);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+}

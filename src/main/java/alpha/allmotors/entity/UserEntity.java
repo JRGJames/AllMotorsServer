@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -97,8 +99,12 @@ public class UserEntity {
     @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY)
     private List<CarEntity> cars;
 
+    @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<FavoriteEntity> favorites;
+
     public UserEntity() {
         cars = new ArrayList<>();
+        favorites = new ArrayList<>();
     }
 
     public UserEntity(Long id, String name, String lastname, String username, String gender,
@@ -321,4 +327,16 @@ public class UserEntity {
     public int getCars() {
         return cars.size();
     }
+
+    public int getFavorites() {
+        return favorites.size();
+    }
+
+    // public List<CarEntity> getCarsList() {
+    //     return cars;
+    // }
+
+    // public List<FavoriteEntity> getFavoritesList() {
+    //     return favorites;
+    // }
 }
