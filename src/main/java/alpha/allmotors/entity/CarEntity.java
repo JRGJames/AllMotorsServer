@@ -111,6 +111,9 @@ public class CarEntity {
 
     private int views;
 
+    @Column(name = "is_saved")
+    private boolean isSaved;
+
     @NotNull
     @NotBlank
     @Size(max = 50)
@@ -432,6 +435,14 @@ public class CarEntity {
 
     public void setViews(int views) {
         this.views = views;
+    }
+
+    public boolean isSaved() {
+        return isSaved;
+    }
+
+    public void setSaved(boolean isSaved) {
+        this.isSaved = isSaved;
     }
 
     public String getLocation() {
