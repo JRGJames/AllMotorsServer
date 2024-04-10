@@ -122,7 +122,7 @@ public class CarService {
             String plate = DataGenerationHelper.getRandomCarPlate();
             String type = DataGenerationHelper.getRandomCarType();
             String description = DataGenerationHelper.generateComplexSentence();
-            String location = DataGenerationHelper.getRandomProvince();
+            String location = DataGenerationHelper.getRandomLocation();
             Double emissions = DataGenerationHelper.getRandomEmissions();
             Double consumption = DataGenerationHelper.getRandomConsumption();
             String dgtSticker = DataGenerationHelper.getRandomDGTSticker();

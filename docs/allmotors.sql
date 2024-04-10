@@ -3,13 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Jan 11, 2024 at 12:45 AM
--- Server version: 10.9.8-MariaDB-1:10.9.8+maria~ubu2204
--- PHP Version: 8.2.12
+-- Generation Time: Apr 10, 2024 at 08:47 AM
+-- Server version: 8.3.0
+-- PHP Version: 8.2.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -19,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `allmotors`
 --
+
 DROP DATABASE allmotors;
 CREATE DATABASE IF NOT EXISTS `allmotors` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `allmotors`;
@@ -70,21 +72,21 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`id`, `brand`, `model`, `title`, `date_uploaded`, `status`, `views`, `saves`, `is_saved`, `color`, `year`, `seats`, `doors`, `horsepower`, `gearbox`, `distance`, `fuel`, `currency`, `acceleration`, `engine`, `drive`, `bought_in`, `price`, `type`, `location`, `emissions`, `consumption`, `plate`, `dgt_sticker`, `last_itv`, `last_update`, `description`, `id_owner`) VALUES
-(1, 'Hyundai', 'Altima', 'BMW Serie 8 Coupé', NULL, NULL, 25, 0, 0, 'gray', '1977', 4, 2, 940, 'manual', 465009, 'electric', '€', 5.5, 'V6', 'RWD', 'Russia', 302839, 'Wagon', 'Yukon', 79.62, 6.96, '3208-VQJ', 'ECO', '2014-03-03 14:04:08', NULL, 'Lorem ipsum doloLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at laoreet leo, eget congue eros. Aenean vulputate odio ac lacus tincidunt, ut volutpat lorem lobortis. Quisque et tincidunt augue. Nam mauris eros, tincidunt eu ipsum non, pharetra vestibulum lorem. Vestibulum lobortis blandit molestie. Integer condimentum consequat nisi ut vehicula. Duis placerat lacinia sapien at tempor. Nam gravida sollicitudin enim, id convallis sapien mollis eu.\nr sit amet, consectetur adipiscing elit. Aenean at laoreet leo, eget congue eros. Aenean vulputate odio ac lacus tincidunt, ut volutpat lorem lobortis. Quisque et tincidunt augue. Nam mauris eros, tincidunt eu ipsum non, pharetra vestibulum lorem. Vestibulum lobortis blandit molestie. Integer condimentum consequat nisi ut vehicula. Duis placerat lacinia sapien at tempor. Nam gravida sollicitudin enim, id convallis sapien mollis eu.\n\nVivamus sed eros finibus quam posuere tincidunt. Quisque ut urna venenatis, varius orci vel, consequat ante. Pellentesque vel ipsum id nisl pharetra pharetra at in nisi. Cras lobortis diam a pretium dignissim. In nec sem dignissim.', 2),
-(2, 'Chevrolet', 'Corvette', 'Chevrolet Bolt EV Corvette', NULL, NULL, 53, 0, 0, 'white', '1990', 2, 3, 694, 'manual', 896779, 'hybrid', '£', 3.4, 'I4', 'RWD', 'United Kingdom', 4389346, 'SUV', 'British Columbia', 59.04, 5.79, '8745-PGT', 'ECO', '2013-10-20 14:24:17', NULL, 'while one house sleeps loudly one book reads', 2),
-(4, 'Nissan', 'Golf', 'Nissan Golf', '2024-02-22 00:38:09', NULL, 34, 0, 0, 'purple', '2015', 3, 2, 71, 'automatic', 8913, 'electric', '£', 10, 'I5', 'RWD', 'Norway', 3583426, 'Hatchback', 'Nova Scotia', 93.09, 6.42, '0806-WMR', 'B', '2011-11-19 01:13:53', '2024-02-22 00:38:09', 'whenever one house fly quickly one car ate slowly', 1),
+(1, 'Hyundai', 'Altima', 'BMW Serie 8 Coupé', NULL, NULL, 289, 0, 0, 'gray', '1977', 4, 2, 940, 'manual', 465009, 'electric', '€', 5.5, 'V6', 'RWD', 'Russia', 302839, 'Wagon', 'Yukon', 79.62, 6.96, '3208-VQJ', 'ECO', '2014-03-03 14:04:08', NULL, 'Lorem ipsum doloLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at laoreet leo, eget congue eros. Aenean vulputate odio ac lacus tincidunt, ut volutpat lorem lobortis. Quisque et tincidunt augue. Nam mauris eros, tincidunt eu ipsum non, pharetra vestibulum lorem. Vestibulum lobortis blandit molestie. Integer condimentum consequat nisi ut vehicula. Duis placerat lacinia sapien at tempor. Nam gravida sollicitudin enim, id convallis sapien mollis eu.\nr sit amet, consectetur adipiscing elit. Aenean at laoreet leo, eget congue eros. Aenean vulputate odio ac lacus tincidunt, ut volutpat lorem lobortis. Quisque et tincidunt augue. Nam mauris eros, tincidunt eu ipsum non, pharetra vestibulum lorem. Vestibulum lobortis blandit molestie. Integer condimentum consequat nisi ut vehicula. Duis placerat lacinia sapien at tempor. Nam gravida sollicitudin enim, id convallis sapien mollis eu.\n\nVivamus sed eros finibus quam posuere tincidunt. Quisque ut urna venenatis, varius orci vel, consequat ante. Pellentesque vel ipsum id nisl pharetra pharetra at in nisi. Cras lobortis diam a pretium dignissim. In nec sem dignissim.', 2),
+(2, 'Chevrolet', 'Corvette', 'Chevrolet Bolt EV Corvette', NULL, NULL, 57, 0, 0, 'white', '1990', 2, 3, 694, 'manual', 896779, 'hybrid', '£', 3.4, 'I4', 'RWD', 'United Kingdom', 4389346, 'SUV', 'British Columbia', 59.04, 5.79, '8745-PGT', 'ECO', '2013-10-20 14:24:17', NULL, 'while one house sleeps loudly one book reads', 2),
+(4, 'Nissan', 'Golf', 'Nissan Golf', '2024-02-22 00:38:09', NULL, 55, 0, 0, 'purple', '2015', 3, 2, 71, 'automatic', 8913, 'electric', '£', 10, 'I5', 'RWD', 'Norway', 3583426, 'Hatchback', 'Nova Scotia', 93.09, 6.42, '0806-WMR', 'B', '2011-11-19 01:13:53', '2024-02-22 00:38:09', 'whenever one house fly quickly one car ate slowly', 1),
 (5, 'Chevrolet', 'F-150', 'Chevrolet F-150', '2024-02-22 00:38:09', NULL, 4, 0, 0, 'yellow', '1961', 3, 4, 1257, 'manual', 317677, 'petrol', '£', 3.7, 'V12', 'FWD', 'South Korea', 1265321, 'Truck', 'Newfoundland and Labrador', 64.38, 9.12, '8863-SLC', 'C', '2023-07-24 05:47:51', '2024-02-22 00:38:09', 'before one car shines brightly the sandwich barks', 2),
-(6, 'Honda', 'S60', 'Honda S60', '2024-02-22 00:38:09', NULL, 7, 0, 0, 'red', '1976', 5, 5, 351, 'automatic', 1208320, 'electric', '€', 8.4, 'I5', 'RWD', 'Japan', 1004933, 'Convertible', 'Basque Country', 102.76, 9.12, '2356-IQV', 'C', '2022-09-29 21:26:41', '2024-02-22 00:38:09', 'while a book shines brightly the cat ate', 1),
+(6, 'Honda', 'S60', 'Honda S60', '2024-02-22 00:38:09', NULL, 8, 0, 0, 'red', '1976', 5, 5, 351, 'automatic', 1208320, 'electric', '€', 8.4, 'I5', 'RWD', 'Japan', 1004933, 'Convertible', 'Basque Country', 102.76, 9.12, '2356-IQV', 'C', '2022-09-29 21:26:41', '2024-02-22 00:38:09', 'while a book shines brightly the cat ate', 1),
 (7, 'Chevrolet', 'Civic', 'Chevrolet Civic', '2024-02-22 00:38:09', NULL, 0, 0, 0, 'green', '1926', 5, 5, 1185, 'manual', 60920, 'petrol', '€', 3.3, 'I3', 'RWD', 'France', 3689858, 'SUV', 'Valencia', 45.93, 9.03, '9198-NCI', 'B', '2017-08-13 05:08:07', '2024-02-22 00:38:09', 'when the car ate one friend shines slowly and a sun barks softly', 1),
-(8, 'Kia', 'F-150', 'Kia F-150', '2024-02-22 00:38:09', NULL, 2, 0, 0, 'green', '1931', 6, 4, 1007, 'automatic', 1094050, 'hybrid', '$', 5, 'W12', 'AWD', 'Norway', 1242127, 'Sedan', 'Catalonia', 61.76, 9.95, '4275-DPV', 'B', '2020-01-26 10:16:01', '2024-02-22 00:38:09', 'until the house fly one sandwich is', 2),
-(9, 'Hyundai', 'CX-5', 'Hyundai CX-5', '2024-02-22 00:38:09', NULL, 32, 0, 0, 'yellow', '1998', 6, 3, 1273, 'automatic', 620285, 'petrol', '€', 8, 'V6', 'FWD', 'Canada', 4559772, 'Hatchback', 'Castile and León', 32.65, 6.34, '9408-XFK', 'ECO', '2013-09-19 12:23:56', '2024-02-22 00:38:09', 'because a book reads slowly the friend barks', 1),
-(10, 'Hyundai', 'Civic', 'Hyundai Civic', '2024-02-22 00:38:09', NULL, 0, 0, 0, 'black', '2001', 5, 4, 248, 'manual', 110204, 'petrol', '£', 6.1, 'W12', 'AWD', 'Japan', 428536, 'Truck', 'Andalusia', 24.4, 8.22, '9697-EMQ', '0', '2023-06-23 22:08:42', '2024-02-22 00:38:09', 'where one cat sleeps brightly the car fly softly or a sun sleeps', 2),
+(8, 'Kia', 'F-150', 'Kia F-150', '2024-02-22 00:38:09', NULL, 3, 0, 0, 'green', '1931', 6, 4, 1007, 'automatic', 1094050, 'hybrid', '$', 5, 'W12', 'AWD', 'Norway', 1242127, 'Sedan', 'Catalonia', 61.76, 9.95, '4275-DPV', 'B', '2020-01-26 10:16:01', '2024-02-22 00:38:09', 'until the house fly one sandwich is', 2),
+(9, 'Hyundai', 'CX-5', 'Hyundai CX-5', '2024-02-22 00:38:09', NULL, 33, 0, 0, 'yellow', '1998', 6, 3, 1273, 'automatic', 620285, 'petrol', '€', 8, 'V6', 'FWD', 'Canada', 4559772, 'Hatchback', 'Castile and León', 32.65, 6.34, '9408-XFK', 'ECO', '2013-09-19 12:23:56', '2024-02-22 00:38:09', 'because a book reads slowly the friend barks', 1),
+(10, 'Hyundai', 'Civic', 'Hyundai Civic', '2024-02-22 00:38:09', NULL, 2, 0, 0, 'black', '2001', 5, 4, 248, 'manual', 110204, 'petrol', '£', 6.1, 'W12', 'AWD', 'Japan', 428536, 'Truck', 'Andalusia', 24.4, 8.22, '9697-EMQ', '0', '2023-06-23 22:08:42', '2024-02-22 00:38:09', 'where one cat sleeps brightly the car fly softly or a sun sleeps', 2),
 (11, 'Hyundai', 'F-150', 'Hyundai F-150', '2024-02-22 00:38:09', NULL, 0, 0, 0, 'orange', '1961', 5, 5, 1439, 'manual', 397078, 'electric', '£', 9, 'I3', 'FWD', 'Sweden', 3352101, 'Van', 'New Brunswick', 88.92, 8.31, '6692-KEU', 'C', '2012-01-14 00:08:35', '2024-02-22 00:38:09', 'unless one friend reads a house is slowly and one house barks slowly', 1),
 (12, 'Acura', 'MDX', 'Acura MDX', NULL, NULL, 2, 0, 0, 'blue', '2001', 5, 2, 185, 'manual', 100000, 'gasoline', '€', 7.2, '3.0L V6', 'rwd', 'Spain', 33000, 'sedan', 'Valencia', 120, 5.5, 'ABC123', 'C', '2024-02-21 23:38:13', NULL, 'El BMW Serie 3 E46 no es solo un coche, es una pieza de la historia automovilística que combina a la perfección rendimiento, lujo y fiabilidad. Diseñado para aquellos que aprecian la conducción pura, este modelo se ha convertido en un favorito tanto para entusiastas como para aquellos que buscan un vehículo premium versátil.', 1),
 (13, 'Chevrolet', 'Soul', 'Chevrolet Soul', '2024-02-22 00:54:18', NULL, 0, 0, 0, 'yellow', '1971', 5, 4, 693, 'automatic', 444314, 'petrol', '$', 2.5, 'W12', 'AWD', 'Russia', 1660237, 'Convertible', 'Galicia', 108.07, 5.91, '6865-JZI', 'C', '2014-12-27 22:59:45', '2024-02-22 00:54:18', 'even if the birds run the dog reads', 1),
-(14, 'Volvo', '3 Series', 'Volvo 3 Series', '2024-02-22 00:54:18', NULL, 1, 0, 0, 'green', '1964', 8, 4, 1447, 'automatic', 222849, 'electric', '$', 9.3, 'V8', 'AWD', 'Australia', 1296794, 'Convertible', 'Alberta', 50.25, 9.12, '9007-EPL', 'B', '2014-11-22 10:05:25', '2024-02-22 00:54:18', 'because one sandwich run loudly a sun barks', 2),
-(15, 'Volkswagen', 'S60', 'Volkswagen S60', '2024-02-22 00:54:18', NULL, 10, 0, 0, 'green', '1958', 4, 4, 589, 'automatic', 536065, 'electric', '£', 9.7, 'I4', 'FWD', 'Turkey', 3202159, 'Hatchback', 'Newfoundland and Labrador', 29.96, 6.79, '8232-KRS', '0', '2013-11-28 13:06:15', '2024-02-22 00:54:18', 'while one cat fly slowly a house ate and one house sleeps', 1),
-(16, 'Ford', 'A4', 'Ford A4', '2024-02-22 00:54:18', NULL, 26, 0, 0, 'green', '1997', 4, 3, 668, 'automatic', 1464771, 'electric', '$', 8.7, 'W12', 'RWD', 'China', 4711972, 'SUV', 'Galicia', 77.81, 8.21, '0011-NBX', 'ECO', '2017-10-08 07:17:09', '2024-02-22 00:54:18', 'unless a birds shines a sandwich is', 1),
+(14, 'Volvo', '3 Series', 'Volvo 3 Series', '2024-02-22 00:54:18', NULL, 2, 0, 0, 'green', '1964', 8, 4, 1447, 'automatic', 222849, 'electric', '$', 9.3, 'V8', 'AWD', 'Australia', 1296794, 'Convertible', 'Alberta', 50.25, 9.12, '9007-EPL', 'B', '2014-11-22 10:05:25', '2024-02-22 00:54:18', 'because one sandwich run loudly a sun barks', 2),
+(15, 'Volkswagen', 'S60', 'Volkswagen S60', '2024-02-22 00:54:18', NULL, 73, 0, 0, 'green', '1958', 4, 4, 589, 'automatic', 536065, 'electric', '£', 9.7, 'I4', 'FWD', 'Turkey', 3202159, 'Hatchback', 'Newfoundland and Labrador', 29.96, 6.79, '8232-KRS', '0', '2013-11-28 13:06:15', '2024-02-22 00:54:18', 'while one cat fly slowly a house ate and one house sleeps', 1),
+(16, 'Ford', 'A4', 'Ford A4', '2024-02-22 00:54:18', NULL, 31, 0, 0, 'green', '1997', 4, 3, 668, 'automatic', 1464771, 'electric', '$', 8.7, 'W12', 'RWD', 'China', 4711972, 'SUV', 'Galicia', 77.81, 8.21, '0011-NBX', 'ECO', '2017-10-08 07:17:09', '2024-02-22 00:54:18', 'unless a birds shines a sandwich is', 1),
 (17, 'Mercedes-Benz', 'F-150', 'Mercedes-Benz F-150', '2024-02-22 00:54:19', NULL, 0, 0, 0, 'gray', '1942', 4, 2, 659, 'manual', 989919, 'petrol', '$', 5.4, 'V10', 'AWD', 'Brazil', 3016212, 'Coupe', 'Ontario', 72.63, 7.25, '5345-IUL', 'C', '2022-07-17 04:56:42', '2024-02-22 00:54:19', 'once a dog ate brightly a house reads and one car shines quickly', 2),
 (18, 'Volkswagen', 'CX-5', 'Volkswagen CX-5', '2024-02-22 00:54:19', NULL, 1, 0, 0, 'purple', '1982', 5, 5, 1129, 'manual', 595954, 'electric', '¥', 2.5, 'V6', 'RWD', 'India', 4586970, 'Sedan', 'Madrid', 104.69, 7.71, '0594-IJY', '0', '2019-06-21 20:54:03', '2024-02-22 00:54:19', 'so that the sandwich sleeps slowly one sandwich reads', 1),
 (19, 'Volkswagen', 'Model 3', 'Volkswagen Model 3', '2024-02-22 00:54:19', NULL, 0, 0, 0, 'yellow', '1952', 4, 4, 1495, 'automatic', 399186, 'petrol', '$', 9, 'V10', 'FWD', 'Norway', 2410960, 'Van', 'Yukon', 84.82, 5.84, '1064-PNY', 'B', '2022-04-01 02:58:31', '2024-02-22 00:54:19', 'whether the car shines softly the birds run and the dog run brightly', 2),
@@ -134,14 +136,15 @@ INSERT INTO `car` (`id`, `brand`, `model`, `title`, `date_uploaded`, `status`, `
 (63, 'Subaru', 'Model 3', 'Subaru Model 3', '2024-03-11 01:48:34', NULL, 0, 0, 0, 'black', '1943', 3, 3, 237, 'automatic', 551530, 'gasoline', '¥', 4.5, 'V10', 'RWD', 'Spain', 3094399, 'SUV', 'Ontario', 89.14, 6.06, '5120-HUR', '0', '2011-11-06 10:17:03', '2024-03-11 01:48:34', 'unless a sandwich reads quickly one sandwich barks', 1),
 (64, 'Chevrolet', 'Model 3', 'Chevrolet Model 3', '2024-03-11 01:48:34', NULL, 0, 0, 0, 'purple', '2013', 6, 3, 1339, 'automatic', 811275, 'electric', '€', 8.6, 'V8', 'RWD', 'Argentina', 1967778, 'Wagon', 'New Brunswick', 53.5, 5.66, '5896-EQG', 'ECO', '2020-09-13 19:34:09', '2024-03-11 01:48:34', 'while a sandwich barks brightly one cat reads', 1),
 (65, 'Toyota', 'CX-5', 'Toyota CX-5', '2024-03-11 01:48:34', NULL, 0, 0, 0, 'red', '1944', 4, 2, 1328, 'manual', 423118, 'petrol', '¥', 2.4, 'I5', 'AWD', 'Australia', 2365749, 'Sedan', 'Manitoba', 64.61, 9.31, '1369-BZC', 'ECO', '2010-02-14 15:34:18', '2024-03-11 01:48:34', 'unless a sun fly a car is', 1),
-(66, 'Tesla', 'Cruze', 'Tesla Cruze', '2024-03-11 01:48:34', NULL, 1, 0, 0, 'green', '2007', 5, 5, 1329, 'manual', 945772, 'electric', '¥', 3.8, 'V8', 'RWD', 'Argentina', 857361, 'Coupe', 'Nunavut', 21.63, 7.22, '1451-BMC', 'B', '2015-07-19 16:46:33', '2024-03-11 01:48:34', 'so that the dog ate a birds run loudly and a sun barks', 1),
+(66, 'Tesla', 'Cruze', 'Tesla Cruze', '2024-03-11 01:48:34', NULL, 2, 0, 0, 'green', '2007', 5, 5, 1329, 'manual', 945772, 'electric', '¥', 3.8, 'V8', 'RWD', 'Argentina', 857361, 'Coupe', 'Nunavut', 21.63, 7.22, '1451-BMC', 'B', '2015-07-19 16:46:33', '2024-03-11 01:48:34', 'so that the dog ate a birds run loudly and a sun barks', 1),
 (67, 'Tesla', 'A4', 'Tesla A4', '2024-03-11 01:48:34', NULL, 0, 0, 0, 'gray', '1939', 8, 2, 617, 'automatic', 711565, 'electric', '$', 6.1, 'I6', 'AWD', 'India', 3199869, 'Wagon', 'Nova Scotia', 62.64, 9, '8286-VVO', 'B', '2018-10-07 08:35:01', '2024-03-11 01:48:34', 'before a house barks the birds shines slowly and the book sleeps brightly', 1),
 (68, 'Mazda', 'S60', 'Mazda S60', '2024-03-11 01:48:34', NULL, 0, 0, 0, 'white', '2003', 7, 3, 1397, 'manual', 939428, 'electric', '€', 5.9, 'W12', 'AWD', 'Canada', 1006216, 'Wagon', 'Prince Edward Island', 65.46, 9.53, '1393-ZDI', 'ECO', '2015-03-02 02:36:01', '2024-03-11 01:48:34', 'although one sandwich ate loudly one birds fly', 1),
 (69, 'Volkswagen', 'S60', 'Volkswagen S60', '2024-03-11 01:48:34', NULL, 0, 0, 0, 'gray', '1983', 2, 3, 664, 'manual', 1258926, 'hybrid', '€', 7.4, 'I4', 'AWD', 'China', 4786257, 'Van', 'Nova Scotia', 12.26, 6.68, '4877-VDT', 'C', '2014-05-14 00:10:25', '2024-03-11 01:48:34', 'until a sun run slowly the car fly', 2),
 (70, 'Volkswagen', 'Soul', 'Volkswagen Soul', '2024-03-11 01:48:34', NULL, 0, 0, 0, 'yellow', '2003', 6, 5, 480, 'manual', 415409, 'hybrid', '¥', 7.3, 'I5', 'RWD', 'Brazil', 2930870, 'Wagon', 'Andalusia', 20.21, 8.9, '8640-TNN', 'ECO', '2019-04-04 04:33:10', '2024-03-11 01:48:34', 'since a house barks quickly a sandwich is', 1),
 (71, 'Kia', '3 Series', 'Kia 3 Series', '2024-03-11 01:48:35', NULL, 0, 0, 0, 'yellow', '1987', 2, 4, 773, 'automatic', 320760, 'gasoline', '€', 9.3, 'I6', 'AWD', 'United Kingdom', 3173251, 'Truck', 'Newfoundland and Labrador', 18.05, 8.96, '8052-ZNK', 'ECO', '2010-06-10 10:08:40', '2024-03-11 01:48:35', 'that a cat is slowly one cat sleeps', 2),
 (72, 'Volkswagen', 'Cruze', 'Volkswagen Cruze', '2024-03-11 01:48:35', NULL, 0, 0, 0, 'gray', '2023', 7, 5, 1209, 'manual', 610984, 'electric', '¥', 8.5, 'V12', 'RWD', 'United Kingdom', 3428190, 'Convertible', 'Alberta', 69.37, 8.03, '3636-ISV', 'C', '2015-05-17 22:59:07', '2024-03-11 01:48:35', 'before one dog sleeps slowly one friend run softly but the car fly brightly', 2),
-(73, 'Nissan', 'Model 3', 'Nissan Model 3', '2024-03-11 01:48:35', NULL, 0, 0, 0, 'white', '1985', 8, 5, 681, 'manual', 194080, 'gasoline', '¥', 4, 'V8', 'FWD', 'France', 3051360, 'SUV', 'Galicia', 65.41, 8.77, '7444-YEG', 'B', '2018-12-15 11:38:46', '2024-03-11 01:48:35', 'though one car ate the cat is slowly', 1);
+(73, 'Nissan', 'Model 3', 'Nissan Model 3', '2024-03-11 01:48:35', NULL, 0, 0, 0, 'white', '1985', 8, 5, 681, 'manual', 194080, 'gasoline', '¥', 4, 'V8', 'FWD', 'France', 3051360, 'SUV', 'Galicia', 65.41, 8.77, '7444-YEG', 'B', '2018-12-15 11:38:46', '2024-03-11 01:48:35', 'though one car ate the cat is slowly', 1),
+(74, 'Mercedes-Benz', 'Civic', 'Mercedes-Benz Civic', '2024-04-10 08:05:26', NULL, 2, 0, 0, 'black', '2013', 8, 3, 710, 'manual', 94017, 'electric', '£', 4.9, 'V12', 'AWD', 'Russia', 3405723, 'Convertible', '41.8719, 12.5674', 66.91, 7.4, '3277-SGL', 'ECO', '2013-07-03 17:34:04', '2024-04-10 08:05:26', 'although the house shines the car shines quickly', 3);
 
 -- --------------------------------------------------------
 
@@ -178,7 +181,7 @@ CREATE TABLE `favorites` (
 INSERT INTO `favorites` (`id`, `id_user`, `id_car`) VALUES
 (5, 1, 4),
 (39, 2, 2),
-(85, 1, 1);
+(89, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -513,7 +516,9 @@ INSERT INTO `images` (`id`, `image_url`, `id_car`) VALUES
 (1204, '/media/image9.jpg', 72),
 (1205, '/media/image9.jpg', 73),
 (1206, '/media/image3.jpg', 73),
-(1207, '/media/image1.jpg', 73);
+(1207, '/media/image1.jpg', 73),
+(1208, '/media/image7.jpg', 74),
+(1209, '/media/image10.jpg', 74);
 
 -- --------------------------------------------------------
 
@@ -530,6 +535,19 @@ CREATE TABLE `message` (
   `id_sender` bigint DEFAULT NULL,
   `id_receiver` bigint NOT NULL,
   `id_chat` bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `price`
+--
+
+CREATE TABLE `price` (
+  `id` bigint NOT NULL,
+  `id_car` bigint NOT NULL,
+  `modified` datetime NOT NULL,
+  `price` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -650,6 +668,13 @@ ALTER TABLE `message`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `price`
+--
+ALTER TABLE `price`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_car` (`id_car`);
+
+--
 -- Indexes for table `rating`
 --
 ALTER TABLE `rating`
@@ -671,7 +696,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `chat`
@@ -683,18 +708,24 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT for table `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1208;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1210;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `price`
+--
+ALTER TABLE `price`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
@@ -719,6 +750,13 @@ ALTER TABLE `user`
 ALTER TABLE `favorites`
   ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `price`
+--
+
+ALTER TABLE `price`
+  ADD CONSTRAINT `price_ibfk_1` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `images`
