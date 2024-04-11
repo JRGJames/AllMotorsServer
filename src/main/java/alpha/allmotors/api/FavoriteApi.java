@@ -28,18 +28,23 @@ public class FavoriteApi {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/isFavorite")
+    @GetMapping("/status")
     public ResponseEntity<Boolean> isFavorite(@RequestParam Long userId, @RequestParam Long carId) {
         return ResponseEntity.ok(favoriteService.existsByUserIdAndCarId(userId, carId));
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<CarEntity>> getFavoritesByUserId(@PathVariable Long userId) {
+    @GetMapping("/get/{userId}")
+    public ResponseEntity<List<CarEntity>> getByUserId(@PathVariable Long userId) {
         try {
-            List<CarEntity> favorites = favoriteService.getFavoritesByUserId(userId);
+            List<CarEntity> favorites = favoriteService.getByUserId(userId);
             return ResponseEntity.ok(favorites);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @GetMapping("/count/{carId}")
+    public ResponseEntity<Long> countFavoritesByCarId(@PathVariable Long carId) {
+        return ResponseEntity.ok(favoriteService.countByCarId(carId));
     }
 }

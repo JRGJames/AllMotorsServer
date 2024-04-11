@@ -62,7 +62,7 @@ public class FavoriteService {
         return favoriteRepository.existsByUserIdAndCarId(userId, carId);
     }
 
-    public List<CarEntity> getFavoritesByUserId(Long userId) {
+    public List<CarEntity> getByUserId(Long userId) {
         List<FavoriteEntity> favorites = favoriteRepository.findByUserId(userId);
         return favorites.stream()
                 .map(FavoriteEntity::getCar)
@@ -72,4 +72,5 @@ public class FavoriteService {
     public Long countByCarId(Long carId) {
         return favoriteRepository.countByCarId(carId);
     }
+   
 }
