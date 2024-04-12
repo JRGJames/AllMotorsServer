@@ -32,4 +32,8 @@ public class RatingService {
     public Long getRatingCountForUser(Long ratedUser) {
         return ratingRepository.countByRatedUser(ratedUser);
     }
+
+    public List<RatingEntity> getAllRatings() {
+        return ratingRepository.findAll();
+    }
 }

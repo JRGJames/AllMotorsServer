@@ -39,4 +39,9 @@ public class RatingApi {
         long count = ratingService.getRatingCountForUser(userId);
         return new  ResponseEntity<>(count, HttpStatus.OK);
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllRatings() {
+        return new ResponseEntity<>(ratingService.getAllRatings(), HttpStatus.OK);
+    }
 }

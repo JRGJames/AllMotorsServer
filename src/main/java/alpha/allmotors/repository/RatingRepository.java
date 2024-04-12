@@ -13,4 +13,6 @@ public interface RatingRepository extends JpaRepository<RatingEntity, Long> {
     List<RatingEntity> findByRatedUser(Long ratedUser);
 
     Long countByRatedUser(Long ratedUser);
+
+    List<RatingEntity> findAll(); 
 }
