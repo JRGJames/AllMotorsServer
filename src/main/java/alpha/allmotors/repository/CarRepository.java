@@ -59,7 +59,7 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
 
         // By user id
 
-        @Query(value = "SELECT * FROM car WHERE id_owner = :userId LIMIT :pageSize OFFSET :pageNumber * :pageSize", nativeQuery = true)
+        @Query(value = "SELECT * FROM car WHERE id_owner = :userId", nativeQuery = true)
         Page<CarEntity> findByUserId(Long userId, Pageable pageable);
 
         // By order desc or asc
