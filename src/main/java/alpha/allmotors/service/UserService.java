@@ -96,16 +96,13 @@ public class UserService {
             String gender = DataGenerationHelper.getRandomGender();
             LocalDateTime birthdate = DataGenerationHelper.getRandomDate();
             String country = DataGenerationHelper.getRandomCountry();
-            String province = DataGenerationHelper.getRandomProvince();
-            String address = DataGenerationHelper.getRandomAddress();
-            String postalCode = DataGenerationHelper.getRandomPostalCode();
+            String city = DataGenerationHelper.getRandomCity();
             Boolean status = DataGenerationHelper.getRandomStatus();
             String phone = DataGenerationHelper.getRandomPhoneNumber();
             String email = (name.substring(0, 3) + lastname.substring(0, 3) + i).toLowerCase() + "@gmail.net";
             String password = ALLMOTORS;
             Boolean role = false;
-            userRepository.save(new UserEntity(name, lastname, username, gender, birthdate, country, province, address,
-                    postalCode, status, phone, email, password, role));
+            userRepository.save(new UserEntity(name, lastname, username, gender, birthdate, country, city, status, phone, email, password, role));
         }
         return userRepository.count();
     }
@@ -116,11 +113,11 @@ public class UserService {
         userRepository.deleteAll();
         userRepository.resetAutoIncrement();
         UserEntity userEntityOne = new UserEntity("Fernando", "Alonso", "ElNano", "Man",
-                DataGenerationHelper.getRandomDate(), "Spain", "Asturias", "Calle Nano 33", "53033", true, "633974333",
+                DataGenerationHelper.getRandomDate(), "Spain", "Asturias", true, "633974333",
                 "nano@gmail.com", ALLMOTORS, true);
         userRepository.save(userEntityOne);
         UserEntity userEntityTwo = new UserEntity("Carlos", "Sainz", "carlossainz", "Man",
-                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", "Calle Sainz 55", "53055", true, "655974455",
+                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", true, "655974455",
                 "sainz@gmail.com", ALLMOTORS, false);
         userRepository.save(userEntityTwo);
         return userRepository.count();

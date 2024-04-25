@@ -217,7 +217,7 @@ public static String getRandomLocation() {
     return locations[new Random().nextInt(locations.length)];
 }
 
-    private static final String[] provinces = {
+    private static final String[] cities = {
             "Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan",
             "Nova Scotia", "New Brunswick", "Newfoundland and Labrador", "Prince Edward Island",
             "Northwest Territories", "Yukon", "Nunavut", "Madrid", "Catalonia", "Andalusia",
@@ -225,8 +225,8 @@ public static String getRandomLocation() {
             // Add more provinces as needed
     };
 
-    public static String getRandomProvince() {
-        return provinces[new Random().nextInt(provinces.length)];
+    public static String getRandomCity() {
+        return cities[new Random().nextInt(cities.length)];
     }
 
     private static final String[] streetNames = {

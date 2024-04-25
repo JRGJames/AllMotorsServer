@@ -48,14 +48,7 @@ public class UserEntity {
     private String country;
 
     @Size(min = 3, max = 30)
-    private String province;
-
-    @Size(min = 3, max = 30)
-    private String address;
-
-    @Size(min = 3, max = 15)
-    @Column(name = "postal_code")
-    private String postalCode;
+    private String city;
 
     @Size(max = 500)
     private String description;
@@ -63,6 +56,10 @@ public class UserEntity {
     @Size(max = 255)
     @Column(name = "profile_picture")
     private String profilePicture;
+
+    @Size(max = 255)
+    @Column(name = "profile_background")
+    private String profileBackground;
 
     private Boolean status;
 
@@ -108,8 +105,7 @@ public class UserEntity {
     }
 
     public UserEntity(Long id, String name, String lastname, String username, String gender,
-            LocalDateTime birthdate, String country, String province, String address,
-            String postalCode, Boolean status, String phone, String email, String password, boolean role) {
+            LocalDateTime birthdate, String country, String city, Boolean status, String phone, String email, String password, boolean role) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -117,9 +113,7 @@ public class UserEntity {
         this.gender = gender;
         this.birthdate = birthdate;
         this.country = country;
-        this.province = province;
-        this.address = address;
-        this.postalCode = postalCode;
+        this.city = city;
         this.status = status;
         this.phone = phone;
         this.email = email;
@@ -130,17 +124,14 @@ public class UserEntity {
     }
 
     public UserEntity(String name, String lastname, String username, String gender,
-            LocalDateTime birthdate, String country, String province, String address,
-            String postalCode, Boolean status, String phone, String email, String password, boolean role) {
+            LocalDateTime birthdate, String country, String city, Boolean status, String phone, String email, String password, boolean role) {
         this.name = name;
         this.lastname = lastname;
         this.username = username;
         this.gender = gender;
         this.birthdate = birthdate;
         this.country = country;
-        this.province = province;
-        this.address = address;
-        this.postalCode = postalCode;
+        this.city = city;
         this.status = status;
         this.phone = phone;
         this.email = email;
@@ -212,28 +203,12 @@ public class UserEntity {
         this.country = country;
     }
 
-    public String getProvince() {
-        return this.province;
+    public String getCity() {
+        return this.city;
     }
 
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getAddress() {
-        return this.address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPostalCode() {
-        return this.postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getDescription() {
