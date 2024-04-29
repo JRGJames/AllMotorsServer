@@ -2,6 +2,7 @@ package alpha.allmotors.service;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Service;
 import alpha.allmotors.bean.UserBean;
 import alpha.allmotors.entity.UserEntity;
@@ -18,24 +19,49 @@ public class SessionService {
     @Autowired
     UserRepository userRepository;
 
+    UserEntity userEntity;
+
     @Autowired
     HttpServletRequest httpServletRequest;
 
 
     public String login(UserBean userBean) {
-        Optional<UserEntity> userEntity;
-    
+
+   
         if (StringUtils.hasText(userBean.getUsername())) {
-            userEntity = userRepository.findByUsernameAndPassword(userBean.getUsername(), userBean.getPassword());
+            userRepository.findByUsernameAndPassword(userBean.getUsername(), userBean.getPassword());
         } else if (StringUtils.hasText(userBean.getEmail())) {
-            userEntity = userRepository.findByEmailAndPassword(userBean.getEmail(), userBean.getPassword());
+            userRepository.findByEmailAndPassword(userBean.getEmail(), userBean.getPassword());
         } else {
             throw new UnauthorizedException("Debe proporcionar nombre de usuario o correo electrónico");
         }
     
-        UserEntity user = userEntity.orElseThrow(() -> new ResourceNotFoundException("Wrong username or password"));
-    
-        return JWTHelper.generateJWT(user.getUsername());
+        return JWTHelper.generateJWT(userBean.getUsername());
+    }
+
+    public void changeStatus(UserBean userBean) {
+        Optional<UserEntity> userEmail = userRepository.findByEmail(userBean.getEmail());
+        Optional<UserEntity> userUsername = userRepository.findByUsername(userBean.getUsername());
+
+        
+
+        if (userUsername.isPresent()) {
+            userEntity = userUsername.get();
+            userEntity.setStatus(true);;
+            userRepository.save(userEntity);
+        } else if (userEmail.isPresent()) {
+            userEntity = userEmail.get();
+            userEntity.setStatus(true);
+            userRepository.save(userEntity);
+        } else {
+            throw new ResourceNotFoundException("User not found");
+        }
+    }
+
+    public String loginStatus (UserBean userBean) {
+        String token = this.login(userBean);
+        this.changeStatus(userBean);
+        return token;
     }
     
      
