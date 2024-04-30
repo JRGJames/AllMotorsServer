@@ -101,7 +101,8 @@ public class UserService {
             String email = (name.substring(0, 3) + lastname.substring(0, 3) + i).toLowerCase() + "@gmail.net";
             String password = ALLMOTORS;
             Boolean role = false;
-            userRepository.save(new UserEntity(name, lastname, username, gender, birthdate, country, city, false, phone, email, password, role));
+            userRepository.save(new UserEntity(name, lastname, username, gender, birthdate, country, city, false, phone,
+                    email, password, role));
         }
         return userRepository.count();
     }

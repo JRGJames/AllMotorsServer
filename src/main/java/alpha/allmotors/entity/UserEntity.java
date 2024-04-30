@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -93,10 +94,10 @@ public class UserEntity {
     
     private boolean banned = false;
 
-    @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CarEntity> cars;
 
-    @OneToMany(mappedBy = "user", fetch = jakarta.persistence.FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FavoriteEntity> favorites;
 
     public UserEntity() {
@@ -299,13 +300,13 @@ public class UserEntity {
         this.banned = banned;
     }
 
-    public int getCars() {
-        return cars.size();
-    }
+    // public int getCars() {
+    //     return cars.size();
+    // }
 
-    public int getFavorites() {
-        return favorites.size();
-    }
+    // public int getFavorites() {
+    //     return favorites.size();
+    // }
 
     // public List<CarEntity> getCarsList() {
     //     return cars;

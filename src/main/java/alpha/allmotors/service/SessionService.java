@@ -2,7 +2,6 @@ package alpha.allmotors.service;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Service;
 import alpha.allmotors.bean.UserBean;
 import alpha.allmotors.entity.UserEntity;
@@ -21,13 +20,13 @@ public class SessionService {
 
     UserEntity userEntity;
 
+    JWTHelper jwtHelper = new JWTHelper();
+
     @Autowired
     HttpServletRequest httpServletRequest;
 
-
     public String login(UserBean userBean) {
 
-   
         if (StringUtils.hasText(userBean.getUsername())) {
             userRepository.findByUsernameAndPassword(userBean.getUsername(), userBean.getPassword());
         } else if (StringUtils.hasText(userBean.getEmail())) {
@@ -35,19 +34,18 @@ public class SessionService {
         } else {
             throw new UnauthorizedException("Debe proporcionar nombre de usuario o correo electrónico");
         }
-    
-        return JWTHelper.generateJWT(userBean.getUsername());
+
+        return jwtHelper.generateJWT(userRepository, userBean.getUsername(), userBean.getEmail());
     }
 
     public void changeStatus(UserBean userBean) {
         Optional<UserEntity> userEmail = userRepository.findByEmail(userBean.getEmail());
         Optional<UserEntity> userUsername = userRepository.findByUsername(userBean.getUsername());
 
-        
-
         if (userUsername.isPresent()) {
             userEntity = userUsername.get();
-            userEntity.setStatus(true);;
+            userEntity.setStatus(true);
+            ;
             userRepository.save(userEntity);
         } else if (userEmail.isPresent()) {
             userEntity = userEmail.get();
@@ -58,15 +56,13 @@ public class SessionService {
         }
     }
 
-    public String loginStatus (UserBean userBean) {
+    public String loginStatus(UserBean userBean) {
         String token = this.login(userBean);
         this.changeStatus(userBean);
         return token;
     }
-    
-     
 
-    public String getSessionUsername() {        
+    public String getSessionUsername() {
         if (httpServletRequest.getAttribute("username") instanceof String) {
             return httpServletRequest.getAttribute("username").toString();
         } else {
@@ -76,7 +72,7 @@ public class SessionService {
 
     public UserEntity getSessionUser() {
         if (this.getSessionUsername() != null) {
-            return userRepository.findByUsername(this.getSessionUsername()).orElse(null);    
+            return userRepository.findByUsername(this.getSessionUsername()).orElse(null);
         } else {
             return null;
         }
@@ -153,4 +149,3 @@ public class SessionService {
         }
     }
 }
-
