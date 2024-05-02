@@ -33,23 +33,30 @@ public class MediaController {
     private final StorageService storageService;
     private final HttpServletRequest request;
 
-    @PostMapping("/upload")
-    public ResponseEntity<?> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-        try {
-            List<String> paths = storageService.storeMultiple(files);
-            String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
+    @PostMapping("/upload/background/{userId}")
+    public Map<String, String> uploadProfileBackground(@RequestParam("file") MultipartFile file, @PathVariable Long userId) {
+        String path = storageService.storeBackground(file, userId);
+        String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
+        String url = ServletUriComponentsBuilder
+            .fromHttpUrl(host)
+            .path("/media/")
+            .path(path)
+            .toUriString();
 
-            List<Map<String, String>> responseList = new ArrayList<>();
-            for (String path : paths) {
-                String url = ServletUriComponentsBuilder.fromHttpUrl(host).path("/media/").path(path).toUriString();
-                responseList.add(Map.of("url", url));
-            }
+        return Map.of("url", url);
+    }
 
-            return ResponseEntity.ok(responseList);
-        } catch (RuntimeException e) {
-            // Retorna un ResponseEntity con el mensaje de error y un código de estado adecuado
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    @PostMapping("/upload/picture/{userId}")
+    public Map<String, String> uploadProfilePicture(@RequestParam("file") MultipartFile file, @PathVariable Long userId) {
+        String path = storageService.storePicture(file, userId);
+        String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
+        String url = ServletUriComponentsBuilder
+            .fromHttpUrl(host)
+            .path("/media/")
+            .path(path)
+            .toUriString();
+
+        return Map.of("url", url);
     }
 
     @GetMapping("{filename:.+}")

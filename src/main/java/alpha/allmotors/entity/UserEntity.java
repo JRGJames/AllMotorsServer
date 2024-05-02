@@ -228,6 +228,14 @@ public class UserEntity {
         this.profilePicture = profilePicture;
     }
 
+    public String getProfileBackground() {
+        return this.profileBackground;
+    }
+
+    public void setProfileBackground(String profileBackground) {
+        this.profileBackground = profileBackground;
+    }
+
     public Boolean isStatus() {
         return this.status;
     }

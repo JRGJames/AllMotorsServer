@@ -1,7 +1,6 @@
 package alpha.allmotors.service;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,10 +8,10 @@ import org.springframework.web.multipart.MultipartFile;
 public interface StorageService {
 
     void init() throws IOException;
-
-    List<String> storeMultiple(MultipartFile[] files);
     
-    String store(MultipartFile file);
+    String storePicture(MultipartFile file, Long userId);
+
+    String storeBackground(MultipartFile file, Long userId);
 
     Resource loadAsResource(String filename);
 
