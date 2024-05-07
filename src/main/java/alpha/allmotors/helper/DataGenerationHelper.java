@@ -146,10 +146,8 @@ public class DataGenerationHelper {
         }
     }
 
-    private static final String[] genders = { "Woman", "Man", "Prefer not to say" };
-
-    public static String getRandomGender() {
-        return genders[new Random().nextInt(genders.length)];
+    public static Boolean getRandomGender() {
+        return random.nextBoolean();
     }
 
     private static final String[] countries = {

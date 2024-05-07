@@ -40,8 +40,7 @@ public class UserEntity {
     @Column(unique = true)
     private String username;
 
-    @Size(min = 3, max = 20)
-    private String gender;
+    private Boolean gender;
 
     private LocalDateTime birthdate;
 
@@ -105,7 +104,7 @@ public class UserEntity {
         favorites = new ArrayList<>();
     }
 
-    public UserEntity(Long id, String name, String lastname, String username, String gender,
+    public UserEntity(Long id, String name, String lastname, String username, Boolean gender,
             LocalDateTime birthdate, String country, String city, Boolean status, String phone, String email, String password, boolean role) {
         this.id = id;
         this.name = name;
@@ -124,7 +123,7 @@ public class UserEntity {
         this.role = role;
     }
 
-    public UserEntity(String name, String lastname, String username, String gender,
+    public UserEntity(String name, String lastname, String username, Boolean gender,
             LocalDateTime birthdate, String country, String city, Boolean status, String phone, String email, String password, boolean role) {
         this.name = name;
         this.lastname = lastname;
@@ -180,11 +179,11 @@ public class UserEntity {
         this.username = username;
     }
 
-    public String getGender() {
+    public Boolean getGender() {
         return this.gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Boolean gender) {
         this.gender = gender;
     }
 

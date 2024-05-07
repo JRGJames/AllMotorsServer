@@ -93,7 +93,7 @@ public class UserService {
             String lastname = DataGenerationHelper.getRandomSurname();
             String username = DataGenerationHelper
                     .doNormalizeString(name.substring(0, 3) + lastname.substring(1, 3) + i).toLowerCase();
-            String gender = DataGenerationHelper.getRandomGender();
+            Boolean gender = DataGenerationHelper.getRandomGender();
             LocalDateTime birthdate = DataGenerationHelper.getRandomDate();
             String country = DataGenerationHelper.getRandomCountry();
             String city = DataGenerationHelper.getRandomCity();
@@ -112,11 +112,11 @@ public class UserService {
         sessionService.onlyAdmins();
         userRepository.deleteAll();
         userRepository.resetAutoIncrement();
-        UserEntity userEntityOne = new UserEntity("Fernando", "Alonso", "ElNano", "Man",
+        UserEntity userEntityOne = new UserEntity("Fernando", "Alonso", "ElNano", true,
                 DataGenerationHelper.getRandomDate(), "Spain", "Asturias", false, "633974333",
                 "nano@gmail.com", ALLMOTORS, true);
         userRepository.save(userEntityOne);
-        UserEntity userEntityTwo = new UserEntity("Carlos", "Sainz", "carlossainz", "Man",
+        UserEntity userEntityTwo = new UserEntity("Carlos", "Sainz", "carlossainz", true,
                 DataGenerationHelper.getRandomDate(), "Spain", "Madrid", false, "655974455",
                 "sainz@gmail.com", ALLMOTORS, false);
         userRepository.save(userEntityTwo);
