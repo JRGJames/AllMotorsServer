@@ -103,9 +103,6 @@ public class CarEntity {
     @OneToMany(mappedBy = "car", fetch = jakarta.persistence.FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ImageEntity> images;
 
-    @OneToMany(mappedBy = "car", fetch = jakarta.persistence.FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<FavoriteEntity> saves;
-
     @Size(max = 20)
     private String status;
 
@@ -133,6 +130,7 @@ public class CarEntity {
 
     @NotNull
     @NotBlank
+    @Size(max = 10)
     private String currency;
 
     @Size(max = 30)
@@ -145,13 +143,16 @@ public class CarEntity {
 
     private String drive;
 
+    @NotNull
+    @Size(min = 0)
+    private int saves;
+
     @ManyToOne
     @JoinColumn(name = "id_owner")
     private UserEntity user;
 
     public CarEntity() {
         images = new ArrayList<>();
-        saves = new ArrayList<>();
     }
 
     public CarEntity(Long id) {
@@ -414,10 +415,6 @@ public class CarEntity {
         this.dateUploaded = dateUploaded;
     }
 
-    public void setImages(List<ImageEntity> images) {
-        this.images = images;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -432,6 +429,14 @@ public class CarEntity {
 
     public void setViews(int views) {
         this.views = views;
+    }
+
+    public int getSaves() {
+        return saves;
+    }
+
+    public void setSaves(int saves) {
+        this.saves = saves;
     }
 
     public String getLocation() {
@@ -530,20 +535,16 @@ public class CarEntity {
         this.user = user;
     }
 
-    public int getSaves() {
-        return saves.size();
-    }
-
     public int getImagesCount() {
         return images.size();
     }
-    
-    // public List<FavoriteEntity> getSaves() {
-    //     return saves;
-    // }
 
     public List<ImageEntity> getImages() {
         return images;
+    }
+
+    public void setImages(List<ImageEntity> images) {
+        this.images = images;
     }
 
 }

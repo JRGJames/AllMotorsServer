@@ -80,6 +80,8 @@ public class CarService {
         sessionService.onlyAdminsOrUsersWithIisOwnData(carEntityFromDatabase.getOwner().getId());
         if (sessionService.isUser()) {
             if (carEntityToSet.getOwner().getId().equals(sessionService.getSessionUser().getId())) {
+                //do not update saves
+                
                 return carRepository.save(carEntityToSet);
             } else {
                 throw new ResourceNotFoundException("Unauthorized");

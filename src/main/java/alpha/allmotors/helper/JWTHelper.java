@@ -60,7 +60,7 @@ public class JWTHelper {
     public String generateJWT(UserRepository userRepository, String username, String email) {
 
         Date currentTime = Date.from(Instant.now());
-        Date expiryTime = Date.from(Instant.now().plus(Duration.ofSeconds(1980)));
+        Date expiryTime = Date.from(Instant.now().plus(Duration.ofSeconds(1500)));
 
         Instant currentInstant = currentTime.toInstant();
         Instant expiryInstant = expiryTime.toInstant();
