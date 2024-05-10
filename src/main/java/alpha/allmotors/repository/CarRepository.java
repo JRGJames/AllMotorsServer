@@ -193,7 +193,7 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
         @Modifying
         @Transactional
         @Query("UPDATE CarEntity c SET c.views = c.views + 1 WHERE c.id = :carId")
-        void incrementViewsById(@Param("carId") Long carId);
+        void increaseViewsById(@Param("carId") Long carId);
 
         // Reset auto increment
         @Modifying

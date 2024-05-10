@@ -40,6 +40,11 @@ public class UserApi {
         return ResponseEntity.ok(userService.getPage(pageable, strFilter));
     }
 
+    @GetMapping("/getAll")
+    public ResponseEntity<Iterable<UserEntity>> getAll() {
+        return ResponseEntity.ok(userService.getAll());
+    }
+
     @GetMapping("/byUsername/{username}")
     public ResponseEntity<UserEntity> get(@PathVariable("username") String username) {
         return ResponseEntity.ok(userService.getByUsername(username));

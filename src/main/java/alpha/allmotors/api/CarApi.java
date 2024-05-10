@@ -70,7 +70,7 @@ public class CarApi {
     }
 
     @PostMapping("/updateViews/{id}")
-    public ResponseEntity<Void> updateViews(@PathVariable("id") Long id) {
+    public ResponseEntity<Long> updateViews(@PathVariable("id") Long id) {
         carService.increaseViews(id);
         // Simplemente retornamos un OK porque el método no tiene un valor de retorno significativo
         return ResponseEntity.ok().build();

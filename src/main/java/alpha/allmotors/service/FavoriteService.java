@@ -73,17 +73,19 @@ public class FavoriteService {
     }
 
     @Transactional
-    public void increaseSaves(Long carId) {
+    public Long increaseSaves(Long carId) {
         carRepository.findById(carId)
                 .orElseThrow(() -> new RuntimeException("Coche no encontrado"));
         favoriteRepository.increaseSavesById(carId);
+        return favoriteRepository.countByCarId(carId);
     }
 
     @Transactional
-    public void decreaseSaves(Long carId) {
+    public Long decreaseSaves(Long carId) {
         carRepository.findById(carId)
                 .orElseThrow(() -> new RuntimeException("Coche no encontrado"));
         favoriteRepository.decreaseSavesById(carId);
+        return favoriteRepository.countByCarId(carId);
     }
    
 }

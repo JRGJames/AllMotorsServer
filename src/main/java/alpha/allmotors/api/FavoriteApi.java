@@ -49,16 +49,12 @@ public class FavoriteApi {
     }
 
     @PostMapping("/increase/{carId}")
-    public ResponseEntity<Void> increaseSaves(@PathVariable("carId") Long carId) {
-        favoriteService.increaseSaves(carId);
-        // Simplemente retornamos un OK porque el método no tiene un valor de retorno significativo
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Long> increaseSaves(@PathVariable("carId") Long carId) {
+        return ResponseEntity.ok(favoriteService.increaseSaves(carId));
     }
 
     @PostMapping("/decrease/{carId}")
-    public ResponseEntity<Void> decreaseSaves(@PathVariable("carId") Long carId) {
-        favoriteService.decreaseSaves(carId);
-        // Simplemente retornamos un OK porque el método no tiene un valor de retorno significativo
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Long> decreaseSaves(@PathVariable("carId") Long carId) {
+        return ResponseEntity.ok(favoriteService.decreaseSaves(carId));
     }
 }

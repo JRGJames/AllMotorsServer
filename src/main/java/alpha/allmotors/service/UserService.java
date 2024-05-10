@@ -49,6 +49,11 @@ public class UserService {
         return page;
     }
 
+    public Iterable<UserEntity> getAll() {
+        sessionService.onlyAdmins();
+        return userRepository.findAll();
+    }
+
     public UserEntity getByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found by username"));

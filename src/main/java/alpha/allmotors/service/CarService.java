@@ -172,6 +172,6 @@ public class CarService {
     public void increaseViews(Long id) {
         // Directamente incrementamos las vistas sin necesidad de guardar la entidad de
         // nuevo
-        carRepository.incrementViewsById(id);
+        carRepository.increaseViewsById(id);
     }
 }

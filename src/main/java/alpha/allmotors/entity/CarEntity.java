@@ -130,7 +130,6 @@ public class CarEntity {
 
     @NotNull
     @NotBlank
-    @Size(max = 10)
     private String currency;
 
     @Size(max = 30)
@@ -144,7 +143,7 @@ public class CarEntity {
     private String drive;
 
     @NotNull
-    @Size(min = 0)
+    @Min(value = 0)
     private int saves;
 
     @ManyToOne
