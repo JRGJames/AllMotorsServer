@@ -138,8 +138,6 @@ public class CarEntity {
 
     private Double acceleration;
 
-    private String engine;
-
     private String drive;
 
     @NotNull
@@ -211,7 +209,7 @@ public class CarEntity {
             int horsepower, String gearbox, int distance, String fuel, int price,
             String plate, String type, String location, String description, Double emissions,
             Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
-            Double acceleration, String engine, String drive, UserEntity user) {
+            Double acceleration, String drive, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.title = title;
@@ -237,7 +235,6 @@ public class CarEntity {
         this.currency = currency;
         this.boughtIn = boughtIn;
         this.acceleration = acceleration;
-        this.engine = engine;
         this.drive = drive;
         this.user = user;
     }
@@ -246,7 +243,7 @@ public class CarEntity {
             int horsepower, String gearbox, int distance, String fuel, int price,
             String plate, String type, String location, String description, Double emissions,
             Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
-            Double acceleration, String engine, String drive, UserEntity user, List<ImageEntity> images) {
+            Double acceleration, String drive, UserEntity user, List<ImageEntity> images) {
         this.brand = brand;
         this.model = model;
         this.title = title;
@@ -272,7 +269,6 @@ public class CarEntity {
         this.currency = currency;
         this.boughtIn = boughtIn;
         this.acceleration = acceleration;
-        this.engine = engine;
         this.drive = drive;
         this.user = user;
         this.images = images;
@@ -484,14 +480,6 @@ public class CarEntity {
 
     public void setAcceleration(Double acceleration) {
         this.acceleration = acceleration;
-    }
-
-    public String getEngine() {
-        return engine;
-    }
-
-    public void setEngine(String engine) {
-        this.engine = engine;
     }
 
     public String getDrive() {

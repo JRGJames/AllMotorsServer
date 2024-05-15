@@ -480,15 +480,6 @@ public static String getRandomLocation() {
         return drives[randomIndex];
     }
 
-    public static String getRandomEngine() {
-        String[] engines = {"V6", "V8", "V10", "V12", "W12", "W16", "I3", "I4", "I5", "I6"};
-
-        Random random = new Random();
-        int randomIndex = random.nextInt(engines.length);
-
-        return engines[randomIndex];
-    }
-
     private static final String[] imagePaths = {
         "/media/image1.jpg",
         "/media/image2.jpg",
