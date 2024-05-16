@@ -18,7 +18,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import alpha.allmotors.entity.ImageEntity;
 import alpha.allmotors.entity.UserEntity;
+import alpha.allmotors.repository.ImageRepository;
 import alpha.allmotors.repository.UserRepository;
 
 import java.io.IOException;
@@ -26,6 +28,9 @@ import jakarta.annotation.PostConstruct;
 
 @Service
 public class FileSystemStorageService implements StorageService {
+
+    @Autowired
+    private ImageRepository imageRepository;
 
     @Autowired
     private UserRepository userRepository;    
@@ -88,6 +93,33 @@ public class FileSystemStorageService implements StorageService {
                 UserEntity userEntity = user.get();
                 userEntity.setProfileBackground(filename);
                 userRepository.save(userEntity);
+            }
+
+            return filename;
+        } catch (Exception e) {
+            throw new RuntimeException("Could not store file", e);
+        }
+    }
+
+    @Override
+    public String storeCarImage(MultipartFile file, Long imageId) {
+        try {
+            if (file.isEmpty()) {
+                throw new RuntimeException("Failed to store empty file");
+            }
+            String filename = generateUniqueFilename(file);
+            Path destinationFile = rootLocation.resolve(Paths.get(filename)).normalize().toAbsolutePath();
+
+            try (InputStream inputStream = file.getInputStream()) {
+                Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            Optional<ImageEntity> image = imageRepository.findById(imageId);
+
+            if (image.isPresent()) {
+                ImageEntity imageEntity = image.get();
+                imageEntity.setImageUrl(filename);
+                imageRepository.save(imageEntity);
             }
 
             return filename;

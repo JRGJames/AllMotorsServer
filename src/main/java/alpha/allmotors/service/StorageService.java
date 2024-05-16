@@ -13,6 +13,8 @@ public interface StorageService {
 
     String storeBackground(MultipartFile file, Long userId);
 
+    String storeCarImage(MultipartFile file, Long imageId);
+
     Resource loadAsResource(String filename);
 
 }
