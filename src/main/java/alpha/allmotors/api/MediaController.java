@@ -88,9 +88,9 @@ public class MediaController {
         return ResponseEntity.ok(imageService.getAllByCar(carId));
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Long> create(@RequestParam("file") MultipartFile file, @RequestBody ImageEntity imageEntity) {
-        return ResponseEntity.ok(imageService.createImage(file, imageEntity));
+    @PostMapping("/create/{carId}")
+    public ResponseEntity<Long> create(@RequestParam("file") MultipartFile file, @PathVariable("carId") Long carId) {
+        return ResponseEntity.ok(imageService.createImage(file, carId));
     }
 
     @PutMapping("/update")
