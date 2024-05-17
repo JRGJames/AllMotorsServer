@@ -167,10 +167,4 @@ public class CarService {
     public List<CarEntity> getCarsByViews(Integer resultCount) {
         return carRepository.findCarsByOrderByViewsDesc(resultCount);
     }
-
-    public void increaseViews(Long id) {
-        // Directamente incrementamos las vistas sin necesidad de guardar la entidad de
-        // nuevo
-        carRepository.increaseViewsById(id);
-    }
 }

@@ -189,12 +189,6 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
 
         Page<CarEntity> findByTitleContainingIgnoreCase(String searchText, Pageable pageable);
 
-        // Increment views
-        @Modifying
-        @Transactional
-        @Query("UPDATE CarEntity c SET c.views = c.views + 1 WHERE c.id = :carId")
-        void increaseViewsById(@Param("carId") Long carId);
-
         // Reset auto increment
         @Modifying
         @Query(value = "ALTER TABLE car AUTO_INCREMENT = 1", nativeQuery = true)

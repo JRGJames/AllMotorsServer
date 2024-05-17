@@ -25,14 +25,6 @@ public class ImageService {
 
     @Autowired
     private FileSystemStorageService fileSystemStorageService;
-    
-    public ImageEntity get(Long id) {
-        return imageRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Image not found"));
-    }
-    
-    public Optional<List<ImageEntity>> getAllByCar(Long carId) {
-        return imageRepository.findAllByCarId(carId);
-    }
 
     public Long createImage(MultipartFile file, Long carId) {
         ImageEntity image = new ImageEntity();
@@ -41,10 +33,6 @@ public class ImageService {
         image.setCar(car);
         image.setImageUrl(file.getOriginalFilename());
         imageRepository.save(image);
-
-        System.out.println("ImageService.createImage: " + image.toString());
-        System.out.println("ImageService.createImage: " + image.getImageUrl());
-        System.out.println("ImageService.createImage: " + image.getId());
 
         fileSystemStorageService.storeCarImage(file, image.getId());
         return image.getId();
@@ -55,8 +43,4 @@ public class ImageService {
         return id;
     }
 
-    public ImageEntity updateImage(ImageEntity image) {
-        imageRepository.save(image);
-        return imageRepository.save(image);
-    }
 }

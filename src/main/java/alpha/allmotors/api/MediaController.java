@@ -78,24 +78,9 @@ public class MediaController {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, contentType).body(file);
     }
 
-    @GetMapping("/get/{id}")
-    public ResponseEntity<ImageEntity> get(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(imageService.get(id));
-    }
-
-    @GetMapping("/getByCar/{carId}")
-    public ResponseEntity<Optional<List<ImageEntity>>> getByCar(@PathVariable("carId") Long carId) {
-        return ResponseEntity.ok(imageService.getAllByCar(carId));
-    }
-
     @PostMapping("/create/{carId}")
     public ResponseEntity<Long> create(@RequestParam("file") MultipartFile file, @PathVariable("carId") Long carId) {
         return ResponseEntity.ok(imageService.createImage(file, carId));
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<ImageEntity> update(@RequestBody ImageEntity imageEntity) {
-        return ResponseEntity.ok(imageService.updateImage(imageEntity));
     }
 
     @DeleteMapping("/delete/{id}")
