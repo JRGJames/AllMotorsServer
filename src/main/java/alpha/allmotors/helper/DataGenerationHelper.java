@@ -221,52 +221,6 @@ public static String getRandomLocation() {
         return cities[new Random().nextInt(cities.length)];
     }
 
-    private static final String[] streetNames = {
-            "Main Street", "Oak Avenue", "Maple Lane", "Cedar Road", "Pine Street", "Elm Boulevard",
-            "Sunset Drive", "Meadow Lane", "River Road", "Mountain View", "Lake Shore", "Highland Avenue",
-            "Park Avenue", "Forest Drive", "Hilltop Road", "Valley Lane", "Ocean View", "Greenway",
-            "Skyline Drive", "Golden Gate"
-            // Add more street names as needed
-    };
-
-    public static String getRandomAddress() {
-        String streetName = streetNames[new Random().nextInt(streetNames.length)];
-        int streetNumber = new Random().nextInt(60) + 1; // Generate a random number between 1 and 999
-        return streetNumber + " " + streetName;
-    }
-
-    private static final String[] postalCodeFormats = {
-            "A1A 1A1", "V1H 3R9", "10001", "WC2N 5DU", "75001", "2000", "H0H 0H0",
-            "08001", "10115", "400001", "20000-000", "71000-000", "100000", "00100",
-            "K1A 0B1", "07100", "10178", "190000", "34437", "01001-001"
-            // Add more postal code formats as needed
-    };
-
-    private static String generateRandomPostalCode(String format) {
-        StringBuilder postalCodeBuilder = new StringBuilder();
-        for (char c : format.toCharArray()) {
-            if (c == 'A') {
-                postalCodeBuilder.append((char) ('A' + new Random().nextInt(26))); // Random uppercase letter
-            } else if (c == '0') {
-                postalCodeBuilder.append(new Random().nextInt(10)); // Random digit
-            } else {
-                postalCodeBuilder.append(c);
-            }
-        }
-        return postalCodeBuilder.toString();
-    }
-
-    public static String getRandomPostalCode() {
-        String postalCodeFormat = postalCodeFormats[new Random().nextInt(postalCodeFormats.length)];
-        String postalCode = generateRandomPostalCode(postalCodeFormat);
-
-        return postalCode;
-    }
-
-    public static boolean getRandomStatus() {
-        return new Random().nextBoolean();
-    }
-
     public static String getRandomPhoneNumber() {
         // Genera un número de teléfono aleatorio de 9 cifras
         return String.format("%09d", new Random().nextInt(1_000_000_000));
@@ -299,8 +253,10 @@ public static String getRandomLocation() {
     }
 
     private static final String[] carColors = {
-            "red", "blue", "green", "black", "white",
-            "gray", "yellow", "orange", "purple"
+            "#1F2937", "#800000", "#A52A2A", "#D92518", "#FFA500",
+            "#FFC107", "#808000", "#00FF00", "#2ECC71", "#008080",
+            "#00FFFF", "#0284C7", "#000080", "#4B0082", "#800080",
+            "#FF00FF", "#FFC0CB", "#8C8C8C", "#C0C0C0", "#FFFFFF"
             // Add more car colors as needed
     };
 
@@ -378,34 +334,6 @@ public static String getRandomLocation() {
         return random.nextInt(MAX_PRICE - MIN_PRICE + 1) + MIN_PRICE;
     }
 
-    public static String getRandomCarPlate() {
-        // Format: NNNN-LLL (4 numbers, 3 letters)
-        return generateRandomNumbers(4) + "-" + generateRandomLetters(3);
-    }
-
-    private static String generateRandomLetters(int count) {
-        StringBuilder letters = new StringBuilder();
-        Random random = new Random();
-
-        for (int i = 0; i < count; i++) {
-            char randomLetter = (char) ('A' + random.nextInt(26));
-            letters.append(randomLetter);
-        }
-
-        return letters.toString();
-    }
-
-    private static String generateRandomNumbers(int count) {
-        StringBuilder numbers = new StringBuilder();
-        Random random = new Random();
-
-        for (int i = 0; i < count; i++) {
-            numbers.append(random.nextInt(10));
-        }
-
-        return numbers.toString();
-    }
-
     public static String getRandomCarType() {
         String[] carTypes = {"Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Truck", "Van", "Wagon"};
 
@@ -413,15 +341,6 @@ public static String getRandomLocation() {
         int randomIndex = random.nextInt(carTypes.length);
 
         return carTypes[randomIndex];
-    }
-
-    public static String getRandomDGTSticker() {
-        String[] dgtStickers = {"B", "C", "0", "ECO"};
-
-        Random random = new Random();
-        int randomIndex = random.nextInt(dgtStickers.length);
-
-        return dgtStickers[randomIndex];
     }
 
     public static Double getRandomEmissions() {
@@ -440,17 +359,6 @@ public static String getRandomLocation() {
         double consumption = random.nextDouble() * 5.0 + 5.0; // Números entre 5.00 y 10.00
 
         return Math.round(consumption * 100.0) / 100.0; // Redondea a dos cifras decimales
-    }
-
-    public static LocalDateTime getRandomLastITV() {
-        long minDay = LocalDate.of(2010, 1, 1).toEpochDay();
-        long maxDay = LocalDate.of(2023, 10, 31).toEpochDay();
-        long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
-
-        LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
-        LocalTime randomTime = LocalTime.of(getRandomInt(0, 23), getRandomInt(0, 59), getRandomInt(0, 59));
-
-        return LocalDateTime.of(randomDate, randomTime).atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
     public static Double getRandomAcceleration() {

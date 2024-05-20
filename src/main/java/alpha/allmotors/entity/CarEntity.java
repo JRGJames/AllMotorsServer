@@ -26,9 +26,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "car")
-@JsonIdentityInfo(
-  generator = ObjectIdGenerators.PropertyGenerator.class, 
-  property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class CarEntity {
 
     @Id
@@ -88,9 +86,6 @@ public class CarEntity {
     @Min(value = 1)
     private int price;
 
-    @Size(max = 12)
-    private String plate;
-
     @Size(max = 20)
     private String type;
 
@@ -103,9 +98,6 @@ public class CarEntity {
     @OneToMany(mappedBy = "car", fetch = jakarta.persistence.FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ImageEntity> images;
 
-    @Size(max = 20)
-    private String status;
-
     private int views;
 
     @NotNull
@@ -117,24 +109,13 @@ public class CarEntity {
 
     private Double consumption;
 
-    @JoinColumn(name = "dgt_sticker")
-    private String dgtSticker;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    @Column(name = "last_itv")
-    private LocalDateTime lastITV;
-
     @NotNull
     @NotBlank
     private String currency;
-
-    @Size(max = 30)
-    @Column(name = "bought_in")
-    private String boughtIn;
 
     private Double acceleration;
 
@@ -157,7 +138,8 @@ public class CarEntity {
     }
 
     public CarEntity(Long id, String brand, String model, String title, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location, String currency, String boughtIn, UserEntity user, List<ImageEntity> images) {
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location,
+            String currency, UserEntity user, List<ImageEntity> images) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -177,13 +159,12 @@ public class CarEntity {
         this.dateUploaded = LocalDateTime.now();
         this.location = location;
         this.currency = currency;
-        this.boughtIn = boughtIn;
         this.user = user;
     }
 
     public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price, String type, 
-            String location, String currency, String boughtIn, UserEntity user) {
+            int horsepower, String gearbox, int distance, String fuel, int price, String type,
+            String location, String currency, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.title = title;
@@ -201,15 +182,13 @@ public class CarEntity {
         this.dateUploaded = LocalDateTime.now();
         this.location = location;
         this.currency = currency;
-        this.boughtIn = boughtIn;
         this.user = user;
     }
 
     public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price,
-            String plate, String type, String location, String description, Double emissions,
-            Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
-            Double acceleration, String drive, UserEntity user) {
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location,
+            String description, Double emissions,
+            Double consumption, String currency, Double acceleration, String drive, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.title = title;
@@ -222,27 +201,23 @@ public class CarEntity {
         this.distance = distance;
         this.fuel = fuel;
         this.price = price;
-        this.plate = plate;
         this.type = type;
         this.description = description;
         this.location = location;
         this.emissions = emissions;
         this.consumption = consumption;
-        this.dgtSticker = dgtSticker;
         this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
-        this.lastITV = lastITV;
         this.currency = currency;
-        this.boughtIn = boughtIn;
         this.acceleration = acceleration;
         this.drive = drive;
         this.user = user;
     }
 
     public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price,
-            String plate, String type, String location, String description, Double emissions,
-            Double consumption, String dgtSticker, LocalDateTime lastITV, String currency, String boughtIn,
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location,
+            String description, Double emissions,
+            Double consumption, String currency,
             Double acceleration, String drive, UserEntity user, List<ImageEntity> images) {
         this.brand = brand;
         this.model = model;
@@ -256,18 +231,14 @@ public class CarEntity {
         this.distance = distance;
         this.fuel = fuel;
         this.price = price;
-        this.plate = plate;
         this.type = type;
         this.description = description;
         this.location = location;
         this.emissions = emissions;
         this.consumption = consumption;
-        this.dgtSticker = dgtSticker;
         this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
-        this.lastITV = lastITV;
         this.currency = currency;
-        this.boughtIn = boughtIn;
         this.acceleration = acceleration;
         this.drive = drive;
         this.user = user;
@@ -378,14 +349,6 @@ public class CarEntity {
         this.price = price;
     }
 
-    public String getPlate() {
-        return plate;
-    }
-
-    public void setPlate(String plate) {
-        this.plate = plate;
-    }
-
     public String getType() {
         return type;
     }
@@ -408,14 +371,6 @@ public class CarEntity {
 
     public void setDateUploaded(LocalDateTime dateUploaded) {
         this.dateUploaded = dateUploaded;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public int getViews() {
@@ -466,14 +421,6 @@ public class CarEntity {
         this.currency = currency;
     }
 
-    public String getBoughtIn() {
-        return boughtIn;
-    }
-
-    public void setBoughtIn(String boughtIn) {
-        this.boughtIn = boughtIn;
-    }
-
     public Double getAcceleration() {
         return acceleration;
     }
@@ -483,19 +430,11 @@ public class CarEntity {
     }
 
     public String getDrive() {
-         return drive;
+        return drive;
     }
 
     public void setDrive(String drive) {
         this.drive = drive;
-    }
-
-    public String getDgtSticker() {
-        return dgtSticker;
-    }
-
-    public void setDgtSticker(String dgtSticker) {
-        this.dgtSticker = dgtSticker;
     }
 
     public LocalDateTime getLastUpdate() {
@@ -504,14 +443,6 @@ public class CarEntity {
 
     public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = LocalDateTime.now();
-    }
-
-    public LocalDateTime getLastITV() {
-        return lastITV;
-    }
-
-    public void setLastITV(LocalDateTime lastITV) {
-        this.lastITV = lastITV;
     }
 
     public UserEntity getOwner() {

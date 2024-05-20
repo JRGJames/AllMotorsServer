@@ -121,24 +121,20 @@ public class CarService {
             int distance = DataGenerationHelper.getRandomCarDistance();
             String fuel = DataGenerationHelper.getRandomCarFuelType();
             int price = DataGenerationHelper.getRandomCarPrice();
-            String plate = DataGenerationHelper.getRandomCarPlate();
             String type = DataGenerationHelper.getRandomCarType();
             String description = DataGenerationHelper.generateComplexSentence();
             String location = DataGenerationHelper.getRandomLocation();
             Double emissions = DataGenerationHelper.getRandomEmissions();
             Double consumption = DataGenerationHelper.getRandomConsumption();
-            String dgtSticker = DataGenerationHelper.getRandomDGTSticker();
-            LocalDateTime lastITV = DataGenerationHelper.getRandomLastITV();
             String currency = DataGenerationHelper.getRandomCurrency();
             Double acceleration = DataGenerationHelper.getRandomAcceleration();
-            String boughtIn = DataGenerationHelper.getRandomCountry();
             String drive = DataGenerationHelper.getRandomDrive();
             UserEntity user = userService.getOneRandom();
 
             // Crear y guardar el CarEntity SIN imágenes
             CarEntity car = new CarEntity(brand, model, title, color, year, seats, doors, horsepower, gearbox, distance,
-                    fuel, price, plate, type, location, description, emissions, consumption, dgtSticker, lastITV,
-                    currency, boughtIn, acceleration, drive, user, new ArrayList<>());
+                    fuel, price, type, location, description, emissions, consumption,
+                    currency, acceleration, drive, user, new ArrayList<>());
             final CarEntity savedCar = carRepository.save(car);
 
             int numberOfImages = DataGenerationHelper.getRandomInt(1, 8); // Ejemplo: entre 1 y 5 imágenes
