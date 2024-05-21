@@ -89,6 +89,7 @@ public class CarEntity {
     @Size(max = 20)
     private String type;
 
+    @Size(min = 10, max = 2000)
     private String description;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")

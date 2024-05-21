@@ -128,6 +128,22 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
+    @Override
+    public void deleteCarImage(Long imageId) {
+        Optional<ImageEntity> image = imageRepository.findById(imageId);
+
+        if (image.isPresent()) {
+            ImageEntity imageEntity = image.get();
+            String filename = imageEntity.getImageUrl();
+            Path destinationFile = rootLocation.resolve(Paths.get(filename)).normalize().toAbsolutePath();
+            try {
+                Files.delete(destinationFile);
+            } catch (IOException e) {
+                throw new RuntimeException("Could not delete file", e);
+            }
+        }
+    }
+
     private String generateUniqueFilename(MultipartFile file) {
         String originalFilename = file.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf("."));

@@ -15,6 +15,8 @@ public interface StorageService {
 
     String storeCarImage(MultipartFile file, Long imageId);
 
+    void deleteCarImage(Long imageId);
+
     Resource loadAsResource(String filename);
 
 }

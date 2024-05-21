@@ -40,6 +40,8 @@ public class ImageService {
     
     public Long deleteImage(Long id) {
         imageRepository.deleteById(id);
+        fileSystemStorageService.deleteCarImage(id);
+
         return id;
     }
 
