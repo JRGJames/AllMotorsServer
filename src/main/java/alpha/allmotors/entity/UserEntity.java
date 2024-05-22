@@ -44,6 +44,10 @@ public class UserEntity {
 
     private LocalDateTime birthdate;
 
+    @NotBlank
+    @NotNull
+    private String location;
+
     @Size(min = 3, max = 25)
     private String country;
 
@@ -105,13 +109,14 @@ public class UserEntity {
     }
 
     public UserEntity(Long id, String name, String lastname, String username, Boolean gender,
-            LocalDateTime birthdate, String country, String city, Boolean status, String phone, String email, String password, boolean role) {
+            LocalDateTime birthdate, String location, String country, String city, Boolean status, String phone, String email, String password, boolean role) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.username = username;
         this.gender = gender;
         this.birthdate = birthdate;
+        this.location = location;
         this.country = country;
         this.city = city;
         this.status = status;
@@ -124,12 +129,13 @@ public class UserEntity {
     }
 
     public UserEntity(String name, String lastname, String username, Boolean gender,
-            LocalDateTime birthdate, String country, String city, Boolean status, String phone, String email, String password, boolean role) {
+            LocalDateTime birthdate, String location, String country, String city, Boolean status, String phone, String email, String password, boolean role) {
         this.name = name;
         this.lastname = lastname;
         this.username = username;
         this.gender = gender;
         this.birthdate = birthdate;
+        this.location = location;
         this.country = country;
         this.city = city;
         this.status = status;
@@ -193,6 +199,14 @@ public class UserEntity {
 
     public void setBirthdate(LocalDateTime birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getCountry() {

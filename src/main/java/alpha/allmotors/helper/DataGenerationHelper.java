@@ -160,52 +160,52 @@ public class DataGenerationHelper {
     }
 
     private static final String[] locations = {
-        // Argentina
-        "-38.4161, -63.6167",
-        // Brazil
-        "-14.2350, -51.9253",
-        // Canada
-        "56.1304, -106.3468",
-        // France
-        "46.6034, 1.8883",
-        // Germany
-        "51.1657, 10.4515",
-        // India
-        "20.5937, 78.9629",
-        // Japan
-        "36.2048, 138.2529",
-        // Mexico
-        "23.6345, -102.5528",
-        // Spain
-        "40.4637, -3.7492",
-        // United Kingdom
-        "55.3781, -3.4360",
-        // United States
-        "37.0902, -95.7129",
-        // Australia
-        "-25.2744, 133.7751",
-        // China
-        "35.8617, 104.1954",
-        // Italy
-        "41.8719, 12.5674",
-        // South Africa
-        "-30.5595, 22.9375",
-        // South Korea
-        "35.9078, 127.7669",
-        // Russia
-        "61.5240, 105.3188",
-        // Turkey
-        "38.9637, 35.2433",
-        // Sweden
-        "60.1282, 18.6435",
-        // Norway
-        "60.4720, 8.4689"
-        // Add more countries as needed
-};
+            // Argentina
+            "-38.4161, -63.6167",
+            // Brazil
+            "-14.2350, -51.9253",
+            // Canada
+            "56.1304, -106.3468",
+            // France
+            "46.6034, 1.8883",
+            // Germany
+            "51.1657, 10.4515",
+            // India
+            "20.5937, 78.9629",
+            // Japan
+            "36.2048, 138.2529",
+            // Mexico
+            "23.6345, -102.5528",
+            // Spain
+            "40.4637, -3.7492",
+            // United Kingdom
+            "55.3781, -3.4360",
+            // United States
+            "37.0902, -95.7129",
+            // Australia
+            "-25.2744, 133.7751",
+            // China
+            "35.8617, 104.1954",
+            // Italy
+            "41.8719, 12.5674",
+            // South Africa
+            "-30.5595, 22.9375",
+            // South Korea
+            "35.9078, 127.7669",
+            // Russia
+            "61.5240, 105.3188",
+            // Turkey
+            "38.9637, 35.2433",
+            // Sweden
+            "60.1282, 18.6435",
+            // Norway
+            "60.4720, 8.4689"
+            // Add more countries as needed
+    };
 
-public static String getRandomLocation() {
-    return locations[new Random().nextInt(locations.length)];
-}
+    public static String getRandomLocation() {
+        return locations[new Random().nextInt(locations.length)];
+    }
 
     private static final String[] cities = {
             "Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan",
@@ -299,7 +299,7 @@ public static String getRandomLocation() {
     public static String getRandomCarGearbox() {
         Random random = new Random();
         // Array of possible gearbox types
-        String[] gearboxes = {"manual", "automatic"};
+        String[] gearboxes = { "manual", "automatic" };
         // Randomly select an index from the array
         int randomIndex = random.nextInt(gearboxes.length);
         // Return the selected gearbox type
@@ -317,14 +317,14 @@ public static String getRandomLocation() {
     public static String getRandomCarFuelType() {
         Random random = new Random();
         // Array of possible fuel types
-        String[] fuelTypes = {"gasoline", "petrol", "electric", "hybrid"};
+        String[] fuelTypes = { "gasoline", "petrol", "electric", "hybrid" };
         // Randomly select an index from the array
         int randomIndex = random.nextInt(fuelTypes.length);
         // Return the selected fuel type
         return fuelTypes[randomIndex];
     }
 
-    private static final int MIN_PRICE = 1;  // in currency units
+    private static final int MIN_PRICE = 1; // in currency units
     private static final int MAX_PRICE = 5000000; // in currency units
 
     public static int getRandomCarPrice() {
@@ -333,7 +333,7 @@ public static String getRandomLocation() {
     }
 
     public static String getRandomCarType() {
-        String[] carTypes = {"Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Truck", "Van", "Wagon"};
+        String[] carTypes = { "Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Truck", "Van", "Wagon" };
 
         Random random = new Random();
         int randomIndex = random.nextInt(carTypes.length);
@@ -368,8 +368,8 @@ public static String getRandomLocation() {
     }
 
     public static String getRandomCurrency() {
-        String[] currencies = {"USD", "EUR", "GBP", "JPY"};
-        String[] symbols = {"$", "€", "£", "¥"};
+        String[] currencies = { "USD", "EUR", "GBP", "JPY" };
+        String[] symbols = { "$", "€", "£", "¥" };
 
         Random random = new Random();
         int randomIndex = random.nextInt(currencies.length);
@@ -378,7 +378,7 @@ public static String getRandomLocation() {
     }
 
     public static String getRandomDrive() {
-        String[] drives = {"FWD", "RWD", "AWD"};
+        String[] drives = { "FWD", "RWD", "AWD" };
 
         Random random = new Random();
         int randomIndex = random.nextInt(drives.length);
@@ -387,18 +387,18 @@ public static String getRandomLocation() {
     }
 
     private static final String[] imagePaths = {
-        "image1.jpg",
-        "image2.jpg",
-        "image3.jpg",
-        "image4.jpg",
-        "image5.jpg",
-        "image6.jpg",
-        "image7.jpg",
-        "image8.jpeg",
-        "image9.jpg",
-        "image10.jpg",
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg",
+            "image4.jpg",
+            "image5.jpg",
+            "image6.jpg",
+            "image7.jpg",
+            "image8.jpeg",
+            "image9.jpg",
+            "image10.jpg",
     };
-    
+
     public static String getRandomImagePath() {
         Random random = new Random();
         int randomIndex = random.nextInt(imagePaths.length);

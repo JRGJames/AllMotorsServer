@@ -121,6 +121,7 @@ public class CarService {
             String type = DataGenerationHelper.getRandomCarType();
             String description = DataGenerationHelper.generateComplexSentence();
             String location = DataGenerationHelper.getRandomLocation();
+            String city = DataGenerationHelper.getRandomCity();
             Double emissions = DataGenerationHelper.getRandomEmissions();
             Double consumption = DataGenerationHelper.getRandomConsumption();
             String currency = DataGenerationHelper.getRandomCurrency();
@@ -130,7 +131,7 @@ public class CarService {
 
             // Crear y guardar el CarEntity SIN imágenes
             CarEntity car = new CarEntity(brand, model, title, color, year, seats, doors, horsepower, gearbox, distance,
-                    fuel, price, type, location, description, emissions, consumption,
+                    fuel, price, type, location, city, description, emissions, consumption,
                     currency, acceleration, drive, user, new ArrayList<>());
             final CarEntity savedCar = carRepository.save(car);
 

@@ -106,6 +106,10 @@ public class CarEntity {
     @Size(max = 50)
     private String location;
 
+    @NotNull
+    @NotBlank
+    private String city;
+
     private Double emissions;
 
     private Double consumption;
@@ -139,8 +143,8 @@ public class CarEntity {
     }
 
     public CarEntity(Long id, String brand, String model, String title, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location,
-            String currency, UserEntity user, List<ImageEntity> images) {
+            String gearbox, String fuel, int price, String location, String city,
+            String currency, String description, UserEntity user) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -149,23 +153,21 @@ public class CarEntity {
         this.year = year;
         this.seats = seats;
         this.doors = doors;
-        this.horsepower = horsepower;
         this.gearbox = gearbox;
-        this.distance = distance;
         this.fuel = fuel;
         this.price = price;
-        this.type = type;
-        this.images = images;
         this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
         this.location = location;
+        this.city = city;
         this.currency = currency;
+        this.description = description;
         this.user = user;
     }
 
     public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price, String type,
-            String location, String currency, UserEntity user) {
+            String gearbox, String fuel, int price,
+            String location, String city, String currency, String description, UserEntity user) {
         this.brand = brand;
         this.model = model;
         this.title = title;
@@ -173,21 +175,20 @@ public class CarEntity {
         this.year = year;
         this.seats = seats;
         this.doors = doors;
-        this.horsepower = horsepower;
         this.gearbox = gearbox;
-        this.distance = distance;
         this.fuel = fuel;
         this.price = price;
-        this.type = type;
         this.lastUpdate = LocalDateTime.now();
         this.dateUploaded = LocalDateTime.now();
         this.location = location;
+        this.city = city;
+        this.description = description;
         this.currency = currency;
         this.user = user;
     }
 
     public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location,
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location, String city,
             String description, Double emissions,
             Double consumption, String currency, Double acceleration, String drive, UserEntity user) {
         this.brand = brand;
@@ -205,6 +206,7 @@ public class CarEntity {
         this.type = type;
         this.description = description;
         this.location = location;
+        this.city = city;
         this.emissions = emissions;
         this.consumption = consumption;
         this.lastUpdate = LocalDateTime.now();
@@ -216,7 +218,7 @@ public class CarEntity {
     }
 
     public CarEntity(String brand, String model, String title, String color, int year, int seats, int doors,
-            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location,
+            int horsepower, String gearbox, int distance, String fuel, int price, String type, String location, String city,
             String description, Double emissions,
             Double consumption, String currency,
             Double acceleration, String drive, UserEntity user, List<ImageEntity> images) {
@@ -235,6 +237,7 @@ public class CarEntity {
         this.type = type;
         this.description = description;
         this.location = location;
+        this.city = city;
         this.emissions = emissions;
         this.consumption = consumption;
         this.lastUpdate = LocalDateTime.now();
@@ -396,6 +399,14 @@ public class CarEntity {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public Double getEmissions() {

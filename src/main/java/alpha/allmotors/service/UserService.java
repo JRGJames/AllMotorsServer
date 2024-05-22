@@ -100,13 +100,14 @@ public class UserService {
                     .doNormalizeString(name.substring(0, 3) + lastname.substring(1, 3) + i).toLowerCase();
             Boolean gender = DataGenerationHelper.getRandomGender();
             LocalDateTime birthdate = DataGenerationHelper.getRandomDate();
+            String location = DataGenerationHelper.getRandomLocation();
             String country = DataGenerationHelper.getRandomCountry();
             String city = DataGenerationHelper.getRandomCity();
             String phone = DataGenerationHelper.getRandomPhoneNumber();
             String email = (name.substring(0, 3) + lastname.substring(0, 3) + i).toLowerCase() + "@gmail.net";
             String password = ALLMOTORS;
             Boolean role = false;
-            userRepository.save(new UserEntity(name, lastname, username, gender, birthdate, country, city, false, phone,
+            userRepository.save(new UserEntity(name, lastname, username, gender, birthdate, location, country, city, false, phone,
                     email, password, role));
         }
         return userRepository.count();
@@ -118,11 +119,11 @@ public class UserService {
         userRepository.deleteAll();
         userRepository.resetAutoIncrement();
         UserEntity userEntityOne = new UserEntity("Fernando", "Alonso", "ElNano", true,
-                DataGenerationHelper.getRandomDate(), "Spain", "Asturias", false, "633974333",
+                DataGenerationHelper.getRandomDate(), "43.30212165958225 -5.790193546115239", "Spain", "Asturias", false, "633974333",
                 "nano@gmail.com", ALLMOTORS, true);
         userRepository.save(userEntityOne);
         UserEntity userEntityTwo = new UserEntity("Carlos", "Sainz", "carlossainz", true,
-                DataGenerationHelper.getRandomDate(), "Spain", "Madrid", false, "655974455",
+                DataGenerationHelper.getRandomDate(), "40.50836567659941 -3.699252978956862", "Spain", "Madrid", false, "655974455",
                 "sainz@gmail.com", ALLMOTORS, false);
         userRepository.save(userEntityTwo);
         return userRepository.count();
