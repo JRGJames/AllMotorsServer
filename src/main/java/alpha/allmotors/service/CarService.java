@@ -135,7 +135,7 @@ public class CarService {
                     currency, acceleration, drive, user, new ArrayList<>());
             final CarEntity savedCar = carRepository.save(car);
 
-            int numberOfImages = DataGenerationHelper.getRandomInt(1, 8); // Ejemplo: entre 1 y 5 imágenes
+            int numberOfImages = DataGenerationHelper.getRandomInt(2, 8); // Ejemplo: entre 1 y 5 imágenes
             for (int j = 0; j < numberOfImages; j++) {
                 String imagePath = DataGenerationHelper.getRandomImagePath();
                 ImageEntity image = new ImageEntity(imagePath, savedCar);
