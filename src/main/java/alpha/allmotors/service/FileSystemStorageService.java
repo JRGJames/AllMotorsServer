@@ -23,6 +23,7 @@ import alpha.allmotors.repository.UserRepository;
 
 import java.io.IOException;
 import jakarta.annotation.PostConstruct;
+import jakarta.persistence.EntityManager;
 
 @Service
 public class FileSystemStorageService implements StorageService {
@@ -31,7 +32,10 @@ public class FileSystemStorageService implements StorageService {
     private ImageRepository imageRepository;
 
     @Autowired
-    private UserRepository userRepository;    
+    private EntityManager entityManager;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Value("${media.location}")
     private String mediaLocation;
@@ -65,7 +69,7 @@ public class FileSystemStorageService implements StorageService {
                 userEntity.setProfilePicture(filename);
                 userRepository.save(userEntity);
             }
-            
+
             return filename;
         } catch (Exception e) {
             throw new RuntimeException("Could not store file", e);
@@ -105,23 +109,29 @@ public class FileSystemStorageService implements StorageService {
             if (file.isEmpty()) {
                 throw new RuntimeException("Failed to store empty file");
             }
+
             String filename = generateUniqueFilename(file);
             Path destinationFile = rootLocation.resolve(Paths.get(filename)).normalize().toAbsolutePath();
 
+            // Copiar el archivo
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("File copied to destination: " + destinationFile.toString());
             }
 
+            // Actualizar la URL de la imagen
             Optional<ImageEntity> image = imageRepository.findById(imageId);
 
             if (image.isPresent()) {
                 ImageEntity imageEntity = image.get();
                 imageEntity.setImageUrl(filename);
                 imageRepository.save(imageEntity);
+                entityManager.flush();
             }
 
             return filename;
         } catch (Exception e) {
+            System.err.println("Error storing file: " + e.getMessage());
             throw new RuntimeException("Could not store file", e);
         }
     }
@@ -163,5 +173,9 @@ public class FileSystemStorageService implements StorageService {
         } catch (MalformedURLException e) {
             throw new RuntimeException("Could not read file: " + filename);
         }
+    }
+
+    public ImageEntity getImage(Long imageId) {
+        return imageRepository.findById(imageId).orElseThrow(() -> new RuntimeException("Image not found"));
     }
 }
