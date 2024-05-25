@@ -35,6 +35,9 @@ public class CarService {
     UserService userService;
 
     @Autowired
+    ImageService imageService;
+
+    @Autowired
     SessionService sessionService;
 
     @Autowired
@@ -91,7 +94,15 @@ public class CarService {
     public Long delete(Long id) {
         CarEntity carEntityFromDatabase = this.get(id);
         sessionService.onlyAdminsOrUsersWithIisOwnData(carEntityFromDatabase.getOwner().getId());
+        
+        // delete images
+        List<ImageEntity> images = imageRepository.findByCarId(id);
+        for (ImageEntity image : images) {
+            imageService.deleteImage(image.getId());
+        }
+        
         carRepository.deleteById(id);
+
         return id;
     }
 

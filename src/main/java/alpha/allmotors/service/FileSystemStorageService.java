@@ -150,6 +150,11 @@ public class FileSystemStorageService implements StorageService {
             } catch (IOException e) {
                 throw new RuntimeException("Could not delete file", e);
             }
+
+            imageRepository.deleteById(imageId);
+
+        } else {
+            throw new RuntimeException("Image not found");
         }
     }
 

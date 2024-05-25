@@ -1,5 +1,7 @@
 package alpha.allmotors.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,11 +36,15 @@ public class ImageService {
         return image.getId();
     }
     
-    public Long deleteImage(Long id) {
-        imageRepository.deleteById(id);
-        fileSystemStorageService.deleteCarImage(id);
+    public Long deleteImage(Long imageId) {
+        fileSystemStorageService.deleteCarImage(imageId);
 
-        return id;
+        return imageId;
+    }
+
+    public List<ImageEntity> getImagesByCarId(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getImagesByCarId'");
     }
 
 }
