@@ -53,6 +53,16 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public String storePicture(MultipartFile file, Long userId) {
         try {
+            Optional<UserEntity> user = userRepository.findById(userId);
+            if (user.isPresent()) {
+                UserEntity userEntity = user.get();
+                String previousPicture = userEntity.getProfilePicture();
+                if (previousPicture != null) {
+                    Path previousPicturePath = rootLocation.resolve(Paths.get(previousPicture)).normalize().toAbsolutePath();
+                    Files.delete(previousPicturePath);
+                }
+            }
+
             if (file.isEmpty()) {
                 throw new RuntimeException("Failed to store empty file");
             }
@@ -62,8 +72,6 @@ public class FileSystemStorageService implements StorageService {
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
             }
-
-            Optional<UserEntity> user = userRepository.findById(userId);
 
             if (user.isPresent()) {
                 UserEntity userEntity = user.get();
@@ -80,6 +88,17 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public String storeBackground(MultipartFile file, Long userId) {
         try {
+            //Delete previous background
+            Optional<UserEntity> user = userRepository.findById(userId);
+            if (user.isPresent()) {
+                UserEntity userEntity = user.get();
+                String previousBackground = userEntity.getProfileBackground();
+                if (previousBackground != null) {
+                    Path previousPicturePath = rootLocation.resolve(Paths.get(previousBackground)).normalize().toAbsolutePath();
+                    Files.delete(previousPicturePath);
+                }
+            }
+
             if (file.isEmpty()) {
                 throw new RuntimeException("Failed to store empty file");
             }
@@ -89,8 +108,6 @@ public class FileSystemStorageService implements StorageService {
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
             }
-
-            Optional<UserEntity> user = userRepository.findById(userId);
 
             if (user.isPresent()) {
                 UserEntity userEntity = user.get();
