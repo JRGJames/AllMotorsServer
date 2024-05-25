@@ -66,12 +66,11 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`id`, `id_owner`, `title`, `price`, `currency`, `brand`, `model`, `year`, `color`, `seats`, `doors`, `description`, `location`, `city`, `gearbox`, `fuel`, `last_update`, `date_uploaded`, `views`, `saves`, `distance`, `type`, `horsepower`, `acceleration`, `emissions`, `drive`, `consumption`) VALUES
-(1, 23, 'BMW 320ci e46', 33033, '€', 'hyundai', 'penelope', 2003, '#1F2937', 5, 3, 'El BMW E46 del 2003 con restyling representa un equilibrio perfecto entre diseño, rendimiento y tecnología. da\nLas mejoras estéticas y técnicas introducidas en esta actualización hicieron de este modelo una opción atractiva para los entusiastas de los automóviles que buscan una experiencia de conducción superior combinada con la elegancia y calidad que caracteriza a BMW. \n\nA día de hoy, el E46 sigue siendo un modelo muy valorado por su diseño atemporal y su dinámica de conducción excepcional.', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-05-25 13:33:36', NULL, 364, 2, 123000, 'coupe', 180, 8.3, 213, 'RWD', 10.4),
-(2, 3, 'Chevrolet Bolt EV Corvette', 17300, '$', 'chevrolet', 'corvette', 1990, '#1F2937', 2, 3, 'while one house sleeps loudly one book reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-05-24 17:45:51', NULL, 95, 0, 897000, 'SUV', 694, 3.4, 59.04, 'rwd', 5.79),
+(2, 3, 'Chevrolet Bolt EV Corvette', 17300, '$', 'chevrolet', 'corvette', 1990, '#1F2937', 2, 3, 'while one house sleeps loudly one book reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-05-25 16:57:27', NULL, 97, 0, 897000, 'SUV', 694, 3.4, 59.04, 'rwd', 5.79),
 (6, 1, 'Honda S60', 1004933, '€', 'Honda', 'S60', 1976, 'red', 5, 5, 'while a book shines brightly the cat ate', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-05-25 12:38:21', '2024-02-22 00:38:09', 12, 0, 1208320, 'convertible', 351, 8.4, 102.76, 'RWD', 9.12),
 (7, 5, 'Chevrolet Civic', 3689, '€', 'chevrolet', 'civic', 1926, 'green', 5, 5, 'when the car ate one friend shines slowly and a sun barks softly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-05-13 16:35:35', '2024-02-22 00:38:09', 2, 0, 61000, 'SUV', 1185, 3.3, 45.93, 'rwd', 9.03),
 (8, 2, 'Kia F-150', 1242127, '$', 'Kia', 'F-150', 1931, 'green', 6, 4, 'until the house fly one sandwich is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'hybrid', '2024-02-22 00:38:09', '2024-02-22 00:38:09', 4, 0, 1094050, 'sedan', 1007, 5, 61.76, 'AWD', 9.95),
-(9, 1, 'Hyundai CX-5', 4559772, '€', 'Hyundai', 'CX-5', 1998, 'yellow', 6, 3, 'because a book reads slowly the friend barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-02-22 00:38:09', '2024-02-22 00:38:09', 43, 0, 620285, 'hatchback', 1273, 8, 32.65, 'FWD', 6.34),
+(9, 1, 'Hyundai CX-5', 4559772, '€', 'Hyundai', 'CX-5', 1998, 'yellow', 6, 3, 'because a book reads slowly the friend barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-05-25 16:53:44', '2024-02-22 00:38:09', 44, 0, 620285, 'hatchback', 1273, 8, 32.65, 'FWD', 6.34),
 (10, 2, 'Hyundai Civic', 428536, '£', 'Hyundai', 'Civic', 2001, 'black', 5, 4, 'where one cat sleeps brightly the car fly softly or a sun sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-02-22 00:38:09', '2024-02-22 00:38:09', 2, 0, 110204, 'truck', 248, 6.1, 24.4, 'AWD', 8.22),
 (11, 1, 'Hyundai F-150', 3352101, '£', 'Hyundai', 'F-150', 1961, 'orange', 5, 5, 'unless one friend reads a house is slowly and one house barks slowly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-02-22 00:38:09', '2024-02-22 00:38:09', 0, 0, 397078, 'van', 1439, 9, 88.92, 'FWD', 8.31),
 (13, 1, 'Chevrolet Soul', 1660237, '$', 'Chevrolet', 'Soul', 1971, 'yellow', 5, 4, 'even if the birds run the dog reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-02-22 00:54:18', '2024-02-22 00:54:18', 3, 0, 444314, 'convertible', 693, 2.5, 108.07, 'AWD', 5.91),
@@ -113,7 +112,7 @@ INSERT INTO `car` (`id`, `id_owner`, `title`, `price`, `currency`, `brand`, `mod
 (54, 2, 'Nissan Cruze', 984565, '$', 'Nissan', 'Cruze', 1994, 'blue', 3, 5, 'so that the cat shines the dog reads brightly or a cat run loudly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 256429, 'truck', 1280, 3.6, 90.57, 'AWD', 7.14),
 (55, 2, 'Tesla CX-5', 148015, '$', 'Tesla', 'CX-5', 1921, 'purple', 7, 3, 'as the sun reads loudly a friend run quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 139182, 'truck', 1368, 2.3, 63.74, 'AWD', 9.26),
 (56, 1, 'Kia 3 Series', 1181686, '€', 'Kia', '3 Series', 1962, 'green', 4, 4, 'before one car barks loudly the sandwich fly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 13988, 'van', 254, 7.5, 84.32, 'FWD', 7.25),
-(57, 1, 'BMW 3 Series', 3130151, '€', 'BMW', '3 Series', 1926, 'green', 6, 4, 'before one dog reads softly one car sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 741711, 'truck', 840, 10, 88.64, 'RWD', 6.67),
+(57, 1, 'BMW 3 Series', 3130151, '€', 'BMW', '3 Series', 1926, 'green', 6, 4, 'before one dog reads softly one car sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-05-25 16:27:11', '2024-03-11 01:48:34', 1, 0, 741711, 'truck', 840, 10, 88.64, 'RWD', 6.67),
 (58, 1, 'Audi Cruze', 4085434, '€', 'Audi', 'Cruze', 1940, 'red', 3, 4, 'unless a car sleeps the house barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 300894, 'sedan', 297, 8.7, 84.74, 'FWD', 5.51),
 (59, 2, 'Kia Model 3', 4404418, '£', 'Kia', 'Model 3', 1981, 'black', 6, 5, 'unless a dog run brightly a sun barks but one friend sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 1214334, 'truck', 236, 5.2, 82.23, 'FWD', 5.75),
 (60, 1, 'Kia Cruze', 1028422, '¥', 'Kia', 'Cruze', 1925, 'yellow', 3, 3, 'even if the sun sleeps the cat run but one car reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 356164, 'coupe', 969, 8.6, 21.2, 'FWD', 5.56),
@@ -126,7 +125,8 @@ INSERT INTO `car` (`id`, `id_owner`, `title`, `price`, `currency`, `brand`, `mod
 (71, 2, 'Kia 3 Series', 3173251, '€', 'Kia', '3 Series', 1987, 'yellow', 2, 4, 'that a cat is slowly one cat sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-03-11 01:48:35', '2024-03-11 01:48:35', 0, 0, 320760, 'truck', 773, 9.3, 18.05, 'AWD', 8.96),
 (72, 2, 'Volkswagen Cruze', 3428190, '¥', 'Volkswagen', 'Cruze', 2023, 'gray', 7, 5, 'before one dog sleeps slowly one friend run softly but the car fly brightly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-03-11 01:48:35', '2024-03-11 01:48:35', 0, 0, 610984, 'convertible', 1209, 8.5, 69.37, 'RWD', 8.03),
 (73, 1, 'Nissan Model 3', 3051360, '¥', 'Nissan', 'Model 3', 1985, 'white', 8, 5, 'though one car ate the cat is slowly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-03-11 01:48:35', '2024-03-11 01:48:35', 0, 0, 194080, 'SUV', 681, 4, 65.41, 'FWD', 8.77),
-(74, 3, 'Mercedes-Benz Civic', 3405723, '£', 'Mercedes-Benz', 'Civic', 2013, 'black', 8, 3, 'although the house shines the car shines quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-05-23 19:07:04', '2024-04-10 08:05:26', 3, 0, 94017, 'convertible', 710, 4.9, 66.91, 'AWD', 7.4);
+(74, 3, 'Mercedes-Benz Civic', 3405723, '£', 'Mercedes-Benz', 'Civic', 2013, 'black', 8, 3, 'although the house shines the car shines quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-05-23 19:07:04', '2024-04-10 08:05:26', 3, 0, 94017, 'convertible', 710, 4.9, 66.91, 'AWD', 7.4),
+(278, 23, 'BMW E90', 130000, '€', 'BMW', 'E90', 2022, 'black', 4, 4, 'Esto es una prueba para demostrar que funciona bien todo.\n\nEfectivamente, funciona', '-0.3735552 39.469056', 'València', 'automatic', 'gasoline', '2024-05-25 17:18:07', '2024-05-25 15:18:07', 1, 0, 80000, 'sedan', 440, 3.4, 120, 'rwd', 11.2);
 
 -- --------------------------------------------------------
 
@@ -164,9 +164,7 @@ INSERT INTO `favorites` (`id`, `id_user`, `id_car`) VALUES
 (294, 1, 15),
 (295, 1, 18),
 (296, 1, 24),
-(299, 2, 47),
-(300, 2, 1),
-(585, 1, 1);
+(299, 2, 47);
 
 -- --------------------------------------------------------
 
@@ -449,12 +447,8 @@ INSERT INTO `images` (`id`, `image_url`, `id_car`) VALUES
 (1207, 'image1.jpg', 73),
 (1208, 'image7.jpg', 74),
 (1209, 'image10.jpg', 74),
-(1252, 'f0218e6b-d127-45f1-8401-45222c1dddae.jpg', 1),
-(1253, '074a865f-7a4d-459b-8ea4-d1eea4337a60.jpg', 1),
-(1254, 'fab7dd92-9922-4d50-8b02-3bf2b9ae5b4e.jpg', 1),
-(1255, '3baf5b68-fb90-444f-afad-c52f07cd0b34.jpg', 1),
-(1257, 'f1e52be2-d88f-42a7-b404-41c36f3951ae.jpg', 1),
-(1258, '37644e50-29ce-4e51-9838-df7898489a17.jpg', 1);
+(1692, '33648a92-aaac-42de-87b6-a10736c5a028.jpg', 278),
+(1693, '6902e9b1-2bf6-4b75-9a9b-cb0b629999b9.jpg', 278);
 
 -- --------------------------------------------------------
 
@@ -561,8 +555,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`, `location`, `country`, `city`, `description`, `profile_picture`, `profile_background`, `status`, `phone`, `email`, `password`, `role`, `member_since`, `last_connection`, `banned`, `actived`, `reports`) VALUES
-(1, 'Fernando', 'Alonso', 'ElNano', 1, '2022-02-24 04:25:00', '-0.3784603198914027 39.4679336934979', 'Spain', 'Asturias', 'El Nano es una bala azul que sin cañónDispara en un circuito directo al corazónEl Nano no es humano, el Nano es inmortalY sale en las revistas junto a Hulk y a SupermamEl Nano es un gigante en un cuerpo de mortalY nadie le echa el guante, nadie lo puede alcanzar                                      ', 'd57976ef-26fa-481d-8410-a4be1ef3e97b.webp', 'b1049c1f-addb-4d25-acf7-cb16e46a51b0.webp', b'1', '633974333', 'nano@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '1996-07-15 15:35:07', '1936-02-15 00:37:41', 0, 1, 0),
-(2, 'Carlos', 'Sainz', 'carlossainz', 0, '1991-05-16 16:56:24', '-3.7050339534411023 40.40991945152729', 'Spain', 'Madrid', '              Carlos Sainz, il matador. Smooooooth operatoooor       ', 'b1fcd965-cdfc-4f37-ba24-604b6bb845cb.jpg', '9d9a48f6-82aa-4bde-9536-c33a32bf35c4.jpeg', b'0', '655974455', 'sainz@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21', 0, 1, 0),
+(1, 'Fernando', 'Alonso', 'ElNano', 1, '2022-02-24 04:25:00', '-0.3784603198914027 39.4679336934979', 'Spain', 'Asturias', 'El Nano es una bala azul que sin cañónDispara en un circuito directo al corazónEl Nano no es humano, el Nano es inmortalY sale en las revistas junto a Hulk y a SupermamEl Nano es un gigante en un cuerpo de mortalY nadie le echa el guante, nadie lo puede alcanzar                                      ', 'a2773b88-922b-4e3f-8dbd-22e39406276a.webp', '4b86f217-cc79-48a0-9a24-e4f59ccd12ed.jpg', b'0', '633974333', 'nano@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '1996-07-15 15:35:07', '1936-02-15 00:37:41', 0, 1, 0),
+(2, 'Carlos', 'Sainz', 'carlossainz', 0, '1991-05-16 16:56:24', '-3.7050339534411023 40.40991945152729', 'Spain', 'Madrid', '              Carlos Sainz, il matador. Smooooooth operatoooor       ', 'b1fcd965-cdfc-4f37-ba24-604b6bb845cb.jpg', '153902dd-640b-4236-8fb6-1d370a1af510.jpg', b'0', '655974455', 'sainz@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21', 0, 1, 0),
 (3, 'Amador', 'Rivas', 'capitanSalam1', 1, '1940-01-24 16:53:42', '-0.3784603198914027 39.4679336934979', 'Italy', 'British Columbia', ' Quieres salami, merengue merengue ', 'f9fec625-b1c1-4f48-a915-a8ad58a2e49b.jpg', '40118821-2bab-47c8-ab3f-fe84a8c16b8c.jpg', b'0', '561079640', 'alalat0@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (4, 'Ramón', 'Melendi', 'milindr1', 1, '1957-07-05 01:34:14', '-0.3784603198914027 39.4679336934979', 'South Africa', 'British Columbia', '    Siete vidas tiene un gatoComo una y cuento cienAy y como de hablar no cansoVoy y te como a ti tambiénYa ha acabado el Gran HermanoAbre un buen champan FrancésQue lo mejor de tol programaAy fue la novia de un tal Ness        ', '4ceac9e6-3728-42b0-81ed-9b00b7b98a76.jpg', '3d3a41b0-a58a-4291-93bd-532845faa431.jpg', b'0', '783044591', 'elopui1@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (5, 'Kakarotto', 'Son', 'gokuSan', 1, '1942-01-27 10:48:02', '-0.3784603198914027 39.4679336934979', 'China', 'Madrid', 'Yo se que a veces peleamos, pero que rico cuando chingamos', '16219753-0576-44af-9abb-01a891698a18.jpg', '4f290a90-c535-4cc0-be90-1a251ce2c191.webp', b'0', '264594045', 'lauazn2@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
@@ -583,7 +577,7 @@ INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`,
 (20, 'Mónica', 'Ferrer', 'moner17', 1, '1950-03-03 20:03:19', '-0.3784603198914027 39.4679336934979', 'South Africa', 'British Columbia', NULL, NULL, NULL, b'0', '669615683', 'mónfer17@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (21, 'Nieves', 'Gómez', 'nieom18', 1, '1958-11-08 22:51:15', '-0.3784603198914027 39.4679336934979', 'South Africa', 'Galicia', NULL, NULL, NULL, b'0', '896113707', 'niegóm18@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (22, 'Laura', 'Gómez', 'lauom19', 1, '2007-05-19 16:00:46', '-0.3784603198914027 39.4679336934979', 'Canada', 'Andalusia', NULL, NULL, NULL, b'0', '627092165', 'laugóm19@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
-(23, 'Jaime', 'Rosello', 'jaumerosello_', 1, '2004-08-02 20:09:07', '-0.3784603198914027 39.4679336934979', 'Spain', 'Valencia', '             Soy el verdadero admin             ', 'd0839b00-a830-4e02-8e77-f84c1df2d728.jpg', '366b2ae0-2d5e-4f3f-9369-57e50eb29dda.jpg', b'0', '601447829', 'jarogos14@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '2024-05-02 18:07:33', '2024-05-02 18:07:33', 0, 1, 0);
+(23, 'Jaime', 'Rosello', 'jaumerosello_', 1, '2004-08-02 20:09:07', '-0.39413583904328675 39.45770272279975', 'Spain', 'València', '              Soy el verdadero admin              ', 'd0839b00-a830-4e02-8e77-f84c1df2d728.jpg', 'c60f3ec0-0ffb-4c67-b60a-74d104b3d7f3.jpg', b'1', '601447829', 'jarogos14@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '2024-05-02 18:07:33', '2024-05-02 18:07:33', 0, 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -659,7 +653,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
 
 --
 -- AUTO_INCREMENT for table `chat`
@@ -677,7 +671,7 @@ ALTER TABLE `favorites`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1688;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1694;
 
 --
 -- AUTO_INCREMENT for table `message`
