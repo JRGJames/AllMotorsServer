@@ -72,8 +72,6 @@ public class CarEntity {
     @Size(max = 20)
     private String gearbox;
 
-    @NotNull
-    @Min(value = 1)
     @Max(value = 20000000)
     private int distance;
 

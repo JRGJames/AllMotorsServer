@@ -30,7 +30,7 @@ public class ImageService {
         image.setImageUrl(file.getOriginalFilename());
         imageRepository.save(image);
 
-        fileSystemStorageService.storeCarImage(file, image.getId());
+        fileSystemStorageService.storeCarImage(file, image);
         return image.getId();
     }
     

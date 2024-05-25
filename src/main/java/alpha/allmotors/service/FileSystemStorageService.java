@@ -24,6 +24,7 @@ import alpha.allmotors.repository.UserRepository;
 import java.io.IOException;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 
 @Service
 public class FileSystemStorageService implements StorageService {
@@ -103,8 +104,9 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
+    @Transactional
     @Override
-    public String storeCarImage(MultipartFile file, Long imageId) {
+    public String storeCarImage(MultipartFile file, ImageEntity imageToSet) {
         try {
             if (file.isEmpty()) {
                 throw new RuntimeException("Failed to store empty file");
@@ -116,11 +118,10 @@ public class FileSystemStorageService implements StorageService {
             // Copiar el archivo
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("File copied to destination: " + destinationFile.toString());
             }
 
             // Actualizar la URL de la imagen
-            Optional<ImageEntity> image = imageRepository.findById(imageId);
+            Optional<ImageEntity> image = imageRepository.findById(imageToSet.getId());
 
             if (image.isPresent()) {
                 ImageEntity imageEntity = image.get();

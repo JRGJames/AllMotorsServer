@@ -50,7 +50,6 @@ public class UserService {
     }
 
     public Iterable<UserEntity> getAll() {
-        sessionService.onlyAdmins();
         return userRepository.findAll();
     }
 

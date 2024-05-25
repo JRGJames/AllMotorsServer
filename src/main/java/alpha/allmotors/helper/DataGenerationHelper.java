@@ -333,7 +333,7 @@ public class DataGenerationHelper {
     }
 
     public static String getRandomCarType() {
-        String[] carTypes = { "Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Truck", "Van", "Wagon" };
+        String[] carTypes = { "sedan", "SUV", "hatchback", "coupe", "convertible", "truck", "van", "pickup", "other" };
 
         Random random = new Random();
         int randomIndex = random.nextInt(carTypes.length);

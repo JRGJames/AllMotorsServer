@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
+import alpha.allmotors.entity.ImageEntity;
+
 public interface StorageService {
 
     void init() throws IOException;
@@ -13,7 +15,7 @@ public interface StorageService {
 
     String storeBackground(MultipartFile file, Long userId);
 
-    String storeCarImage(MultipartFile file, Long imageId);
+    String storeCarImage(MultipartFile file, ImageEntity imageEntity);
 
     void deleteCarImage(Long imageId);
 
