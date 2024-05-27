@@ -505,23 +505,6 @@ INSERT INTO `rating` (`id`, `id_rated_user`, `id_rating_user`, `score`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating_seq`
---
-
-CREATE TABLE `rating_seq` (
-  `next_val` bigint DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `rating_seq`
---
-
-INSERT INTO `rating_seq` (`next_val`) VALUES
-(1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
