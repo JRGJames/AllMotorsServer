@@ -76,16 +76,10 @@ public class CarService {
     }
 
     public CarEntity update(CarEntity carEntityToSet) {
-        CarEntity carEntityFromDatabase = this.get(carEntityToSet.getId());
-        sessionService.onlyAdminsOrUsersWithIisOwnData(carEntityFromDatabase.getOwner().getId());
         if (sessionService.isUser()) {
-            if (carEntityToSet.getOwner().getId().equals(sessionService.getSessionUser().getId())) {
-                //do not update saves
-                
-                return carRepository.save(carEntityToSet);
-            } else {
-                throw new ResourceNotFoundException("Unauthorized");
-            }
+            // do not update saves
+
+            return carRepository.save(carEntityToSet);
         } else {
             return carRepository.save(carEntityToSet);
         }
@@ -94,13 +88,13 @@ public class CarService {
     public Long delete(Long id) {
         CarEntity carEntityFromDatabase = this.get(id);
         sessionService.onlyAdminsOrUsersWithIisOwnData(carEntityFromDatabase.getOwner().getId());
-        
+
         // delete images
         List<ImageEntity> images = imageRepository.findByCarId(id);
         for (ImageEntity image : images) {
             imageService.deleteImage(image.getId());
         }
-        
+
         carRepository.deleteById(id);
 
         return id;

@@ -1,5 +1,8 @@
 package alpha.allmotors.api;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import alpha.allmotors.entity.CarEntity;
+import alpha.allmotors.entity.ChatEntity;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.service.ChatService;
 
@@ -33,17 +37,19 @@ public class ChatApi {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<?> getAllChats(@PathVariable("id") Long chatId) {
-        return ResponseEntity.ok(chatService.getChatById(chatId));
-    }
-
-    @GetMapping("/get")
-    public ResponseEntity<?> getAllChats(@RequestParam("userId") UserEntity userId) {
+    public ResponseEntity<List<ChatEntity>> getAllChats(@PathVariable("id") Long userId) {
         return ResponseEntity.ok(chatService.getChatsByUser(userId));
     }
 
+    // @GetMapping("/get")
+    // public ResponseEntity<?> getAllChats(@RequestParam("userId") UserEntity
+    // userId) {
+    // return ResponseEntity.ok(chatService.getChatsByUser(userId));
+    // }
+
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteChat(@PathVariable("id") Long chatId, @RequestParam("userId") UserEntity userId) {
+    public ResponseEntity<String> deleteChat(@PathVariable("id") Long chatId,
+            @RequestParam("userId") UserEntity userId) {
         // Lógica para eliminar un chat
         chatService.deleteChatForUser(chatId, userId);
         return ResponseEntity.ok("Chat eliminado correctamente");

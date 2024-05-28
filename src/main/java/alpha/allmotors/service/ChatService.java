@@ -10,6 +10,7 @@ import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.ChatEntity;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.repository.ChatRepository;
+import alpha.allmotors.repository.UserRepository;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -17,6 +18,9 @@ public class ChatService {
 
     @Autowired
     private ChatRepository chatRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public Boolean isThereCar(CarEntity car) {
         if (car != null && car.getId() != null) {
@@ -106,7 +110,8 @@ public class ChatService {
         return chatRepository.findByUsersAndCar(memberOne, memberTwo, car);
     }
 
-    public List<ChatEntity> getChatsByUser(UserEntity memberOne) {
+    public List<ChatEntity> getChatsByUser(Long memberOneId) {
+        UserEntity memberOne = userRepository.findById(memberOneId).orElse(null);
         return chatRepository.findAllChatsByUser(memberOne);
     }
 
