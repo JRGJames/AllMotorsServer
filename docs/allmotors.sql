@@ -66,7 +66,7 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`id`, `id_owner`, `title`, `price`, `currency`, `brand`, `model`, `year`, `color`, `seats`, `doors`, `description`, `location`, `city`, `gearbox`, `fuel`, `last_update`, `date_uploaded`, `views`, `saves`, `distance`, `type`, `horsepower`, `acceleration`, `emissions`, `drive`, `consumption`) VALUES
-(2, 3, 'Chevrolet Bolt EV Corvette', 17300, '$', 'chevrolet', 'corvette', 1990, '#1F2937', 2, 3, 'while one house sleeps loudly one book reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-05-25 16:57:27', NULL, 97, 0, 897000, 'SUV', 694, 3.4, 59.04, 'rwd', 5.79),
+(2, 3, 'Chevrolet Bolt EV Corvette', 17300, '$', 'chevrolet', 'corvette', 1990, '#1F2937', 2, 3, 'while one house sleeps loudly one book reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-05-28 07:00:46', NULL, 103, 0, 897000, 'SUV', 694, 3.4, 59.04, 'rwd', 5.79),
 (6, 1, 'Honda S60', 1004933, '€', 'Honda', 'S60', 1976, 'red', 5, 5, 'while a book shines brightly the cat ate', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-05-25 12:38:21', '2024-02-22 00:38:09', 12, 0, 1208320, 'convertible', 351, 8.4, 102.76, 'RWD', 9.12),
 (7, 5, 'Chevrolet Civic', 3689, '€', 'chevrolet', 'civic', 1926, 'green', 5, 5, 'when the car ate one friend shines slowly and a sun barks softly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-05-13 16:35:35', '2024-02-22 00:38:09', 2, 0, 61000, 'SUV', 1185, 3.3, 45.93, 'rwd', 9.03),
 (8, 2, 'Kia F-150', 1242127, '$', 'Kia', 'F-150', 1931, 'green', 6, 4, 'until the house fly one sandwich is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'hybrid', '2024-02-22 00:38:09', '2024-02-22 00:38:09', 4, 0, 1094050, 'sedan', 1007, 5, 61.76, 'AWD', 9.95),
@@ -126,7 +126,7 @@ INSERT INTO `car` (`id`, `id_owner`, `title`, `price`, `currency`, `brand`, `mod
 (72, 2, 'Volkswagen Cruze', 3428190, '¥', 'Volkswagen', 'Cruze', 2023, 'gray', 7, 5, 'before one dog sleeps slowly one friend run softly but the car fly brightly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-03-11 01:48:35', '2024-03-11 01:48:35', 0, 0, 610984, 'convertible', 1209, 8.5, 69.37, 'RWD', 8.03),
 (73, 1, 'Nissan Model 3', 3051360, '¥', 'Nissan', 'Model 3', 1985, 'white', 8, 5, 'though one car ate the cat is slowly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-03-11 01:48:35', '2024-03-11 01:48:35', 0, 0, 194080, 'SUV', 681, 4, 65.41, 'FWD', 8.77),
 (74, 3, 'Mercedes-Benz Civic', 3405723, '£', 'Mercedes-Benz', 'Civic', 2013, 'black', 8, 3, 'although the house shines the car shines quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-05-23 19:07:04', '2024-04-10 08:05:26', 3, 0, 94017, 'convertible', 710, 4.9, 66.91, 'AWD', 7.4),
-(278, 23, 'BMW E90', 130000, '€', 'BMW', 'E90', 2022, 'black', 4, 4, 'Esto es una prueba para demostrar que funciona bien todo.\n\nEfectivamente, funciona', '-0.3735552 39.469056', 'València', 'automatic', 'gasoline', '2024-05-25 17:18:07', '2024-05-25 15:18:07', 1, 0, 80000, 'sedan', 440, 3.4, 120, 'rwd', 11.2);
+(278, 23, 'BMW E90', 130000, '€', 'BMW', 'E90', 2022, 'black', 4, 4, 'Esto es una prueba para demostrar que funciona bien todo.\n\nEfectivamente, funciona', '-0.3735552 39.469056', 'València', 'automatic', 'gasoline', '2024-05-28 08:18:52', '2024-05-25 15:18:07', 2, 0, 80000, 'sedan', 440, 3.4, 120, 'rwd', 11.2);
 
 -- --------------------------------------------------------
 
@@ -143,6 +143,25 @@ CREATE TABLE `chat` (
   `deleted_by` bigint DEFAULT NULL,
   `id_car` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`id`, `creation_date`, `notifications`, `id_member_one`, `id_member_two`, `deleted_by`, `id_car`) VALUES
+(1, NULL, 0, 1, 2, NULL, NULL),
+(2, NULL, 0, 1, 23, NULL, NULL),
+(3, NULL, 0, 1, 2, NULL, 278),
+(4, NULL, 0, 1, 22, NULL, NULL),
+(5, NULL, 0, 1, 15, NULL, NULL),
+(6, NULL, 0, 1, 3, NULL, NULL),
+(7, NULL, 0, 1, 4, NULL, NULL),
+(8, NULL, 0, 1, 7, NULL, NULL),
+(9, NULL, 0, 1, 20, NULL, NULL),
+(10, NULL, 0, 1, 19, NULL, NULL),
+(11, NULL, 0, 1, 21, NULL, NULL),
+(12, NULL, 0, 1, 6, NULL, NULL),
+(13, NULL, 0, 1, 23, NULL, 57);
 
 -- --------------------------------------------------------
 
@@ -538,7 +557,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`, `location`, `country`, `city`, `description`, `profile_picture`, `profile_background`, `status`, `phone`, `email`, `password`, `role`, `member_since`, `last_connection`, `banned`, `actived`, `reports`) VALUES
-(1, 'Fernando', 'Alonso', 'ElNano', 1, '2022-02-24 04:25:00', '-0.3784603198914027 39.4679336934979', 'Spain', 'Asturias', 'El Nano es una bala azul que sin cañónDispara en un circuito directo al corazónEl Nano no es humano, el Nano es inmortalY sale en las revistas junto a Hulk y a SupermamEl Nano es un gigante en un cuerpo de mortalY nadie le echa el guante, nadie lo puede alcanzar                                      ', 'a2773b88-922b-4e3f-8dbd-22e39406276a.webp', '4b86f217-cc79-48a0-9a24-e4f59ccd12ed.jpg', b'0', '633974333', 'nano@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '1996-07-15 15:35:07', '1936-02-15 00:37:41', 0, 1, 0),
+(1, 'Fernando', 'Alonso', 'ElNano', 1, '2022-02-24 04:25:00', '-0.3784603198914027 39.4679336934979', 'Spain', 'Asturias', ' El Nano es una bala azul que sin cañónDispara en un circuito directo al corazónEl Nano no es humano, el Nano es inmortalY sale en las revistas junto a Hulk y a SupermamEl Nano es un gigante en un cuerpo de mortalY nadie le echa el guante, nadie lo puede alcanzar                                       ', 'a2773b88-922b-4e3f-8dbd-22e39406276a.webp', '4b86f217-cc79-48a0-9a24-e4f59ccd12ed.jpg', b'1', '633974333', 'nano@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '1996-07-15 15:35:07', '1936-02-15 00:37:41', 0, 1, 0),
 (2, 'Carlos', 'Sainz', 'carlossainz', 0, '1991-05-16 16:56:24', '-3.7050339534411023 40.40991945152729', 'Spain', 'Madrid', '              Carlos Sainz, il matador. Smooooooth operatoooor       ', 'b1fcd965-cdfc-4f37-ba24-604b6bb845cb.jpg', '153902dd-640b-4236-8fb6-1d370a1af510.jpg', b'0', '655974455', 'sainz@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21', 0, 1, 0),
 (3, 'Amador', 'Rivas', 'capitanSalam1', 1, '1940-01-24 16:53:42', '-0.3784603198914027 39.4679336934979', 'Italy', 'British Columbia', ' Quieres salami, merengue merengue ', 'f9fec625-b1c1-4f48-a915-a8ad58a2e49b.jpg', '40118821-2bab-47c8-ab3f-fe84a8c16b8c.jpg', b'0', '561079640', 'alalat0@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (4, 'Ramón', 'Melendi', 'milindr1', 1, '1957-07-05 01:34:14', '-0.3784603198914027 39.4679336934979', 'South Africa', 'British Columbia', '    Siete vidas tiene un gatoComo una y cuento cienAy y como de hablar no cansoVoy y te como a ti tambiénYa ha acabado el Gran HermanoAbre un buen champan FrancésQue lo mejor de tol programaAy fue la novia de un tal Ness        ', '4ceac9e6-3728-42b0-81ed-9b00b7b98a76.jpg', '3d3a41b0-a58a-4291-93bd-532845faa431.jpg', b'0', '783044591', 'elopui1@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
@@ -644,7 +663,7 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `favorites`
