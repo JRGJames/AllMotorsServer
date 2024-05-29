@@ -7,10 +7,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
 import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.ChatEntity;
 import alpha.allmotors.entity.UserEntity;
 
+@Repository
 public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
 
         Optional<ChatEntity> findById(Long chatId);
@@ -26,7 +29,8 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
         // Método para obtener chats ordenados por fecha de creación descendente
         List<ChatEntity> findAllByOrderByCreationDateDesc();
 
-        // Método para obtener chats ordenados por fecha de creación descendente paginados
+        // Método para obtener chats ordenados por fecha de creación descendente
+        // paginados
         Page<ChatEntity> findAllByOrderByCreationDateDesc(Pageable pageable);
 
         // Método para encontrar chats con notificaciones
@@ -47,6 +51,14 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
         ChatEntity findByUsersAndCar(@Param("memberOne") UserEntity memberOne,
                         @Param("memberTwo") UserEntity memberTwo,
                         @Param("car") CarEntity car);
+
+        // Método para encontrar chats por usuarios y sin coche
+        @Query("SELECT c FROM ChatEntity c WHERE " +
+                        "((c.memberOne = :memberOne AND c.memberTwo = :memberTwo) OR " +
+                        "(c.memberOne = :memberTwo AND c.memberTwo = :memberOne)) " +
+                        "AND c.car IS NULL")
+        ChatEntity getChatByUsersWithoutCar(@Param("memberOne") UserEntity memberOne,
+                        @Param("memberTwo") UserEntity memberTwo);
 
         // Método para encontrar chats por usuario paginados
         @Query("SELECT c FROM ChatEntity c WHERE c.memberOne = :user OR c.memberTwo = :user")

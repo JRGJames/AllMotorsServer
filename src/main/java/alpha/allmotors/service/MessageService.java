@@ -1,6 +1,8 @@
 package alpha.allmotors.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import alpha.allmotors.entity.CarEntity;
@@ -21,6 +23,9 @@ public class MessageService {
     private ChatService chatService;
 
     @Autowired
+    private ChatRepository chatRepository;
+
+    @Autowired
     private SessionService session;
 
     @Autowired
@@ -30,87 +35,62 @@ public class MessageService {
     private CarService carService;
 
     @Transactional
-    public MessageEntity sendMessage(MessageEntity message, Long carId) {
+public MessageEntity sendMessage(MessageEntity message, Long carId) {
 
-        message.setSender(userService.getByUsername(session.getSessionUsername()));
-        message.setReceiver(userService.get(message.getReceiver().getId()));
+    UserEntity memberOne = message.getSender();
+    UserEntity memberTwo = message.getReceiver();
 
-        UserEntity memberOne = message.getSender();
-        UserEntity memberTwo = message.getReceiver();
+    String content = message.getContent();
 
-        String content = message.getContent();
+    if (memberOne != null) {
+        if (carId == null) {
+            // No hay coche asociado
+            System.out.println("No hay coche asociado");
 
-        CarEntity car = carService.get(carId);
-        
-        if (memberOne != null) {
+            ChatEntity chat = chatService.getChatByUsersWithoutCar(memberOne, memberTwo);
 
-            if (chatService.isThereCar(car)) {
-                ChatEntity chatMessage = chatService.findChatUsersCar(memberOne, memberTwo, car);
-                return messageRepository.save(new MessageEntity(memberOne, memberTwo, chatMessage, content));
+            if (chat != null){
+                // Si el chat entre los usuarios existe, se envía el mensaje al chat existente
+                System.out.println("Chat existente encontrado, enviando mensaje al chat existente");
+                return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
             } else {
-                ChatEntity chatMessage = chatService.findChatUsers(memberOne, memberTwo);
-                return messageRepository.save(new MessageEntity(memberOne, memberTwo, chatMessage, content));
+                // Si no existe un chat entre los usuarios, se crea un nuevo chat
+                System.out.println("No existe un chat entre los usuarios, se crea un nuevo chat");
+
+                ChatEntity newChat = new ChatEntity(memberOne, memberTwo);
+                chatRepository.save(newChat);
+
+                return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
             }
-
-
-
-
-
-            // if (chat != null) {
-            //     if (car == null) {
-            //         if (chatService.getChatByUsers(memberOne, memberTwo) == null
-            //                 && chatService.getChatByUsers(memberTwo, memberOne) == null) {
-
-            //             ChatEntity newChat = new ChatEntity(memberOne, memberTwo);
-            //             chatRepository.save(newChat);
-
-            //             return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
-            //         } else {
-            //             return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
-            //         }
-            //     } else {
-            //         if (chatService.getChatByUsersAndCar(memberOne, memberTwo, car) == null
-            //                 && chatService.getChatByUsersAndCar(memberTwo, memberOne, car) == null) {
-
-            //             ChatEntity newChat = new ChatEntity(memberOne, memberTwo, car);
-            //             chatRepository.save(newChat);
-
-            //             return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
-            //         } else {
-            //             return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
-            //         }
-            //     }
-            // } else {
-            //     if (car == null) {
-            //         if (chatService.getChatByUsers(memberOne, memberTwo) == null
-            //                 && chatService.getChatByUsers(memberTwo, memberOne) == null) {
-
-            //             ChatEntity newChat = new ChatEntity(memberOne, memberTwo);
-            //             chatRepository.save(newChat);
-
-            //             return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
-            //         } else {
-            //             chat = chatService.getChatByUsers(memberOne, memberTwo);
-            //         }
-            //     } else {
-            //         if (chatService.getChatByUsersAndCar(memberOne, memberTwo, car) == null
-            //                 && chatService.getChatByUsersAndCar(memberTwo, memberOne, car) == null) {
-
-            //             ChatEntity newChat = new ChatEntity(memberOne, memberTwo, car);
-            //             chatRepository.save(newChat);
-
-            //             return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
-            //         } else {
-            //             chat = chatService.getChatByUsersAndCar(memberOne, memberTwo, car);
-            //         }
-            //     }
-            //     return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
-            // }
         } else {
-            System.out.println("No se ha podido enviar el mensaje, no se ha iniciado sesión");
-            return null;
+            // Hay coche asociado
+            System.out.println("Hay coche asociado");
+
+            CarEntity carEntity = carService.get(carId);
+
+            ChatEntity chat = chatService.getChatByUsersAndCar(memberOne, memberTwo, carEntity);
+
+            if (chat != null) {
+                // Si el chat entre los usuarios y el coche existe, se envía el mensaje al chat existente
+                System.out.println("Chat existente encontrado con coche, enviando mensaje al chat existente");
+                return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
+            } else {
+                // Si no existe un chat entre los usuarios y el coche, se crea un nuevo chat
+                System.out.println("No existe un chat entre los usuarios y el coche, se crea un nuevo chat");
+
+                ChatEntity newChat = new ChatEntity(memberOne, memberTwo, carEntity);
+                chatRepository.save(newChat);
+
+                return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
+            }
         }
+    } else {
+        // Si no hay un usuario iniciado sesión, el mensaje no puede ser enviado
+        System.out.println("No se ha podido enviar el mensaje, no se ha iniciado sesión");
+        return null;
     }
+}
+
 
     // Método para eliminar un mensaje
     public void deleteMessage(Long messageId) {

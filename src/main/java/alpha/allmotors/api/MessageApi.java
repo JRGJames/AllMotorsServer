@@ -23,7 +23,7 @@ public class MessageApi {
     }
 
     @PostMapping("/send")
-    public ResponseEntity<MessageEntity> sendMessage(@RequestBody MessageEntity message, @PathVariable("id_car") Long carId) {
+    public ResponseEntity<MessageEntity> sendMessage(@RequestBody MessageEntity message, @RequestParam(value = "carId", required = false) Long carId) {
         return ResponseEntity.ok(messageService.sendMessage(message, carId));
     }
 

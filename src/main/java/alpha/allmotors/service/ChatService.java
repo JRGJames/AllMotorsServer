@@ -110,6 +110,10 @@ public class ChatService {
         return chatRepository.findByUsersAndCar(memberOne, memberTwo, car);
     }
 
+    public ChatEntity getChatByUsersWithoutCar(UserEntity memberOne, UserEntity memberTwo) {
+        return chatRepository.getChatByUsersWithoutCar(memberOne, memberTwo);
+    }
+
     public List<ChatEntity> getChatsByUser(Long memberOneId) {
         UserEntity memberOne = userRepository.findById(memberOneId).orElse(null);
         return chatRepository.findAllChatsByUser(memberOne);
