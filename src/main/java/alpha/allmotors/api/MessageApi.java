@@ -23,8 +23,16 @@ public class MessageApi {
     }
 
     @PostMapping("/send")
-    public ResponseEntity<MessageEntity> sendMessage(@RequestBody MessageEntity message, @RequestParam(value = "carId", required = false) Long carId) {
+    public ResponseEntity<MessageEntity> sendMessage(@RequestBody MessageEntity message,
+            @RequestParam(value = "carId", required = false) Long carId) {
         return ResponseEntity.ok(messageService.sendMessage(message, carId));
+    }
+
+    @PutMapping("/like/{id}")
+    public ResponseEntity<Void> likeMessage(@PathVariable Long id,
+            @RequestParam Boolean liked) {
+        messageService.likeMessage(id, liked);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete/{id}")
@@ -32,7 +40,7 @@ public class MessageApi {
         messageService.deleteMessage(messageId);
         return ResponseEntity.ok().build();
     }
-
+    
     @GetMapping("/count/{chatId}")
     public ResponseEntity<Long> countMessagesInChat(@PathVariable("chatId") Long chatId) {
         long totalMessageCount = messageService.countMessagesInChat(chatId);

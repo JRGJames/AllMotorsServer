@@ -26,12 +26,6 @@ public class MessageService {
     private ChatRepository chatRepository;
 
     @Autowired
-    private SessionService session;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
     private CarService carService;
 
     @Transactional
@@ -91,6 +85,25 @@ public MessageEntity sendMessage(MessageEntity message, Long carId) {
     }
 }
 
+    // Metodo para marcar un mensaje como leído
+    public void markAsRead(Long messageId) {
+        Optional<MessageEntity> message = messageRepository.findById(messageId);
+        if (message.isPresent()) {
+            MessageEntity messageEntity=  message.get();
+            messageEntity.setIsRead(true);
+            messageRepository.save(message.get());
+        }
+    }
+
+    // Metodo para dar like a un mensaje
+    public void likeMessage(Long messageId, Boolean isLiked) {
+        Optional<MessageEntity> message = messageRepository.findById(messageId);
+        if (message.isPresent()) {
+            MessageEntity messageEntity=  message.get();
+            messageEntity.setIsLiked(isLiked);
+            messageRepository.save(message.get());
+        }
+    }
 
     // Método para eliminar un mensaje
     public void deleteMessage(Long messageId) {
