@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.ChatEntity;
+import alpha.allmotors.entity.MessageEntity;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.repository.ChatRepository;
 import alpha.allmotors.repository.UserRepository;
@@ -28,6 +29,10 @@ public class ChatService {
         } else {
             return false;
         }
+    }
+
+    public List<MessageEntity> getMessagesByChatId(Long chatId) {
+        return chatRepository.findMessagesByChatId(chatId);
     }
 
     public ChatEntity findChatUsers(UserEntity memberOne, UserEntity memberTwo) {

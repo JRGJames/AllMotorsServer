@@ -1,6 +1,8 @@
 package alpha.allmotors.entity;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,6 +43,7 @@ public class MessageEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_chat")
+    @JsonBackReference
     private ChatEntity chat;
 
     @NotNull
@@ -58,7 +61,7 @@ public class MessageEntity {
         this.content = content;
     }
 
-    public MessageEntity( UserEntity sender, UserEntity receiver, ChatEntity chat, String content) {
+    public MessageEntity(UserEntity sender, UserEntity receiver, ChatEntity chat, String content) {
         this.sentTime = LocalDateTime.now();
         this.sender = sender;
         this.receiver = receiver;

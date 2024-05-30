@@ -1,7 +1,13 @@
 package alpha.allmotors.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -41,7 +48,12 @@ public class ChatEntity {
     @JoinColumn(name = "id_car")
     private CarEntity car;
 
+    @OneToMany(mappedBy = "chat", fetch = jakarta.persistence.FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<MessageEntity> messages;
+
     public ChatEntity() {
+        messages = new ArrayList<>();
     }
 
     public ChatEntity(Long id, UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
@@ -50,6 +62,14 @@ public class ChatEntity {
         this.memberOne = memberOne;
         this.memberTwo = memberTwo;
         this.car = car;
+    }
+
+    public ChatEntity(UserEntity memberOne, UserEntity memberTwo, CarEntity car, List<MessageEntity> messages) {
+        this.creationDate = LocalDateTime.now();
+        this.memberOne = memberOne;
+        this.memberTwo = memberTwo;
+        this.car = car;
+        this.messages = messages;
     }
 
     public ChatEntity(UserEntity memberOne, UserEntity memberTwo, CarEntity car) {
@@ -119,6 +139,14 @@ public class ChatEntity {
 
     public void setCar(CarEntity car) {
         this.car= car;
+    }
+
+    public List<MessageEntity> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<MessageEntity> messages) {
+        this.messages = messages;
     }
 }
 

@@ -11,12 +11,16 @@ import org.springframework.stereotype.Repository;
 
 import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.ChatEntity;
+import alpha.allmotors.entity.MessageEntity;
 import alpha.allmotors.entity.UserEntity;
 
 @Repository
 public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
 
         Optional<ChatEntity> findById(Long chatId);
+
+        @Query("SELECT m FROM MessageEntity m WHERE m.chat.id = :chatId")
+        List<MessageEntity> findMessagesByChatId(Long chatId);
 
         // Método para obtener chats por memberOne y memberTwo
         @Query("SELECT c FROM ChatEntity c WHERE (c.memberOne = :memberOne AND c.memberTwo = :memberTwo) OR (c.memberOne = :memberTwo AND c.memberTwo = :memberOne)")

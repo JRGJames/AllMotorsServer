@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.ChatEntity;
+import alpha.allmotors.entity.MessageEntity;
 import alpha.allmotors.entity.UserEntity;
 import alpha.allmotors.service.ChatService;
 
@@ -39,6 +40,11 @@ public class ChatApi {
     @GetMapping("/get/{id}")
     public ResponseEntity<List<ChatEntity>> getAllChats(@PathVariable("id") Long userId) {
         return ResponseEntity.ok(chatService.getChatsByUser(userId));
+    }
+
+    @GetMapping("/messages/{id}")
+    public ResponseEntity<List<MessageEntity>> getMessagesByChatId(@PathVariable("id") Long chatId) {
+        return ResponseEntity.ok(chatService.getMessagesByChatId(chatId));
     }
 
     // @GetMapping("/get")
