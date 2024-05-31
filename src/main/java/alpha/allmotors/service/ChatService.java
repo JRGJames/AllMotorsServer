@@ -121,7 +121,7 @@ public class ChatService {
 
     public List<ChatEntity> getChatsByUser(Long memberOneId) {
         UserEntity memberOne = userRepository.findById(memberOneId).orElse(null);
-        return chatRepository.findAllChatsByUser(memberOne);
+        return chatRepository.findAllChatsByUserOrderByLastMessageDateDesc(memberOne);
     }
 
     public Page<ChatEntity> getChatsByUserPaged(UserEntity memberOne, Pageable pageable) {
@@ -179,5 +179,9 @@ public class ChatService {
         }
 
         return null;
+    }
+
+    public Long getChatNotifications(Long chatId, UserEntity user) {
+        return this.chatRepository.findMessagesNotReadByUserInChat(chatId, user);
     }
 }

@@ -71,4 +71,13 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
         // Método para encontrar chats por usuario
         @Query("SELECT c FROM ChatEntity c WHERE c.memberOne = :user OR c.memberTwo = :user")
         List<ChatEntity> findAllChatsByUser(@Param("user") UserEntity user);
+
+        // Find chats by user ordered by the last message date
+        @Query("SELECT c FROM ChatEntity c LEFT JOIN c.messages m WHERE c.memberOne = :user OR c.memberTwo = :user GROUP BY c.id ORDER BY MAX(m.sentTime) DESC")
+        List<ChatEntity> findAllChatsByUserOrderByLastMessageDateDesc(@Param("user") UserEntity user);
+
+        // Find all messages not read by user in a chat
+        @Query("SELECT m FROM MessageEntity m WHERE m.chat.id = :chatId AND m.receiver = :user AND m.isRead = false")
+        Long findMessagesNotReadByUserInChat(@Param("chatId") Long chatId, @Param("user") UserEntity user);
+
 }
