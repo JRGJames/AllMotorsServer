@@ -90,17 +90,17 @@ public MessageEntity sendMessage(MessageEntity message, Long carId) {
         Optional<MessageEntity> message = messageRepository.findById(messageId);
         if (message.isPresent()) {
             MessageEntity messageEntity=  message.get();
-            messageEntity.setIsRead(true);
+            messageEntity.setRead(true);
             messageRepository.save(message.get());
         }
     }
 
     // Metodo para dar like a un mensaje
-    public void likeMessage(Long messageId, Boolean isLiked) {
+    public void likeMessage(Long messageId, Boolean liked) {
         Optional<MessageEntity> message = messageRepository.findById(messageId);
         if (message.isPresent()) {
             MessageEntity messageEntity=  message.get();
-            messageEntity.setIsLiked(isLiked);
+            messageEntity.setLiked(liked);
             messageRepository.save(message.get());
         }
     }

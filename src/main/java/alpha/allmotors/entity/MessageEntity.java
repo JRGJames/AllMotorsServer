@@ -28,10 +28,10 @@ public class MessageEntity {
     private LocalDateTime sentTime;
 
     @Column(name = "is_read")
-    private boolean isRead;
+    private Boolean read;
 
     @Column(name = "is_liked")
-    private boolean isLiked;
+    private Boolean liked;
 
     @ManyToOne
     @JoinColumn(name = "id_sender")
@@ -98,20 +98,20 @@ public class MessageEntity {
         this.sentTime = sentTime;
     }
 
-    public boolean isRead() {
-        return isRead;
+    public Boolean isRead() {
+        return read;
     }
 
-    public void setIsRead(boolean isRead) {
-        this.isRead = isRead;
+    public void setRead(Boolean read) {
+        this.read = read;
     }
 
-    public boolean isLiked() {
-        return isLiked;
+    public Boolean isLiked() {
+        return liked;
     }
 
-    public void setIsLiked(boolean isLiked) {
-        this.isLiked = isLiked;
+    public void setLiked(Boolean liked) {
+        this.liked = liked;
     }
 
     public UserEntity getSender() {
