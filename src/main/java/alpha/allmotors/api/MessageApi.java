@@ -35,6 +35,12 @@ public class MessageApi {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("/read/{id}")
+    public ResponseEntity<Void> readMessage(@PathVariable Long id) {
+        messageService.markAsRead(id);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteMessage(@PathVariable("id") Long messageId) {
         messageService.deleteMessage(messageId);

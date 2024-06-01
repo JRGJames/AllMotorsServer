@@ -42,8 +42,8 @@ public class ChatApi {
         return ResponseEntity.ok(chatService.getChatsByUser(userId));
     }
 
-    @GetMapping("/getNotRead/{id}")
-    public ResponseEntity<Long> getChatsNotRead(@PathVariable("id") Long chatId, @RequestParam("userId") UserEntity user) {
+    @GetMapping("/getUnread/{id}")
+    public ResponseEntity<Long> getUnread(@PathVariable("id") Long chatId, @RequestParam("userId") UserEntity user) {
         return ResponseEntity.ok(chatService.getChatNotifications(chatId, user));
     }
 
