@@ -43,8 +43,8 @@ public class ChatApi {
     }
 
     @GetMapping("/getUnread/{id}")
-    public ResponseEntity<Long> getUnread(@PathVariable("id") Long chatId, @RequestParam("userId") UserEntity user) {
-        return ResponseEntity.ok(chatService.getChatNotifications(chatId, user));
+    public ResponseEntity<Long> getUnread(@PathVariable("id") Long chatId, @RequestParam("userId") Long userId) {
+        return ResponseEntity.ok(chatService.getChatNotifications(chatId, userId));
     }
 
     @GetMapping("/messages/{id}")
