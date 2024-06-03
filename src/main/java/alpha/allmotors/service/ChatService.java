@@ -183,7 +183,6 @@ public class ChatService {
     }
 
     public Long getChatNotifications(Long chatId, Long userId) {
-        UserEntity user = userRepository.findById(userId).orElse(null);
-        return this.chatRepository.findMessagesNotReadByUserInChat(chatId, user);
+        return this.chatRepository.findUnreadMessagesByChatId(chatId, userId);
     }
 }   

@@ -67,6 +67,8 @@ public class MessageEntity {
         this.receiver = receiver;
         this.chat = chat;
         this.content = content;
+        this.read = false;
+        this.liked = false;
     }
 
     public MessageEntity(UserEntity sender, UserEntity receiver, String content) {
