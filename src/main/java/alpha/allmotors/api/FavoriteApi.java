@@ -34,13 +34,10 @@ public class FavoriteApi {
     }
 
     @GetMapping("/get/{userId}")
-    public ResponseEntity<List<CarEntity>> getByUserId(@PathVariable Long userId) {
-        try {
-            List<CarEntity> favorites = favoriteService.getByUserId(userId);
-            return ResponseEntity.ok(favorites);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<List<CarEntity>> getByUserId(@PathVariable Long userId,
+            @RequestParam(value = "filter", required = false) String filter) {
+        List<CarEntity> favorites = favoriteService.getByUser(userId, filter);
+        return ResponseEntity.ok(favorites);
     }
 
     @GetMapping("/count/{carId}")

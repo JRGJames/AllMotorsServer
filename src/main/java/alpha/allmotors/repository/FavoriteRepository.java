@@ -33,4 +33,7 @@ public interface FavoriteRepository extends JpaRepository<FavoriteEntity, Long> 
 
     // Método adicional para verificar si un coche ya es favorito de un usuario
     boolean existsByUserIdAndCarId(Long userId, Long carId);
+
+    //find saved cars by user id by title ignoring case
+    List<FavoriteEntity> findByUserIdAndCarTitleContainingIgnoreCase(Long userId, String title);
 }

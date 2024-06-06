@@ -61,11 +61,31 @@ public class FavoriteService {
         return favoriteRepository.existsByUserIdAndCarId(userId, carId);
     }
 
-    public List<CarEntity> getByUserId(Long userId) {
-        List<FavoriteEntity> favorites = favoriteRepository.findByUserId(userId);
-        return favorites.stream()
-                .map(FavoriteEntity::getCar)
-                .collect(Collectors.toList());
+    // public List<CarEntity> getByUserId(Long userId) {
+    //     List<FavoriteEntity> favorites = favoriteRepository.findByUserId(userId);
+    //     return favorites.stream()
+    //             .map(FavoriteEntity::getCar)
+    //             .collect(Collectors.toList());
+    // }
+
+    // public List<FavoriteEntity> getByUserIdAndCarTitleContainingIgnoreCase(Long userId, String title) {
+    //     return favoriteRepository.findByUserIdAndCarTitleContainingIgnoreCase(userId, title);
+    // }
+
+    public List<CarEntity> getByUser(Long userId, String title) {
+        if (title == null || title.isEmpty()) {
+            List<FavoriteEntity> favorites = favoriteRepository.findByUserId(userId);
+            return favorites.stream()
+                    .map(FavoriteEntity::getCar)
+                    .collect(Collectors.toList());
+        } else {
+            List<FavoriteEntity> favoritesWithTitle = favoriteRepository
+                    .findByUserIdAndCarTitleContainingIgnoreCase(userId, title);
+            return favoritesWithTitle.stream()
+                    .map(FavoriteEntity::getCar)
+                    .collect(Collectors.toList());
+        }
+
     }
 
     public Long countByCarId(Long carId) {
@@ -87,5 +107,5 @@ public class FavoriteService {
         favoriteRepository.decreaseSavesById(carId);
         return favoriteRepository.countByCarId(carId);
     }
-   
+
 }
