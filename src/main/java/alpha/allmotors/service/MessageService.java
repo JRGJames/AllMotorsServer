@@ -5,6 +5,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import alpha.allmotors.api.ChatHandler;
 import alpha.allmotors.entity.CarEntity;
 import alpha.allmotors.entity.ChatEntity;
 import alpha.allmotors.entity.MessageEntity;
@@ -28,60 +34,68 @@ public class MessageService {
     @Autowired
     private CarService carService;
 
+    @Autowired
+    private ChatHandler chatHandler;
+
     @Transactional
-public MessageEntity sendMessage(MessageEntity message, Long carId) {
+    public MessageEntity sendMessage(MessageEntity message, Long carId) {
+        UserEntity memberOne = message.getSender();
+        UserEntity memberTwo = message.getReceiver();
 
-    UserEntity memberOne = message.getSender();
-    UserEntity memberTwo = message.getReceiver();
+        String content = message.getContent();
 
-    String content = message.getContent();
+        MessageEntity savedMessage = null;
 
-    if (memberOne != null) {
-        if (carId == null) {
-            // No hay coche asociado
-            System.out.println("No hay coche asociado");
-
-            ChatEntity chat = chatService.getChatByUsersWithoutCar(memberOne, memberTwo);
-
-            if (chat != null){
-                // Si el chat entre los usuarios existe, se envía el mensaje al chat existente
-                System.out.println("Chat existente encontrado, enviando mensaje al chat existente");
-                return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
+        if (memberOne != null) {
+            if (carId == null) {
+                // No hay coche asociado
+                ChatEntity chat = chatService.getChatByUsersWithoutCar(memberOne, memberTwo);
+                if (chat != null) {
+                    savedMessage = messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
+                } else {
+                    ChatEntity newChat = new ChatEntity(memberOne, memberTwo);
+                    chatRepository.save(newChat);
+                    savedMessage = messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
+                }
             } else {
-                // Si no existe un chat entre los usuarios, se crea un nuevo chat
-                System.out.println("No existe un chat entre los usuarios, se crea un nuevo chat");
-
-                ChatEntity newChat = new ChatEntity(memberOne, memberTwo);
-                chatRepository.save(newChat);
-
-                return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
+                // Hay coche asociado
+                CarEntity carEntity = carService.get(carId);
+                ChatEntity chat = chatService.getChatByUsersAndCar(memberOne, memberTwo, carEntity);
+                if (chat != null) {
+                    savedMessage = messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
+                } else {
+                    ChatEntity newChat = new ChatEntity(memberOne, memberTwo, carEntity);
+                    chatRepository.save(newChat);
+                    savedMessage = messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
+                }
             }
         } else {
-            // Hay coche asociado
-            System.out.println("Hay coche asociado");
+            return null;
+        }
 
-            CarEntity carEntity = carService.get(carId);
+        // Enviar el mensaje a través de WebSocket
+        if (savedMessage != null) {
+            sendMessageToWebSocket(savedMessage);
+        }
 
-            ChatEntity chat = chatService.getChatByUsersAndCar(memberOne, memberTwo, carEntity);
+        return savedMessage;
+    }
 
-            if (chat != null) {
-                // Si el chat entre los usuarios y el coche existe, se envía el mensaje al chat existente
-                System.out.println("Chat existente encontrado con coche, enviando mensaje al chat existente");
-                return messageRepository.save(new MessageEntity(memberOne, memberTwo, chat, content));
-            } else {
-                // Si no existe un chat entre los usuarios y el coche, se crea un nuevo chat
-                System.out.println("No existe un chat entre los usuarios y el coche, se crea un nuevo chat");
+    private void sendMessageToWebSocket(MessageEntity message) {
+    ObjectMapper objectMapper = new ObjectMapper();
+    try {
+        // Convertir el mensaje a JSON
+        String jsonMessage = objectMapper.writeValueAsString(message);
+        TextMessage textMessage = new TextMessage(jsonMessage);
 
-                ChatEntity newChat = new ChatEntity(memberOne, memberTwo, carEntity);
-                chatRepository.save(newChat);
-
-                return messageRepository.save(new MessageEntity(memberOne, memberTwo, newChat, content));
+        // Enviar el mensaje JSON a todas las sesiones WebSocket activas
+        for (WebSocketSession session : chatHandler.getSessions()) {
+            if (session.isOpen()) {
+                session.sendMessage(textMessage);
             }
         }
-    } else {
-        // Si no hay un usuario iniciado sesión, el mensaje no puede ser enviado
-        System.out.println("No se ha podido enviar el mensaje, no se ha iniciado sesión");
-        return null;
+    } catch (Exception e) {
+        e.printStackTrace();
     }
 }
 
@@ -89,7 +103,7 @@ public MessageEntity sendMessage(MessageEntity message, Long carId) {
     public void markAsRead(Long messageId) {
         Optional<MessageEntity> message = messageRepository.findById(messageId);
         if (message.isPresent()) {
-            MessageEntity messageEntity=  message.get();
+            MessageEntity messageEntity = message.get();
             messageEntity.setRead(true);
             messageRepository.save(message.get());
         }
@@ -99,7 +113,7 @@ public MessageEntity sendMessage(MessageEntity message, Long carId) {
     public void likeMessage(Long messageId, Boolean liked) {
         Optional<MessageEntity> message = messageRepository.findById(messageId);
         if (message.isPresent()) {
-            MessageEntity messageEntity=  message.get();
+            MessageEntity messageEntity = message.get();
             messageEntity.setLiked(liked);
             messageRepository.save(message.get());
         }

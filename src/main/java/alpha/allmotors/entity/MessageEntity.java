@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -84,6 +86,7 @@ public class MessageEntity {
         this.content = content;
     }
 
+    @JsonProperty("id")
     public Long getId() {
         return id;
     }
@@ -92,6 +95,7 @@ public class MessageEntity {
         this.id = id;
     }
 
+    @JsonProperty("sentTime")
     public LocalDateTime getSentTime() {
         return sentTime;
     }
@@ -100,6 +104,7 @@ public class MessageEntity {
         this.sentTime = sentTime;
     }
 
+    @JsonProperty("read")
     public Boolean isRead() {
         return read;
     }
@@ -108,6 +113,7 @@ public class MessageEntity {
         this.read = read;
     }
 
+    @JsonProperty("liked")
     public Boolean isLiked() {
         return liked;
     }
@@ -116,6 +122,7 @@ public class MessageEntity {
         this.liked = liked;
     }
 
+    @JsonProperty("sender")
     public UserEntity getSender() {
         return sender;
     }
@@ -124,6 +131,7 @@ public class MessageEntity {
         this.sender = sender;
     }
 
+    @JsonProperty("receiver")
     public UserEntity getReceiver() {
         return receiver;
     }
@@ -132,6 +140,7 @@ public class MessageEntity {
         this.receiver = receiver;
     }
 
+    @JsonProperty("chat")
     public ChatEntity getChat() {
         return chat;
     }
@@ -140,6 +149,7 @@ public class MessageEntity {
         this.chat = chat;
     }
 
+    @JsonProperty("content")
     public String getContent() {
         return content;
     }
