@@ -58,6 +58,18 @@ public class ChatApi {
     // return ResponseEntity.ok(chatService.getChatsByUser(userId));
     // }
 
+    @GetMapping("/getByUsers")
+    public ResponseEntity<ChatEntity> getChatByUsers(@RequestParam("memberOne") UserEntity memberOne,
+            @RequestParam("memberTwo") UserEntity memberTwo) {
+        return ResponseEntity.ok(chatService.getChatByUsersWithoutCar(memberOne, memberTwo));
+    }
+
+    @GetMapping("/getByUsersCar")
+    public ResponseEntity<ChatEntity> getChatByUsersAndCar(@RequestParam("memberOne") UserEntity memberOne,
+            @RequestParam("memberTwo") UserEntity memberTwo, @RequestParam("car") CarEntity car) {
+        return ResponseEntity.ok(chatService.getChatByUsersAndCar(memberOne, memberTwo, car));
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteChat(@PathVariable("id") Long chatId,
             @RequestParam("userId") UserEntity userId) {
