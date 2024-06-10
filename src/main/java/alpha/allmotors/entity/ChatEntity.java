@@ -148,13 +148,5 @@ public class ChatEntity {
     public void setMessages(List<MessageEntity> messages) {
         this.messages = messages;
     }
-
-    // Método para obtener la fecha del último mensaje
-    public LocalDateTime getLastMessageDate() {
-        return messages.stream()
-                .map(MessageEntity::getSentTime)
-                .max(LocalDateTime::compareTo)
-                .orElse(null);
-    }
 }
 

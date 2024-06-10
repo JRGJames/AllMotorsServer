@@ -463,10 +463,6 @@ public class CarEntity {
         this.user = user;
     }
 
-    public int getImagesCount() {
-        return images.size();
-    }
-
     public List<ImageEntity> getImages() {
         return images;
     }

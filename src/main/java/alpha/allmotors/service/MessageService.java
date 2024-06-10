@@ -2,6 +2,7 @@ package alpha.allmotors.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,13 @@ public class MessageService {
 
     @Autowired
     private ChatHandler chatHandler;
+
+    private final ObjectMapper objectMapper;
+
+    public MessageService(ChatHandler chatHandler, ObjectMapper objectMapper) {
+        this.chatHandler = chatHandler;
+        this.objectMapper = objectMapper;
+    }
 
     @Transactional
     public MessageEntity sendMessage(MessageEntity message, Long carId) {
@@ -82,22 +90,29 @@ public class MessageService {
     }
 
     private void sendMessageToWebSocket(MessageEntity message) {
-    ObjectMapper objectMapper = new ObjectMapper();
-    try {
-        // Convertir el mensaje a JSON
-        String jsonMessage = objectMapper.writeValueAsString(message);
-        TextMessage textMessage = new TextMessage(jsonMessage);
+        try {
+            // Convertir el mensaje a JSON
+            String jsonMessage = objectMapper.writeValueAsString(message);
+            TextMessage textMessage = new TextMessage(jsonMessage);
 
-        // Enviar el mensaje JSON a todas las sesiones WebSocket activas
-        for (WebSocketSession session : chatHandler.getSessions()) {
-            if (session.isOpen()) {
-                session.sendMessage(textMessage);
+            // Obtener el ID del chat del mensaje
+            Long chatId = message.getChat().getId();
+
+            // Obtener las sesiones WebSocket asociadas con el chat actual
+            Set<WebSocketSession> chatSessions = chatHandler.getChatSessions().get(chatId);
+            if (chatSessions != null) {
+                // Enviar el mensaje JSON solo a las sesiones WebSocket asociadas con el chat
+                // actual
+                for (WebSocketSession session : chatSessions) {
+                    if (session.isOpen()) {
+                        session.sendMessage(textMessage);
+                    }
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        e.printStackTrace();
     }
-}
 
     // Metodo para marcar un mensaje como leído
     public void markAsRead(Long messageId) {
