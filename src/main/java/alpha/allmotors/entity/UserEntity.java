@@ -42,6 +42,7 @@ public class UserEntity {
 
     private Boolean gender;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime birthdate;
 
     private String location;
