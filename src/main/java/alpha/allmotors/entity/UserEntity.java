@@ -44,8 +44,6 @@ public class UserEntity {
 
     private LocalDateTime birthdate;
 
-    @NotBlank
-    @NotNull
     private String location;
 
     @Size(min = 3, max = 25)
@@ -87,7 +85,7 @@ public class UserEntity {
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 255)
+    @Size(min = 8, max = 255)
     @Pattern(regexp = "^[\\p{L}0-9\\p{Punct}]+$", message = "Password can include any symbol except white spaces")
     private String password;
 
