@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Database: `allmotors`
 --
 
-DROP DATABASE allmotors;
+DROP DATABASE IF EXISTS `allmotors`;
 CREATE DATABASE IF NOT EXISTS `allmotors` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `allmotors`;
 
