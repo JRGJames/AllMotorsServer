@@ -16,7 +16,8 @@ import alpha.allmotors.service.RatingService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/rating")
+@RequestMapping("/initial/rating")
+// @RequestMapping("/rating")
 public class RatingApi {
 
     @Autowired

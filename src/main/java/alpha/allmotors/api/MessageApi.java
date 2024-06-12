@@ -10,7 +10,8 @@ import alpha.allmotors.service.MessageService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/message")
+@RequestMapping("/initial/message")
+// @RequestMapping("/message")
 public class MessageApi {
 
     @Autowired
