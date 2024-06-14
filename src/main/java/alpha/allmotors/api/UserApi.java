@@ -22,8 +22,8 @@ import alpha.allmotors.service.UserService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/initial/user")
-// @RequestMapping("/user")
+// @RequestMapping("/initial/user")
+@RequestMapping("/user")
 public class UserApi {
 
     @Autowired

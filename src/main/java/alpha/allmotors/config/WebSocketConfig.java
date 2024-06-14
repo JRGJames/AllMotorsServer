@@ -18,13 +18,13 @@ public class WebSocketConfig implements WebSocketConfigurer {
         return new ChatHandler();
     }
 
+        // @Override
+        // public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        //     registry.addHandler(chatHandler(), "/initial/chat").setAllowedOrigins("*");
+        // }
+
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(chatHandler(), "/initial/chat").setAllowedOrigins("*");
+        registry.addHandler(chatHandler(), "/chat").setAllowedOrigins("*");
     }
-
-    // @Override
-    // public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-    //     registry.addHandler(chatHandler(), "/chat").setAllowedOrigins("*");
-    // }
 }

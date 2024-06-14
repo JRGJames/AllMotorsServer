@@ -56,7 +56,7 @@ public class CarEntity {
     private int year;
 
     @NotNull
-    @Min(value = 1)
+    @Min(value = 1)     
     @Max(value = 8)
     private int seats;
 
@@ -69,7 +69,7 @@ public class CarEntity {
 
     @NotNull
     @NotBlank
-    @Size(max = 20)
+    @Size(max = 20) 
     private String gearbox;
 
     @Max(value = 20000000)
