@@ -28,8 +28,8 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/initial/media")
-// @RequestMapping("/media")
+// @RequestMapping("/initial/media")
+@RequestMapping("/media")
 @AllArgsConstructor
 public class MediaController {
 

@@ -11,8 +11,8 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/initial/favorites")
-// @RequestMapping("/favorites")
+// @RequestMapping("/initial/favorites")
+@RequestMapping("/favorites")
 public class FavoriteApi {
 
     @Autowired

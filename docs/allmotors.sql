@@ -62,77 +62,76 @@ CREATE TABLE `car` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `car`
+-- Dumping data for table `car`
 --
 
 INSERT INTO `car` (`id`, `id_owner`, `title`, `price`, `currency`, `brand`, `model`, `year`, `color`, `seats`, `doors`, `description`, `location`, `city`, `gearbox`, `fuel`, `last_update`, `date_uploaded`, `views`, `saves`, `distance`, `type`, `horsepower`, `acceleration`, `emissions`, `drive`, `consumption`) VALUES
-(2, 3, 'Chevrolet Bolt EV Corvette', 17300, '¥', 'chevrolet', 'corvette', 1990, '#1F2937', 2, 3, 'while one house sleeps loudly one book reads', '-0.37749273937532735 39.4696641313445', 'València', 'manual', 'hybrid', '2024-06-12 13:31:52', NULL, 117, 0, 897000, 'sedan', 694, 3.4, 59.04, 'rwd', 5.79),
-(6, 1, 'Honda S60', 1004933, '€', 'Honda', 'S60', 1976, 'red', 5, 5, 'while a book shines brightly the cat ate', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-06-12 13:27:38', '2024-02-22 00:38:09', 40, 0, 1208320, 'convertible', 351, 8.4, 102.76, 'RWD', 9.12),
-(7, 5, 'BMW E76', 3689, '€', 'chevrolet', 'civic', 2021, '#000080', 4, 2, 'when the car ate one friend shines slowly and a sun barks softly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-06-12 13:35:28', '2024-02-22 00:38:09', 125, 0, 61000, 'coupe', 1185, 3.3, 45.93, 'rwd', 9.03),
-(8, 2, 'Kia F-150', 1242127, '$', 'Kia', 'F-150', 1931, 'green', 6, 4, 'until the house fly one sandwich is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'hybrid', '2024-06-11 09:28:04', '2024-02-22 00:38:09', 10, 1, 1094050, 'sedan', 1007, 5, 61.76, 'AWD', 9.95),
-(9, 1, 'Hyundai CX-5', 4559772, '€', 'Hyundai', 'CX-5', 1998, 'yellow', 6, 3, 'because a book reads slowly the friend barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-06-12 13:25:26', '2024-02-22 00:38:09', 49, 0, 620285, 'hatchback', 1273, 8, 32.65, 'FWD', 6.34),
-(10, 2, 'Hyundai Civic', 428536, '£', 'Hyundai', 'Civic', 2001, 'black', 5, 4, 'where one cat sleeps brightly the car fly softly or a sun sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-06-11 08:08:05', '2024-02-22 00:38:09', 4, 0, 110204, 'truck', 248, 6.1, 24.4, 'AWD', 8.22),
-(11, 1, 'Hyundai F-150', 3352101, '£', 'Hyundai', 'F-150', 1961, 'orange', 5, 5, 'unless one friend reads a house is slowly and one house barks slowly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-06-10 16:01:39', '2024-02-22 00:38:09', 1, 0, 397078, 'van', 1439, 9, 88.92, 'FWD', 8.31),
-(13, 1, 'Chevrolet Soul', 1660237, '$', 'Chevrolet', 'Soul', 1971, 'yellow', 5, 4, 'even if the birds run the dog reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-02-22 00:54:18', '2024-02-22 00:54:18', 3, 0, 444314, 'convertible', 693, 2.5, 108.07, 'AWD', 5.91),
-(14, 2, 'Volvo 3 Series', 1296794, '$', 'Volvo', '3 Series', 1964, 'green', 8, 4, 'because one sandwich run loudly a sun barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-06-11 08:30:48', '2024-02-22 00:54:18', 5, 0, 222849, 'convertible', 1447, 9.3, 50.25, 'AWD', 9.12),
-(15, 1, 'Volkswagen S60', 3202159, '£', 'Volkswagen', 'S60', 1958, 'green', 4, 4, 'while one cat fly slowly a house ate and one house sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-02-22 00:54:18', '2024-02-22 00:54:18', 76, 0, 536065, 'hatchback', 589, 9.7, 29.96, 'FWD', 6.79),
-(16, 1, 'Ford A4', 4711972, '$', 'Ford', 'A4', 1997, 'green', 4, 3, 'unless a birds shines a sandwich is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-02-22 00:54:18', '2024-02-22 00:54:18', 32, 0, 1464771, 'SUV', 668, 8.7, 77.81, 'RWD', 8.21),
-(17, 2, 'Mercedes-Benz F-150', 3016212, '$', 'Mercedes-Benz', 'F-150', 1942, 'gray', 4, 2, 'once a dog ate brightly a house reads and one car shines quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-06-11 09:28:09', '2024-02-22 00:54:19', 3, 0, 989919, 'coupe', 659, 5.4, 72.63, 'AWD', 7.25),
-(18, 1, 'Volkswagen CX-5', 4586970, '¥', 'Volkswagen', 'CX-5', 1982, 'purple', 5, 5, 'so that the sandwich sleeps slowly one sandwich reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-02-22 00:54:19', '2024-02-22 00:54:19', 3, 0, 595954, 'sedan', 1129, 2.5, 104.69, 'RWD', 7.71),
-(19, 2, 'Volkswagen Model 3', 2410960, '$', 'Volkswagen', 'Model 3', 1952, 'yellow', 4, 4, 'whether the car shines softly the birds run and the dog run brightly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-06-11 07:48:29', '2024-02-22 00:54:19', 4, 0, 399186, 'van', 1495, 9, 84.82, 'FWD', 5.84),
-(20, 2, 'Ford A4', 3500048, '€', 'Ford', 'A4', 1971, 'green', 4, 4, 'if a sun ate a cat ate', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-06-11 09:08:39', '2024-02-22 00:54:19', 5, 0, 1365399, 'truck', 1218, 4.2, 70.55, 'AWD', 7.51),
-(21, 2, 'Mazda F-150', 1779597, '€', 'Mazda', 'F-150', 1964, 'red', 2, 2, 'once the car shines loudly the sun run brightly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-02-22 00:54:19', '2024-02-22 00:54:19', 0, 0, 695281, 'coupe', 638, 3.7, 39.31, 'RWD', 6.26),
-(24, 1, 'Hyundai E-Class', 4994315, '$', 'Hyundai', 'E-Class', 1998, 'red', 4, 4, 'unless one sandwich shines one dog barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 1, 0, 1223582, 'sedan', 144, 6.3, 44.36, 'FWD', 7.33),
-(26, 1, 'Ford F-150', 1753361, '¥', 'Ford', 'F-150', 1982, 'blue', 7, 2, 'when the friend ate quickly a car is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 0, 0, 67632, 'truck', 457, 4.3, 16.36, 'FWD', 7.32),
-(27, 2, 'Kia A4', 210517, '¥', 'Kia', 'A4', 2021, 'orange', 4, 3, 'as the house fly one dog sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 0, 0, 1473595, 'van', 165, 9.8, 30.86, 'AWD', 7.56),
-(28, 1, 'Tesla Outback', 2391816, '€', 'Tesla', 'Outback', 1927, 'black', 7, 4, 'than a dog barks brightly the sandwich is slowly or one house run', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 0, 0, 277870, 'convertible', 223, 8.1, 76.76, 'FWD', 8.52),
-(29, 1, 'Mazda Cruze', 4477333, '£', 'Mazda', 'Cruze', 1984, 'yellow', 8, 5, 'though one sandwich sleeps slowly one friend run', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 0, 0, 1404429, 'truck', 279, 3.3, 80.44, 'FWD', 7.13),
-(30, 2, 'Volkswagen Model 3', 338521, '¥', 'Volkswagen', 'Model 3', 2015, 'white', 6, 5, 'whenever the house ate the house is but a house barks quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 0, 0, 194974, 'hatchback', 702, 3.1, 68.59, 'RWD', 8.8),
-(31, 2, 'Chevrolet Golf', 1146093, '$', 'Chevrolet', 'Golf', 1956, 'orange', 5, 2, 'until the dog sleeps a friend run', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'hybrid', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 0, 0, 115985, 'convertible', 83, 8.9, 13.67, 'AWD', 9.74),
-(32, 1, 'Chevrolet F-150', 334052, '¥', 'Chevrolet', 'F-150', 1931, 'yellow', 7, 3, 'that a sandwich barks the cat shines slowly and a book is softly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'hybrid', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 0, 0, 730325, 'coupe', 223, 6.3, 62.65, 'RWD', 9.18),
-(33, 2, 'Hyundai E-Class', 1676631, '£', 'Hyundai', 'E-Class', 1927, 'orange', 4, 5, 'once one sandwich sleeps the sun sleeps quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-03-11 01:48:33', '2024-03-11 01:48:33', 3, 0, 840505, 'convertible', 238, 9.1, 35.63, 'FWD', 6.08),
-(34, 2, 'Mercedes-Benz Model 3', 2809, '¥', 'mercedes-benz', 'model 3', 2015, '#00FFFF', 3, 3, 'since the car is softly the birds ate', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-06-11 08:07:41', '2024-03-11 01:48:33', 15, 0, 920000, 'convertible', 398, 6.7, 31.66, 'fwd', 9.02),
-(35, 2, 'Mercedes-Benz F-150', 439885, '$', 'Mercedes-Benz', 'F-150', 2016, 'red', 5, 5, 'whether the sun shines quickly one sun fly loudly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 500939, 'sedan', 687, 3.7, 99.37, 'AWD', 9.76),
-(37, 2, 'Volvo S60', 3420648, '$', 'Volvo', 'S60', 1961, 'green', 5, 2, 'when a sandwich fly brightly a car sleeps slowly and a birds run quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 1181640, 'sedan', 201, 2.9, 59.41, 'FWD', 8.02),
-(38, 2, 'Subaru Golf', 1118633, '$', 'Subaru', 'Golf', 2021, 'blue', 7, 4, 'since a birds shines one car is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 1493152, 'van', 451, 9.2, 77.5, 'FWD', 9.09),
-(39, 1, 'Toyota F-150', 2225092, '$', 'Toyota', 'F-150', 1997, 'orange', 2, 3, 'whether the car ate the dog sleeps brightly but one cat ate', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 168290, 'truck', 948, 2.9, 73.51, 'RWD', 9.84),
-(40, 1, 'Audi Camry', 4311021, '€', 'Audi', 'Camry', 1928, 'red', 8, 3, 'as a car is the car reads softly or the friend run brightly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'hybrid', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 1052251, 'sedan', 968, 7.8, 56.72, 'AWD', 9.36),
-(41, 1, 'Chevrolet A4', 3852672, '€', 'Chevrolet', 'A4', 1986, 'yellow', 8, 5, 'because a sandwich is the friend run quickly and a cat run', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 129959, 'SUV', 1053, 8.8, 38.66, 'RWD', 6.32),
-(42, 1, 'Ford Camry', 4856583, '€', 'Ford', 'Camry', 1923, 'red', 3, 4, 'while one car fly one sandwich sleeps quickly or one house run', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 392614, 'hatchback', 591, 7.7, 10.11, 'AWD', 9.77),
-(43, 2, 'Mercedes-Benz Soul', 4522769, '£', 'Mercedes-Benz', 'Soul', 1963, 'orange', 5, 4, 'when one dog run one dog sleeps loudly and one cat is brightly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-06-11 07:58:40', '2024-03-11 01:48:34', 2, 0, 839608, 'sedan', 228, 5.1, 56.47, 'AWD', 5.76),
-(44, 1, 'Mazda Soul', 2322613, '¥', 'Mazda', 'Soul', 1967, 'black', 7, 3, 'so that a sun ate one sun shines quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 51890, 'SUV', 1407, 6.6, 83.75, 'AWD', 9.18),
-(45, 2, 'Audi Soul', 266977, '£', 'Audi', 'Soul', 1989, 'green', 8, 3, 'than the house reads the book is and the dog shines', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 1401384, 'SUV', 312, 7.4, 87.16, 'AWD', 7.53),
-(46, 1, 'Ford Cruze', 1762670, '¥', 'Ford', 'Cruze', 1994, 'white', 2, 5, 'because one sun run slowly a friend barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'electric', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 696333, 'coupe', 765, 3.4, 58.6, 'FWD', 6.64),
-(47, 1, 'Toyota Elantra', 2754087, '$', 'Toyota', 'Elantra', 2008, 'purple', 3, 4, 'though a sandwich fly a car reads loudly but the sun reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 3, 0, 1129176, 'coupe', 1287, 7.2, 109.87, 'FWD', 9.22),
-(48, 1, 'Mercedes-Benz E-Class', 900475, '¥', 'Mercedes-Benz', 'E-Class', 1969, 'purple', 4, 2, 'while the house run loudly a sun is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 1, 0, 870177, 'SUV', 406, 8.2, 69.45, 'AWD', 6.24),
-(49, 2, 'Toyota Cruze', 929264, '€', 'Toyota', 'Cruze', 1948, 'red', 4, 2, 'so that a sun shines loudly the sandwich ate and one sandwich ate loudly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 50598, 'hatchback', 607, 3.4, 93.89, 'AWD', 8.81),
-(51, 2, 'BMW F-150', 1658725, '€', 'BMW', 'F-150', 1970, 'blue', 5, 2, 'while one sandwich sleeps one birds barks but the birds run loudly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 584244, 'van', 1060, 3.1, 28.83, 'FWD', 5.87),
-(52, 1, 'BMW F-150', 4766678, '€', 'BMW', 'F-150', 1945, 'green', 7, 5, 'in order to one house shines softly the dog is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 211487, 'hatchback', 1473, 3.4, 19.73, 'AWD', 7.59),
-(53, 2, 'Kia Cruze', 2644933, '£', 'Kia', 'Cruze', 1939, 'gray', 7, 3, 'although the friend shines quickly one birds fly brightly but a sun is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 472397, 'sedan', 1052, 4.9, 106.65, 'FWD', 9.15),
-(54, 2, 'Nissan Cruze', 984565, '$', 'Nissan', 'Cruze', 1994, 'blue', 3, 5, 'so that the cat shines the dog reads brightly or a cat run loudly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 256429, 'truck', 1280, 3.6, 90.57, 'AWD', 7.14),
-(55, 2, 'Tesla CX-5', 148015, '$', 'Tesla', 'CX-5', 1921, 'purple', 7, 3, 'as the sun reads loudly a friend run quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 139182, 'truck', 1368, 2.3, 63.74, 'AWD', 9.26),
-(56, 1, 'Kia 3 Series', 1181686, '€', 'Kia', '3 Series', 1962, 'green', 4, 4, 'before one car barks loudly the sandwich fly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 13988, 'van', 254, 7.5, 84.32, 'FWD', 7.25),
-(57, 1, 'BMW 3 Series', 3130151, '€', 'BMW', '3 Series', 1926, 'green', 6, 4, 'before one dog reads softly one car sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-05-25 16:27:11', '2024-03-11 01:48:34', 1, 0, 741711, 'truck', 840, 10, 88.64, 'RWD', 6.67),
-(58, 1, 'Audi Cruze', 4085434, '€', 'Audi', 'Cruze', 1940, 'red', 3, 4, 'unless a car sleeps the house barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 300894, 'sedan', 297, 8.7, 84.74, 'FWD', 5.51),
-(59, 2, 'Kia Model 3', 4404418, '£', 'Kia', 'Model 3', 1981, 'black', 6, 5, 'unless a dog run brightly a sun barks but one friend sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-06-11 07:55:31', '2024-03-11 01:48:34', 3, 0, 1214334, 'truck', 236, 5.2, 82.23, 'FWD', 5.75),
-(60, 1, 'Kia Cruze', 1028422, '¥', 'Kia', 'Cruze', 1925, 'yellow', 3, 3, 'even if the sun sleeps the cat run but one car reads', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 356164, 'coupe', 969, 8.6, 21.2, 'FWD', 5.56),
-(61, 1, 'Volvo Golf', 4049004, '£', 'Volvo', 'Golf', 2014, 'gray', 2, 4, 'after a book fly softly a friend fly slowly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 1039817, 'van', 1256, 7.2, 74.7, 'FWD', 5.53),
-(62, 1, 'Chevrolet Cruze', 4421168, '£', 'Chevrolet', 'Cruze', 2000, 'purple', 4, 5, 'that one friend sleeps loudly the cat run but the sun ate', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 589517, 'SUV', 559, 2.3, 104.48, 'RWD', 7.6),
-(63, 1, 'Subaru Model 3', 3094399, '¥', 'Subaru', 'Model 3', 1943, 'black', 3, 3, 'unless a sandwich reads quickly one sandwich barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 0, 0, 551530, 'SUV', 237, 4.5, 89.14, 'RWD', 6.06),
-(65, 1, 'Toyota CX-5', 2365749, '¥', 'Toyota', 'CX-5', 1944, 'red', 4, 2, 'unless a sun fly a car is', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'petrol', '2024-05-17 10:56:37', '2024-03-11 01:48:34', 1, 0, 423118, 'sedan', 1328, 2.4, 64.61, 'AWD', 9.31),
-(66, 1, 'Tesla Cruze', 857361, '¥', 'Tesla', 'Cruze', 2007, 'green', 5, 5, 'so that the dog ate a birds run loudly and a sun barks', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-03-11 01:48:34', '2024-03-11 01:48:34', 2, 0, 945772, 'coupe', 1329, 3.8, 21.63, 'RWD', 7.22),
-(69, 2, 'Volkswagen S60', 4786257, '€', 'Volkswagen', 'S60', 1983, 'gray', 2, 3, 'until a sun run slowly the car fly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'hybrid', '2024-06-12 13:35:05', '2024-03-11 01:48:34', 3, 0, 1258926, 'van', 664, 7.4, 12.26, 'AWD', 6.68),
-(71, 2, 'Kia 3 Series', 3173251, '€', 'Kia', '3 Series', 1987, 'yellow', 2, 4, 'that a cat is slowly one cat sleeps', '-0.3784603198914027 39.4679336934979', 'Valencia', 'automatic', 'gasoline', '2024-03-11 01:48:35', '2024-03-11 01:48:35', 0, 0, 320760, 'truck', 773, 9.3, 18.05, 'AWD', 8.96),
-(72, 2, 'Volkswagen Cruze', 3428190, '¥', 'Volkswagen', 'Cruze', 2023, 'gray', 7, 5, 'before one dog sleeps slowly one friend run softly but the car fly brightly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-03-11 01:48:35', '2024-03-11 01:48:35', 0, 0, 610984, 'convertible', 1209, 8.5, 69.37, 'RWD', 8.03),
-(73, 1, 'Nissan Model 3', 3051360, '¥', 'Nissan', 'Model 3', 1985, 'white', 8, 5, 'though one car ate the cat is slowly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'gasoline', '2024-03-11 01:48:35', '2024-03-11 01:48:35', 0, 0, 194080, 'SUV', 681, 4, 65.41, 'FWD', 8.77),
-(74, 3, 'Mercedes-Benz Civic', 3405723, '£', 'Mercedes-Benz', 'Civic', 2013, 'black', 8, 3, 'although the house shines the car shines quickly', '-0.3784603198914027 39.4679336934979', 'Valencia', 'manual', 'electric', '2024-05-23 19:07:04', '2024-04-10 08:05:26', 3, 0, 94017, 'convertible', 710, 4.9, 66.91, 'AWD', 7.4),
-(278, 23, 'BMW E90', 130000, '€', 'BMW', 'E90', 2022, 'black', 4, 4, 'Esto es una prueba para demostrar que funciona bien todo.\n\nEfectivamente, funciona', '-0.3735552 39.469056', 'València', 'automatic', 'gasoline', '2024-06-11 07:37:56', '2024-05-25 15:18:07', 301, 0, 80000, 'sedan', 440, 3.4, 120, 'rwd', 11.2),
-(280, 2, 'BMW 320ci E46 2001', 33000, '€', 'BMW', 'E46', 2001, 'navy', 5, 2, 'El BMW Serie 3 E46 no es solo un coche, es una pieza de la historia automovilística que combina a la perfección rendimiento, lujo y fiabilidad. Diseñado para aquellos que aprecian la conducción pura, este modelo se ha convertido en un favorito tanto para entusiastas como para aquellos que buscan un vehículo premium versátil.', '-0.376398131838944 39.47331748845821', 'Valencia', 'manual', 'gasoline', '2024-06-12 13:32:44', '2024-06-12 11:32:38', 2, 0, 100000, 'sedan', 185, 7.2, 120, 'rwd', 5.5);
+(287, 22, 'Audi Civic', 3983539, '€', 'Audi', 'Civic', 1981, '#2ECC71', 6, 5, 'than one car sleeps slowly the dog reads', '38.9637, 35.2433', 'New Brunswick', 'automatic', 'hybrid', '2024-06-14 19:06:57', '2024-06-14 19:03:17', 1, 0, 869597, 'coupe', 356, 8.5, 76.59, 'AWD', 6.54),
+(288, 2, 'Mazda E-Class', 4481990, '€', 'Mazda', 'E-Class', 2003, '#2ECC71', 4, 5, 'though the sun is one sun run or one friend shines', '-30.5595, 22.9375', 'British Columbia', 'automatic', 'petrol', '2024-06-14 19:08:25', '2024-06-14 19:03:17', 2, 0, 84469, 'SUV', 1190, 4.4, 39.59, 'AWD', 6.07),
+(289, 7, 'Audi Outback', 123712, '$', 'Audi', 'Outback', 1933, '#D92518', 4, 3, 'because the sandwich reads one birds is but the car fly', '51.1657, 10.4515', 'Galicia', 'manual', 'electric', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 906978, 'sedan', 511, 4.5, 31.97, 'FWD', 9.35),
+(290, 12, 'BMW Golf', 141324, '¥', 'BMW', 'Golf', 1946, '#8C8C8C', 8, 3, 'so that a birds sleeps brightly the sun run or one friend sleeps quickly', '35.8617, 104.1954', 'Yukon', 'manual', 'gasoline', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 731548, 'truck', 1072, 6.2, 67.27, 'AWD', 5.35),
+(291, 4, 'Chevrolet Altima', 1127536, '€', 'Chevrolet', 'Altima', 1990, '#D92518', 5, 3, 'while a car is a cat run slowly', '46.6034, 1.8883', 'Galicia', 'manual', 'electric', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 646821, 'coupe', 900, 4.5, 16.87, 'RWD', 9.06),
+(292, 2, 'Kia Camry', 4583297, '€', 'Kia', 'Camry', 1924, '#008080', 5, 4, 'whenever one friend ate brightly one cat shines softly', '-38.4161, -63.6167', 'Basque Country', 'manual', 'petrol', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 745030, 'SUV', 329, 8.2, 63.53, 'FWD', 8.85),
+(293, 15, 'BMW Soul', 4894968, '€', 'BMW', 'Soul', 1986, '#4B0082', 3, 5, 'until a friend barks softly one house ate softly', '60.4720, 8.4689', 'Galicia', 'automatic', 'gasoline', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 452106, 'van', 183, 7.1, 13.88, 'FWD', 9.48),
+(294, 15, 'Nissan CX-5', 2914037, '$', 'Nissan', 'CX-5', 2018, '#D92518', 4, 4, 'so that the house ate slowly the car ate softly or a friend is', '-25.2744, 133.7751', 'Alberta', 'automatic', 'gasoline', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 1317457, 'convertible', 1077, 2.7, 57.27, 'AWD', 5.86),
+(295, 6, 'Mazda CX-5', 1209254, '£', 'Mazda', 'CX-5', 1945, '#800000', 6, 5, 'where the birds run one friend run or a cat sleeps loudly', '-14.2350, -51.9253', 'Basque Country', 'automatic', 'electric', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 303669, 'coupe', 752, 2.4, 43.79, 'RWD', 8.95),
+(296, 20, 'Audi Civic', 4281715, '$', 'Audi', 'Civic', 1990, '#8C8C8C', 6, 4, 'if a sun run brightly the sun ate softly', '46.6034, 1.8883', 'Ontario', 'manual', 'petrol', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 462882, 'hatchback', 914, 9.7, 107.29, 'RWD', 8.15),
+(298, 23, 'BMW Model 3', 2709725, '$', 'BMW', 'Model 3', 1934, '#0284C7', 3, 2, 'so that one cat run loudly one house reads', '56.1304, -106.3468', 'Newfoundland and Labrador', 'automatic', 'hybrid', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 922192, 'SUV', 1161, 4.1, 107.32, 'AWD', 8.41),
+(299, 8, 'Kia S60', 2684705, '$', 'Kia', 'S60', 1936, '#8C8C8C', 3, 3, 'so that a birds reads softly the book is brightly and a sun sleeps', '23.6345, -102.5528', 'Prince Edward Island', 'automatic', 'gasoline', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 534122, 'sedan', 1335, 7.2, 26.69, 'FWD', 6.1),
+(300, 22, 'Audi Altima', 659007, '$', 'Audi', 'Altima', 1932, '#FF00FF', 8, 4, 'when one sandwich ate brightly a house barks softly but one house fly loudly', '-14.2350, -51.9253', 'New Brunswick', 'manual', 'hybrid', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 975224, 'pickup', 114, 10, 105.55, 'RWD', 9.55),
+(301, 18, 'Mercedes-Benz Golf', 2826085, '£', 'Mercedes-Benz', 'Golf', 1944, '#C0C0C0', 6, 5, 'that the book barks brightly a birds shines quickly or one sun run', '51.1657, 10.4515', 'Catalonia', 'manual', 'petrol', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 78271, 'coupe', 1350, 3.3, 73.62, 'FWD', 5.28),
+(302, 16, 'Honda E-Class', 4019826, '€', 'Honda', 'E-Class', 1940, '#00FF00', 4, 4, 'so that a car ate brightly the dog fly', '51.1657, 10.4515', 'Quebec', 'manual', 'gasoline', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 985675, 'sedan', 1287, 3.7, 104.24, 'RWD', 6.61),
+(303, 15, 'Subaru Altima', 1957723, '¥', 'Subaru', 'Altima', 1987, '#4B0082', 4, 4, 'once one house sleeps quickly the cat fly loudly but a cat is brightly', '37.0902, -95.7129', 'Basque Country', 'manual', 'electric', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 1037693, 'convertible', 734, 5, 77.16, 'AWD', 5.22),
+(304, 19, 'Subaru Cruze', 1897995, '$', 'Subaru', 'Cruze', 1938, '#800080', 7, 5, 'until a book fly the car fly softly', '38.9637, 35.2433', 'Valencia', 'automatic', 'hybrid', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 1442161, 'hatchback', 1226, 8.9, 101.72, 'FWD', 6.39),
+(305, 7, 'Chevrolet Outback', 197172, '£', 'Chevrolet', 'Outback', 2012, '#2ECC71', 5, 2, 'unless the car run slowly a friend is slowly and one cat is', '46.6034, 1.8883', 'Madrid', 'automatic', 'hybrid', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 1144069, 'SUV', 178, 7.4, 59.96, 'AWD', 8.05),
+(306, 17, 'Mazda A4', 4383697, '€', 'Mazda', 'A4', 1992, '#00FFFF', 7, 4, 'in order to a dog run brightly a birds ate but a dog fly softly', '-38.4161, -63.6167', 'Basque Country', 'manual', 'hybrid', '2024-06-14 19:03:17', '2024-06-14 19:03:17', 0, 0, 666228, 'convertible', 583, 8.4, 108.92, 'AWD', 8.08),
+(307, 23, 'Volvo Camry', 4917544, '£', 'Volvo', 'Camry', 2000, '#00FFFF', 8, 3, 'when the birds is a sandwich is loudly or the car fly', '36.2048, 138.2529', 'Catalonia', 'automatic', 'petrol', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 468498, 'truck', 955, 3.1, 39.3, 'RWD', 7.52),
+(308, 13, 'Hyundai A4', 2130971, '€', 'Hyundai', 'A4', 1973, '#FFC107', 3, 5, 'unless one sandwich barks a cat reads or the friend fly', '35.9078, 127.7669', 'Nova Scotia', 'manual', 'petrol', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 174850, 'van', 657, 4.8, 99.1, 'RWD', 5.65),
+(309, 5, 'Tesla CX-5', 165697, '¥', 'Tesla', 'CX-5', 1987, '#0284C7', 7, 3, 'until the sun sleeps slowly the sandwich sleeps', '-30.5595, 22.9375', 'Madrid', 'manual', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 968294, 'coupe', 669, 7.9, 52.17, 'AWD', 8.14),
+(310, 16, 'Mercedes-Benz Civic', 454019, '$', 'Mercedes-Benz', 'Civic', 2007, '#008080', 6, 2, 'provided that one sun shines brightly one sandwich sleeps but one sun is', '-14.2350, -51.9253', 'Saskatchewan', 'manual', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1283343, 'other', 867, 8.4, 79.59, 'FWD', 6.15),
+(311, 22, 'BMW Outback', 2485282, '€', 'BMW', 'Outback', 1932, '#008080', 4, 2, 'whether a car ate one book fly', '36.2048, 138.2529', 'Newfoundland and Labrador', 'automatic', 'gasoline', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 986215, 'coupe', 94, 6.9, 48.25, 'RWD', 9.36),
+(312, 13, 'Chevrolet A4', 4939561, '£', 'Chevrolet', 'A4', 1948, '#00FF00', 7, 2, 'provided that the dog reads a cat is', '41.8719, 12.5674', 'Yukon', 'manual', 'gasoline', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 419180, 'SUV', 530, 8.1, 87.47, 'RWD', 7.62),
+(313, 8, 'Volvo Cruze', 4456759, '€', 'Volvo', 'Cruze', 1981, '#FF00FF', 4, 4, 'before a house run softly one friend reads brightly but a sun shines', '36.2048, 138.2529', 'Prince Edward Island', 'manual', 'gasoline', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 999225, 'coupe', 818, 6.7, 39.46, 'RWD', 9.34),
+(314, 15, 'Mazda Model 3', 1871070, '$', 'Mazda', 'Model 3', 2019, '#C0C0C0', 8, 2, 'wherever a friend shines loudly a dog fly slowly and the cat reads slowly', '-14.2350, -51.9253', 'Saskatchewan', 'automatic', 'petrol', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 547309, 'other', 1332, 4.7, 41.66, 'RWD', 9.27),
+(315, 22, 'Honda 3 Series', 1965983, '$', 'Honda', '3 Series', 1926, '#FF00FF', 7, 4, 'so that one cat sleeps one book run slowly but a car reads slowly', '46.6034, 1.8883', 'Quebec', 'manual', 'petrol', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 149152, 'sedan', 1393, 6, 106.69, 'AWD', 9.95),
+(316, 11, 'Volvo Model 3', 110753, '£', 'Volvo', 'Model 3', 1955, '#D92518', 5, 2, 'until the car run a sandwich run but one sun sleeps', '38.9637, 35.2433', 'Alberta', 'automatic', 'petrol', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 552659, 'coupe', 1133, 5.2, 80.91, 'RWD', 8.09),
+(317, 18, 'Honda Outback', 1288304, '€', 'Honda', 'Outback', 1994, '#000080', 7, 4, 'if the sun run the book is but one sandwich shines slowly', '37.0902, -95.7129', 'Andalusia', 'automatic', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 290461, 'coupe', 1372, 6.3, 93.26, 'RWD', 8.19),
+(318, 17, 'Nissan Model 3', 1877997, '€', 'Nissan', 'Model 3', 1922, '#808000', 5, 2, 'though one birds ate loudly one sandwich ate', '38.9637, 35.2433', 'British Columbia', 'manual', 'electric', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 479844, 'other', 376, 9.7, 84.43, 'AWD', 5.21),
+(319, 10, 'Audi Outback', 945957, '€', 'Audi', 'Outback', 1983, '#D92518', 4, 2, 'whether a book fly softly the book run and one book fly', '36.2048, 138.2529', 'Basque Country', 'manual', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 986263, 'pickup', 555, 7.6, 65.03, 'AWD', 8.07),
+(320, 18, 'Volkswagen Elantra', 4103304, '¥', 'Volkswagen', 'Elantra', 1971, '#FFA500', 7, 3, 'even though a sun is softly a book is', '60.4720, 8.4689', 'Ontario', 'manual', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 202634, 'hatchback', 1437, 5.5, 51.71, 'AWD', 5.88),
+(321, 5, 'Volvo Altima', 2692541, '¥', 'Volvo', 'Altima', 1955, '#FFC107', 2, 4, 'even though the dog shines slowly one book run', '55.3781, -3.4360', 'Alberta', 'manual', 'electric', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1295644, 'SUV', 754, 4.6, 105, 'FWD', 8.47),
+(322, 9, 'Ford Cruze', 1956474, '€', 'Ford', 'Cruze', 1940, '#D92518', 8, 4, 'unless a sandwich reads softly one sun is brightly and the dog ate loudly', '35.8617, 104.1954', 'Nunavut', 'manual', 'electric', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1372867, 'sedan', 383, 3.9, 27.25, 'AWD', 6.31),
+(323, 12, 'Tesla 3 Series', 4949462, '€', 'Tesla', '3 Series', 1929, '#FFC0CB', 2, 3, 'whether the dog barks a sun run quickly', '41.8719, 12.5674', 'Andalusia', 'automatic', 'petrol', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1311056, 'other', 1132, 10, 89.58, 'AWD', 7.59),
+(324, 10, 'Hyundai CX-5', 3863668, '$', 'Hyundai', 'CX-5', 1987, '#0284C7', 6, 3, 'wherever one book is quickly one house ate softly', '60.4720, 8.4689', 'Manitoba', 'manual', 'electric', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1024872, 'hatchback', 601, 4.9, 89.12, 'AWD', 9.07),
+(325, 17, 'Ford Civic', 4664436, '£', 'Ford', 'Civic', 1938, '#D92518', 6, 4, 'so that one house run brightly the house ate', '60.1282, 18.6435', 'Catalonia', 'automatic', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 516081, 'truck', 969, 3.3, 26.21, 'AWD', 9.86),
+(326, 12, 'Audi A4', 3359735, '€', 'Audi', 'A4', 1929, '#FFC0CB', 3, 2, 'while a car sleeps brightly the sandwich run slowly', '56.1304, -106.3468', 'Quebec', 'automatic', 'electric', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1071085, 'other', 597, 8.7, 100.34, 'FWD', 6.49),
+(327, 17, 'Kia Golf', 4230530, '£', 'Kia', 'Golf', 2014, '#00FF00', 2, 4, 'because a birds fly the friend shines loudly or the sun shines', '41.8719, 12.5674', 'Nova Scotia', 'automatic', 'gasoline', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 344268, 'SUV', 1130, 5.6, 20.63, 'FWD', 9.1),
+(328, 4, 'Mazda F-150', 4097138, '$', 'Mazda', 'F-150', 1925, '#808000', 5, 5, 'while a sun fly loudly the cat barks loudly', '-14.2350, -51.9253', 'Northwest Territories', 'automatic', 'electric', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1208450, 'sedan', 938, 2.4, 80.3, 'AWD', 6.78),
+(329, 7, 'Tesla Elantra', 585651, '¥', 'Tesla', 'Elantra', 1931, '#FF00FF', 3, 4, 'whenever a house reads softly a sun ate', '51.1657, 10.4515', 'Quebec', 'manual', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1252201, 'convertible', 1355, 6.6, 10.84, 'RWD', 8.27),
+(330, 17, 'Tesla Outback', 2355769, '€', 'Tesla', 'Outback', 2013, '#FF00FF', 5, 5, 'although one cat run one birds is quickly', '37.0902, -95.7129', 'Catalonia', 'manual', 'electric', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 948856, 'pickup', 156, 2.6, 58.68, 'AWD', 9.94),
+(331, 12, 'Ford Camry', 500885, '¥', 'Ford', 'Camry', 1921, '#FFC0CB', 2, 2, 'because the birds barks a friend reads slowly but a sandwich fly', '-25.2744, 133.7751', 'Ontario', 'automatic', 'gasoline', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 1000643, 'other', 1148, 8.7, 108.22, 'AWD', 6.29),
+(332, 5, 'Volkswagen A4', 2109114, '€', 'Volkswagen', 'A4', 1938, '#FFC0CB', 6, 5, 'while a sandwich fly the friend shines but the book reads', '-38.4161, -63.6167', 'New Brunswick', 'automatic', 'gasoline', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 754764, 'truck', 252, 6.7, 71.97, 'RWD', 8.07),
+(333, 20, 'Nissan Golf', 1639097, '¥', 'Nissan', 'Golf', 1939, '#0284C7', 8, 2, 'whether one cat reads the car shines brightly or the book fly brightly', '35.9078, 127.7669', 'Prince Edward Island', 'automatic', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 713680, 'SUV', 402, 9.2, 24.45, 'AWD', 8.51),
+(334, 17, 'Chevrolet Outback', 1007923, '£', 'Chevrolet', 'Outback', 1954, '#008080', 3, 5, 'as one cat barks softly one dog ate', '35.8617, 104.1954', 'Saskatchewan', 'manual', 'electric', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 565636, 'hatchback', 298, 2.9, 71.01, 'RWD', 7.92),
+(335, 20, 'Mercedes-Benz 3 Series', 1529498, '€', 'Mercedes-Benz', '3 Series', 1982, '#D92518', 4, 4, 'in order to one sun sleeps the birds sleeps quickly', '38.9637, 35.2433', 'Saskatchewan', 'manual', 'hybrid', '2024-06-14 19:03:18', '2024-06-14 19:03:18', 0, 0, 552696, 'SUV', 517, 9.9, 52.46, 'FWD', 8),
+(336, 13, 'Honda CX-5', 230201, '¥', 'Honda', 'CX-5', 2022, '#FF00FF', 6, 4, 'provided that the birds fly a cat barks slowly', '40.4637, -3.7492', 'Basque Country', 'manual', 'petrol', '2024-06-14 19:03:19', '2024-06-14 19:03:19', 0, 0, 518072, 'SUV', 776, 4.5, 55.63, 'AWD', 9.64),
+(337, 1, 'BMW 8 Series', 179998, '$', 'BMW', '8 Series', 2022, 'navy', 4, 2, 'This is a test', '-0.393216 39.4559488', 'València', 'automatic', 'gasoline', '2024-06-14 19:05:07', '2024-06-14 17:04:02', 3, 0, 0, NULL, 0, NULL, NULL, NULL, NULL),
+(338, 10, 'Mercedes-Benz Cruze', 4479623, '$', 'Mercedes-Benz', 'Cruze', 1964, '#800080', 4, 2, 'that one car fly brightly the house barks loudly and one book shines', '-14.2350, -51.9253', 'Valencia', 'manual', 'petrol', '2024-06-14 19:08:37', '2024-06-14 19:08:37', 0, 0, 447625, 'sedan', 1313, 9.1, 82.53, 'RWD', 8.09),
+(339, 20, 'Subaru CX-5', 2590794, '¥', 'Subaru', 'CX-5', 1920, '#FFA500', 3, 4, 'when the house sleeps softly a friend ate softly but a friend ate brightly', '35.8617, 104.1954', 'Nunavut', 'automatic', 'petrol', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 992495, 'sedan', 664, 7.9, 52.5, 'FWD', 7.34),
+(340, 8, 'Tesla S60', 496975, '£', 'Tesla', 'S60', 1971, '#00FFFF', 6, 3, 'because a house fly one friend barks and one cat barks loudly', '-25.2744, 133.7751', 'Prince Edward Island', 'manual', 'electric', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 890371, 'van', 1486, 5.6, 28.59, 'FWD', 7.91),
+(341, 18, 'Nissan CX-5', 981449, '¥', 'Nissan', 'CX-5', 1949, '#FFC107', 3, 5, 'in order to the sun barks one car run', '-14.2350, -51.9253', 'Catalonia', 'automatic', 'petrol', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 1370603, 'convertible', 502, 2.5, 14.61, 'RWD', 9.21),
+(342, 23, 'Chevrolet F-150', 144638, '€', 'Chevrolet', 'F-150', 1993, '#800080', 2, 3, 'although one dog ate the birds run or one sun shines', '20.5937, 78.9629', 'Castile and León', 'automatic', 'gasoline', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 963074, 'convertible', 591, 6.3, 74.64, 'FWD', 5.82),
+(343, 2, 'Chevrolet Model 3', 1353072, '¥', 'Chevrolet', 'Model 3', 1981, '#FF00FF', 4, 5, 'before the car ate one friend fly slowly', '38.9637, 35.2433', 'Basque Country', 'manual', 'electric', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 1143941, 'convertible', 1306, 4.3, 48.3, 'RWD', 6.54),
+(344, 4, 'Subaru Camry', 2323120, '¥', 'Subaru', 'Camry', 1979, '#2ECC71', 6, 5, 'wherever the sandwich ate a friend fly slowly', '20.5937, 78.9629', 'Ontario', 'automatic', 'electric', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 661879, 'sedan', 246, 8.5, 70.76, 'FWD', 6.36),
+(345, 15, 'Volvo A4', 31980, '£', 'Volvo', 'A4', 1955, '#8C8C8C', 4, 3, 'whenever the book run the car fly softly and one house fly quickly', '-14.2350, -51.9253', 'Quebec', 'automatic', 'petrol', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 1265586, 'SUV', 511, 6.5, 46.69, 'AWD', 7.91),
+(346, 23, 'Nissan Model 3', 4705849, '¥', 'Nissan', 'Model 3', 1926, '#800080', 7, 2, 'while one birds is slowly a dog is loudly or one cat ate loudly', '55.3781, -3.4360', 'Yukon', 'automatic', 'petrol', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 241026, 'SUV', 268, 9.1, 75.45, 'RWD', 9.18),
+(347, 20, 'Nissan CX-5', 4750756, '£', 'Nissan', 'CX-5', 1946, '#FFC0CB', 6, 4, 'when the cat is softly one sandwich is loudly but a book barks softly', '61.5240, 105.3188', 'Saskatchewan', 'automatic', 'hybrid', '2024-06-14 19:08:38', '2024-06-14 19:08:38', 0, 0, 181806, 'van', 1397, 5.2, 33.35, 'RWD', 8.22),
+(348, 12, 'Volvo F-150', 3593, '¥', 'Volvo', 'F-150', 1982, '#D92518', 2, 4, 'that a sun ate brightly one cat reads brightly', '41.8719, 12.5674', 'Alberta', 'automatic', 'electric', '2024-06-14 19:08:48', '2024-06-14 19:08:38', 1, 0, 604675, 'coupe', 661, 4.4, 48.18, 'AWD', 5.66);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `chat`
+-- Table structure for table `chat`
 --
 
 CREATE TABLE `chat` (
@@ -146,20 +145,16 @@ CREATE TABLE `chat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `chat`
+-- Dumping data for table `chat`
 --
 
 INSERT INTO `chat` (`id`, `creation_date`, `notifications`, `id_member_one`, `id_member_two`, `deleted_by`, `id_car`) VALUES
-(23, '2024-06-11 09:10:54', 0, 1, 2, NULL, 69),
-(24, '2024-06-11 09:14:09', 0, 1, 3, NULL, 2),
-(25, '2024-06-11 09:14:34', 0, 1, 5, NULL, 7),
-(26, '2024-06-11 09:27:14', 0, 1, 2, NULL, 8),
-(27, '2024-06-11 09:28:14', 0, 1, 2, NULL, 17);
+(8, '2024-06-14 19:04:44', 0, 2, 1, NULL, 337);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `favorites`
+-- Table structure for table `favorites`
 --
 
 CREATE TABLE `favorites` (
@@ -169,20 +164,19 @@ CREATE TABLE `favorites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `favorites`
+-- Dumping data for table `favorites`
 --
 
 INSERT INTO `favorites` (`id`, `id_user`, `id_car`) VALUES
-(294, 1, 15),
-(295, 1, 18),
-(296, 1, 24),
-(299, 2, 47),
-(589, 1, 8);
+(589, 1, 288),
+(590, 1, 290),
+(591, 1, 292),
+(592, 1, 294);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `images`
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
@@ -192,283 +186,294 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `images`
+-- Dumping data for table `images`
 --
 
 INSERT INTO `images` (`id`, `image_url`, `id_car`) VALUES
-(890, 'image1.jpg', 2),
-(891, 'image4.jpg', 2),
-(912, 'image1.jpg', 6),
-(913, 'image6.jpg', 6),
-(914, 'image5.jpg', 6),
-(915, 'image5.jpg', 7),
-(916, 'image10.jpg', 7),
-(917, 'image8.jpeg', 7),
-(918, 'image5.jpg', 7),
-(919, 'image1.jpg', 7),
-(920, 'image2.jpg', 7),
-(921, 'image5.jpg', 7),
-(922, 'image10.jpg', 8),
-(923, 'image5.jpg', 9),
-(924, 'image9.jpg', 9),
-(925, 'image7.jpg', 9),
-(926, 'image3.jpg', 9),
-(927, 'image10.jpg', 9),
-(928, 'image9.jpg', 9),
-(929, 'image5.jpg', 9),
-(930, 'image8.jpeg', 10),
-(931, 'image3.jpg', 11),
-(932, 'image3.jpg', 11),
-(933, 'image10.jpg', 11),
-(934, 'image1.jpg', 11),
-(935, 'image4.jpg', 11),
-(936, 'image9.jpg', 13),
-(937, 'image3.jpg', 13),
-(938, 'image4.jpg', 13),
-(939, 'image3.jpg', 13),
-(940, 'image3.jpg', 13),
-(941, 'image8.jpeg', 14),
-(942, 'image4.jpg', 14),
-(943, 'image1.jpg', 14),
-(944, 'image6.jpg', 14),
-(945, 'image8.jpeg', 14),
-(946, 'image7.jpg', 14),
-(947, 'image1.jpg', 15),
-(948, 'image5.jpg', 15),
-(949, 'image4.jpg', 15),
-(950, 'image10.jpg', 15),
-(951, 'image6.jpg', 15),
-(952, 'image5.jpg', 15),
-(953, 'image6.jpg', 15),
-(954, 'image6.jpg', 16),
-(955, 'image6.jpg', 16),
-(956, 'image9.jpg', 16),
-(957, 'image9.jpg', 16),
-(958, 'image6.jpg', 16),
-(959, 'image6.jpg', 17),
-(960, 'image4.jpg', 17),
-(961, 'image1.jpg', 18),
-(962, 'image8.jpeg', 18),
-(963, 'image7.jpg', 18),
-(964, 'image2.jpg', 18),
-(965, 'image4.jpg', 18),
-(966, 'image8.jpeg', 18),
-(967, 'image7.jpg', 19),
-(968, 'image1.jpg', 19),
-(969, 'image5.jpg', 19),
-(970, 'image7.jpg', 19),
-(971, 'image3.jpg', 19),
-(972, 'image2.jpg', 19),
-(973, 'image1.jpg', 19),
-(974, 'image1.jpg', 19),
-(975, 'image10.jpg', 20),
-(976, 'image7.jpg', 20),
-(977, 'image3.jpg', 21),
-(978, 'image9.jpg', 21),
-(979, 'image10.jpg', 21),
-(980, 'image6.jpg', 21),
-(981, 'image6.jpg', 21),
-(982, 'image10.jpg', 21),
-(988, 'image4.jpg', 24),
-(989, 'image5.jpg', 24),
-(990, 'image5.jpg', 24),
-(991, 'image4.jpg', 24),
-(992, 'image4.jpg', 24),
-(993, 'image1.jpg', 24),
-(994, 'image10.jpg', 24),
-(995, 'image8.jpeg', 24),
-(1001, 'image7.jpg', 26),
-(1002, 'image7.jpg', 26),
-(1003, 'image7.jpg', 26),
-(1004, 'image4.jpg', 26),
-(1005, 'image6.jpg', 26),
-(1006, 'image7.jpg', 27),
-(1007, 'image5.jpg', 27),
-(1008, 'image10.jpg', 27),
-(1009, 'image5.jpg', 27),
-(1010, 'image10.jpg', 27),
-(1011, 'image6.jpg', 27),
-(1012, 'image9.jpg', 28),
-(1013, 'image10.jpg', 29),
-(1014, 'image4.jpg', 30),
-(1015, 'image10.jpg', 30),
-(1016, 'image6.jpg', 30),
-(1017, 'image6.jpg', 31),
-(1018, 'image8.jpeg', 31),
-(1019, 'image10.jpg', 31),
-(1020, 'image6.jpg', 31),
-(1021, 'image10.jpg', 31),
-(1022, 'image9.jpg', 31),
-(1023, 'image2.jpg', 32),
-(1024, 'image1.jpg', 33),
-(1025, 'image7.jpg', 33),
-(1026, 'image4.jpg', 34),
-(1027, 'image8.jpeg', 34),
-(1028, 'image8.jpeg', 34),
-(1029, 'image3.jpg', 34),
-(1030, 'image10.jpg', 34),
-(1031, 'image2.jpg', 35),
-(1032, 'image10.jpg', 35),
-(1033, 'image8.jpeg', 35),
-(1034, 'image2.jpg', 35),
-(1043, 'image10.jpg', 37),
-(1044, 'image8.jpeg', 37),
-(1045, 'image8.jpeg', 37),
-(1046, 'image4.jpg', 37),
-(1047, 'image3.jpg', 37),
-(1048, 'image8.jpeg', 37),
-(1049, 'image7.jpg', 37),
-(1050, 'image1.jpg', 37),
-(1051, 'image6.jpg', 38),
-(1052, 'image1.jpg', 39),
-(1053, 'image5.jpg', 39),
-(1054, 'image1.jpg', 39),
-(1055, 'image7.jpg', 40),
-(1056, 'image3.jpg', 41),
-(1057, 'image8.jpeg', 41),
-(1058, 'image9.jpg', 41),
-(1059, 'image1.jpg', 41),
-(1060, 'image2.jpg', 41),
-(1061, 'image4.jpg', 41),
-(1062, 'image2.jpg', 41),
-(1063, 'image2.jpg', 41),
-(1064, 'image10.jpg', 42),
-(1065, 'image10.jpg', 42),
-(1066, 'image1.jpg', 43),
-(1067, 'image6.jpg', 43),
-(1068, 'image3.jpg', 44),
-(1069, 'image1.jpg', 44),
-(1070, 'image3.jpg', 44),
-(1071, 'image1.jpg', 44),
-(1072, 'image7.jpg', 44),
-(1073, 'image7.jpg', 44),
-(1074, 'image7.jpg', 45),
-(1075, 'image1.jpg', 45),
-(1076, 'image3.jpg', 45),
-(1077, 'image3.jpg', 45),
-(1078, 'image5.jpg', 45),
-(1079, 'image9.jpg', 45),
-(1080, 'image6.jpg', 45),
-(1081, 'image9.jpg', 45),
-(1082, 'image7.jpg', 46),
-(1083, 'image9.jpg', 46),
-(1084, 'image5.jpg', 46),
-(1085, 'image3.jpg', 46),
-(1086, 'image1.jpg', 46),
-(1087, 'image3.jpg', 46),
-(1088, 'image3.jpg', 46),
-(1089, 'image7.jpg', 46),
-(1090, 'image5.jpg', 47),
-(1091, 'image3.jpg', 47),
-(1092, 'image3.jpg', 47),
-(1093, 'image8.jpeg', 47),
-(1094, 'image2.jpg', 47),
-(1095, 'image5.jpg', 47),
-(1096, 'image4.jpg', 47),
-(1097, 'image4.jpg', 47),
-(1098, 'image6.jpg', 48),
-(1099, 'image8.jpeg', 48),
-(1100, 'image4.jpg', 48),
-(1101, 'image6.jpg', 48),
-(1102, 'image5.jpg', 48),
-(1103, 'image6.jpg', 49),
-(1109, 'image4.jpg', 51),
-(1110, 'image9.jpg', 51),
-(1111, 'image2.jpg', 51),
-(1112, 'image2.jpg', 52),
-(1113, 'image9.jpg', 52),
-(1114, 'image6.jpg', 52),
-(1115, 'image9.jpg', 52),
-(1116, 'image4.jpg', 52),
-(1117, 'image1.jpg', 52),
-(1118, 'image9.jpg', 52),
-(1119, 'image1.jpg', 53),
-(1120, 'image2.jpg', 53),
-(1121, 'image6.jpg', 53),
-(1122, 'image7.jpg', 54),
-(1123, 'image9.jpg', 54),
-(1124, 'image4.jpg', 54),
-(1125, 'image5.jpg', 54),
-(1126, 'image5.jpg', 54),
-(1127, 'image10.jpg', 54),
-(1128, 'image9.jpg', 55),
-(1129, 'image10.jpg', 55),
-(1130, 'image8.jpeg', 55),
-(1131, 'image10.jpg', 56),
-(1132, 'image6.jpg', 56),
-(1133, 'image5.jpg', 57),
-(1134, 'image4.jpg', 57),
-(1135, 'image7.jpg', 57),
-(1136, 'image6.jpg', 57),
-(1137, 'image1.jpg', 57),
-(1138, 'image5.jpg', 57),
-(1139, 'image8.jpeg', 57),
-(1140, 'image9.jpg', 57),
-(1141, 'image7.jpg', 58),
-(1142, 'image3.jpg', 58),
-(1143, 'image6.jpg', 58),
-(1144, 'image3.jpg', 58),
-(1145, 'image4.jpg', 58),
-(1146, 'image9.jpg', 58),
-(1147, 'image10.jpg', 58),
-(1148, 'image4.jpg', 59),
-(1149, 'image3.jpg', 59),
-(1150, 'image4.jpg', 59),
-(1151, 'image7.jpg', 59),
-(1152, 'image9.jpg', 60),
-(1153, 'image8.jpeg', 60),
-(1154, 'image2.jpg', 60),
-(1155, 'image3.jpg', 60),
-(1156, 'image6.jpg', 61),
-(1157, 'image10.jpg', 61),
-(1158, 'image6.jpg', 61),
-(1159, 'image4.jpg', 61),
-(1160, 'image9.jpg', 62),
-(1161, 'image7.jpg', 62),
-(1162, 'image5.jpg', 63),
-(1165, 'image7.jpg', 65),
-(1166, 'image6.jpg', 65),
-(1167, 'image8.jpeg', 65),
-(1168, 'image8.jpeg', 66),
-(1169, 'image3.jpg', 66),
-(1170, 'image1.jpg', 66),
-(1171, 'image1.jpg', 66),
-(1172, 'image1.jpg', 66),
-(1173, 'image6.jpg', 66),
-(1174, 'image8.jpeg', 66),
-(1175, 'image6.jpg', 66),
-(1183, 'image3.jpg', 69),
-(1184, 'image9.jpg', 69),
-(1185, 'image7.jpg', 69),
-(1186, 'image7.jpg', 69),
-(1187, 'image9.jpg', 69),
-(1188, 'image3.jpg', 69),
-(1193, 'image8.jpeg', 71),
-(1194, 'image3.jpg', 71),
-(1195, 'image4.jpg', 71),
-(1196, 'image10.jpg', 71),
-(1197, 'image9.jpg', 71),
-(1198, 'image1.jpg', 71),
-(1199, 'image6.jpg', 71),
-(1200, 'image8.jpeg', 71),
-(1201, 'image10.jpg', 72),
-(1202, 'image1.jpg', 72),
-(1203, 'image3.jpg', 72),
-(1204, 'image9.jpg', 72),
-(1205, 'image9.jpg', 73),
-(1206, 'image3.jpg', 73),
-(1207, 'image1.jpg', 73),
-(1208, 'image7.jpg', 74),
-(1209, 'image10.jpg', 74),
-(1692, '33648a92-aaac-42de-87b6-a10736c5a028.jpg', 278),
-(1693, '6902e9b1-2bf6-4b75-9a9b-cb0b629999b9.jpg', 278),
-(1697, '5ffdb7c1-d060-454f-83d2-a0bacddfede8.webp', 280),
-(1698, '22c1a7bb-ac10-401d-b12d-1c5ef8009908.webp', 280);
+(1735, 'image4.jpg', 287),
+(1736, 'image6.jpg', 287),
+(1737, 'image5.jpg', 287),
+(1738, 'image4.jpg', 287),
+(1739, 'image10.jpg', 287),
+(1740, 'image10.jpg', 288),
+(1741, 'image10.jpg', 288),
+(1742, 'image2.jpg', 288),
+(1743, 'image1.jpg', 288),
+(1744, 'image4.jpg', 288),
+(1745, 'image5.jpg', 289),
+(1746, 'image5.jpg', 289),
+(1747, 'image1.jpg', 289),
+(1748, 'image9.jpg', 290),
+(1749, 'image9.jpg', 290),
+(1750, 'image7.jpg', 290),
+(1751, 'image6.jpg', 291),
+(1752, 'image3.jpg', 291),
+(1753, 'image1.jpg', 291),
+(1754, 'image4.jpg', 291),
+(1755, 'image7.jpg', 291),
+(1756, 'image9.jpg', 292),
+(1757, 'image1.jpg', 292),
+(1758, 'image5.jpg', 292),
+(1759, 'image8.jpeg', 293),
+(1760, 'image9.jpg', 293),
+(1761, 'image4.jpg', 294),
+(1762, 'image4.jpg', 294),
+(1763, 'image8.jpeg', 294),
+(1764, 'image6.jpg', 295),
+(1765, 'image4.jpg', 295),
+(1766, 'image9.jpg', 295),
+(1767, 'image4.jpg', 296),
+(1768, 'image5.jpg', 296),
+(1772, 'image4.jpg', 298),
+(1773, 'image8.jpeg', 298),
+(1774, 'image5.jpg', 299),
+(1775, 'image1.jpg', 299),
+(1776, 'image7.jpg', 299),
+(1777, 'image2.jpg', 299),
+(1778, 'image2.jpg', 300),
+(1779, 'image7.jpg', 300),
+(1780, 'image1.jpg', 300),
+(1781, 'image5.jpg', 300),
+(1782, 'image10.jpg', 300),
+(1783, 'image1.jpg', 300),
+(1784, 'image3.jpg', 301),
+(1785, 'image8.jpeg', 301),
+(1786, 'image6.jpg', 302),
+(1787, 'image3.jpg', 302),
+(1788, 'image1.jpg', 302),
+(1789, 'image6.jpg', 302),
+(1790, 'image6.jpg', 302),
+(1791, 'image2.jpg', 302),
+(1792, 'image1.jpg', 302),
+(1793, 'image8.jpeg', 302),
+(1794, 'image9.jpg', 303),
+(1795, 'image9.jpg', 303),
+(1796, 'image9.jpg', 303),
+(1797, 'image7.jpg', 303),
+(1798, 'image8.jpeg', 303),
+(1799, 'image4.jpg', 303),
+(1800, 'image5.jpg', 304),
+(1801, 'image9.jpg', 304),
+(1802, 'image7.jpg', 304),
+(1803, 'image10.jpg', 304),
+(1804, 'image1.jpg', 304),
+(1805, 'image1.jpg', 304),
+(1806, 'image7.jpg', 304),
+(1807, 'image4.jpg', 305),
+(1808, 'image5.jpg', 305),
+(1809, 'image10.jpg', 306),
+(1810, 'image10.jpg', 306),
+(1811, 'image3.jpg', 306),
+(1812, 'image8.jpeg', 307),
+(1813, 'image5.jpg', 307),
+(1814, 'image10.jpg', 307),
+(1815, 'image8.jpeg', 307),
+(1816, 'image4.jpg', 307),
+(1817, 'image1.jpg', 307),
+(1818, 'image2.jpg', 308),
+(1819, 'image9.jpg', 308),
+(1820, 'image6.jpg', 308),
+(1821, 'image8.jpeg', 308),
+(1822, 'image9.jpg', 308),
+(1823, 'image6.jpg', 308),
+(1824, 'image3.jpg', 308),
+(1825, 'image9.jpg', 309),
+(1826, 'image2.jpg', 309),
+(1827, 'image7.jpg', 309),
+(1828, 'image9.jpg', 309),
+(1829, 'image4.jpg', 310),
+(1830, 'image1.jpg', 310),
+(1831, 'image1.jpg', 311),
+(1832, 'image3.jpg', 311),
+(1833, 'image4.jpg', 311),
+(1834, 'image1.jpg', 311),
+(1835, 'image2.jpg', 311),
+(1836, 'image4.jpg', 312),
+(1837, 'image9.jpg', 312),
+(1838, 'image9.jpg', 312),
+(1839, 'image8.jpeg', 312),
+(1840, 'image9.jpg', 312),
+(1841, 'image6.jpg', 313),
+(1842, 'image9.jpg', 313),
+(1843, 'image1.jpg', 313),
+(1844, 'image4.jpg', 313),
+(1845, 'image5.jpg', 313),
+(1846, 'image1.jpg', 313),
+(1847, 'image9.jpg', 313),
+(1848, 'image5.jpg', 314),
+(1849, 'image3.jpg', 314),
+(1850, 'image8.jpeg', 315),
+(1851, 'image4.jpg', 315),
+(1852, 'image9.jpg', 315),
+(1853, 'image9.jpg', 316),
+(1854, 'image10.jpg', 316),
+(1855, 'image9.jpg', 316),
+(1856, 'image6.jpg', 316),
+(1857, 'image10.jpg', 316),
+(1858, 'image4.jpg', 316),
+(1859, 'image2.jpg', 316),
+(1860, 'image5.jpg', 317),
+(1861, 'image1.jpg', 317),
+(1862, 'image10.jpg', 318),
+(1863, 'image8.jpeg', 318),
+(1864, 'image1.jpg', 318),
+(1865, 'image8.jpeg', 318),
+(1866, 'image8.jpeg', 319),
+(1867, 'image4.jpg', 319),
+(1868, 'image2.jpg', 319),
+(1869, 'image5.jpg', 320),
+(1870, 'image10.jpg', 320),
+(1871, 'image3.jpg', 320),
+(1872, 'image7.jpg', 320),
+(1873, 'image8.jpeg', 320),
+(1874, 'image10.jpg', 320),
+(1875, 'image9.jpg', 320),
+(1876, 'image3.jpg', 320),
+(1877, 'image10.jpg', 321),
+(1878, 'image10.jpg', 321),
+(1879, 'image4.jpg', 322),
+(1880, 'image5.jpg', 322),
+(1881, 'image5.jpg', 323),
+(1882, 'image4.jpg', 323),
+(1883, 'image5.jpg', 323),
+(1884, 'image1.jpg', 323),
+(1885, 'image6.jpg', 323),
+(1886, 'image6.jpg', 323),
+(1887, 'image10.jpg', 323),
+(1888, 'image8.jpeg', 323),
+(1889, 'image3.jpg', 324),
+(1890, 'image9.jpg', 324),
+(1891, 'image8.jpeg', 324),
+(1892, 'image3.jpg', 324),
+(1893, 'image8.jpeg', 324),
+(1894, 'image7.jpg', 324),
+(1895, 'image7.jpg', 325),
+(1896, 'image7.jpg', 325),
+(1897, 'image1.jpg', 325),
+(1898, 'image4.jpg', 325),
+(1899, 'image9.jpg', 326),
+(1900, 'image3.jpg', 326),
+(1901, 'image5.jpg', 327),
+(1902, 'image6.jpg', 327),
+(1903, 'image1.jpg', 327),
+(1904, 'image3.jpg', 327),
+(1905, 'image2.jpg', 327),
+(1906, 'image9.jpg', 327),
+(1907, 'image2.jpg', 328),
+(1908, 'image1.jpg', 328),
+(1909, 'image1.jpg', 328),
+(1910, 'image8.jpeg', 328),
+(1911, 'image4.jpg', 328),
+(1912, 'image10.jpg', 328),
+(1913, 'image4.jpg', 328),
+(1914, 'image9.jpg', 328),
+(1915, 'image3.jpg', 329),
+(1916, 'image6.jpg', 329),
+(1917, 'image6.jpg', 329),
+(1918, 'image3.jpg', 329),
+(1919, 'image10.jpg', 329),
+(1920, 'image10.jpg', 329),
+(1921, 'image10.jpg', 329),
+(1922, 'image8.jpeg', 329),
+(1923, 'image3.jpg', 330),
+(1924, 'image6.jpg', 330),
+(1925, 'image8.jpeg', 330),
+(1926, 'image8.jpeg', 330),
+(1927, 'image5.jpg', 330),
+(1928, 'image8.jpeg', 330),
+(1929, 'image6.jpg', 331),
+(1930, 'image3.jpg', 331),
+(1931, 'image7.jpg', 331),
+(1932, 'image8.jpeg', 331),
+(1933, 'image8.jpeg', 332),
+(1934, 'image1.jpg', 332),
+(1935, 'image10.jpg', 332),
+(1936, 'image9.jpg', 332),
+(1937, 'image8.jpeg', 332),
+(1938, 'image6.jpg', 333),
+(1939, 'image9.jpg', 333),
+(1940, 'image1.jpg', 333),
+(1941, 'image1.jpg', 333),
+(1942, 'image4.jpg', 333),
+(1943, 'image6.jpg', 333),
+(1944, 'image3.jpg', 333),
+(1945, 'image7.jpg', 334),
+(1946, 'image1.jpg', 334),
+(1947, 'image2.jpg', 334),
+(1948, 'image5.jpg', 334),
+(1949, 'image3.jpg', 334),
+(1950, 'image6.jpg', 334),
+(1951, 'image8.jpeg', 334),
+(1952, 'image4.jpg', 334),
+(1953, 'image4.jpg', 335),
+(1954, 'image1.jpg', 335),
+(1955, 'image2.jpg', 336),
+(1956, 'image1.jpg', 336),
+(1957, 'image2.jpg', 336),
+(1958, 'image2.jpg', 336),
+(1959, '5a77fefa-7811-4f20-bea2-e48effdd3556.jpg', 337),
+(1960, '6591709b-d7c7-4046-b816-b19c22843d80.jpg', 337),
+(1961, 'e2a393d6-3a28-45ff-bc79-23337e31e27f.jpg', 337),
+(1962, 'image5.jpg', 338),
+(1963, 'image10.jpg', 338),
+(1964, 'image4.jpg', 338),
+(1965, 'image8.jpeg', 338),
+(1966, 'image3.jpg', 339),
+(1967, 'image5.jpg', 339),
+(1968, 'image7.jpg', 340),
+(1969, 'image8.jpeg', 340),
+(1970, 'image1.jpg', 340),
+(1971, 'image6.jpg', 340),
+(1972, 'image3.jpg', 341),
+(1973, 'image10.jpg', 341),
+(1974, 'image1.jpg', 341),
+(1975, 'image4.jpg', 342),
+(1976, 'image3.jpg', 342),
+(1977, 'image5.jpg', 342),
+(1978, 'image6.jpg', 342),
+(1979, 'image4.jpg', 342),
+(1980, 'image2.jpg', 342),
+(1981, 'image8.jpeg', 343),
+(1982, 'image5.jpg', 343),
+(1983, 'image2.jpg', 343),
+(1984, 'image5.jpg', 343),
+(1985, 'image6.jpg', 343),
+(1986, 'image10.jpg', 343),
+(1987, 'image3.jpg', 343),
+(1988, 'image3.jpg', 343),
+(1989, 'image2.jpg', 344),
+(1990, 'image4.jpg', 344),
+(1991, 'image3.jpg', 344),
+(1992, 'image2.jpg', 344),
+(1993, 'image1.jpg', 344),
+(1994, 'image5.jpg', 345),
+(1995, 'image8.jpeg', 345),
+(1996, 'image3.jpg', 345),
+(1997, 'image5.jpg', 345),
+(1998, 'image9.jpg', 345),
+(1999, 'image7.jpg', 345),
+(2000, 'image3.jpg', 345),
+(2001, 'image9.jpg', 345),
+(2002, 'image3.jpg', 346),
+(2003, 'image6.jpg', 346),
+(2004, 'image2.jpg', 346),
+(2005, 'image5.jpg', 347),
+(2006, 'image7.jpg', 347),
+(2007, 'image8.jpeg', 347),
+(2008, 'image9.jpg', 347),
+(2009, 'image5.jpg', 348),
+(2010, 'image8.jpeg', 348),
+(2011, 'image10.jpg', 348),
+(2012, 'image8.jpeg', 348),
+(2013, 'image9.jpg', 348),
+(2014, 'image10.jpg', 348),
+(2015, 'image8.jpeg', 348),
+(2016, 'image8.jpeg', 348);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `message`
+-- Table structure for table `message`
 --
 
 CREATE TABLE `message` (
@@ -483,177 +488,16 @@ CREATE TABLE `message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `message`
+-- Dumping data for table `message`
 --
 
 INSERT INTO `message` (`id`, `content`, `sent_time`, `is_liked`, `is_read`, `id_sender`, `id_receiver`, `id_chat`) VALUES
-(718, 'hola', '2024-06-11 09:10:54', 0, 1, 1, 2, 23),
-(719, 'dfgdf', '2024-06-11 09:12:56', 0, 1, 1, 2, 23),
-(720, 'hola', '2024-06-11 09:13:48', 0, 1, 1, 2, 23),
-(721, 'fsdf', '2024-06-11 09:13:53', 0, 1, 1, 2, 23),
-(722, 'hola', '2024-06-11 09:14:09', 0, 0, 1, 3, 24),
-(723, 'hola', '2024-06-11 09:14:34', 0, 0, 1, 5, 25),
-(724, 'gdfgdfgdf', '2024-06-11 09:27:14', 0, 1, 1, 2, 26),
-(725, 'gdfgdfgdfgf', '2024-06-11 09:27:21', 0, 0, 1, 5, 25),
-(726, 'dsfsdfsfsdf', '2024-06-11 09:28:14', 0, 1, 1, 2, 27),
-(727, 'fsdfsdfsfs', '2024-06-11 09:28:27', 0, 1, 1, 2, 27),
-(728, 'alons', '2024-06-11 09:29:37', 0, 1, 2, 1, 27),
-(729, 'fsdfsdf', '2024-06-11 09:29:40', 0, 1, 1, 2, 27),
-(730, 'fd', '2024-06-11 09:29:43', 0, 1, 1, 2, 27),
-(731, 'fd', '2024-06-11 09:29:44', 0, 1, 1, 2, 27),
-(732, 'f', '2024-06-11 09:29:44', 0, 1, 1, 2, 27),
-(733, 'fd', '2024-06-11 09:29:44', 0, 1, 1, 2, 27),
-(734, 'ffd', '2024-06-11 09:29:45', 0, 1, 1, 2, 27),
-(735, 'fdf', '2024-06-11 09:29:45', 0, 1, 1, 2, 27),
-(736, 'dff', '2024-06-11 09:29:45', 0, 1, 1, 2, 27),
-(737, 'dfd', '2024-06-11 09:29:46', 0, 1, 1, 2, 27),
-(738, 'fdf', '2024-06-11 09:29:46', 0, 1, 1, 2, 27),
-(739, 'dfdf', '2024-06-11 09:29:47', 0, 1, 1, 2, 27),
-(740, 'df', '2024-06-11 09:29:49', 0, 1, 1, 2, 27),
-(741, 'si', '2024-06-11 09:29:55', 0, 1, 2, 1, 27),
-(742, 'si', '2024-06-11 09:29:57', 0, 1, 2, 1, 27),
-(743, 'si', '2024-06-11 09:29:58', 0, 1, 2, 1, 27),
-(744, 'sis', '2024-06-11 09:29:59', 0, 1, 2, 1, 27),
-(745, 'sd', '2024-06-11 09:30:00', 0, 1, 2, 1, 27),
-(746, 'sdsds', '2024-06-11 09:30:00', 0, 1, 2, 1, 27),
-(747, 'd', '2024-06-11 09:30:00', 0, 1, 2, 1, 27),
-(748, 'sd', '2024-06-11 09:30:00', 0, 1, 2, 1, 27),
-(749, 's', '2024-06-11 09:30:01', 0, 1, 2, 1, 27),
-(750, 'ds', '2024-06-11 09:30:01', 0, 1, 2, 1, 27),
-(751, 'd', '2024-06-11 09:30:01', 0, 1, 2, 1, 27),
-(752, 'sd', '2024-06-11 09:30:01', 0, 1, 2, 1, 27),
-(753, 's', '2024-06-11 09:30:01', 0, 1, 2, 1, 27),
-(754, 'hola', '2024-06-11 09:31:21', 0, 1, 1, 2, 27),
-(755, 'hola', '2024-06-11 09:33:00', 0, 1, 2, 1, 27),
-(756, 'dasdas', '2024-06-11 09:33:30', 0, 1, 1, 2, 27),
-(757, 'df', '2024-06-11 09:33:37', 0, 1, 2, 1, 27),
-(758, 'dfsf', '2024-06-11 09:33:42', 0, 1, 2, 1, 27),
-(759, 'dsfd', '2024-06-11 09:33:43', 0, 1, 2, 1, 27),
-(760, 'sf', '2024-06-11 09:33:43', 0, 1, 2, 1, 27),
-(761, 'sdf', '2024-06-11 09:33:43', 0, 1, 2, 1, 27),
-(762, 'dd', '2024-06-11 09:33:43', 0, 1, 2, 1, 27),
-(763, 'sd', '2024-06-11 09:33:55', 0, 1, 1, 2, 27),
-(764, 'sdf', '2024-06-11 09:33:55', 0, 1, 1, 2, 27),
-(765, 'sd', '2024-06-11 09:33:56', 0, 1, 1, 2, 27),
-(766, 'fds', '2024-06-11 09:33:56', 0, 1, 1, 2, 27),
-(767, 'dfs', '2024-06-11 09:33:56', 0, 1, 1, 2, 27),
-(768, 'fsd', '2024-06-11 09:33:56', 0, 1, 1, 2, 27),
-(769, 'fds', '2024-06-11 09:33:56', 0, 1, 1, 2, 27),
-(770, 'f', '2024-06-11 09:33:56', 0, 1, 1, 2, 27),
-(771, 'sf', '2024-06-11 09:33:57', 0, 1, 1, 2, 27),
-(772, 'sf', '2024-06-11 09:33:57', 0, 1, 1, 2, 27),
-(773, 'd', '2024-06-11 09:33:57', 0, 1, 1, 2, 27),
-(774, 'f', '2024-06-11 09:33:57', 0, 1, 1, 2, 27),
-(775, 'fd', '2024-06-11 09:33:57', 0, 1, 1, 2, 27),
-(776, 'f', '2024-06-11 09:33:57', 0, 1, 1, 2, 27),
-(777, 'f', '2024-06-11 09:33:57', 0, 1, 1, 2, 27),
-(778, 'f', '2024-06-11 09:33:57', 0, 1, 1, 2, 27),
-(779, 'f', '2024-06-11 09:33:58', 0, 1, 1, 2, 27),
-(780, 'f', '2024-06-11 09:33:58', 0, 1, 1, 2, 27),
-(781, 'f', '2024-06-11 09:33:58', 0, 1, 1, 2, 27),
-(782, 'f', '2024-06-11 09:33:58', 0, 1, 1, 2, 27),
-(783, 'f', '2024-06-11 09:33:58', 0, 1, 1, 2, 27),
-(784, 'f', '2024-06-11 09:33:59', 0, 1, 1, 2, 27),
-(785, 'ff', '2024-06-11 09:33:59', 0, 1, 1, 2, 27),
-(786, 'f', '2024-06-11 09:33:59', 0, 1, 1, 2, 27),
-(787, 'ff', '2024-06-11 09:33:59', 0, 1, 1, 2, 27),
-(788, 'df', '2024-06-11 09:33:59', 0, 1, 1, 2, 27),
-(789, 'df', '2024-06-11 09:34:00', 0, 1, 1, 2, 27),
-(790, 'df', '2024-06-11 09:34:00', 0, 1, 1, 2, 27),
-(791, 'f', '2024-06-11 09:34:00', 0, 1, 1, 2, 27),
-(792, 'f', '2024-06-11 09:34:00', 0, 1, 1, 2, 27),
-(793, 'f', '2024-06-11 09:34:00', 0, 1, 1, 2, 27),
-(794, 'f', '2024-06-11 09:34:01', 0, 1, 1, 2, 27),
-(795, 'f', '2024-06-11 09:34:01', 0, 1, 1, 2, 27),
-(796, 'f', '2024-06-11 09:34:01', 0, 1, 1, 2, 27),
-(797, 'f', '2024-06-11 09:34:01', 0, 1, 1, 2, 27),
-(798, 'f', '2024-06-11 09:34:01', 0, 1, 1, 2, 27),
-(799, 'f', '2024-06-11 09:34:02', 0, 1, 1, 2, 27),
-(800, 'f', '2024-06-11 09:34:02', 0, 1, 1, 2, 27),
-(801, 'f', '2024-06-11 09:34:02', 0, 1, 1, 2, 27),
-(802, 'f', '2024-06-11 09:34:02', 0, 1, 1, 2, 27),
-(803, 'f', '2024-06-11 09:34:02', 0, 1, 1, 2, 27),
-(804, 'f', '2024-06-11 09:34:02', 0, 1, 1, 2, 27),
-(805, 'f', '2024-06-11 09:34:03', 0, 1, 1, 2, 27),
-(806, 'f', '2024-06-11 09:34:03', 0, 1, 1, 2, 27),
-(807, 'f', '2024-06-11 09:34:03', 0, 1, 1, 2, 27),
-(808, 'f', '2024-06-11 09:34:03', 0, 1, 1, 2, 27),
-(809, 'f', '2024-06-11 09:34:03', 0, 1, 1, 2, 27),
-(810, 'ff', '2024-06-11 09:34:12', 0, 1, 1, 2, 27),
-(811, 'f', '2024-06-11 09:34:12', 0, 1, 1, 2, 27),
-(812, 'f', '2024-06-11 09:34:13', 0, 1, 1, 2, 27),
-(813, 'ff', '2024-06-11 09:34:13', 0, 1, 1, 2, 27),
-(814, 'ff', '2024-06-11 09:34:14', 0, 1, 1, 2, 27),
-(815, 'f', '2024-06-11 09:34:14', 0, 1, 1, 2, 27),
-(816, 'f', '2024-06-11 09:34:14', 0, 1, 1, 2, 27),
-(817, 'fff', '2024-06-11 09:34:14', 0, 1, 1, 2, 27),
-(818, 'ff', '2024-06-11 09:34:15', 0, 1, 1, 2, 27),
-(819, 'f', '2024-06-11 09:34:15', 0, 1, 1, 2, 27),
-(820, 'f', '2024-06-11 09:34:15', 0, 1, 1, 2, 27),
-(821, 'ff', '2024-06-11 09:34:15', 0, 1, 1, 2, 27),
-(822, 'f', '2024-06-11 09:34:16', 0, 1, 1, 2, 27),
-(823, 'f', '2024-06-11 09:34:16', 0, 1, 1, 2, 27),
-(824, 'f', '2024-06-11 09:34:16', 0, 1, 1, 2, 27),
-(825, 'ff', '2024-06-11 09:34:17', 0, 1, 1, 2, 27),
-(826, 'fff', '2024-06-11 09:34:17', 0, 1, 1, 2, 27),
-(827, 'ff', '2024-06-11 09:34:17', 0, 1, 1, 2, 27),
-(828, 'f', '2024-06-11 09:34:18', 0, 1, 1, 2, 27),
-(829, 'f', '2024-06-11 09:34:18', 0, 1, 1, 2, 27),
-(830, 'ff', '2024-06-11 09:34:19', 0, 1, 1, 2, 27),
-(831, 'f', '2024-06-11 09:34:19', 0, 1, 1, 2, 27),
-(832, 'ff', '2024-06-11 09:34:19', 0, 1, 1, 2, 27),
-(833, 'ff', '2024-06-11 09:34:19', 0, 1, 1, 2, 27),
-(834, 'f', '2024-06-11 09:34:20', 0, 1, 1, 2, 27),
-(835, 'ff', '2024-06-11 09:34:20', 0, 1, 1, 2, 27),
-(836, 'ff', '2024-06-11 09:34:21', 0, 1, 1, 2, 27),
-(837, 'f', '2024-06-11 09:34:21', 0, 1, 1, 2, 27),
-(838, 'f', '2024-06-11 09:34:21', 0, 1, 1, 2, 27),
-(839, 'ff', '2024-06-11 09:34:21', 0, 1, 1, 2, 27),
-(840, 'f', '2024-06-11 09:34:36', 0, 1, 1, 2, 27),
-(841, 'fdf', '2024-06-11 09:34:36', 0, 1, 1, 2, 27),
-(842, 'f', '2024-06-11 09:34:37', 0, 1, 1, 2, 27),
-(843, 'd', '2024-06-11 09:34:37', 0, 1, 1, 2, 27),
-(844, 'fd', '2024-06-11 09:34:37', 0, 1, 1, 2, 27),
-(845, 'fd', '2024-06-11 09:34:37', 0, 1, 1, 2, 27),
-(846, 'fdf', '2024-06-11 09:34:38', 0, 1, 1, 2, 27),
-(847, 'd', '2024-06-11 09:34:38', 0, 1, 1, 2, 27),
-(848, 'fdf', '2024-06-11 09:34:38', 0, 1, 1, 2, 27),
-(849, 'df', '2024-06-11 09:34:38', 0, 1, 1, 2, 27),
-(850, 'dfd', '2024-06-11 09:34:39', 0, 1, 1, 2, 27),
-(851, 'fd', '2024-06-11 09:34:39', 0, 1, 1, 2, 27),
-(852, 'fdf', '2024-06-11 09:34:39', 0, 1, 1, 2, 27),
-(853, 'df', '2024-06-11 09:34:40', 0, 1, 1, 2, 27),
-(854, 'dfd', '2024-06-11 09:34:40', 0, 1, 1, 2, 27),
-(855, 'fdf', '2024-06-11 09:34:40', 0, 1, 1, 2, 27),
-(856, 'f', '2024-06-11 09:34:41', 0, 1, 1, 2, 27),
-(857, 'df', '2024-06-11 09:34:41', 0, 1, 1, 2, 27),
-(858, 'df', '2024-06-11 09:34:41', 0, 1, 1, 2, 27),
-(859, 'dfd', '2024-06-11 09:34:42', 0, 1, 1, 2, 27),
-(860, 'fd', '2024-06-11 09:34:42', 0, 1, 1, 2, 27),
-(861, 'f', '2024-06-11 09:34:42', 0, 1, 1, 2, 27),
-(862, 'f', '2024-06-11 09:34:42', 0, 1, 1, 2, 27),
-(863, 'df', '2024-06-11 09:34:42', 0, 1, 1, 2, 27),
-(864, 'df', '2024-06-11 09:34:43', 0, 1, 1, 2, 27),
-(865, 'df', '2024-06-11 09:34:43', 0, 1, 1, 2, 27),
-(866, 'df', '2024-06-11 09:34:43', 0, 1, 1, 2, 27),
-(867, 'df', '2024-06-11 09:34:43', 0, 1, 1, 2, 27),
-(868, 'df', '2024-06-11 09:34:43', 0, 1, 1, 2, 27),
-(869, 'df', '2024-06-11 09:34:44', 0, 1, 1, 2, 27),
-(870, 'df', '2024-06-11 09:34:44', 0, 1, 1, 2, 27),
-(871, 'dfd', '2024-06-11 09:34:44', 0, 1, 1, 2, 27),
-(872, 'hola', '2024-06-11 09:35:44', 0, 1, 2, 1, 27),
-(873, 'hola', '2024-06-11 10:00:59', 0, 1, 1, 2, 27),
-(874, 'que tal', '2024-06-11 10:01:00', 0, 1, 1, 2, 27),
-(875, 'muy bien', '2024-06-11 10:01:04', 0, 1, 1, 2, 27),
-(876, 'jajajajaja', '2024-06-11 10:01:09', 0, 1, 1, 2, 27),
-(877, 'hola', '2024-06-12 13:33:29', 0, 1, 1, 2, 27),
-(878, 'dgdgdfgdfg', '2024-06-12 13:34:03', 0, 1, 2, 1, 27),
-(879, 'molon', '2024-06-12 13:34:57', 0, 1, 2, 1, 23);
+(50, 'me gusta tu coche', '2024-06-14 19:04:44', 0, 0, 2, 1, 8);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `price`
+-- Table structure for table `price`
 --
 
 CREATE TABLE `price` (
@@ -666,7 +510,7 @@ CREATE TABLE `price` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rating`
+-- Table structure for table `rating`
 --
 
 CREATE TABLE `rating` (
@@ -677,7 +521,7 @@ CREATE TABLE `rating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `rating`
+-- Dumping data for table `rating`
 --
 
 INSERT INTO `rating` (`id`, `id_rated_user`, `id_rating_user`, `score`) VALUES
@@ -688,7 +532,7 @@ INSERT INTO `rating` (`id`, `id_rated_user`, `id_rating_user`, `score`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rating_seq`
+-- Table structure for table `rating_seq`
 --
 
 CREATE TABLE `rating_seq` (
@@ -696,7 +540,7 @@ CREATE TABLE `rating_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `rating_seq`
+-- Dumping data for table `rating_seq`
 --
 
 INSERT INTO `rating_seq` (`next_val`) VALUES
@@ -705,7 +549,7 @@ INSERT INTO `rating_seq` (`next_val`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -718,7 +562,7 @@ CREATE TABLE `user` (
   `location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `country` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'I like cars',
   `profile_picture` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `profile_background` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `status` bit(1) DEFAULT NULL,
@@ -734,12 +578,12 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`, `location`, `country`, `city`, `description`, `profile_picture`, `profile_background`, `status`, `phone`, `email`, `password`, `role`, `member_since`, `last_connection`, `banned`, `actived`, `reports`) VALUES
-(1, ' Fernando', 'Alonso', 'ElNano', 1, '2022-02-24 04:25:00', '-0.3784603198914027 39.4679336934979', 'Spain', 'Asturias', 'El Nano es una bala azul que sin cañón    Dispara en un circuito directo al corazón\nEl Nano no es humano, el Nano es inmortal     Y sale en las revistas junto a Hulk y a Supermam', 'a2773b88-922b-4e3f-8dbd-22e39406276a.webp', '4b86f217-cc79-48a0-9a24-e4f59ccd12ed.jpg', b'0', '633974333', 'nano@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '1996-07-15 15:35:07', '1936-02-15 00:37:41', 0, 1, 0),
-(2, 'Carlos', 'Sainz', 'carlossainz', 0, '1991-05-16 16:56:24', '-3.7050339534411023 40.40991945152729', 'Spain', 'Madrid', '              Carlos Sainz, il matador. Smooooooth operatoooor       ', 'b1fcd965-cdfc-4f37-ba24-604b6bb845cb.jpg', '153902dd-640b-4236-8fb6-1d370a1af510.jpg', b'0', '655974455', 'sainz@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21', 0, 1, 0),
+(1, 'Fernando', 'Alonso', 'ElNano', 1, '2022-02-24 04:25:00', '-0.3784603198914027 39.4679336934979', 'Spain', 'Asturias', 'El Nano es una bala azul que sin cañón\nDispara en un circuito directo al corazón\nEl Nano no es humano, el Nano es inmortal\nY sale en las revistas junto a Hulk y a Supermam\n', 'a2773b88-922b-4e3f-8dbd-22e39406276a.webp', '4b86f217-cc79-48a0-9a24-e4f59ccd12ed.jpg', b'1', '633974333', 'nano@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '1996-07-15 15:35:07', '1936-02-15 00:37:41', 0, 1, 0),
+(2, 'Carlos', 'Sainz', 'carlossainz', 0, '1991-05-16 16:56:24', '-3.7050339534411023 40.40991945152729', 'Spain', 'Madrid', 'Carlos Sainz, il matador. Smooooooth operatoooor       ', 'b1fcd965-cdfc-4f37-ba24-604b6bb845cb.jpg', '153902dd-640b-4236-8fb6-1d370a1af510.jpg', b'0', '655974455', 'sainz@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2019-02-06 02:54:17', '1969-08-30 01:11:21', 0, 1, 0),
 (3, 'Amador', 'Rivas', 'capitanSalam1', 1, '1940-01-24 16:53:42', '-0.3784603198914027 39.4679336934979', 'Italy', 'British Columbia', ' Quieres salami, merengue merengue ', 'f9fec625-b1c1-4f48-a915-a8ad58a2e49b.jpg', '40118821-2bab-47c8-ab3f-fe84a8c16b8c.jpg', b'0', '561079640', 'alalat0@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (4, 'Ramón', 'Melendi', 'milindr1', 1, '1957-07-05 01:34:14', '-0.3784603198914027 39.4679336934979', 'South Africa', 'British Columbia', '    Siete vidas tiene un gatoComo una y cuento cienAy y como de hablar no cansoVoy y te como a ti tambiénYa ha acabado el Gran HermanoAbre un buen champan FrancésQue lo mejor de tol programaAy fue la novia de un tal Ness        ', '4ceac9e6-3728-42b0-81ed-9b00b7b98a76.jpg', '3d3a41b0-a58a-4291-93bd-532845faa431.jpg', b'0', '783044591', 'elopui1@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (5, 'Kakarotto', 'Son', 'gokuSan', 1, '1942-01-27 10:48:02', '-0.3784603198914027 39.4679336934979', 'China', 'Madrid', 'Yo se que a veces peleamos, pero que rico cuando chingamos', '16219753-0576-44af-9abb-01a891698a18.jpg', '4f290a90-c535-4cc0-be90-1a251ce2c191.webp', b'0', '264594045', 'lauazn2@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
@@ -760,23 +604,21 @@ INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `gender`, `birthdate`,
 (20, 'Mónica', 'Ferrer', 'moner17', 1, '1950-03-03 20:03:19', '-0.3784603198914027 39.4679336934979', 'South Africa', 'British Columbia', NULL, NULL, NULL, b'0', '669615683', 'mónfer17@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (21, 'Nieves', 'Gómez', 'nieom18', 1, '1958-11-08 22:51:15', '-0.3784603198914027 39.4679336934979', 'South Africa', 'Galicia', NULL, NULL, NULL, b'0', '896113707', 'niegóm18@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
 (22, 'Laura', 'Gómez', 'lauom19', 1, '2007-05-19 16:00:46', '-0.3784603198914027 39.4679336934979', 'Canada', 'Andalusia', NULL, NULL, NULL, b'0', '627092165', 'laugóm19@gmail.net', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-03-11 16:11:18', '2024-03-11 16:11:18', 0, 1, 0),
-(23, 'Jaime', 'Rosello', 'jaumerosello_', 1, '2004-08-02 20:09:07', '-0.39413583904328675 39.45770272279975', 'Spain', 'València', '              Soy el verdadero admin              ', 'd0839b00-a830-4e02-8e77-f84c1df2d728.jpg', 'c60f3ec0-0ffb-4c67-b60a-74d104b3d7f3.jpg', b'0', '601447829', 'jarogos14@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '2024-05-02 18:07:33', '2024-05-02 18:07:33', 0, 1, 0),
-(38, NULL, NULL, 'adsad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', NULL, 'gola@f', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-06-11 18:06:35', '2024-06-11 18:06:35', 0, 1, 0),
-(39, NULL, NULL, 'fsfsdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', NULL, 'epep@sdfs', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 0, '2024-06-11 18:33:20', '2024-06-11 18:33:20', 0, 1, 0);
+(23, 'Jaime', 'Rosello', 'jaumerosello_', 1, '2004-08-02 20:09:07', '-0.39413583904328675 39.45770272279975', 'Spain', 'València', 'Soy el verdadero admin', 'd0839b00-a830-4e02-8e77-f84c1df2d728.jpg', 'c60f3ec0-0ffb-4c67-b60a-74d104b3d7f3.jpg', b'0', '601447829', 'jarogos14@gmail.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 1, '2024-05-02 18:07:33', '2024-05-02 18:07:33', 0, 1, 0);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `car`
+-- Indexes for table `car`
 --
 ALTER TABLE `car`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FKm2cs5bh53qsh8asi6tanvcwla` (`id_owner`);
 
 --
--- Indices de la tabla `chat`
+-- Indexes for table `chat`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`),
@@ -786,7 +628,7 @@ ALTER TABLE `chat`
   ADD KEY `FKimsbqaf2tv5coiph14kd5ok86` (`id_member_two`);
 
 --
--- Indices de la tabla `favorites`
+-- Indexes for table `favorites`
 --
 ALTER TABLE `favorites`
   ADD PRIMARY KEY (`id`),
@@ -794,14 +636,14 @@ ALTER TABLE `favorites`
   ADD KEY `fk_id_car` (`id_car`);
 
 --
--- Indices de la tabla `images`
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_car` (`id_car`);
 
 --
--- Indices de la tabla `message`
+-- Indexes for table `message`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`id`),
@@ -810,14 +652,14 @@ ALTER TABLE `message`
   ADD KEY `FK249t1hnaxlacjng5xtud18fi` (`id_sender`);
 
 --
--- Indices de la tabla `price`
+-- Indexes for table `price`
 --
 ALTER TABLE `price`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_car` (`id_car`);
 
 --
--- Indices de la tabla `rating`
+-- Indexes for table `rating`
 --
 ALTER TABLE `rating`
   ADD PRIMARY KEY (`id`),
@@ -825,75 +667,75 @@ ALTER TABLE `rating`
   ADD KEY `id_rating_user` (`id_rating_user`);
 
 --
--- Indices de la tabla `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `car`
+-- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=349;
 
 --
--- AUTO_INCREMENT de la tabla `chat`
+-- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `favorites`
+-- AUTO_INCREMENT for table `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=590;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=593;
 
 --
--- AUTO_INCREMENT de la tabla `images`
+-- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1699;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2017;
 
 --
--- AUTO_INCREMENT de la tabla `message`
+-- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=880;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT de la tabla `price`
+-- AUTO_INCREMENT for table `price`
 --
 ALTER TABLE `price`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `rating`
+-- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `car`
+-- Constraints for table `car`
 --
 ALTER TABLE `car`
   ADD CONSTRAINT `FKm2cs5bh53qsh8asi6tanvcwla` FOREIGN KEY (`id_owner`) REFERENCES `user` (`id`);
 
 --
--- Filtros para la tabla `chat`
+-- Constraints for table `chat`
 --
 ALTER TABLE `chat`
   ADD CONSTRAINT `FKimsbqaf2tv5coiph14kd5ok86` FOREIGN KEY (`id_member_two`) REFERENCES `user` (`id`),
@@ -902,20 +744,20 @@ ALTER TABLE `chat`
   ADD CONSTRAINT `FKt8q6vbshr4i0w4ph70f537041` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`);
 
 --
--- Filtros para la tabla `favorites`
+-- Constraints for table `favorites`
 --
 ALTER TABLE `favorites`
   ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `images`
+-- Constraints for table `images`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `message`
+-- Constraints for table `message`
 --
 ALTER TABLE `message`
   ADD CONSTRAINT `FK249t1hnaxlacjng5xtud18fi` FOREIGN KEY (`id_sender`) REFERENCES `user` (`id`),
@@ -923,13 +765,13 @@ ALTER TABLE `message`
   ADD CONSTRAINT `FKqyxddlqh59ce3gqls6qu9w3lq` FOREIGN KEY (`id_receiver`) REFERENCES `user` (`id`);
 
 --
--- Filtros para la tabla `price`
+-- Constraints for table `price`
 --
 ALTER TABLE `price`
   ADD CONSTRAINT `price_ibfk_1` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `rating`
+-- Constraints for table `rating`
 --
 ALTER TABLE `rating`
   ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`id_rated_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

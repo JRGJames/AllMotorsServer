@@ -12,8 +12,8 @@ import alpha.allmotors.service.SessionService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/initial/session")
-// @RequestMapping("/session")
+// @RequestMapping("/initial/session")
+@RequestMapping("/session")
 public class SessionControllerApi {
 
     @Autowired

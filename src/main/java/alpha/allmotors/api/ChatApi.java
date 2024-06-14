@@ -22,8 +22,8 @@ import alpha.allmotors.service.ChatService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/initial/chat")
-// @RequestMapping("/chat")
+// @RequestMapping("/initial/chat")
+@RequestMapping("/chat")
 public class ChatApi {
 
     @Autowired

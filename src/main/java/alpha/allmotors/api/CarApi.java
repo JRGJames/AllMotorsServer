@@ -20,8 +20,8 @@ import alpha.allmotors.service.CarService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-// @RequestMapping("/car")
-@RequestMapping("/initial/car")
+@RequestMapping("/car")
+// @RequestMapping("/initial/car")
 public class CarApi {
 
     @Autowired
