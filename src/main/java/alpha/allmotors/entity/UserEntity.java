@@ -28,10 +28,10 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 20)
     private String name;
 
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 20)
     private String lastname;
 
     @NotNull

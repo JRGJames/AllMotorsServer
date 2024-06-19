@@ -25,17 +25,19 @@ public class SessionService {
     @Autowired
     HttpServletRequest httpServletRequest;
 
-    public String login(UserBean userBean) {
+    private String login(String username, String password) {
+        // Implementa la lógica para buscar por nombre de usuario y contraseña
+        userRepository.findByUsername(username).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        String email = userRepository.findByUsername(username).get().getEmail();
 
-        if (StringUtils.hasText(userBean.getUsername())) {
-            userRepository.findByUsernameAndPassword(userBean.getUsername(), userBean.getPassword());
-        } else if (StringUtils.hasText(userBean.getEmail())) {
-            userRepository.findByEmailAndPassword(userBean.getEmail(), userBean.getPassword());
-        } else {
-            throw new UnauthorizedException("Debe proporcionar nombre de usuario o correo electrónico");
-        }
+        return jwtHelper.generateJWT(userRepository, username, email);
+    }
 
-        return jwtHelper.generateJWT(userRepository, userBean.getUsername(), userBean.getEmail());
+    private String loginByEmail(String email, String password) {
+        // Implementa la lógica para buscar por correo electrónico y contraseña
+        userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        String username = userRepository.findByEmail(email).get().getUsername();
+        return jwtHelper.generateJWT(userRepository, username, email);
     }
 
     public void changeStatus(UserBean userBean) {
@@ -57,7 +59,14 @@ public class SessionService {
     }
 
     public String loginStatus(UserBean userBean) {
-        String token = this.login(userBean);
+        String token;
+        if (StringUtils.hasText(userBean.getUsername())) {
+            token = this.login(userBean.getUsername(), userBean.getPassword());
+        } else if (StringUtils.hasText(userBean.getEmail())) {
+            token = this.loginByEmail(userBean.getEmail(), userBean.getPassword());
+        } else {
+            throw new UnauthorizedException("Debe proporcionar nombre de usuario o correo electrónico");
+        }
         this.changeStatus(userBean);
         return token;
     }
