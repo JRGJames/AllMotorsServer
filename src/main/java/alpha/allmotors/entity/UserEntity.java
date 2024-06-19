@@ -92,7 +92,7 @@ public class UserEntity {
 
     private boolean role = false;
 
-    private boolean actived = true;
+    private boolean actived = false;
     
     private boolean banned = false;
 
